@@ -5,4 +5,5 @@ export const initialState = {
   refreshToken: null,
   error: null,
   isLoading: false,
+  isLogin: false,
 };
