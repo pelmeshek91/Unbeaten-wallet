@@ -15,10 +15,14 @@ import {
   InputNum,
 } from './App.styled';
 import './app.css';
-import { addTransactionExpensesThunk } from 'redux/transcactions/transcactionsOperations';
+import {
+  addTransactionExpensesThunk,
+  addTransactionIncomeThunk,
+} from 'redux/transcactions/transcactionsOperations';
 
 export const TransactionForm = () => {
   const [selectedOption, setSelectedOption] = useState(null);
+  const [transactionType] = useState('expenses');
   const formRef = useRef(null);
 
   const dispatch = useDispatch();
@@ -34,7 +38,15 @@ export const TransactionForm = () => {
       amount: Number(amount),
       category,
     };
-    dispatch(addTransactionExpensesThunk(payload));
+
+    // виконуєм запит в залежності від типу
+    if (transactionType === 'expenses') {
+      dispatch(addTransactionExpensesThunk(payload));
+    } else {
+      dispatch(addTransactionIncomeThunk(payload));
+    }
+
+    //   очистка форми
     formRef.current.reset();
     setSelectedOption(null);
   };
