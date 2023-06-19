@@ -15,6 +15,7 @@ import {
   InputNum,
 } from './App.styled';
 import './app.css';
+import { addTransactionExpensesThunk } from 'redux/transcactions/transcactionsOperations';
 
 export const TransactionForm = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -26,10 +27,21 @@ export const TransactionForm = () => {
     e.preventDefault();
     const amount = e.target.elements.amount.value;
     const description = e.target.elements.description.value;
+    const category = e.target.elements.category.value;
+
+    const payload = {
+      description,
+      amount: Number(amount),
+      category,
+    };
+    dispatch(addTransactionExpensesThunk(payload));
+    formRef.current.reset();
+    setSelectedOption(null);
   };
+
   return (
     <DivContainer>
-      <Form onSubmit={handleFormSubmit}>
+      <Form ref={formRef} onSubmit={handleFormSubmit}>
         <Input
           type="text"
           placeholder="Product description"
