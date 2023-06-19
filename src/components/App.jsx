@@ -3,7 +3,7 @@ import Layout from './Layout/Layout';
 import HomePage from 'pages/HomePage/HomePage';
 import ReportPage from 'pages/ReportPage/ReportPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
-import TransactionsExpenses from './TransactionsExpenses/TransactionsExpenses';
+// import TransactionsExpenses from './TransactionsExpenses/TransactionsExpenses';
 import TransactionsIncome from './TransactionsIncome/TransactionsIncome';
 
 export const App = () => {
