@@ -2,9 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 import { initialState } from './initialState';
 import {
   addTransactionExpensesThunk,
-  getTransactionsExpensesThunk,
+  getTransactionsExpensesThunk, updateUserBalanceThunk,
 } from './transcactionsOperations';
+import { registerUserThunk } from '../auth/authOperations';
 
+const updateUserBalance = (state, { payload }) => {
+  state.balance = payload.newBalance;
+};
 const handleGetTransactionsExpenses = (state, { payload }) => {
   state.expenses = payload.expenses;
 };
@@ -17,13 +21,14 @@ const transactionsSlice = createSlice({
   initialState,
   extraReducers: builder =>
     builder
+      .addCase(updateUserBalanceThunk.fulfilled, updateUserBalance)
       .addCase(
         getTransactionsExpensesThunk.fulfilled,
-        handleGetTransactionsExpenses
+        handleGetTransactionsExpenses,
       )
       .addCase(
         addTransactionExpensesThunk.fulfilled,
-        handleAddTransactionsExpenses
+        handleAddTransactionsExpenses,
       ),
 });
 

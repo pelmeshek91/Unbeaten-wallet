@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import {NotificationContainer} from 'react-notifications';
 
 const Layout = () => {
   return (
@@ -9,6 +10,7 @@ const Layout = () => {
         <Suspense>
           <Outlet />
         </Suspense>
+        <NotificationContainer/>
       </main>
     </div>
   );
