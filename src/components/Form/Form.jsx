@@ -19,7 +19,7 @@ import {
   addTransactionExpensesThunk,
   addTransactionIncomesThunk,
 } from 'redux/transcactions/transcactionsOperations';
-import { incomes, expenses } from './category';
+import { incomes, expenses } from '../../utilits/category';
 
 export const TransactionForm = () => {
   const [selectedOption, setSelectedOption] = useState(null);
