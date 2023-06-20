@@ -43,11 +43,11 @@ export const refreshUser = async (sid, token) => {
 
 /* TRANSACTIONS */
 
-export const getTransactionsIncome = async () => {
+export const getTransactionsIncomes = async () => {
   const { data } = await axios('/transaction/income');
   return data;
 };
-export const addTransactionIncome = async body => {
+export const addTransactionIncomes = async body => {
   const { data } = await axios.post('/transaction/income', body);
   return data;
 };
