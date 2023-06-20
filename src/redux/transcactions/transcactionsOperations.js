@@ -39,7 +39,7 @@ export const addTransactionIncomesThunk = createAsyncThunk(
 );
 
 export const deleteTransactionThunk = createAsyncThunk(
-  'transactions/addIncomes',
+  'transactions/deleteTransaction',
   id => {
     const response = deleteTransaction(id);
     return response;

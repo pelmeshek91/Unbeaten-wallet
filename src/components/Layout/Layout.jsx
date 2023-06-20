@@ -1,3 +1,4 @@
+import Header from 'components/Header/Header';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import {NotificationContainer} from 'react-notifications';
@@ -5,7 +6,7 @@ import {NotificationContainer} from 'react-notifications';
 const Layout = () => {
   return (
     <div>
-      <header>HEADER</header>
+      <Header />
       <main>
         <Suspense>
           <Outlet />
