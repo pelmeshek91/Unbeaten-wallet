@@ -11,9 +11,6 @@ import {
 } from './transcactionsOperations';
 import { registerUserThunk } from '../auth/authOperations';
 
-const updateUserBalance = (state, { payload }) => {
-  state.balance = payload.newBalance;
-};
 const handleGetTransactionsExpenses = (state, { payload }) => {
   state.expenses = payload.expenses;
   state.error = null;
