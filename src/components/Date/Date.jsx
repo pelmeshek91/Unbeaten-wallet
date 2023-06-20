@@ -2,11 +2,11 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { enGB } from 'date-fns/locale';
 import { forwardRef, useState } from 'react';
-import { DivContainer, Input } from './App.styled';
+import { DivContainer, Input } from './Date.styled';
 import { BsCalendar2DateFill } from 'react-icons/bs';
-import './app.css';
+import './date.css';
 
-export const App = () => {
+export const TransactionDate = () => {
   const [selectedDate, setSelectedDate] = useState(new Date()); ///записуємо  в початковий стан дату сьогоднішню
 
   //  використовуємо forwardRef шоб передати ref з DatePicker комп до внутрішньої комп CustomInput

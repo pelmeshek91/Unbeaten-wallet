@@ -13,12 +13,13 @@ import {
   Input,
   InputBtn,
   InputNum,
-} from './App.styled';
-import './app.css';
+} from './Form.styled';
+import './form.css';
 import {
   addTransactionExpensesThunk,
   addTransactionIncomeThunk,
 } from 'redux/transcactions/transcactionsOperations';
+import { incomes, expenses } from './category';
 
 export const TransactionForm = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -66,8 +67,11 @@ export const TransactionForm = () => {
           name="category"
           required
           placeholder="Product category"
-          onChange={null}
+          menuShouldBlockScroll={true}
+          menuShouldScrollIntoView={false}
           classNamePrefix="select"
+          onChange={option => setSelectedOption(option)}
+          options={transactionType === 'expenses' ? expenses : incomes}
         />
         <Container>
           <InputNum
