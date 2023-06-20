@@ -61,11 +61,7 @@ const TransactionsIncome = () => {
         >
           PUSH
         </button>
-        <TotalBalance />
-        <div>
-          <NavLink to="/">EXPENSES</NavLink>
-          <NavLink to="/transactions-income">INCOME</NavLink>
-        </div>
+
         <h1>transactions</h1>
       </div>
     </>
