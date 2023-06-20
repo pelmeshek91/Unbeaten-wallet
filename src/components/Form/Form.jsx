@@ -1,7 +1,7 @@
 import Select from 'react-select';
 import { useRef, useState } from 'react';
 // import { format } from 'date-fns';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { CiCalculator1 } from 'react-icons/ci';
 import {
   BtnContainer,
@@ -17,7 +17,7 @@ import {
 import './form.css';
 import {
   addTransactionExpensesThunk,
-  addTransactionIncomeThunk,
+  addTransactionIncomesThunk,
 } from 'redux/transcactions/transcactionsOperations';
 import { incomes, expenses } from './category';
 
@@ -44,7 +44,7 @@ export const TransactionForm = () => {
     if (transactionType === 'expenses') {
       dispatch(addTransactionExpensesThunk(payload));
     } else {
-      dispatch(addTransactionIncomeThunk(payload));
+      dispatch(addTransactionIncomesThunk(payload));
     }
 
     //   очистка форми
