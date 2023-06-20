@@ -1,6 +1,5 @@
 import Select from 'react-select';
 import { useRef, useState } from 'react';
-import { format, isValid, parseISO } from 'date-fns';
 import { useDispatch } from 'react-redux';
 import { CiCalculator1 } from 'react-icons/ci';
 import {
@@ -13,6 +12,7 @@ import {
   Input,
   InputBtn,
   InputNum,
+  MainContainer,
 } from './Form.styled';
 import './form.css';
 import {
@@ -20,20 +20,16 @@ import {
   addTransactionIncomesThunk,
 } from 'redux/transcactions/transcactionsOperations';
 import { incomes, expenses } from '../../utilits/category';
+import { TransactionDate } from 'components/Date/Date';
 
-const formatEventStart = date => {
-  if (isValid(date)) {
-    return format(date, 'yyyy-MM-dd');
-  }
-  return '';
-};
-
-export const TransactionForm = ({ selectedDate }) => {
+export const TransactionForm = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [transactionType] = useState('expenses');
   const formRef = useRef(null);
+  const [startDate, setStartDate] = useState(new Date());
 
   const dispatch = useDispatch();
+  const currentDate = startDate.toISOString().split('T')[0];
 
   const handleFormSubmit = e => {
     e.preventDefault();
@@ -41,13 +37,11 @@ export const TransactionForm = ({ selectedDate }) => {
     const description = e.target.elements.description.value;
     const category = e.target.elements.category.value;
 
-    const date = formatEventStart(parseISO(selectedDate));
-
     const payload = {
       description,
       amount: Number(amount),
       category,
-      date,
+      date: currentDate,
     };
 
     // виконуєм запит в залежності від типу
@@ -63,43 +57,46 @@ export const TransactionForm = ({ selectedDate }) => {
   };
 
   return (
-    <DivContainer>
-      <Form ref={formRef} onSubmit={handleFormSubmit}>
-        <Input
-          type="text"
-          placeholder="Product description"
-          required
-          name="description"
-        />
-        <Select
-          className="select-container"
-          value={selectedOption}
-          name="category"
-          required
-          placeholder="Product category"
-          menuShouldBlockScroll={true}
-          menuShouldScrollIntoView={false}
-          classNamePrefix="select"
-          onChange={option => setSelectedOption(option)}
-          options={transactionType === 'expenses' ? expenses : incomes}
-        />
-        <Container>
-          <InputNum
-            type="number"
-            name="amount"
-            placeholder="0.00"
+    <MainContainer>
+      <TransactionDate />
+      <div>
+        <Form ref={formRef} onSubmit={handleFormSubmit}>
+          <Input
+            type="text"
+            placeholder="Product description"
             required
-          ></InputNum>
-          <IconContainer>
-            <CiCalculator1 style={{ width: '20px', height: '20px' }} />
-          </IconContainer>
-        </Container>
+            name="description"
+          />
+          <Select
+            className="select-container"
+            value={selectedOption}
+            name="category"
+            required
+            placeholder="Product category"
+            menuShouldBlockScroll={true}
+            menuShouldScrollIntoView={false}
+            classNamePrefix="select"
+            onChange={option => setSelectedOption(option)}
+            options={transactionType === 'expenses' ? expenses : incomes}
+          />
+          <Container>
+            <InputNum
+              type="number"
+              name="amount"
+              placeholder="0.00"
+              required
+            ></InputNum>
+            <IconContainer>
+              <CiCalculator1 style={{ width: '20px', height: '20px' }} />
+            </IconContainer>
+          </Container>
 
-        <BtnContainer>
-          <InputBtn type="submit">Input</InputBtn>
-          <ClearBtn type="reset">Clear</ClearBtn>
-        </BtnContainer>
-      </Form>
-    </DivContainer>
+          <BtnContainer>
+            <InputBtn type="submit">Input</InputBtn>
+            <ClearBtn type="reset">Clear</ClearBtn>
+          </BtnContainer>
+        </Form>
+      </div>
+    </MainContainer>
   );
 };

@@ -27,7 +27,7 @@ const TransactionsIncome = () => {
     <>
       <TransactionsSummary />
       <TransactionForm />
-      <TransactionDate />
+      {/* <TransactionDate /> */}
       <div>
         <button onClick={() => dispatch(loginUserThunk())}>LOGIN</button>
         <button

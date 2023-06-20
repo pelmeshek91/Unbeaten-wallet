@@ -73,7 +73,7 @@ export const SummaryTableCell = styled.td`
   line-height: 14px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--text-bieg);
+  color: #c7ccdc;
   background: rgba(86, 86, 107, 0.5);
 
   &:first-child {
