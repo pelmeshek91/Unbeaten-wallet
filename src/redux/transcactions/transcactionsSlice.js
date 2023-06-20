@@ -9,6 +9,7 @@ import {
   getUserInfoThunk,
   updateUserBalanceThunk,
 } from './transcactionsOperations';
+import { registerUserThunk } from '../auth/authOperations';
 
 const handleGetTransactionsExpenses = (state, { payload }) => {
   state.expenses = payload.expenses;
@@ -44,6 +45,7 @@ const handleDeleteTransaction = (state, { payload }) => {
   state.isLoading = false;
 };
 const handlePending = state => {
+  console.log('pending');
   state.isLoading = true;
 };
 const handleRejected = (state, { error }) => {
@@ -58,6 +60,7 @@ const updateBalanceFulfilled = (state, { payload }) => {
 const getBalanceFulfilled = (state, { payload }) => {
   state.balance = payload.balance;
   state.error = null;
+  state.isLoading = false;
 };
 
 const handleInfoRejected = (state, { error }) => {
@@ -71,26 +74,26 @@ const transactionsSlice = createSlice({
     builder
       .addCase(
         getTransactionsExpensesThunk.fulfilled,
-        handleGetTransactionsExpenses
+        handleGetTransactionsExpenses,
       )
       .addCase(
         addTransactionExpensesThunk.fulfilled,
-        handleAddTransactionsExpenses
+        handleAddTransactionsExpenses,
       )
       .addCase(
         getTransactionsIncomeThunk.fulfilled,
-        handleGetTransactionsIncomes
+        handleGetTransactionsIncomes,
       )
       .addCase(
         addTransactionIncomesThunk.fulfilled,
-        handleAddTransactionsIncomes
+        handleAddTransactionsIncomes,
       )
       .addCase(deleteTransactionThunk.fulfilled, handleDeleteTransaction)
       .addCase(getUserInfoThunk.fulfilled, getBalanceFulfilled)
       .addCase(updateUserBalanceThunk.fulfilled, updateBalanceFulfilled)
       .addMatcher(
         isAnyOf(getUserInfoThunk.rejected, updateUserBalanceThunk.rejected),
-        handleInfoRejected
+        handleInfoRejected,
       )
       .addMatcher(
         isAnyOf(
@@ -98,9 +101,10 @@ const transactionsSlice = createSlice({
           addTransactionExpensesThunk.pending,
           getTransactionsIncomeThunk.pending,
           addTransactionIncomesThunk.pending,
-          deleteTransactionThunk.pending
+          deleteTransactionThunk.pending,
+          getUserInfoThunk.pending,
         ),
-        handlePending
+        handlePending,
       )
       .addMatcher(
         isAnyOf(
@@ -108,9 +112,9 @@ const transactionsSlice = createSlice({
           addTransactionExpensesThunk.rejected,
           getTransactionsIncomeThunk.rejected,
           addTransactionIncomesThunk.rejected,
-          deleteTransactionThunk.rejected
+          deleteTransactionThunk.rejected,
         ),
-        handleRejected
+        handleRejected,
       ),
 });
 

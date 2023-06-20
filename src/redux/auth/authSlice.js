@@ -45,7 +45,7 @@ const handleRejected = (state, { error }) => {
   state.isLoading = false;
 };
 
-const userSlice = createSlice({
+const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: builder =>
@@ -74,4 +74,4 @@ const userSlice = createSlice({
       ),
 });
 
-export const userReducer = userSlice.reducer;
+export const authReducer = authSlice.reducer;

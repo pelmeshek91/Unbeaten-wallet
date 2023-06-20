@@ -1,16 +1,21 @@
 import TotalBalance from 'components/TotalBalance/TotalBalance';
-import TransactionsExpenses from 'components/TransactionsExpenses/TransactionsExpenses';
-import { NavLink } from 'react-router-dom';
+// import TransactionsExpenses from 'components/TransactionsExpenses/TransactionsExpenses';
+import { Suspense } from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
+import { ButtonLink } from './HomePage.styled';
 
 const HomePage = () => {
+  
   return (
     <>
       <TotalBalance />
       <div>
-        <NavLink to="/">EXPENSES</NavLink>
-        <NavLink to="transactions-income">INCOME</NavLink>
+        <ButtonLink to="/">EXPENSES</ButtonLink>
+        <ButtonLink to="incomes">INCOME</ButtonLink>
       </div>
-      <TransactionsExpenses />
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

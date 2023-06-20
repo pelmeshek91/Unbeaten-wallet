@@ -1,6 +1,7 @@
 import { TransactionForm } from 'components/Form/Form';
 import { TransactionsSummary } from 'components/Summary/Summary';
 import TotalBalance from 'components/TotalBalance/TotalBalance';
+import { TransactionsContainer } from 'components/TransactionsContainer/TransactionsContainer';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { loginUserThunk } from 'redux/auth/authOperations';
@@ -17,7 +18,7 @@ const TransactionsIncome = () => {
   const dispatch = useDispatch();
   // const sid = useSelector(state => state.auth.sid);
   // const refresh = useSelector(state => state.auth.refreshToken);
-  // const expenses = useSelector(state => state.transactions.expenses);
+
   const balance = useSelector(state => state.transactions.balance);
   console.log(balance);
   return (
@@ -60,11 +61,7 @@ const TransactionsIncome = () => {
         >
           PUSH
         </button>
-        <TotalBalance />
-        <div>
-          <NavLink to="/">EXPENSES</NavLink>
-          <NavLink to="/transactions-income">INCOME</NavLink>
-        </div>
+
         <h1>transactions</h1>
       </div>
     </>
