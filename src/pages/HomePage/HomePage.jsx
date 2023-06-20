@@ -5,6 +5,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { ButtonLink } from './HomePage.styled';
 
 const HomePage = () => {
+  
   return (
     <>
       <TotalBalance />
