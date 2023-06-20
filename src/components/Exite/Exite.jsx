@@ -1,4 +1,3 @@
-import RxDividerVertical from 'react-icons/rx';
 import {
   ExiteContainer,
   UserIcon,
@@ -6,23 +5,28 @@ import {
   UserName,
   VerticalLine,
   ExitBtn,
+  StyledExitIcon,
+  SpanText,
 } from './Exite.styled';
-import ModalExite from 'components/ModalsWindow/ModalExite';
 
-const Exite = () => {
+const Exite = ({ onExitClick }) => {
   const userName = 'User Name';
   const firstLetter = userName.charAt(0).toUpperCase();
+
+  const handleExitClick = () => {
+    onExitClick();
+  };
   return (
     <ExiteContainer>
       <UserIcon>
         <FirstLetter>{firstLetter}</FirstLetter>
       </UserIcon>
       <UserName>{userName}</UserName>
-      <VerticalLine>
-        <RxDividerVertical />|
-      </VerticalLine>
-      <ExitBtn onClick={ModalExite} type="button">
-        Exit
+      <VerticalLine>|</VerticalLine>
+
+      <ExitBtn onClick={handleExitClick} type="button">
+        <SpanText>Exit</SpanText>
+        <StyledExitIcon />
       </ExitBtn>
     </ExiteContainer>
   );
