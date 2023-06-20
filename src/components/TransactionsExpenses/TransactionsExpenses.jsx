@@ -1,5 +1,7 @@
+import { TransactionsContainer } from 'components/TransactionsContainer/TransactionsContainer';
+
 const TransactionsExpenses = () => {
-  return <div>TransactionsExpenses</div>;
+  return <TransactionsContainer />;
 };
 
 export default TransactionsExpenses;
