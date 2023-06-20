@@ -56,7 +56,7 @@ export const getUserInfoThunk = createAsyncThunk('user/info', () => {
 export const updateUserBalanceThunk = createAsyncThunk(
   'user/balance',
   balance => {
-    const newBalance = updateUserBalance(balance);
-    return newBalance;
+    const response = updateUserBalance(balance);
+    return response;
   }
 );

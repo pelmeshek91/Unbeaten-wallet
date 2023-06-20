@@ -9,23 +9,27 @@ import {
   getUserInfoThunk,
   updateUserBalanceThunk,
 } from './transcactionsOperations';
+import { registerUserThunk } from '../auth/authOperations';
 
 const handleGetTransactionsExpenses = (state, { payload }) => {
   state.expenses = payload.expenses;
   state.error = null;
   state.isLoading = false;
+  state.monthStatsExpenses = payload.monthsStats;
 };
 const handleAddTransactionsExpenses = (state, { payload }) => {
   state.expenses.push(payload.transaction);
   state.balance = payload.newBalance;
   state.error = null;
   state.isLoading = false;
+  state.monthStatsExpenses = payload[1].monthsStats;
 };
 
 const handleGetTransactionsIncomes = (state, { payload }) => {
   state.incomes = payload.expenses;
   state.error = null;
   state.isLoading = false;
+  state.monthStatsIncome = payload.monthStats;
 };
 
 const handleAddTransactionsIncomes = (state, { payload }) => {
@@ -33,6 +37,7 @@ const handleAddTransactionsIncomes = (state, { payload }) => {
   state.balance = payload.newBalance;
   state.error = null;
   state.isLoading = false;
+  state.monthStatsIncome = payload[1].monthsStats;
 };
 const handleDeleteTransaction = (state, { payload }) => {
   state.balance = payload.newBalance;
@@ -54,6 +59,7 @@ const updateBalanceFulfilled = (state, { payload }) => {
 const getBalanceFulfilled = (state, { payload }) => {
   state.balance = payload.balance;
   state.error = null;
+  state.isLoading = false;
 };
 
 const handleInfoRejected = (state, { error }) => {
@@ -94,7 +100,8 @@ const transactionsSlice = createSlice({
           addTransactionExpensesThunk.pending,
           getTransactionsIncomeThunk.pending,
           addTransactionIncomesThunk.pending,
-          deleteTransactionThunk.pending
+          deleteTransactionThunk.pending,
+          getUserInfoThunk.pending
         ),
         handlePending
       )

@@ -3,13 +3,33 @@ import Layout from './Layout/Layout';
 import HomePage from 'pages/HomePage/HomePage';
 import ReportPage from 'pages/ReportPage/ReportPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
+import RegPage from 'pages/RegPage/RegPage';
 // import TransactionsExpenses from './TransactionsExpenses/TransactionsExpenses';
 import TransactionsIncome from './TransactionsIncome/TransactionsIncome';
 // import PublicRoute from './Routs/PublicRouts';
 // import PrivateRoute from './Routs/PrivateRouts';
 import TransactionsExpenses from './TransactionsExpenses/TransactionsExpenses';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { selectSid, selectToken } from 'redux/auth/authSelectors';
+import { useEffect } from 'react';
+import { refreshUserThunk } from 'redux/auth/authOperations';
+import { getUserInfoThunk } from 'redux/transcactions/transcactionsOperations';
+
 export const App = () => {
+  const dispatch = useDispatch();
+  const refresh = useSelector(selectToken);
+  const sid = useSelector(selectSid);
+
+  useEffect(() => {
+    if (!refresh) return;
+    console.log('object');
+    dispatch(refreshUserThunk({ sid, refresh }))
+      .unwrap()
+      .then(() => dispatch(getUserInfoThunk()));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -17,17 +37,17 @@ export const App = () => {
           <Route
             index
             element={
-              // <PrivateRoute>
-              <TransactionsExpenses />
-              // </PrivateRoute>
+              <PrivateRoute>
+                <TransactionsExpenses />
+              </PrivateRoute>
             }
           />
           <Route
             path="incomes"
             element={
-              // <PrivateRoute>
-              <TransactionsIncome />
-              // </PrivateRoute>
+              <PrivateRoute>
+                <TransactionsIncome />
+              </PrivateRoute>
             }
           />
         </Route>
@@ -35,18 +55,18 @@ export const App = () => {
         <Route
           path="report"
           element={
-            // <PrivateRoute>
-            <ReportPage />
-            // </PrivateRoute>
+            <PrivateRoute>
+              <ReportPage />
+            </PrivateRoute>
           }
         />
 
         <Route
           path="/register"
           element={
-            // <PublicRoute>
-            <LoginPage />
-            // </PublicRoute>
+            <PublicRoute>
+              <RegPage />
+            </PublicRoute>
           }
         />
         <Route
