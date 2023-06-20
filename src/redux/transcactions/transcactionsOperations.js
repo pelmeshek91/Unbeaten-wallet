@@ -5,6 +5,8 @@ import {
   deleteTransaction,
   getTransactionsExpenses,
   getTransactionsIncomes,
+  getUserInfo,
+  updateUserBalance,
 } from 'services/walletApi';
 
 export const getTransactionsExpensesThunk = createAsyncThunk(
@@ -43,5 +45,18 @@ export const deleteTransactionThunk = createAsyncThunk(
   id => {
     const response = deleteTransaction(id);
     return response;
+  }
+);
+
+export const getUserInfoThunk = createAsyncThunk('user/info', () => {
+  const info = getUserInfo();
+  return info;
+});
+
+export const updateUserBalanceThunk = createAsyncThunk(
+  'user/balance',
+  balance => {
+    const newBalance = updateUserBalance(balance);
+    return newBalance;
   }
 );
