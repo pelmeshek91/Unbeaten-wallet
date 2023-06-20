@@ -24,6 +24,7 @@ export const loginUser = async (
 ) => {
   const { data } = await axios.post('/auth/login', user);
   setAuthHeader(data.accessToken);
+  console.log(data);
   return data;
 };
 export const logoutUser = async () => {
