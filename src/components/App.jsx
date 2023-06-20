@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectSid, selectToken } from 'redux/auth/authSelectors';
 import { useEffect } from 'react';
 import { refreshUserThunk } from 'redux/auth/authOperations';
+import { getUserInfoThunk } from 'redux/transcactions/transcactionsOperations';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,10 @@ export const App = () => {
 
   useEffect(() => {
     if (!refresh) return;
-    dispatch(refreshUserThunk({ sid, refresh }));
+    console.log('object');
+    dispatch(refreshUserThunk({ sid, refresh }))
+      .unwrap()
+      .then(() => dispatch(getUserInfoThunk()));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -33,17 +37,17 @@ export const App = () => {
           <Route
             index
             element={
-              // <PrivateRoute>
-              <TransactionsExpenses />
-              // </PrivateRoute>
+              <PrivateRoute>
+                <TransactionsExpenses />
+              </PrivateRoute>
             }
           />
           <Route
             path="incomes"
             element={
-              // <PrivateRoute>
-              <TransactionsIncome />
-              // </PrivateRoute>
+              <PrivateRoute>
+                <TransactionsIncome />
+              </PrivateRoute>
             }
           />
         </Route>
@@ -51,9 +55,9 @@ export const App = () => {
         <Route
           path="report"
           element={
-            // <PrivateRoute>
-            <ReportPage />
-            // </PrivateRoute>
+            <PrivateRoute>
+              <ReportPage />
+            </PrivateRoute>
           }
         />
 

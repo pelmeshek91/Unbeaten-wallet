@@ -18,11 +18,8 @@ const TotalBalance = () => {
   );
 
   useEffect(() => {
-    if (isLogin && !balanceIsLoading && !balanceUpdated) {
-      setBalanceUpdated(true);
-      dispatch(getUserInfoThunk());
-    }
-  }, []);
+    dispatch(getUserInfoThunk());
+  }, [balance, dispatch]);
 
   const makeTopUp = useCallback(async () => {
     if (!newTopUp || newTopUp === '') {
