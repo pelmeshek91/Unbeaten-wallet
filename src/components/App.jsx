@@ -3,6 +3,7 @@ import Layout from './Layout/Layout';
 import HomePage from 'pages/HomePage/HomePage';
 import ReportPage from 'pages/ReportPage/ReportPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
+import RegPage from 'pages/RegPage/RegPage';
 // import TransactionsExpenses from './TransactionsExpenses/TransactionsExpenses';
 import TransactionsIncome from './TransactionsIncome/TransactionsIncome';
 import PublicRoute from './Routs/PublicRouts';
@@ -17,17 +18,17 @@ export const App = () => {
           <Route
             index
             element={
-              <PrivateRoute>
-                <TransactionsExpenses />
-              </PrivateRoute>
+              // <PrivateRoute>
+              <TransactionsExpenses />
+              // </PrivateRoute>
             }
           />
           <Route
             path="incomes"
             element={
-              <PrivateRoute>
-                <TransactionsIncome />
-              </PrivateRoute>
+              // <PrivateRoute>
+              <TransactionsIncome />
+              // </PrivateRoute>
             }
           />
         </Route>
@@ -35,9 +36,9 @@ export const App = () => {
         <Route
           path="report"
           element={
-            <PrivateRoute>
-              <ReportPage />
-            </PrivateRoute>
+            // <PrivateRoute>
+            <ReportPage />
+            // </PrivateRoute>
           }
         />
 
@@ -45,7 +46,7 @@ export const App = () => {
           path="/register"
           element={
             <PublicRoute>
-              <LoginPage />
+              <RegPage />
             </PublicRoute>
           }
         />
