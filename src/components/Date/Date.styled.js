@@ -5,7 +5,11 @@ export const DivContainer = styled.div`
   height: 40px;
   display: flex;
   gap: 10px;
+  -webkit-box-align: center;
   align-items: center;
+  margin-top: 85px;
+  flex-direction: row;
+  margin-left: 32px;
 `;
 
 export const Input = styled.input`
@@ -24,6 +28,7 @@ export const Input = styled.input`
   height: 40px;
   overflow: hidden;
   cursor: pointer;
+  background-color: rgb(56, 56, 71);
 
   &:focus {
     outline: none;
