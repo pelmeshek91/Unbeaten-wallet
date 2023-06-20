@@ -24,7 +24,6 @@ export const loginUser = async (
 ) => {
   const { data } = await axios.post('/auth/login', user);
   setAuthHeader(data.accessToken);
-  console.log(data);
   return data;
 };
 export const logoutUser = async () => {
@@ -71,12 +70,10 @@ export const deleteTransaction = async id => {
 
 export const getUserInfo = async () => {
   const { data } = await axios('/user');
-
   return data;
 };
 
 export const updateUserBalance = async balance => {
   const { data } = await axios.patch('/user/balance', balance);
-
   return data;
 };
