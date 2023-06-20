@@ -31,6 +31,7 @@ export const logoutUser = async () => {
   unSetAuthHeader();
   return;
 };
+
 export const refreshUser = async (sid, token) => {
   const { data } = await axios.post('/auth/refresh', sid, {
     headers: {
@@ -62,5 +63,19 @@ export const addTransactionExpenses = async body => {
 };
 export const deleteTransaction = async id => {
   const { data } = await axios.delete(`/transaction/${id}`);
+  return data;
+};
+
+/* USER */
+
+export const getUserInfo = async () => {
+  const { data } = await axios('/user');
+
+  return data;
+};
+
+export const updateUserBalance = async balance => {
+  const { data } = await axios.patch('/user/balance', balance);
+
   return data;
 };
