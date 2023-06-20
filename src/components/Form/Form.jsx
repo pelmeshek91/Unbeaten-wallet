@@ -57,7 +57,7 @@ export const TransactionForm = () => {
 
   return (
     <MainContainer>
-      <TransactionDate />
+      {/* <TransactionDate /> */}
       <div>
         <Form ref={formRef} onSubmit={handleFormSubmit}>
           <Input
