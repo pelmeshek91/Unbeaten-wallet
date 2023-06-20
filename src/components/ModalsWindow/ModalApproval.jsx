@@ -7,8 +7,12 @@ import {
   StyledExitIcon,
   Overlay,
 } from './ModalApproval.styled';
+import { logoutThunk } from 'redux/auth/authOperations';
+import { useDispatch } from 'react-redux';
 
 const ModalApproval = ({ active, setActive, title }) => {
+  const dispatch = useDispatch();
+
   const handleCloseClick = () => {
     setActive(false);
   };
@@ -18,7 +22,13 @@ const ModalApproval = ({ active, setActive, title }) => {
         <StyledExitIcon onClick={handleCloseClick} />
         <Question>{title}</Question>
         <BtnContainer>
-          <YesBtn type="button">Yes</YesBtn>
+          <YesBtn
+            type="button"
+            onClick={() => dispatch(logoutThunk(), setActive(false))}
+          >
+            Yes
+          </YesBtn>
+
           <NoBtn type="button" onClick={handleCloseClick}>
             No
           </NoBtn>
