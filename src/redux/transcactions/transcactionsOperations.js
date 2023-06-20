@@ -49,7 +49,7 @@ export const deleteTransactionThunk = createAsyncThunk(
 export const updateUserBalanceThunk = createAsyncThunk(
   'transactions/addIncome',
   body => {
-    const response = addTransactionIncome(body);
+    const response = addTransactionIncomes(body);
     return response;
   }
 );
