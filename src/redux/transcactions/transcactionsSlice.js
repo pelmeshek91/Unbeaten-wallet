@@ -6,6 +6,8 @@ import {
   deleteTransactionThunk,
   getTransactionsExpensesThunk,
   getTransactionsIncomeThunk,
+  getUserInfoThunk,
+  updateUserBalanceThunk,
 } from './transcactionsOperations';
 
 const handleGetTransactionsExpenses = (state, { payload }) => {
@@ -45,6 +47,19 @@ const handleRejected = (state, { error }) => {
   state.isLoading = false;
 };
 
+const updateBalanceFulfilled = (state, { payload }) => {
+  state.balance = payload.newBalance;
+  state.error = null;
+};
+const getBalanceFulfilled = (state, { payload }) => {
+  state.balance = payload.balance;
+  state.error = null;
+};
+
+const handleInfoRejected = (state, { error }) => {
+  state.error = error.message;
+};
+
 const transactionsSlice = createSlice({
   name: 'transactions',
   initialState,
@@ -67,6 +82,12 @@ const transactionsSlice = createSlice({
         handleAddTransactionsIncomes
       )
       .addCase(deleteTransactionThunk.fulfilled, handleDeleteTransaction)
+      .addCase(getUserInfoThunk.fulfilled, getBalanceFulfilled)
+      .addCase(updateUserBalanceThunk.fulfilled, updateBalanceFulfilled)
+      .addMatcher(
+        isAnyOf(getUserInfoThunk.rejected, updateUserBalanceThunk.rejected),
+        handleInfoRejected
+      )
       .addMatcher(
         isAnyOf(
           getTransactionsExpensesThunk.pending,
