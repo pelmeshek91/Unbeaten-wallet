@@ -1,6 +1,7 @@
 import TotalBalance from 'components/TotalBalance/TotalBalance';
 import TransactionsExpenses from 'components/TransactionsExpenses/TransactionsExpenses';
-import { NavLink } from 'react-router-dom';
+import { Suspense } from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const HomePage = () => {
   return (
@@ -8,9 +9,11 @@ const HomePage = () => {
       <TotalBalance />
       <div>
         <NavLink to="/">EXPENSES</NavLink>
-        <NavLink to="transactions-income">INCOME</NavLink>
+        <NavLink to="incomes">INCOME</NavLink>
       </div>
-      <TransactionsExpenses />
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </>
   );
 };
