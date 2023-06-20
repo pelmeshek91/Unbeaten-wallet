@@ -36,11 +36,6 @@ const LoginPage = () => {
           password: values.password,
         }),
       );
-      if (data?.payload?.userData?.balance !== 0) {
-        await dispatch(updateUserBalanceThunk({ newBalance: data.payload.userData.balance, reduxUpdateOnly: true }));
-        //TODO remove on deploy, temporary user balance 0
-        // await dispatch(updateUserBalanceThunk({ newBalance: 0, reduxUpdateOnly: true }));
-      }
     } else {
       await dispatch(
         registerUserThunk({

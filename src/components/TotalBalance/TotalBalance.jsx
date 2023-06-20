@@ -1,18 +1,30 @@
 import useBalance from '../../hooks/balance/useBalance';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
-  addTransactionIncomesThunk,
+  addTransactionIncomesThunk, getUserInfoThunk,
   updateUserBalanceThunk,
 } from '../../redux/transcactions/transcactionsOperations';
-import { useDispatch } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { NotificationManager } from 'react-notifications';
 import { toast } from 'react-toastify';
+import { useSelect } from '@mui/base';
 
 const TotalBalance = () => {
   const dispatch = useDispatch();
   const [newTopUp, setNewTopUp] = useState('');
-  const { balance } = useBalance();
+  const [balanceUpdated, setBalanceUpdated] = useState(false);
+
+  const isLogin = useSelector(state => state.auth.isLogin);
+  const balanceIsLoading = useSelector(state => state.transactions.isLoading, shallowEqual);
+  const balance = useSelector(state => state.transactions.balance);
+
+  useEffect(() => {
+    if (isLogin && !balanceIsLoading && !balanceUpdated) {
+      setBalanceUpdated(true);
+      dispatch(getUserInfoThunk());
+    }
+  }, []);
 
   const makeTopUp = useCallback(async () => {
     if (!newTopUp || newTopUp === '') {
@@ -20,9 +32,7 @@ const TotalBalance = () => {
       return;
     }
     try {
-      dispatch(
-        updateUserBalanceThunk({ newBalance: newTopUp }),
-      ).then(data => {
+      dispatch(updateUserBalanceThunk({ newBalance: newTopUp })).then(data => {
         if (data.error) {
           toast.error(data.error.message ?? 'server error');
           return;
