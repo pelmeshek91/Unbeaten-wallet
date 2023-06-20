@@ -1,5 +1,5 @@
-import { DivContainer } from './TransactionsContainer';
+import { Div } from './TransactionsContainer.styled';
 
 export function TransactionsContainer() {
-  return <DivContainer></DivContainer>;
+  return <Div></Div>;
 }

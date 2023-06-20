@@ -17,17 +17,17 @@ export const App = () => {
           <Route
             index
             element={
-              <PrivateRoute>
-                <TransactionsExpenses />
-              </PrivateRoute>
+              // <PrivateRoute>
+              <TransactionsExpenses />
+              // </PrivateRoute>
             }
           />
           <Route
             path="incomes"
             element={
-              <PrivateRoute>
-                <TransactionsIncome />
-              </PrivateRoute>
+              // <PrivateRoute>
+              <TransactionsIncome />
+              // </PrivateRoute>
             }
           />
         </Route>
@@ -35,9 +35,9 @@ export const App = () => {
         <Route
           path="report"
           element={
-            <PrivateRoute>
-              <ReportPage />
-            </PrivateRoute>
+            // <PrivateRoute>
+            <ReportPage />
+            // </PrivateRoute>
           }
         />
 
