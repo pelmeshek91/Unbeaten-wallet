@@ -17,7 +17,7 @@ const handleGetTransactionsExpenses = (state, { payload }) => {
 };
 const handleAddTransactionsExpenses = (state, { payload }) => {
   state.expenses.push(payload.transaction);
-
+  state.balance = payload.newBalance;
   state.error = null;
   state.isLoading = false;
 };
