@@ -8,23 +8,22 @@ import TransactionsIncome from './TransactionsIncome/TransactionsIncome';
 import PublicRoute from './Routs/PublicRouts';
 import PrivateRoute from './Routs/PrivateRouts';
 import TransactionsExpenses from './TransactionsExpenses/TransactionsExpenses';
-import { setAuthHeader } from 'services/walletApi';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSid, selectToken } from 'redux/auth/authSelectors';
-
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { refreshUserThunk } from 'redux/auth/authOperations';
 
 export const App = () => {
   const dispatch = useDispatch();
+  const refresh = useSelector(selectToken);
+  const sid = useSelector(selectSid);
 
-  // useEffect(() => {
-  //   if (!refresh) return;
-  //   console.log(refresh);
-
-  //   dispatch(refreshUserThunk({ sid, refresh }));
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  useEffect(() => {
+    if (!refresh) return;
+    dispatch(refreshUserThunk({ sid, refresh }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Routes>
