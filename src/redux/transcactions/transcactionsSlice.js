@@ -69,7 +69,6 @@ const transactionsSlice = createSlice({
   initialState,
   extraReducers: builder =>
     builder
-      .addCase(updateUserBalanceThunk.fulfilled, updateUserBalance)
       .addCase(
         getTransactionsExpensesThunk.fulfilled,
         handleGetTransactionsExpenses

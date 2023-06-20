@@ -4,6 +4,8 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { loginUserThunk, registerUserThunk } from 'redux/auth/authOperations';
+import { updateUserBalanceThunk } from '../../redux/transcactions/transcactionsOperations';
+import { toast } from 'react-toastify';
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -28,21 +30,25 @@ const LoginPage = () => {
 
   const handleSubmit = async values => {
     if (isLogin) {
-      await dispatch(
+      const data = await dispatch(
         loginUserThunk({
           email: values.email,
           password: values.password,
-        })
+        }),
       );
+      if (data?.payload?.userData?.balance !== 0) {
+        await dispatch(updateUserBalanceThunk({ newBalance: data.payload.userData.balance, reduxUpdateOnly: true }));
+        //TODO remove on deploy, temporary user balance 0
+        // await dispatch(updateUserBalanceThunk({ newBalance: 0, reduxUpdateOnly: true }));
+      }
     } else {
       await dispatch(
         registerUserThunk({
           email: values.email,
           password: values.password,
-        })
+        }),
       );
     }
-
     navigate('/transactions-income');
   };
 
@@ -61,20 +67,20 @@ const LoginPage = () => {
         onSubmit={handleSubmit}
       >
         {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-        }) => (
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+          }) => (
           <form onSubmit={handleSubmit}>
-            <label htmlFor="email">
+            <label htmlFor='email'>
               Email:
               <input
-                type="email"
-                name="email"
-                id="email"
+                type='email'
+                name='email'
+                id='email'
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
@@ -82,12 +88,12 @@ const LoginPage = () => {
               {touched.email && errors.email && <div>{errors.email}</div>}
             </label>
 
-            <label htmlFor="password">
+            <label htmlFor='password'>
               Password:
               <input
-                type="password"
-                name="password"
-                id="password"
+                type='password'
+                name='password'
+                id='password'
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
@@ -97,10 +103,10 @@ const LoginPage = () => {
               )}
             </label>
 
-            <button type="submit" disabled={isAuthenticated}>
+            <button type='submit' disabled={isAuthenticated}>
               {isLogin ? 'Login' : 'Register'}
             </button>
-            <button type="button" onClick={handleBtnClick}>
+            <button type='button' onClick={handleBtnClick}>
               {isLogin ? 'Register' : 'Login'}
             </button>
           </form>

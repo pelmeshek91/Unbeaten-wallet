@@ -1,7 +1,8 @@
 import Header from 'components/Header/Header';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import {NotificationContainer} from 'react-notifications';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Layout = () => {
   return (
@@ -11,7 +12,7 @@ const Layout = () => {
         <Suspense>
           <Outlet />
         </Suspense>
-        <NotificationContainer/>
+        <ToastContainer />
       </main>
     </div>
   );

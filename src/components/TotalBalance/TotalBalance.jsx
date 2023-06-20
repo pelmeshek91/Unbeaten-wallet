@@ -7,41 +7,32 @@ import {
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import { NotificationManager } from 'react-notifications';
+import { toast } from 'react-toastify';
 
 const TotalBalance = () => {
   const dispatch = useDispatch();
   const [newTopUp, setNewTopUp] = useState('');
-  const [newDescription, setNewDescription] = useState('');
   const { balance } = useBalance();
 
   const makeTopUp = useCallback(async () => {
     if (!newTopUp || newTopUp === '') {
-      console.log('no input data');
+      toast.error('please input amount');
       return;
     }
     try {
       dispatch(
-        addTransactionIncomesThunk({
-          description: newDescription,
-          amount: newTopUp,
-          date: moment().format('YYYY-MM-DD'),
-          category: 'new category',
-        })
+        updateUserBalanceThunk({ newBalance: newTopUp }),
       ).then(data => {
         if (data.error) {
-          NotificationManager.warning(
-            data.error.message ?? 'server error',
-            'Error message'
-          );
+          toast.error(data.error.message ?? 'server error');
           return;
         }
-        dispatch(updateUserBalanceThunk());
-        NotificationManager.success('your balance updated', 'Success message');
+        toast.success('your balance updated');
       });
     } catch (e) {
-      console.log(e);
+      toast.error(e.message);
     }
-  }, [newTopUp, newDescription]);
+  }, [newTopUp]);
 
   return (
     <div>
@@ -58,19 +49,12 @@ const TotalBalance = () => {
           </h5>
           <div>
             <input
-              placeholder="description of income"
-              onChange={e => setNewDescription(e.target.value)}
-              type="text"
-            />
-          </div>
-          <div>
-            <input
-              placeholder="amount"
+              placeholder='amount'
               onChange={e => setNewTopUp(e.target.value)}
-              type="number"
+              type='number'
             />
           </div>
-          <button onClick={makeTopUp} className="btn">
+          <button onClick={makeTopUp} className='btn'>
             topup
           </button>
         </div>
