@@ -1,6 +1,6 @@
 import Select from 'react-select';
 import { useRef, useState } from 'react';
-// import { format } from 'date-fns';
+import { format, isValid, parseISO } from 'date-fns';
 import { useDispatch } from 'react-redux';
 import { CiCalculator1 } from 'react-icons/ci';
 import {
@@ -21,7 +21,14 @@ import {
 } from 'redux/transcactions/transcactionsOperations';
 import { incomes, expenses } from '../../utilits/category';
 
-export const TransactionForm = () => {
+const formatEventStart = date => {
+  if (isValid(date)) {
+    return format(date, 'yyyy-MM-dd');
+  }
+  return '';
+};
+
+export const TransactionForm = ({ selectedDate }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [transactionType] = useState('expenses');
   const formRef = useRef(null);
@@ -34,10 +41,13 @@ export const TransactionForm = () => {
     const description = e.target.elements.description.value;
     const category = e.target.elements.category.value;
 
+    const date = formatEventStart(parseISO(selectedDate));
+
     const payload = {
       description,
       amount: Number(amount),
       category,
+      date,
     };
 
     // виконуєм запит в залежності від типу
