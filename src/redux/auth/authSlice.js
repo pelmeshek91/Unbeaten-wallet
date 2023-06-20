@@ -18,6 +18,7 @@ const handleUserLogin = (state, { payload }) => {
   state.sid = payload.sid;
   state.error = '';
   state.isLoading = false;
+  state.isLogin = true;
 };
 const handleRefresh = (state, { payload }) => {
   state.accessToken = payload.newAccessToken;
@@ -34,6 +35,7 @@ const handleLogoutFulfilled = state => {
   state.sid = null;
   state.error = '';
   state.isLoading = false;
+  state.isLogin = false;
 };
 const handlePending = state => {
   state.isLoading = true;

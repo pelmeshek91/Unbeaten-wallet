@@ -1,9 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   addTransactionExpenses,
-  addTransactionIncome,
+  addTransactionIncomes,
+  deleteTransaction,
   getTransactionsExpenses,
-  getTransactionsIncome,
+  getTransactionsIncomes,
 } from 'services/walletApi';
 
 export const getTransactionsExpensesThunk = createAsyncThunk(
@@ -24,15 +25,23 @@ export const addTransactionExpensesThunk = createAsyncThunk(
 export const getTransactionsIncomeThunk = createAsyncThunk(
   'transactions/getIncome',
   () => {
-    const response = getTransactionsIncome();
+    const response = getTransactionsIncomes();
     return response;
   },
 );
 
-export const addTransactionIncomeThunk = createAsyncThunk(
-  'transactions/addIncome',
+export const addTransactionIncomesThunk = createAsyncThunk(
+  'transactions/addIncomes',
   body => {
-    const response = addTransactionIncome(body);
+    const response = addTransactionIncomes(body);
+    return response;
+  }
+);
+
+export const deleteTransactionThunk = createAsyncThunk(
+  'transactions/addIncomes',
+  id => {
+    const response = deleteTransaction(id);
     return response;
   },
 );
