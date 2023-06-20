@@ -1,7 +1,8 @@
 export const initialState = {
+  balance: 0,
+  transactions: null,
   expenses: [],
   incomes: [],
-  balance: 0,
   monthStatsIncome: [],
   monthStatsExpenses: [],
   error: null,

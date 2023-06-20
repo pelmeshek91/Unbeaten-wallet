@@ -3,12 +3,15 @@ import TotalBalance from 'components/TotalBalance/TotalBalance';
 import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { ButtonLink } from './HomePage.styled';
+import { IoMdStats } from 'react-icons/io';
 
 const HomePage = () => {
-  
   return (
     <>
       <TotalBalance />
+      <NavLink to="report">
+        Reports <IoMdStats />
+      </NavLink>
       <div>
         <ButtonLink to="/">EXPENSES</ButtonLink>
         <ButtonLink to="incomes">INCOME</ButtonLink>
