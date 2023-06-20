@@ -5,8 +5,8 @@ import ReportPage from 'pages/ReportPage/ReportPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 // import TransactionsExpenses from './TransactionsExpenses/TransactionsExpenses';
 import TransactionsIncome from './TransactionsIncome/TransactionsIncome';
-import PublicRoute from './Routs/PublicRouts';
-import PrivateRoute from './Routs/PrivateRouts';
+// import PublicRoute from './Routs/PublicRouts';
+// import PrivateRoute from './Routs/PrivateRouts';
 import TransactionsExpenses from './TransactionsExpenses/TransactionsExpenses';
 
 export const App = () => {
@@ -44,17 +44,17 @@ export const App = () => {
         <Route
           path="/register"
           element={
-            <PublicRoute>
-              <LoginPage />
-            </PublicRoute>
+            // <PublicRoute>
+            <LoginPage />
+            // </PublicRoute>
           }
         />
         <Route
           path="/login"
           element={
-            <PublicRoute>
-              <LoginPage />
-            </PublicRoute>
+            // <PublicRoute>
+            <LoginPage />
+            // </PublicRoute>
           }
         />
       </Route>
