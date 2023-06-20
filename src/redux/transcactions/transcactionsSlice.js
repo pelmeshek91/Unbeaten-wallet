@@ -41,7 +41,6 @@ const handleDeleteTransaction = (state, { payload }) => {
   state.isLoading = false;
 };
 const handlePending = state => {
-  console.log('pending');
   state.isLoading = true;
 };
 const handleRejected = (state, { error }) => {
@@ -70,26 +69,26 @@ const transactionsSlice = createSlice({
     builder
       .addCase(
         getTransactionsExpensesThunk.fulfilled,
-        handleGetTransactionsExpenses,
+        handleGetTransactionsExpenses
       )
       .addCase(
         addTransactionExpensesThunk.fulfilled,
-        handleAddTransactionsExpenses,
+        handleAddTransactionsExpenses
       )
       .addCase(
         getTransactionsIncomeThunk.fulfilled,
-        handleGetTransactionsIncomes,
+        handleGetTransactionsIncomes
       )
       .addCase(
         addTransactionIncomesThunk.fulfilled,
-        handleAddTransactionsIncomes,
+        handleAddTransactionsIncomes
       )
       .addCase(deleteTransactionThunk.fulfilled, handleDeleteTransaction)
       .addCase(getUserInfoThunk.fulfilled, getBalanceFulfilled)
       .addCase(updateUserBalanceThunk.fulfilled, updateBalanceFulfilled)
       .addMatcher(
         isAnyOf(getUserInfoThunk.rejected, updateUserBalanceThunk.rejected),
-        handleInfoRejected,
+        handleInfoRejected
       )
       .addMatcher(
         isAnyOf(
@@ -98,9 +97,9 @@ const transactionsSlice = createSlice({
           getTransactionsIncomeThunk.pending,
           addTransactionIncomesThunk.pending,
           deleteTransactionThunk.pending,
-          getUserInfoThunk.pending,
+          getUserInfoThunk.pending
         ),
-        handlePending,
+        handlePending
       )
       .addMatcher(
         isAnyOf(
@@ -108,9 +107,9 @@ const transactionsSlice = createSlice({
           addTransactionExpensesThunk.rejected,
           getTransactionsIncomeThunk.rejected,
           addTransactionIncomesThunk.rejected,
-          deleteTransactionThunk.rejected,
+          deleteTransactionThunk.rejected
         ),
-        handleRejected,
+        handleRejected
       ),
 });
 

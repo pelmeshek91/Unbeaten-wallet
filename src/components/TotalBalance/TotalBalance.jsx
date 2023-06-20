@@ -1,14 +1,11 @@
 import useBalance from '../../hooks/balance/useBalance';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import {
-  addTransactionIncomesThunk, getUserInfoThunk,
+  getUserInfoThunk,
   updateUserBalanceThunk,
 } from '../../redux/transcactions/transcactionsOperations';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import moment from 'moment';
-import { NotificationManager } from 'react-notifications';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { useSelect } from '@mui/base';
 
 const TotalBalance = () => {
   const dispatch = useDispatch();
@@ -16,8 +13,9 @@ const TotalBalance = () => {
   const [balanceUpdated, setBalanceUpdated] = useState(false);
 
   const isLogin = useSelector(state => state.auth.isLogin);
-  const balanceIsLoading = useSelector(state => state.transactions.isLoading, shallowEqual);
-  const balance = useSelector(state => state.transactions.balance);
+  const { balanceIsLoading, balance } = useSelector(
+    state => state.transactions
+  );
 
   useEffect(() => {
     if (isLogin && !balanceIsLoading && !balanceUpdated) {
@@ -47,10 +45,7 @@ const TotalBalance = () => {
   return (
     <div>
       <div>
-        <p>Balance block</p>
-        <p>
-          <strong>UR balance {balance}</strong>
-        </p>
+        <p>UR balance {balance}</p>
       </div>
       {+balance === 0 ? (
         <div>
@@ -59,12 +54,12 @@ const TotalBalance = () => {
           </h5>
           <div>
             <input
-              placeholder='amount'
+              placeholder="amount"
               onChange={e => setNewTopUp(e.target.value)}
-              type='number'
+              type="number"
             />
           </div>
-          <button onClick={makeTopUp} className='btn'>
+          <button onClick={makeTopUp} className="btn">
             topup
           </button>
         </div>
