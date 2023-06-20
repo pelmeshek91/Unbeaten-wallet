@@ -54,7 +54,7 @@ export const addTransactionIncomes = async body => {
 };
 export const getTransactionsExpenses = async () => {
   const { data } = await axios('/transaction/expense');
-  console.log(data);
+
   return data;
 };
 export const addTransactionExpenses = async body => {
@@ -63,6 +63,16 @@ export const addTransactionExpenses = async body => {
 };
 export const deleteTransaction = async id => {
   const { data } = await axios.delete(`/transaction/${id}`);
+  return data;
+};
+
+export const getTransactionsReports = async date => {
+  const { data } = await axios('/transaction/period-data', {
+    params: {
+      date,
+    },
+  });
+
   return data;
 };
 

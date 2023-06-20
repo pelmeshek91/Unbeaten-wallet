@@ -1,5 +1,7 @@
 import { useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import ReportsExpenses from 'components/ReportsExpenses/ReportsExpenses';
+import ReportIncom from 'components/ReportsIncome/ReportsIncome';
 
 const ReportPage = () => {
   const navigate = useNavigate();
@@ -9,13 +11,17 @@ const ReportPage = () => {
   const onBtnClick = () => {
     navigate(backLinkLocationRef.current);
   };
-  return (
-    <div>
+
+  return <>
+     <div>
       <button type="button" onClick={onBtnClick}>
         Main page
       </button>
     </div>
-  );
+
+    <ReportsExpenses />;
+    <ReportIncom/>;
+  </>;
 };
 
 export default ReportPage;

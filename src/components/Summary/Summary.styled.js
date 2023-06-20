@@ -8,6 +8,7 @@ export const SummaryWrapper = styled.div`
   border-top-right-radius: 20px;
   max-height: 290px;
   overflow: hidden;
+  margin-top: 136px;
 `;
 
 export const Thead = styled.thead`
