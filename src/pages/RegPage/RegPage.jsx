@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { loginUserThunk, registerUserThunk } from 'redux/auth/authOperations';
-
+import { registerUserThunk } from 'redux/auth/authOperations';
 import {
   Container,
   Form,
@@ -12,7 +11,7 @@ import {
   Input,
   Button,
   ErrorMessage,
-} from './LoginPage.styled';
+} from '../LoginPage/LoginPage.styled';
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -25,49 +24,40 @@ const validationSchema = yup.object().shape({
     .required('Password is a required field'),
 });
 
-const LoginPage = () => {
+const RegPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-  const [isLogin] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
   const location = useLocation();
   const { email, password } = location.state || {};
 
-  const handleRegistration = values => {
-    navigate('/register', {
-      state: { email: values.email, password: values.password },
-    });
-  };
-
   const handleSubmit = async values => {
-    if (isLogin) {
-      await dispatch(
-        loginUserThunk({
-          email: values.email,
-          password: values.password,
-        })
-      );
-    } else {
+    try {
       await dispatch(
         registerUserThunk({
           email: values.email,
           password: values.password,
         })
       );
+      navigate('/login');
+    } catch (error) {
+      if (error.response && error.response.status === 409) {
+        setErrorMessage(
+          'User with this email already exists. Please try a different email.'
+        );
+      } else {
+        setErrorMessage('Registration failed. Please try again.');
+      }
     }
-
-    navigate('/transactions-income');
   };
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/transactions-income');
-    }
-  }, [isAuthenticated, navigate]);
+  const handleLogin = () => {
+    navigate('/login');
+  };
 
   return (
     <Container>
-      <h2>Authorization</h2>
+      <h2>Registration</h2>
       <Formik
         initialValues={{ email: email || '', password: password || '' }}
         validationSchema={validationSchema}
@@ -85,10 +75,10 @@ const LoginPage = () => {
             <Label htmlFor="email">
               Email:
               <Input
+                placeholder="youremail@mail.com"
                 type="email"
                 name="email"
                 id="email"
-                placeholder="youremail@mail.com"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
@@ -101,10 +91,10 @@ const LoginPage = () => {
             <Label htmlFor="password">
               Password:
               <Input
+                placeholder="* * * * * * * *"
                 type="password"
                 name="password"
                 id="password"
-                placeholder="* * * * * * * *"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
@@ -114,13 +104,11 @@ const LoginPage = () => {
               )}
             </Label>
 
-            <Button type="submit" disabled={isAuthenticated}>
+            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+            <Button type="button" onClick={handleLogin}>
               Login
             </Button>
-
-            <Button type="button" onClick={() => handleRegistration(values)}>
-              Registration
-            </Button>
+            <Button type="submit">Register</Button>
           </Form>
         )}
       </Formik>
@@ -128,4 +116,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegPage;
