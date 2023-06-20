@@ -6,7 +6,6 @@ import {
   BtnContainer,
   ClearBtn,
   Container,
-  DivContainer,
   Form,
   IconContainer,
   Input,
@@ -26,7 +25,7 @@ export const TransactionForm = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [transactionType] = useState('expenses');
   const formRef = useRef(null);
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate] = useState(new Date());
 
   const dispatch = useDispatch();
   const currentDate = startDate.toISOString().split('T')[0];

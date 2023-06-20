@@ -17,17 +17,17 @@ export const App = () => {
         <Route
           path="transactions-income"
           element={
-            // <PrivateRoute>
-            <TransactionsIncome />
-            // </PrivateRoute>
+            <PrivateRoute>
+              <TransactionsIncome />
+            </PrivateRoute>
           }
         />
         <Route
           path="report"
           element={
-            // <PrivateRoute>
-            <ReportPage />
-            // </PrivateRoute>
+            <PrivateRoute>
+              <ReportPage />
+            </PrivateRoute>
           }
         >
           <Route path="expenses" />

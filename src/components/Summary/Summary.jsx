@@ -33,7 +33,7 @@ export const TransactionsSummary = () => {
   //   // dispatch(addTransactionIncomesThunk());
   // }, []);
 
-  // отримуєм дані зі стору
+  //  дані зі стору
   const monthExpenses = useSelector(
     state => state.transactions.monthStatsExpenses
   );
