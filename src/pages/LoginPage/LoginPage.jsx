@@ -4,6 +4,8 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { loginUserThunk, registerUserThunk } from 'redux/auth/authOperations';
+import { updateUserBalanceThunk } from '../../redux/transcactions/transcactionsOperations';
+import { toast } from 'react-toastify';
 
 import {
   Container,
@@ -41,21 +43,20 @@ const LoginPage = () => {
 
   const handleSubmit = async values => {
     if (isLogin) {
-      await dispatch(
+       await dispatch(
         loginUserThunk({
           email: values.email,
           password: values.password,
-        })
+        }),
       );
     } else {
       await dispatch(
         registerUserThunk({
           email: values.email,
           password: values.password,
-        })
+        }),
       );
     }
-
     navigate('/transactions-income');
   };
 
