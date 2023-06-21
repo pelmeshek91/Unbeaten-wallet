@@ -1,12 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Div,
-  HeaderContainer,
-  PCateg,
-  PDate,
-  PDescr,
-  PSum,
-  TableCell,
   TableEL,
   Tbody,
   Td,
