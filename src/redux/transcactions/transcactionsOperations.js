@@ -14,6 +14,7 @@ export const getTransactionsExpensesThunk = createAsyncThunk(
   'transactions/getExpenses',
   () => {
     const response = getTransactionsExpenses();
+    // console.log(response);
     return response;
   }
 );

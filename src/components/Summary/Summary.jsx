@@ -37,52 +37,61 @@ export const TransactionsSummary = () => {
   const monthExpenses = useSelector(
     state => state.transactions.monthStatsExpenses
   );
+
+  // console.log(monthExpenses);
   const monthIncome = useSelector(state => state.transactions.monthStatsIncome);
+  // console.log(monthIncome);
   const transactionIncomes = useSelector(state => state.transactions.incomes);
   const transactionExpenses = useSelector(state => state.transactions.expenses);
 
-  // вибираємо значення залежно від типу транзакції
-  const select = transactionType === 'expenses' ? monthExpenses : monthIncome;
+  // // вибираємо значення залежно від типу транзакції
+  // const select = transactionType === 'expenses' ? monthExpenses : monthIncome;
+  // console.log(monthExpenses);
 
-  // перетворюємо в об'єкт
-  const sumValues = Object.values(select);
+  // // перетворюємо в об'єкт
+  // const sumValues = Object.values(select);
 
   const dispatch = useDispatch();
 
-  // робимо запит в залежності від типу трансакції
   useEffect(() => {
-    transactionType === 'expenses'
-      ? monthExpenses.length === 0 && dispatch(getTransactionsExpensesThunk())
-      : monthIncome.length === 0 && dispatch(getTransactionsIncomeThunk());
-  }, [
-    dispatch,
-    transactionType,
-    transactionIncomes,
-    transactionExpenses,
-    monthExpenses,
-    monthIncome,
-  ]);
+    dispatch(getTransactionsExpensesThunk());
+  }, [dispatch]);
+  // console.log(monthExpenses);
 
-  // містить індекс теперішнього місяця
+  // // робимо запит в залежності від типу трансакції
+  // useEffect(() => {
+  //   transactionType === 'expenses'
+  //     ? monthExpenses.length === 0 && dispatch(getTransactionsExpensesThunk())
+  //     : monthIncome.length === 0 && dispatch(getTransactionsIncomeThunk());
+  // }, [
+  //   dispatch,
+  //   transactionType,
+  //   transactionIncomes,
+  //   transactionExpenses,
+  //   monthExpenses,
+  //   monthIncome,
+  // ]);
 
-  const currentDate = new Date();
-  const currentMonth = currentDate.getMonth() + 1;
-  // console.log(currentMonth);
+  // // містить індекс теперішнього місяця
 
-  const monthesArray = [
-    'December',
-    'November',
-    'October',
-    'September',
-    'August',
-    'July',
-    'June',
-    'May',
-    'April',
-    'March',
-    'February',
-    'January',
-  ];
+  // const currentDate = new Date();
+  // const currentMonth = currentDate.getMonth() + 1;
+  // // console.log(currentMonth);
+
+  // const monthesArray = [
+  //   'December',
+  //   'November',
+  //   'October',
+  //   'September',
+  //   'August',
+  //   'July',
+  //   'June',
+  //   'May',
+  //   'April',
+  //   'March',
+  //   'February',
+  //   'January',
+  // ];
 
   return (
     <SummaryWrapper>
@@ -93,7 +102,7 @@ export const TransactionsSummary = () => {
           </tr>
         </Thead>
         <SummaryTableWrapper>
-          {sumValues.map((sum, index) => {
+          {/* {sumValues.map((sum, index) => {
             if (index >= currentMonth) {
               if (sum === 'N/A') {
                 sum = 0;
@@ -106,7 +115,7 @@ export const TransactionsSummary = () => {
               );
             }
             return null;
-          })}
+          })} */}
           {/* <SummaryLine style={{ height: 38 }}>
             <SummaryTableCell></SummaryTableCell>
             <SummaryTableCell></SummaryTableCell>

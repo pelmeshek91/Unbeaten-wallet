@@ -17,20 +17,24 @@ const handleGetTransactionsExpenses = (state, { payload }) => {
   state.error = null;
   state.isLoading = false;
   state.monthStatsExpenses = payload.monthsStats;
+
+  // console.log(payload.monthsStats);
 };
 const handleAddTransactionsExpenses = (state, { payload }) => {
   state.expenses.push(payload.transaction);
   state.balance = payload.newBalance;
   state.error = null;
   state.isLoading = false;
-  state.monthStatsExpenses = payload[1].monthsStats;
+  // state.monthStatsExpenses = payload.monthsStats;
+  console.log(payload);
 };
 
 const handleGetTransactionsIncomes = (state, { payload }) => {
   state.incomes = payload.expenses;
   state.error = null;
   state.isLoading = false;
-  state.monthStatsIncome = payload.monthStats;
+  // state.monthStatsIncome = payload.monthsStats;
+  // console.log(payload.monthsStats);
 };
 
 const handleAddTransactionsIncomes = (state, { payload }) => {
@@ -38,7 +42,7 @@ const handleAddTransactionsIncomes = (state, { payload }) => {
   state.balance = payload.newBalance;
   state.error = null;
   state.isLoading = false;
-  state.monthStatsIncome = payload[1].monthsStats;
+  // state.monthStatsIncome = payload[1].monthsStats;
 };
 const handleDeleteTransaction = (state, { payload }) => {
   state.balance = payload.newBalance;

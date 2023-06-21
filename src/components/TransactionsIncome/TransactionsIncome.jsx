@@ -22,7 +22,7 @@ const TransactionsIncome = () => {
 
   const balance = useSelector(state => state.transactions.balance);
   const reports = useSelector(state => state.transactions.transactions);
-  console.log(reports);
+  // console.log(reports);
   return (
     <>
       <TransactionsSummary />
