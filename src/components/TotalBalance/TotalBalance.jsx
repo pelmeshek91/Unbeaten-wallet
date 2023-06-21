@@ -21,6 +21,7 @@ const TotalBalance = () => {
   const dispatch = useDispatch();
   const [newTopUp, setNewTopUp] = useState('');
   const [balanceUpdated, setBalanceUpdated] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
 
   const isLogin = useSelector(state => state.auth.isLogin);
   const { isLoading, balance } = useSelector(state => state.transactions);
@@ -28,8 +29,9 @@ const TotalBalance = () => {
   useEffect(() => {
     dispatch(getUserInfoThunk()).then(() => {
       setBalanceUpdated(true);
+      setPageLoading(false);
     });
-  }, [balance, dispatch]);
+  }, [dispatch]);
 
   const makeTopUp = useCallback(async () => {
     if (!newTopUp || newTopUp === '') {
@@ -42,12 +44,20 @@ const TotalBalance = () => {
         return;
       }
       toast.success('your balance updated');
+      setNewTopUp('');
+      setBalanceUpdated(false);
     });
-  }, [newTopUp]);
+  }, [dispatch, newTopUp]);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setBalanceUpdated(true);
+    }
+  }, [isLoading]);
 
   return (
     <BalanceContainer>
-      {isLogin && balanceUpdated && !isLoading ? (
+      {isLogin && !pageLoading && balanceUpdated ? (
         <>
           <BalanceLabel>Balance:</BalanceLabel>
           {isLogin && +balance !== 0 ? (
@@ -58,6 +68,7 @@ const TotalBalance = () => {
               <div style={{ position: 'relative' }}>
                 <Input
                   placeholder="00.00 UAH"
+                  value={newTopUp}
                   onChange={e => setNewTopUp(e.target.value)}
                   onKeyPress={e => {
                     if (!/[0-9]/.test(e.key)) {
@@ -83,10 +94,9 @@ const TotalBalance = () => {
           ) : null}
         </>
       ) : (
-        <></>
-        // <LoaderContainer>
-        //   <PulseLoader color="#383847" />
-        // </LoaderContainer>
+        <LoaderContainer>
+          {isLoading || pageLoading ? <PulseLoader color="#383847" /> : null}
+        </LoaderContainer>
       )}
     </BalanceContainer>
   );
