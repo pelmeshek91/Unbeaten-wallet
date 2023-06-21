@@ -6,8 +6,8 @@ import LoginPage from 'pages/LoginPage/LoginPage';
 import RegPage from 'pages/RegPage/RegPage';
 // import TransactionsExpenses from './TransactionsExpenses/TransactionsExpenses';
 import TransactionsIncome from './TransactionsIncome/TransactionsIncome';
-import PublicRoute from './Routs/PublicRouts';
-import PrivateRoute from './Routs/PrivateRouts';
+// import PublicRoute from './Routs/PublicRouts';
+// import PrivateRoute from './Routs/PrivateRouts';
 import TransactionsExpenses from './TransactionsExpenses/TransactionsExpenses';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,6 +15,8 @@ import { selectSid, selectToken } from 'redux/auth/authSelectors';
 import { useEffect } from 'react';
 import { refreshUserThunk } from 'redux/auth/authOperations';
 import { getUserInfoThunk } from 'redux/transcactions/transcactionsOperations';
+import PrivateRoute from './Routs/PrivateRouts';
+import PublicRoute from './Routs/PublicRouts';
 
 export const App = () => {
   const dispatch = useDispatch();

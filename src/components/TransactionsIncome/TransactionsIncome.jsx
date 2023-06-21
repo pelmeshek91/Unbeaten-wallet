@@ -1,9 +1,9 @@
 import { TransactionForm } from 'components/Form/Form';
 import { TransactionsSummary } from 'components/Summary/Summary';
-import TotalBalance from 'components/TotalBalance/TotalBalance';
-import { TransactionsContainer } from 'components/TransactionsContainer/TransactionsContainer';
+// import TotalBalance from 'components/TotalBalance/TotalBalance';
+// import { TransactionsContainer } from 'components/TransactionsContainer/TransactionsContainer';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { loginUserThunk } from 'redux/auth/authOperations';
 import {
   getTransactionsReportsThunk,
