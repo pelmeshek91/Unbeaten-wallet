@@ -4,6 +4,7 @@ export const HeaderContainer = styled.div`
   display: flex;
   width: 100%;
   background-color: #1f1f27;
+  justify-content: center;
 `;
 
 export const HeaderMain = styled.header`

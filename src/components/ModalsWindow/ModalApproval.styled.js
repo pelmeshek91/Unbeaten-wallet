@@ -1,6 +1,18 @@
 import styled from 'styled-components';
 import { MdOutlineClose } from 'react-icons/md';
 
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: inset 0px 2px 14px rgba(132, 132, 132, 0.2);
+  backdrop-filter: blur(8px);
+  /* opacity: 0.7; */
+  z-index: 9998;
+`;
+
 export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -9,7 +21,7 @@ export const ModalContainer = styled.div`
   max-width: 380px;
   max-height: 175px;
   background: #383847;
-  box-shadow: inset 0px 2px 14px rgba(132, 132, 132, 0.2);
+  border: 1px solid;
   border-radius: 16px;
 
   /* * */
@@ -68,16 +80,4 @@ export const NoBtn = styled.button`
     background-color: #42a652;
     box-shadow: 1px 3px 5px rgba(96, 196, 112, 0.35);
   }
-`;
-
-export const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  backdrop-filter: blur(8px);
-  opacity: 0.7;
-  z-index: 9998;
 `;
