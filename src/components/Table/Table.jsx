@@ -49,13 +49,7 @@ export function Table() {
   return (
     <Div>
       <TableEL>
-        <HeaderContainer>
-          <PDate>DATE</PDate>
-          <PDescr>DESCRIPTION</PDescr>
-          <PCateg>CATEGORY</PCateg>
-          <PSum>SUM</PSum>
-        </HeaderContainer>
-        {/* <Thead>
+        <Thead>
           <Tr>
             <Th>DATE</Th>
             <Th>DESCRIPTION</Th>
@@ -63,7 +57,7 @@ export function Table() {
             <Th>SUM</Th>
             <Th></Th>
           </Tr>
-        </Thead> */}
+        </Thead>
         <Tbody>
           {arr.map(row => {
             return (
