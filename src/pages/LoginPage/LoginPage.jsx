@@ -30,8 +30,7 @@ const validationSchema = yup.object().shape({
 const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-  const [isLogin] = useState(true);
+
   const location = useLocation();
   const { email, password } = location.state || {};
 
@@ -41,30 +40,14 @@ const LoginPage = () => {
     });
   };
 
-  const handleSubmit = async values => {
-    if (isLogin) {
-       await dispatch(
-        loginUserThunk({
-          email: values.email,
-          password: values.password,
-        }),
-      );
-    } else {
-      await dispatch(
-        registerUserThunk({
-          email: values.email,
-          password: values.password,
-        }),
-      );
-    }
-    navigate('/transactions-income');
+  const handleSubmit = values => {
+    dispatch(loginUserThunk({ email: values.email, password: values.password }))
+      .unwrap()
+      .then(() => navigate('/transactions-income'))
+      .catch(error => {
+        toast.error("Email doesn't exist or password is wrong"); // Display the error message using toast.error
+      });
   };
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/transactions-income');
-    }
-  }, [isAuthenticated, navigate]);
 
   return (
     <Container>
@@ -115,9 +98,7 @@ const LoginPage = () => {
               )}
             </Label>
 
-            <Button type="submit" disabled={isAuthenticated}>
-              Login
-            </Button>
+            <Button type="submit">Login</Button>
 
             <Button type="button" onClick={() => handleRegistration(values)}>
               Registration

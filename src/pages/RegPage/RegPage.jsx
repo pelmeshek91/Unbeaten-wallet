@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -12,6 +13,7 @@ import {
   Button,
   ErrorMessage,
 } from '../LoginPage/LoginPage.styled';
+import { toast } from 'react-toastify';
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -27,28 +29,26 @@ const validationSchema = yup.object().shape({
 const RegPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState('');
+
+  const errorMessage = useSelector(state => state.auth.error);
+
   const location = useLocation();
   const { email, password } = location.state || {};
 
-  const handleSubmit = async values => {
-    try {
-      await dispatch(
-        registerUserThunk({
-          email: values.email,
-          password: values.password,
-        })
-      );
-      navigate('/login');
-    } catch (error) {
-      if (error.response && error.response.status === 409) {
-        setErrorMessage(
-          'User with this email already exists. Please try a different email.'
-        );
-      } else {
-        setErrorMessage('Registration failed. Please try again.');
-      }
-    }
+  const handleSubmit = values => {
+    dispatch(
+      registerUserThunk({
+        email: values.email,
+        password: values.password,
+      })
+    )
+      .unwrap()
+      .then(() => {
+        navigate('/login');
+      })
+      .catch(error => {
+        toast.error('Email already exists'); // Display the error message using toast.error
+      });
   };
 
   const handleLogin = () => {
@@ -104,7 +104,6 @@ const RegPage = () => {
               )}
             </Label>
 
-            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
             <Button type="button" onClick={handleLogin}>
               Login
             </Button>

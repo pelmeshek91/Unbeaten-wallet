@@ -8,7 +8,7 @@ export const SummaryWrapper = styled.div`
   border-top-right-radius: 20px;
   max-height: 290px;
   overflow: hidden;
-  margin-top: 136px;
+  margin-left: 77px;
 `;
 
 export const Thead = styled.thead`
@@ -97,11 +97,6 @@ export const SummaryTableWrapper = styled.tbody`
   scrollbar-color: #60c470 #474759;
   height: 242px;
   border-collapse: collapse;
-  display: block;
-  max-height: 100%;
-  overflow-y: auto;
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
   scrollbar-color: #60c470 #474759;
 
   &::-webkit-scrollbar {
