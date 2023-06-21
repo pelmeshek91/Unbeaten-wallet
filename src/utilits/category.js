@@ -1,21 +1,24 @@
 export const expenses = [
-  { value: 'Products', label: 'Products' },
-  { value: 'Alcohol', label: 'Alcohol' },
-  { value: 'Entertainment', label: 'Entertain' },
-  { value: 'Health', label: 'Health' },
-  { value: 'Transport', label: 'Transport' },
-  { value: 'Housing', label: 'Housing' },
-  { value: 'Hobbies', label: 'Sports, hobbies' },
-  { value: 'Technique', label: 'Technique' },
+  { value: 'Продукты', label: 'Products' },
+  { value: 'Алкоголь', label: 'Alcohol' },
+  { value: 'Развлечения', label: 'Entertain' },
+  { value: 'Здоровье', label: 'Health' },
+  { value: 'Транспорт', label: 'Transport' },
+  { value: 'Всё для дома', label: 'Housing' },
+  { value: 'Спорт и хобби', label: 'Sports, hobbies' },
+  { value: 'Техника', label: 'Technique' },
   {
-    value: 'Communal',
+    value: 'Коммуналка и связь',
     label: 'Communal, communication',
   },
-  { value: 'Education', label: 'Education' },
-  { value: 'Other', label: 'Other' },
+  { value: 'Образование', label: 'Education' },
+  { value: 'Прочее', label: 'Other' },
 ];
 
 export const incomes = [
-  { value: 'Salary', label: 'Salary' },
-  { value: 'Additional income', label: 'Additional Income' },
+  { value: 'З/П', label: 'Salary' },
+  {
+    value: 'Доп. доход',
+    label: 'Additional Income',
+  },
 ];

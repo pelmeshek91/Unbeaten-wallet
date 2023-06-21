@@ -14,6 +14,7 @@ export const getTransactionsExpensesThunk = createAsyncThunk(
   'transactions/getExpenses',
   () => {
     const response = getTransactionsExpenses();
+    // console.log(response);
     return response;
   }
 );
@@ -44,6 +45,7 @@ export const addTransactionIncomesThunk = createAsyncThunk(
 export const deleteTransactionThunk = createAsyncThunk(
   'transactions/deleteTransaction',
   id => {
+    console.log(id);
     const response = deleteTransaction(id);
     return response;
   }
