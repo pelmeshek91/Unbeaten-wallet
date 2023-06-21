@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Div, TableEL, Td, Th, Thead, Tr } from './Table.styled';
+import { Div, TableEL, Td, Th, Thead, Tr } from './Table.styled.js';
 import { nanoid } from '@reduxjs/toolkit';
 import { BsTrash3 } from 'react-icons/bs';
 import {

@@ -2,6 +2,7 @@ import React from 'react';
 import * as images from 'components/ReportsExpenses/image';
 import { ImageItem, ListImages, ImageName, Colum } from './ReportExpenses.styled';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
+import ChartBarExpenses from 'components/ChartBarExpenses/ChartBarExpenses';
 
 
 const ReportsExpenses = () => {
@@ -29,6 +30,9 @@ const ReportsExpenses = () => {
           </Colum>        
       ))}
     </ListImages>
+    <div>
+      <ChartBarExpenses/>
+    </div>
      </>
   );
 };
