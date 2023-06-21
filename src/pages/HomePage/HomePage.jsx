@@ -1,7 +1,7 @@
 import TotalBalance from 'components/TotalBalance/TotalBalance';
 // import TransactionsExpenses from 'components/TransactionsExpenses/TransactionsExpenses';
 import { Suspense, useEffect } from 'react';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 
 import { ButtonLink } from './HomePage.styled';
 import { IoMdStats } from 'react-icons/io';
