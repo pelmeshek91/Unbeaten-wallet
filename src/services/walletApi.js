@@ -70,6 +70,7 @@ export const deleteTransaction = async id => {
 
 export const getUserInfo = async () => {
   const { data } = await axios('/user');
+  // data.balance = 0;
   return data;
 };
 
