@@ -11,7 +11,9 @@ export const ButtonLink = styled(NavLink)`
   outline: none;
   text-align: center;
   border-radius: 16px 16px 0px 0px;
+  padding-top: 15px;
   &.active {
     background-color: #383847;
+    color: #60c470;
   }
 `;

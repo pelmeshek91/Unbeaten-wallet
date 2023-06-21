@@ -11,8 +11,8 @@ export function TransactionsContainer() {
         <TransactionForm />
       </ContainerFormDate>
 
-      <TransactionsSummary />
       <Table />
+      <TransactionsSummary />
     </Div>
   );
 }

@@ -1,5 +1,20 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Div, TableEL, Td, Th, Thead, Tr } from './Table.styled';
+import {
+  Div,
+  HeaderContainer,
+  PCateg,
+  PDate,
+  PDescr,
+  PSum,
+  TableCell,
+  TableEL,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+  TrashBtn,
+} from './Table.styled';
 import { nanoid } from '@reduxjs/toolkit';
 import { BsTrash3 } from 'react-icons/bs';
 import {
@@ -34,7 +49,13 @@ export function Table() {
   return (
     <Div>
       <TableEL>
-        <Thead>
+        <HeaderContainer>
+          <PDate>DATE</PDate>
+          <PDescr>DESCRIPTION</PDescr>
+          <PCateg>CATEGORY</PCateg>
+          <PSum>SUM</PSum>
+        </HeaderContainer>
+        {/* <Thead>
           <Tr>
             <Th>DATE</Th>
             <Th>DESCRIPTION</Th>
@@ -42,8 +63,8 @@ export function Table() {
             <Th>SUM</Th>
             <Th></Th>
           </Tr>
-        </Thead>
-        <tbody>
+        </Thead> */}
+        <Tbody>
           {arr.map(row => {
             return (
               <Tr key={nanoid()}>
@@ -53,17 +74,21 @@ export function Table() {
                 <Td>{row.amount}</Td>
                 <Td>
                   {row._id && (
-                    <button
+                    <TrashBtn
                       onClick={() => dispatch(deleteTransactionThunk(row._id))}
                     >
-                      <BsTrash3 style={{ fill: 'white' }} />
-                    </button>
+                      <BsTrash3
+                        style={{
+                          fill: 'white',
+                        }}
+                      />
+                    </TrashBtn>
                   )}
                 </Td>
               </Tr>
             );
           })}
-        </tbody>
+        </Tbody>
       </TableEL>
     </Div>
   );
