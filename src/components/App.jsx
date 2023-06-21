@@ -34,14 +34,7 @@ export const App = () => {
 
   return (
     <Routes>
-      <Route
-        path="/"
-        element={
-          <PrivateRoute>
-            <Layout />
-          </PrivateRoute>
-        }
-      >
+      <Route path="/" element={<Layout />}>
         <Route
           path="/"
           element={
