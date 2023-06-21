@@ -11,7 +11,17 @@ export const ButtonLink = styled(NavLink)`
   outline: none;
   text-align: center;
   border-radius: 16px 16px 0px 0px;
+  padding-top: 15px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   &.active {
     background-color: #383847;
+    color: #60c470;
   }
 `;

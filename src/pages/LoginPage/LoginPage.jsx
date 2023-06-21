@@ -6,6 +6,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { loginUserThunk, registerUserThunk } from 'redux/auth/authOperations';
 import { updateUserBalanceThunk } from '../../redux/transcactions/transcactionsOperations';
 import { toast } from 'react-toastify';
+import wallet from '../../img/decor-img/wallet.png';
 
 import {
   Container,
@@ -14,6 +15,10 @@ import {
   Input,
   Button,
   ErrorMessage,
+  ButtonContainer,
+  GlobalStyle,
+  ButtonWhite,
+  ImgWallet,
 } from './LoginPage.styled';
 
 const validationSchema = yup.object().shape({
@@ -50,63 +55,73 @@ const LoginPage = () => {
   };
 
   return (
-    <Container>
-      <h2>Authorization</h2>
-      <Formik
-        initialValues={{ email: email || '', password: password || '' }}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-        }) => (
-          <Form onSubmit={handleSubmit}>
-            <Label htmlFor="email">
-              Email:
-              <Input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="youremail@mail.com"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-              />
-              {touched.email && errors.email && (
-                <ErrorMessage>{errors.email}</ErrorMessage>
-              )}
-            </Label>
+    <div>
+      <GlobalStyle />
+      <Container>
+        <ImgWallet>
+          <img src={wallet} alt="wallet" />
+        </ImgWallet>
 
-            <Label htmlFor="password">
-              Password:
-              <Input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="* * * * * * * *"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-              />
-              {touched.password && errors.password && (
-                <ErrorMessage>{errors.password}</ErrorMessage>
-              )}
-            </Label>
+        <Formik
+          initialValues={{ email: email || '', password: password || '' }}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+          }) => (
+            <Form onSubmit={handleSubmit}>
+              <Label htmlFor="email">
+                Email:
+                <Input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="youremail@mail.com"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                />
+                {touched.email && errors.email && (
+                  <ErrorMessage>{errors.email}</ErrorMessage>
+                )}
+              </Label>
 
-            <Button type="submit">Login</Button>
+              <Label htmlFor="password">
+                Password:
+                <Input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="* * * * * * * *"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.password}
+                />
+                {touched.password && errors.password && (
+                  <ErrorMessage>{errors.password}</ErrorMessage>
+                )}
+              </Label>
+              <ButtonContainer>
+                <Button type="submit">Login</Button>
 
-            <Button type="button" onClick={() => handleRegistration(values)}>
-              Registration
-            </Button>
-          </Form>
-        )}
-      </Formik>
-    </Container>
+                <ButtonWhite
+                  type="button"
+                  onClick={() => handleRegistration(values)}
+                >
+                  Registration
+                </ButtonWhite>
+              </ButtonContainer>
+            </Form>
+          )}
+        </Formik>
+      </Container>
+    </div>
   );
 };
 

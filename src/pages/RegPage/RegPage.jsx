@@ -6,14 +6,19 @@ import * as yup from 'yup';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { registerUserThunk } from 'redux/auth/authOperations';
 import {
+  ImgWallet,
   Container,
   Form,
   Label,
   Input,
   Button,
   ErrorMessage,
+  ButtonWhite,
+  ButtonContainer,
+  GlobalStyle,
 } from '../LoginPage/LoginPage.styled';
 import { toast } from 'react-toastify';
+import wallet from '../../img/decor-img/wallet.png';
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -56,62 +61,68 @@ const RegPage = () => {
   };
 
   return (
-    <Container>
-      <h2>Registration</h2>
-      <Formik
-        initialValues={{ email: email || '', password: password || '' }}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-        }) => (
-          <Form onSubmit={handleSubmit}>
-            <Label htmlFor="email">
-              Email:
-              <Input
-                placeholder="youremail@mail.com"
-                type="email"
-                name="email"
-                id="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-              />
-              {touched.email && errors.email && (
-                <ErrorMessage>{errors.email}</ErrorMessage>
-              )}
-            </Label>
+    <div>
+      <GlobalStyle />
+      <Container>
+        <ImgWallet>
+          <img src={wallet} alt="wallet" />
+        </ImgWallet>
+        <Formik
+          initialValues={{ email: email || '', password: password || '' }}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+          }) => (
+            <Form onSubmit={handleSubmit}>
+              <Label htmlFor="email">
+                Email:
+                <Input
+                  placeholder="youremail@mail.com"
+                  type="email"
+                  name="email"
+                  id="email"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                />
+                {touched.email && errors.email && (
+                  <ErrorMessage>{errors.email}</ErrorMessage>
+                )}
+              </Label>
 
-            <Label htmlFor="password">
-              Password:
-              <Input
-                placeholder="* * * * * * * *"
-                type="password"
-                name="password"
-                id="password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-              />
-              {touched.password && errors.password && (
-                <ErrorMessage>{errors.password}</ErrorMessage>
-              )}
-            </Label>
-
-            <Button type="button" onClick={handleLogin}>
-              Login
-            </Button>
-            <Button type="submit">Register</Button>
-          </Form>
-        )}
-      </Formik>
-    </Container>
+              <Label htmlFor="password">
+                Password:
+                <Input
+                  placeholder="* * * * * * * *"
+                  type="password"
+                  name="password"
+                  id="password"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.password}
+                />
+                {touched.password && errors.password && (
+                  <ErrorMessage>{errors.password}</ErrorMessage>
+                )}
+              </Label>
+              <ButtonContainer>
+                <ButtonWhite type="button" onClick={handleLogin}>
+                  Login
+                </ButtonWhite>
+                <Button type="submit">Register</Button>
+              </ButtonContainer>
+            </Form>
+          )}
+        </Formik>
+      </Container>
+    </div>
   );
 };
 

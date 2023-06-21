@@ -1,5 +1,6 @@
 import { TransactionForm } from 'components/Form/Form';
 import { TransactionsSummary } from 'components/Summary/Summary';
+import { TransactionsContainer } from 'components/TransactionsContainer/TransactionsContainer';
 // import TotalBalance from 'components/TotalBalance/TotalBalance';
 // import { TransactionsContainer } from 'components/TransactionsContainer/TransactionsContainer';
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,52 +23,51 @@ const TransactionsIncome = () => {
 
   const balance = useSelector(state => state.transactions.balance);
   const reports = useSelector(state => state.transactions.transactions);
-  console.log(reports);
-  return (
-    <>
-      <TransactionsSummary />
-      {/* <TransactionForm /> */}
-      {/* <TransactionDate /> */}
-      <div>
-        <button onClick={() => dispatch(loginUserThunk())}>LOGIN</button>
-        <button
-          onClick={
-            () => dispatch(getTransactionsReportsThunk('2023-07'))
-            // dispatch(getTransactionsExpensesThunk())
-            // getUserInfo()
-          }
-        >
-          GET
-        </button>
-        <button
-          onClick={
-            () =>
-              // dispatch(refreshUserThunk({ sid, refresh }))
-              // dispatch(
-              //   addTransactionExpensesThunk({
-              //     description: 'Expense description',
-              //     amount: 100,
-              //     date: '2020-12-31',
-              //     category: 'Продукты',
-              //   })
-              // )
-              dispatch(
-                updateUserBalanceThunk({
-                  newBalance: 999,
-                })
-              )
-            // updateUserBalance({
-            //   newBalance: 333,
-            // })
-          }
-        >
-          PUSH
-        </button>
-        <h1>transactions</h1>
-      
-      </div>
-    </>
-  );
+  // console.log(reports);
+
+  return <TransactionsContainer />;
+  // return (
+  //   <>
+  //     <div>
+  //       <button onClick={() => dispatch(loginUserThunk())}>LOGIN</button>
+  //       <button
+  //         onClick={
+  //           () => dispatch(getTransactionsReportsThunk('2023-07'))
+  //           // dispatch(getTransactionsExpensesThunk())
+  //           // getUserInfo()
+  //         }
+  //       >
+  //         GET
+  //       </button>
+  //       <button
+  //         onClick={
+  //           () =>
+  //             // dispatch(refreshUserThunk({ sid, refresh }))
+  //             // dispatch(
+  //             //   addTransactionExpensesThunk({
+  //             //     description: 'Expense description',
+  //             //     amount: 100,
+  //             //     date: '2020-12-31',
+  //             //     category: 'Продукты',
+  //             //   })
+  //             // )
+  //             dispatch(
+  //               updateUserBalanceThunk({
+  //                 newBalance: 999,
+  //               })
+  //             )
+  //           // updateUserBalance({
+  //           //   newBalance: 333,
+  //           // })
+  //         }
+  //       >
+  //         PUSH
+  //       </button>
+
+  //       <h1>transactions</h1>
+  //     </div>
+  //   </>
+  // );
 };
 
 export default TransactionsIncome;
