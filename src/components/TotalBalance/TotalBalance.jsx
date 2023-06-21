@@ -1,4 +1,3 @@
-import useBalance from '../../hooks/balance/useBalance';
 import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import {
   getUserInfoThunk,
@@ -6,6 +5,8 @@ import {
 } from '../../redux/transcactions/transcactionsOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { PulseLoader } from 'react-spinners';
+import { Tooltip } from 'react-tooltip';
 
 const TotalBalance = () => {
   const dispatch = useDispatch();
@@ -13,12 +14,12 @@ const TotalBalance = () => {
   const [balanceUpdated, setBalanceUpdated] = useState(false);
 
   const isLogin = useSelector(state => state.auth.isLogin);
-  const { balanceIsLoading, balance } = useSelector(
-    state => state.transactions
-  );
+  const { isLoading, balance } = useSelector(state => state.transactions);
 
   useEffect(() => {
-    dispatch(getUserInfoThunk());
+    dispatch(getUserInfoThunk()).then(() => {
+      setBalanceUpdated(true);
+    });
   }, [balance, dispatch]);
 
   const makeTopUp = useCallback(async () => {
@@ -26,41 +27,50 @@ const TotalBalance = () => {
       toast.error('please input amount');
       return;
     }
-    try {
-      dispatch(updateUserBalanceThunk({ newBalance: newTopUp })).then(data => {
-        if (data.error) {
-          toast.error(data.error.message ?? 'server error');
-          return;
-        }
-        toast.success('your balance updated');
-      });
-    } catch (e) {
-      toast.error(e.message);
-    }
+    dispatch(updateUserBalanceThunk({ newBalance: newTopUp })).then(data => {
+      if (data.error) {
+        toast.error(data.error.message ?? 'server error');
+        return;
+      }
+      toast.success('your balance updated');
+    });
   }, [newTopUp]);
 
   return (
     <div>
-      <div>
-        <p>UR balance {balance}</p>
-      </div>
-      {+balance === 0 ? (
+      {isLogin && balanceUpdated && !isLoading ? (
         <div>
-          <h5>
-            Hello! To get started, enter the current balance of your account!
-          </h5>
           <div>
-            <input
-              placeholder="amount"
-              onChange={e => setNewTopUp(e.target.value)}
-              type="number"
-            />
+            <p>UR balance {balance}</p>
           </div>
-          <button onClick={makeTopUp} className="btn">
-            topup
-          </button>
+          {balanceUpdated && +balance === 0 ? (
+            <div>
+              <div className="flex">
+                <div>
+                  <input
+                    data-tooltip-place="bottom"
+                    data-tooltip-id="my-tooltip"
+                    data-tooltip-content="Hello! To get started, enter the current balance of your account!"
+                    placeholder="amount"
+                    onChange={e => setNewTopUp(e.target.value)}
+                    type="number"
+                  />
+                  <Tooltip
+                    className="tool-tip-my"
+                    id="my-tooltip"
+                    isOpen={true}
+                  />
+                </div>
+                <button onClick={makeTopUp} className="btn">
+                  topup
+                </button>
+              </div>
+            </div>
+          ) : null}
         </div>
-      ) : null}
+      ) : (
+        <PulseLoader color="#383847" />
+      )}
     </div>
   );
 };
