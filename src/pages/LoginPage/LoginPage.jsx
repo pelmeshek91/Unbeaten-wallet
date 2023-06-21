@@ -6,6 +6,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { loginUserThunk, registerUserThunk } from 'redux/auth/authOperations';
 import { updateUserBalanceThunk } from '../../redux/transcactions/transcactionsOperations';
 import { toast } from 'react-toastify';
+import { handleRejected } from 'redux/auth/authSlice';
 
 import {
   Container,
@@ -15,7 +16,16 @@ import {
   Button,
   ErrorMessage,
 } from './LoginPage.styled';
-
+const handleAuthError = error => {
+  if (error.message === 'Request failed with status code 409') {
+    error.messagecust = 'This email is already registered!';
+  } else if (error.message === 'Request failed with status code 400') {
+    error.messagecust = 'Invalid data, please try again';
+  } else {
+    error.messagecust = 'Authentication failed. Please try again.';
+  }
+  toast.error('Error: ' + error.messagecust);
+};
 const validationSchema = yup.object().shape({
   email: yup
     .string()
@@ -41,23 +51,13 @@ const LoginPage = () => {
     });
   };
 
-  const handleSubmit = async values => {
-    if (isLogin) {
-       await dispatch(
-        loginUserThunk({
-          email: values.email,
-          password: values.password,
-        }),
-      );
-    } else {
-      await dispatch(
-        registerUserThunk({
-          email: values.email,
-          password: values.password,
-        }),
-      );
-    }
-    navigate('/transactions-income');
+  const handleSubmit = values => {
+    dispatch(loginUserThunk({ email: values.email, password: values.password }))
+      .unwrap()
+      .then(() => navigate('/transactions-income'))
+      .catch(error => {
+        toast.error("Email doesn't exist or password is wrong"); // Display the error message using toast.error
+      });
   };
 
   useEffect(() => {
