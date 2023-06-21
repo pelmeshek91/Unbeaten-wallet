@@ -45,11 +45,11 @@ export const TransactionsSummary = () => {
   const transactionExpenses = useSelector(state => state.transactions.expenses);
 
   // // вибираємо значення залежно від типу транзакції
-  // const select = transactionType === 'expenses' ? monthExpenses : monthIncome;
+  const select = transactionType === 'expenses' ? monthExpenses : monthIncome;
   // console.log(monthExpenses);
 
   // // перетворюємо в об'єкт
-  // const sumValues = Object.values(select);
+  const sumValues = Object.values(select);
 
   const dispatch = useDispatch();
 
@@ -59,39 +59,39 @@ export const TransactionsSummary = () => {
   // console.log(monthExpenses);
 
   // // робимо запит в залежності від типу трансакції
-  // useEffect(() => {
-  //   transactionType === 'expenses'
-  //     ? monthExpenses.length === 0 && dispatch(getTransactionsExpensesThunk())
-  //     : monthIncome.length === 0 && dispatch(getTransactionsIncomeThunk());
-  // }, [
-  //   dispatch,
-  //   transactionType,
-  //   transactionIncomes,
-  //   transactionExpenses,
-  //   monthExpenses,
-  //   monthIncome,
-  // ]);
+  useEffect(() => {
+    transactionType === 'expenses'
+      ? monthExpenses.length === 0 && dispatch(getTransactionsExpensesThunk())
+      : monthIncome.length === 0 && dispatch(getTransactionsIncomeThunk());
+  }, [
+    dispatch,
+    transactionType,
+    transactionIncomes,
+    transactionExpenses,
+    monthExpenses,
+    monthIncome,
+  ]);
 
   // // містить індекс теперішнього місяця
 
-  // const currentDate = new Date();
-  // const currentMonth = currentDate.getMonth() + 1;
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth() + 1;
   // // console.log(currentMonth);
 
-  // const monthesArray = [
-  //   'December',
-  //   'November',
-  //   'October',
-  //   'September',
-  //   'August',
-  //   'July',
-  //   'June',
-  //   'May',
-  //   'April',
-  //   'March',
-  //   'February',
-  //   'January',
-  // ];
+  const monthesArray = [
+    'December',
+    'November',
+    'October',
+    'September',
+    'August',
+    'July',
+    'June',
+    'May',
+    'April',
+    'March',
+    'February',
+    'January',
+  ];
 
   return (
     <SummaryWrapper>
@@ -102,7 +102,7 @@ export const TransactionsSummary = () => {
           </tr>
         </Thead>
         <SummaryTableWrapper>
-          {/* {sumValues.map((sum, index) => {
+          {sumValues.map((sum, index) => {
             if (index >= currentMonth) {
               if (sum === 'N/A') {
                 sum = 0;
@@ -115,7 +115,7 @@ export const TransactionsSummary = () => {
               );
             }
             return null;
-          })} */}
+          })}
           {/* <SummaryLine style={{ height: 38 }}>
             <SummaryTableCell></SummaryTableCell>
             <SummaryTableCell></SummaryTableCell>

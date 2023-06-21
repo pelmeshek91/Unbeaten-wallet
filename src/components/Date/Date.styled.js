@@ -7,7 +7,7 @@ export const DivContainer = styled.div`
   gap: 10px;
   -webkit-box-align: center;
   align-items: center;
-  margin-top: 85px;
+  margin-top: 35px;
   flex-direction: row;
   margin-left: 32px;
 `;
