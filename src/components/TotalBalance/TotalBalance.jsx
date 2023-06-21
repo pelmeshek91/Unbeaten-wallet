@@ -83,9 +83,10 @@ const TotalBalance = () => {
           ) : null}
         </>
       ) : (
-        <LoaderContainer>
-          <PulseLoader color="#383847" />
-        </LoaderContainer>
+        <></>
+        // <LoaderContainer>
+        //   <PulseLoader color="#383847" />
+        // </LoaderContainer>
       )}
     </BalanceContainer>
   );
