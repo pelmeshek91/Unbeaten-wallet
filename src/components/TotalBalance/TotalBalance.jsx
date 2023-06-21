@@ -1,12 +1,21 @@
-import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
-import {
-  getUserInfoThunk,
-  updateUserBalanceThunk,
-} from '../../redux/transcactions/transcactionsOperations';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { PulseLoader } from 'react-spinners';
 import { Tooltip } from 'react-tooltip';
+import {
+  BalanceContainer,
+  BalanceLabel,
+  BalanceValue,
+  Button,
+  Input,
+  InputContainer,
+  LoaderContainer,
+} from './TotalBalance.styled';
+import {
+  getUserInfoThunk,
+  updateUserBalanceThunk,
+} from '../../redux/transcactions/transcactionsOperations';
 
 const TotalBalance = () => {
   const dispatch = useDispatch();
@@ -37,41 +46,49 @@ const TotalBalance = () => {
   }, [newTopUp]);
 
   return (
-    <div>
+    <BalanceContainer>
       {isLogin && balanceUpdated && !isLoading ? (
-        <div>
-          <div>
-            <p>UR balance {balance}</p>
-          </div>
-          {balanceUpdated && +balance === 0 ? (
-            <div>
-              <div className="flex">
-                <div>
-                  <input
-                    data-tooltip-place="bottom"
-                    data-tooltip-id="my-tooltip"
-                    data-tooltip-content="Hello! To get started, enter the current balance of your account!"
-                    placeholder="amount"
-                    onChange={e => setNewTopUp(e.target.value)}
-                    type="number"
-                  />
-                  <Tooltip
-                    className="tool-tip-my"
-                    id="my-tooltip"
-                    isOpen={true}
-                  />
-                </div>
-                <button onClick={makeTopUp} className="btn">
-                  topup
-                </button>
-              </div>
-            </div>
+        <>
+          <BalanceLabel>Balance:</BalanceLabel>
+          {isLogin && +balance !== 0 ? (
+            <BalanceValue>{balance}</BalanceValue>
           ) : null}
-        </div>
+          {balanceUpdated && +balance === 0 ? (
+            <InputContainer>
+              <Input
+                data-tooltip-place="bottom"
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content="Hello! To get started, enter the current balance of your account! You can't spend money until you have it :)"
+                placeholder="00.00 UAH"
+                onChange={e => setNewTopUp(e.target.value)}
+                onKeyPress={e => {
+                  if (!/[0-9]/.test(e.key)) {
+                    e.preventDefault();
+                  }
+                }}
+                suffix="UAH"
+              />
+              <Tooltip
+                className="tool-tip-my"
+                id="my-tooltip"
+                isOpen={true}
+                style={{
+                  width: 268,
+                  height: 145,
+                  backgroundColor: '#60C470',
+                  borderRadius: 30,
+                }}
+              />
+              <Button onClick={makeTopUp}>Confirm</Button>
+            </InputContainer>
+          ) : null}
+        </>
       ) : (
-        <PulseLoader color="#383847" />
+        <LoaderContainer>
+          <PulseLoader color="#383847" />
+        </LoaderContainer>
       )}
-    </div>
+    </BalanceContainer>
   );
 };
 
