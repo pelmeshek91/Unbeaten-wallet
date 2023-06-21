@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { PulseLoader } from 'react-spinners';
-import { Tooltip } from 'react-tooltip';
 import {
   BalanceContainer,
   BalanceLabel,
@@ -11,6 +10,7 @@ import {
   Input,
   InputContainer,
   LoaderContainer,
+  StyledMessage,
 } from './TotalBalance.styled';
 import {
   getUserInfoThunk,
@@ -51,35 +51,34 @@ const TotalBalance = () => {
         <>
           <BalanceLabel>Balance:</BalanceLabel>
           {isLogin && +balance !== 0 ? (
-            <BalanceValue>{balance}</BalanceValue>
+            <BalanceValue>{balance} :UAH</BalanceValue>
           ) : null}
           {balanceUpdated && +balance === 0 ? (
             <InputContainer>
-              <Input
-                data-tooltip-place="bottom"
-                data-tooltip-id="my-tooltip"
-                data-tooltip-content="Hello! To get started, enter the current balance of your account! You can't spend money until you have it :)"
-                placeholder="00.00 UAH"
-                onChange={e => setNewTopUp(e.target.value)}
-                onKeyPress={e => {
-                  if (!/[0-9]/.test(e.key)) {
-                    e.preventDefault();
-                  }
-                }}
-                suffix="UAH"
-              />
-              <Tooltip
-                className="tool-tip-my"
-                id="my-tooltip"
-                isOpen={true}
-                style={{
-                  width: 268,
-                  height: 145,
-                  backgroundColor: '#60C470',
-                  borderRadius: 30,
-                }}
-              />
-              <Button onClick={makeTopUp}>Confirm</Button>
+              <div style={{ position: 'relative' }}>
+                <Input
+                  placeholder="00.00 UAH"
+                  onChange={e => setNewTopUp(e.target.value)}
+                  onKeyPress={e => {
+                    if (!/[0-9]/.test(e.key)) {
+                      e.preventDefault();
+                    }
+                  }}
+                  suffix="UAH"
+                />
+                {balanceUpdated && +balance === 0 && (
+                  <StyledMessage>
+                    <p>
+                      Hello! To get started, enter the current balance of your
+                      account!
+                    </p>
+                    <p>You can't spend money until you have it :)</p>
+                  </StyledMessage>
+                )}
+              </div>
+              {balanceUpdated && +balance === 0 && (
+                <Button onClick={makeTopUp}>Confirm</Button>
+              )}
             </InputContainer>
           ) : null}
         </>
