@@ -24,7 +24,7 @@ export const Td = styled.td`
   color: #c7ccdc;
   background: rgb(56, 56, 71);
   margin-left: 22px;
-  padding-left: 50px;
+  padding-left: 56px;
 `;
 export const Thead = styled.thead`
   background-color: rgba(86, 86, 107, 0.5);
@@ -34,6 +34,13 @@ export const Thead = styled.thead`
 export const Th = styled.th`
   height: 40px;
   /* width: 149px; */
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  /* identical to box height */
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 `;
 
 export const TrashBtn = styled.button`
