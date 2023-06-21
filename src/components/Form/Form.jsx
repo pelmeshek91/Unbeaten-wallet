@@ -43,6 +43,8 @@ export const TransactionForm = () => {
       date: currentDate,
     };
 
+    dispatch(addTransactionExpensesThunk(payload));
+
     // виконуєм запит в залежності від типу
     if (transactionType === 'expenses') {
       dispatch(addTransactionExpensesThunk(payload));

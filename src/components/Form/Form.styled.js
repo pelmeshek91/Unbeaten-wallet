@@ -4,7 +4,7 @@ export const MainContainer = styled.div`
   display: flex;
   -webkit-box-pack: center;
   justify-content: center;
-  margin-top: 79px;
+  /* margin-top: 32px; */
   -webkit-box-align: center;
   align-items: flex-start;
 `;
@@ -14,10 +14,9 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  width: 290px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 20px;
+  width: 288px;
+  padding: 15px;
+  box-sizing: border-box;
   text-align: left;
   color: rgba(199, 204, 220, 0.5);
   border: 2px solid #474759;
@@ -102,6 +101,8 @@ export const InputBtn = styled.button`
   text-transform: uppercase;
   color: #f6f7fb;
   text-align: center;
+  cursor: pointer;
+
   &:focus,
   &:hover {
     box-shadow: 1px 3px 5px rgba(96, 196, 112, 0.35);
@@ -122,6 +123,7 @@ export const ClearBtn = styled.button`
   text-transform: uppercase;
   color: #f6f7fb;
   text-align: center;
+  cursor: pointer;
   &:hover,
   &:focus {
     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.15);

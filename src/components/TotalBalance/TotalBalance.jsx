@@ -1,77 +1,93 @@
-import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { PulseLoader } from 'react-spinners';
+import {
+  BalanceContainer,
+  BalanceLabel,
+  BalanceValue,
+  Button,
+  Input,
+  InputContainer,
+  LoaderContainer,
+  StyledMessage,
+  RelativeContainer,
+} from './TotalBalance.styled';
 import {
   getUserInfoThunk,
   updateUserBalanceThunk,
 } from '../../redux/transcactions/transcactionsOperations';
-import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import { PulseLoader } from 'react-spinners';
-import { Tooltip } from 'react-tooltip';
 
 const TotalBalance = () => {
   const dispatch = useDispatch();
   const [newTopUp, setNewTopUp] = useState('');
-  const [balanceUpdated, setBalanceUpdated] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
 
   const isLogin = useSelector(state => state.auth.isLogin);
   const { isLoading, balance } = useSelector(state => state.transactions);
 
   useEffect(() => {
     dispatch(getUserInfoThunk()).then(() => {
-      setBalanceUpdated(true);
+      setPageLoading(false);
     });
-  }, [balance, dispatch]);
+  }, [dispatch]);
 
   const makeTopUp = useCallback(async () => {
     if (!newTopUp || newTopUp === '') {
-      toast.error('please input amount');
+      toast.error('Please input an amount');
       return;
     }
     dispatch(updateUserBalanceThunk({ newBalance: newTopUp })).then(data => {
       if (data.error) {
-        toast.error(data.error.message ?? 'server error');
+        toast.error(data.error.message ?? 'Server error');
         return;
       }
-      toast.success('your balance updated');
+      toast.success('Your balance has been updated');
+      setNewTopUp('');
     });
-  }, [newTopUp]);
+  }, [dispatch, newTopUp]);
 
   return (
-    <div>
-      {isLogin && balanceUpdated && !isLoading ? (
-        <div>
-          <div>
-            <p>UR balance {balance}</p>
-          </div>
-          {balanceUpdated && +balance === 0 ? (
-            <div>
-              <div className="flex">
-                <div>
-                  <input
-                    data-tooltip-place="bottom"
-                    data-tooltip-id="my-tooltip"
-                    data-tooltip-content="Hello! To get started, enter the current balance of your account!"
-                    placeholder="amount"
-                    onChange={e => setNewTopUp(e.target.value)}
-                    type="number"
-                  />
-                  <Tooltip
-                    className="tool-tip-my"
-                    id="my-tooltip"
-                    isOpen={true}
-                  />
-                </div>
-                <button onClick={makeTopUp} className="btn">
-                  topup
-                </button>
-              </div>
-            </div>
-          ) : null}
-        </div>
+    <BalanceContainer>
+      {isLogin && !pageLoading ? (
+        <>
+          <BalanceLabel>Balance:</BalanceLabel>
+          {+balance !== 0 ? (
+            <BalanceValue>{balance}</BalanceValue>
+          ) : (
+            <InputContainer>
+              <RelativeContainer>
+                <Input
+                  placeholder="00.00"
+                  value={newTopUp}
+                  onChange={e => setNewTopUp(e.target.value)}
+                  onKeyPress={e => {
+                    if (!/[0-9]/.test(e.key)) {
+                      e.preventDefault();
+                    }
+                  }}
+                  suffix="UAH"
+                />
+                {+balance === 0 && (
+                  <StyledMessage>
+                    <p>
+                      Hello! To get started, enter the current balance of your
+                      account!
+                    </p>
+                    <p>You can't spend money until you have it :)</p>
+                  </StyledMessage>
+                )}
+              </RelativeContainer>
+              {+balance === 0 && <Button onClick={makeTopUp}>Confirm</Button>}
+            </InputContainer>
+          )}
+        </>
       ) : (
-        <PulseLoader color="#383847" />
+        <LoaderContainer>
+          {isLoading || pageLoading ? <PulseLoader color="#383847" /> : null}
+        </LoaderContainer>
       )}
-    </div>
+    </BalanceContainer>
   );
 };
 

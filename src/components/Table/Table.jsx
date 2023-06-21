@@ -1,5 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Div, TableEL, Td, Th, Thead, Tr } from './Table.styled';
+import {
+  Div,
+  TableEL,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+  TrashBtn,
+} from './Table.styled';
 import { nanoid } from '@reduxjs/toolkit';
 import { BsTrash3 } from 'react-icons/bs';
 import {
@@ -43,7 +52,7 @@ export function Table() {
             <Th></Th>
           </Tr>
         </Thead>
-        <tbody>
+        <Tbody>
           {arr.map(row => {
             return (
               <Tr key={nanoid()}>
@@ -53,17 +62,21 @@ export function Table() {
                 <Td>{row.amount}</Td>
                 <Td>
                   {row._id && (
-                    <button
+                    <TrashBtn
                       onClick={() => dispatch(deleteTransactionThunk(row._id))}
                     >
-                      <BsTrash3 style={{ fill: 'white' }} />
-                    </button>
+                      <BsTrash3
+                        style={{
+                          fill: 'white',
+                        }}
+                      />
+                    </TrashBtn>
                   )}
                 </Td>
               </Tr>
             );
           })}
-        </tbody>
+        </Tbody>
       </TableEL>
     </Div>
   );
