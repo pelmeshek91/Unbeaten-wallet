@@ -29,7 +29,7 @@ const validationSchema = yup.object().shape({
 const RegPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const [errorMessage, setErrorMessage] = useState('');
+
   const errorMessage = useSelector(state => state.auth.error);
 
   const location = useLocation();
