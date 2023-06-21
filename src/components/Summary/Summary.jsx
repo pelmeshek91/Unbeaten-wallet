@@ -107,7 +107,7 @@ export const TransactionsSummary = () => {
             }
             return null;
           })}
-          <SummaryLine style={{ height: 38 }}>
+          {/* <SummaryLine style={{ height: 38 }}>
             <SummaryTableCell></SummaryTableCell>
             <SummaryTableCell></SummaryTableCell>
           </SummaryLine>
@@ -130,7 +130,7 @@ export const TransactionsSummary = () => {
           <SummaryLine style={{ height: 38 }}>
             <SummaryTableCell></SummaryTableCell>
             <SummaryTableCell></SummaryTableCell>
-          </SummaryLine>
+          </SummaryLine> */}
         </SummaryTableWrapper>
       </SummaryTable>
     </SummaryWrapper>

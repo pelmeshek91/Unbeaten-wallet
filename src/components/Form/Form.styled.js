@@ -2,8 +2,11 @@ import styled from 'styled-components';
 
 export const MainContainer = styled.div`
   display: flex;
+  -webkit-box-pack: center;
   justify-content: center;
-  align-items: center;
+  margin-top: 79px;
+  -webkit-box-align: center;
+  align-items: flex-start;
 `;
 
 export const Form = styled.form`
@@ -21,7 +24,7 @@ export const Input = styled.input`
   border-radius: 0;
   border-top-left-radius: 16px;
   border-top-right-radius: 0;
-  background-color: rgba(56, 56, 71, 1);
+  background-color: rgb(56, 56, 71);
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;

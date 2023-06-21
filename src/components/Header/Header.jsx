@@ -4,11 +4,10 @@ import { HeaderContainer, HeaderMain, Image } from './Header.styled';
 import Exite from 'components/Exite/Exite';
 
 import { useState } from 'react';
-
-// import { useAuth } from 'hooks';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
-  //   const { isLoggedIn } = useAuth();
+  const { isLogin } = useSelector(state => state.auth); //
 
   const [modalActive, setModalActive] = useState(false);
 
@@ -20,7 +19,7 @@ const Header = () => {
     <HeaderContainer>
       <HeaderMain>
         <Image src={logo} alt="logo" />
-        <Exite onExitClick={handleExitClick} />
+        {isLogin && <Exite onExitClick={handleExitClick} />}
       </HeaderMain>
       {modalActive && (
         <ModalApproval

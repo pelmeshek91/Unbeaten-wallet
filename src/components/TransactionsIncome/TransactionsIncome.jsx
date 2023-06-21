@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { NavLink } from 'react-router-dom';
 import { loginUserThunk } from 'redux/auth/authOperations';
 import {
+  getTransactionsReportsThunk,
   getUserInfoThunk,
   updateUserBalanceThunk,
 } from 'redux/transcactions/transcactionsOperations';
@@ -20,17 +21,18 @@ const TransactionsIncome = () => {
   // const refresh = useSelector(state => state.auth.refreshToken);
 
   const balance = useSelector(state => state.transactions.balance);
-  console.log(balance);
+  const reports = useSelector(state => state.transactions.transactions);
+  console.log(reports);
   return (
     <>
       <TransactionsSummary />
-      <TransactionForm />
+      {/* <TransactionForm /> */}
       {/* <TransactionDate /> */}
       <div>
         <button onClick={() => dispatch(loginUserThunk())}>LOGIN</button>
         <button
           onClick={
-            () => dispatch(getUserInfoThunk())
+            () => dispatch(getTransactionsReportsThunk('2023-07'))
             // dispatch(getTransactionsExpensesThunk())
             // getUserInfo()
           }

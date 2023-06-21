@@ -1,9 +1,17 @@
-import { Div } from './TransactionsContainer.styled';
-import { Table } from 'components/Table/Table';
+import { TransactionForm } from 'components/Form/Form';
+import { ContainerFormDate, Div } from './TransactionsContainer.styled';
+import { TransactionsSummary } from 'components/Summary/Summary';
+import { TransactionDate } from 'components/Date/Date';
+
 export function TransactionsContainer() {
   return (
     <Div>
-      <Table />
+      <ContainerFormDate>
+        <TransactionDate />
+        <TransactionForm />
+      </ContainerFormDate>
+
+      <TransactionsSummary />
     </Div>
   );
 }
