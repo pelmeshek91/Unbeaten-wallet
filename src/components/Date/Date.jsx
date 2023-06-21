@@ -3,7 +3,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { enGB } from 'date-fns/locale';
 import { forwardRef, useState } from 'react';
 import { DivContainer, Input } from './Date.styled';
-import { BsCalendar2DateFill } from 'react-icons/bs';
+import { BsCalendar4Week } from 'react-icons/bs';
 import './date.css';
 
 export const TransactionDate = () => {
@@ -25,7 +25,7 @@ export const TransactionDate = () => {
   return (
     <DivContainer>
       {/* icon calendaryk */}
-      <BsCalendar2DateFill style={{ width: '20px', height: '20px' }} />
+      <BsCalendar4Week style={{ width: '20px', height: '20px' }} />
       <DatePicker
         dateFormat="dd.MM.yyyy"
         selected={selectedDate}
