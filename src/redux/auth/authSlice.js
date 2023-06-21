@@ -6,7 +6,8 @@ import {
   refreshUserThunk,
   registerUserThunk,
 } from './authOperations';
-
+import { toast, ToastContainer as MyToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const handleUserRegister = state => {
   state.isLoading = false;
   state.error = '';
@@ -40,7 +41,7 @@ const handleLogoutFulfilled = state => {
 const handlePending = state => {
   state.isLoading = true;
 };
-const handleRejected = (state, { error }) => {
+export const handleRejected = (state, { error }) => {
   state.error = error.message;
   state.isLoading = false;
 };
@@ -75,3 +76,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+export const ToastContainer = MyToastContainer;
