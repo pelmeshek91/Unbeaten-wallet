@@ -102,6 +102,8 @@ export const InputBtn = styled.button`
   text-transform: uppercase;
   color: #f6f7fb;
   text-align: center;
+  cursor: pointer;
+
   &:focus,
   &:hover {
     box-shadow: 1px 3px 5px rgba(96, 196, 112, 0.35);
@@ -122,6 +124,7 @@ export const ClearBtn = styled.button`
   text-transform: uppercase;
   color: #f6f7fb;
   text-align: center;
+  cursor: pointer;
   &:hover,
   &:focus {
     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.15);

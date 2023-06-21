@@ -9,6 +9,8 @@ export const Div = styled.div`
 `;
 export const TableEL = styled.table`
   border-spacing: 0px;
+  width: 100%;
+  table-layout: fixed;
 `;
 export const Tr = styled.tr`
   height: 36px;
@@ -29,46 +31,6 @@ export const Thead = styled.thead`
   color: white;
 `;
 
-export const HeaderContainer = styled.div`
-  display: flex;
-  background-color: rgba(86, 86, 107, 0.5);
-  color: white;
-  gap: 25px;
-`;
-
-export const PDate = styled.p`
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 14px;
-  margin-left: 55px;
-`;
-export const PDescr = styled.p`
-  margin-left: 50px;
-
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 14px;
-  margin-left: 55px;
-`;
-export const PCateg = styled.p`
-  margin-left: 74px;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 14px;
-  margin-left: 55px;
-`;
-export const PSum = styled.p`
-  margin-left: 70px;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 14px;
-  margin-left: 55px;
-`;
-
 export const Th = styled.th`
   height: 40px;
   /* width: 149px; */
@@ -80,6 +42,7 @@ export const TrashBtn = styled.button`
 
 export const Tbody = styled.tbody`
   display: block;
+  /* display: table; */
   max-height: 100%;
   overflow-y: auto;
   width: 746px;

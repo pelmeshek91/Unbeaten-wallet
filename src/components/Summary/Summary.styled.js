@@ -35,7 +35,7 @@ export const SummaryTableHeading = styled.th`
   color: #f6f7fb;
   // border-bottom: 4px solid #383847;
   font-size: 0.9em;
-  font-family: 'Roboto';
+  /* font-family: 'Roboto'; */
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
