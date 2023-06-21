@@ -37,19 +37,28 @@ export const TransactionsSummary = () => {
   const monthExpenses = useSelector(
     state => state.transactions.monthStatsExpenses
   );
+
+  // console.log(monthExpenses);
   const monthIncome = useSelector(state => state.transactions.monthStatsIncome);
+  // console.log(monthIncome);
   const transactionIncomes = useSelector(state => state.transactions.incomes);
   const transactionExpenses = useSelector(state => state.transactions.expenses);
 
-  // вибираємо значення залежно від типу транзакції
+  // // вибираємо значення залежно від типу транзакції
   const select = transactionType === 'expenses' ? monthExpenses : monthIncome;
+  // console.log(monthExpenses);
 
-  // перетворюємо в об'єкт
+  // // перетворюємо в об'єкт
   const sumValues = Object.values(select);
 
   const dispatch = useDispatch();
 
-  // робимо запит в залежності від типу трансакції
+  useEffect(() => {
+    dispatch(getTransactionsExpensesThunk());
+  }, [dispatch]);
+  // console.log(monthExpenses);
+
+  // // робимо запит в залежності від типу трансакції
   useEffect(() => {
     transactionType === 'expenses'
       ? monthExpenses.length === 0 && dispatch(getTransactionsExpensesThunk())
@@ -63,11 +72,11 @@ export const TransactionsSummary = () => {
     monthIncome,
   ]);
 
-  // містить індекс теперішнього місяця
+  // // містить індекс теперішнього місяця
 
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth() + 1;
-  // console.log(currentMonth);
+  // // console.log(currentMonth);
 
   const monthesArray = [
     'December',

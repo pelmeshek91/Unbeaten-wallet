@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ReportsExpenses from 'components/ReportsExpenses/ReportsExpenses';
-import ReportIncom from 'components/ReportsIncome/ReportsIncome';
 
 const ReportPage = () => {
   const navigate = useNavigate();
@@ -20,7 +19,6 @@ const ReportPage = () => {
     </div>
 
     <ReportsExpenses />;
-    <ReportIncom/>;
   </>;
 };
 
