@@ -4,7 +4,7 @@ export const MainContainer = styled.div`
   display: flex;
   -webkit-box-pack: center;
   justify-content: center;
-  margin-top: 32px;
+  /* margin-top: 32px; */
   -webkit-box-align: center;
   align-items: flex-start;
 `;
@@ -14,10 +14,9 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  width: 290px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 20px;
+  width: 288px;
+  padding: 15px;
+  box-sizing: border-box;
   text-align: left;
   color: rgba(199, 204, 220, 0.5);
   border: 2px solid #474759;

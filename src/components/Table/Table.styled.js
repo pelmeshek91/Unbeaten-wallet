@@ -5,7 +5,7 @@ export const Div = styled.div`
   border-radius: 30px 30px 0px 0px;
   border: 2px solid #474759;
   overflow: hidden;
-  margin-left: 32px;
+  /* margin-left: 32px; */
 `;
 export const TableEL = styled.table`
   border-spacing: 0px;
@@ -16,7 +16,9 @@ export const Tr = styled.tr`
   height: 36px;
 `;
 export const Td = styled.td`
-  width: calc(100% / 10);
+  /* width: calc(100% / 10);
+   */
+  width: 5%;
   border-bottom: 2px solid #474759;
   height: 36px;
 
