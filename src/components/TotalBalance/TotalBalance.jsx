@@ -11,6 +11,7 @@ import {
   InputContainer,
   LoaderContainer,
   StyledMessage,
+  RelativeContainer,
 } from './TotalBalance.styled';
 import {
   getUserInfoThunk,
@@ -20,7 +21,6 @@ import {
 const TotalBalance = () => {
   const dispatch = useDispatch();
   const [newTopUp, setNewTopUp] = useState('');
-  const [balanceUpdated, setBalanceUpdated] = useState(false);
   const [pageLoading, setPageLoading] = useState(true);
 
   const isLogin = useSelector(state => state.auth.isLogin);
@@ -28,46 +28,37 @@ const TotalBalance = () => {
 
   useEffect(() => {
     dispatch(getUserInfoThunk()).then(() => {
-      setBalanceUpdated(true);
       setPageLoading(false);
     });
   }, [dispatch]);
 
   const makeTopUp = useCallback(async () => {
     if (!newTopUp || newTopUp === '') {
-      toast.error('please input amount');
+      toast.error('Please input an amount');
       return;
     }
     dispatch(updateUserBalanceThunk({ newBalance: newTopUp })).then(data => {
       if (data.error) {
-        toast.error(data.error.message ?? 'server error');
+        toast.error(data.error.message ?? 'Server error');
         return;
       }
-      toast.success('your balance updated');
+      toast.success('Your balance has been updated');
       setNewTopUp('');
-      setBalanceUpdated(false);
     });
   }, [dispatch, newTopUp]);
 
-  useEffect(() => {
-    if (!isLoading) {
-      setBalanceUpdated(true);
-    }
-  }, [isLoading]);
-
   return (
     <BalanceContainer>
-      {isLogin && !pageLoading && balanceUpdated ? (
+      {isLogin && !pageLoading ? (
         <>
           <BalanceLabel>Balance:</BalanceLabel>
-          {isLogin && +balance !== 0 ? (
-            <BalanceValue>{balance} :UAH</BalanceValue>
-          ) : null}
-          {balanceUpdated && +balance === 0 ? (
+          {+balance !== 0 ? (
+            <BalanceValue>{balance}</BalanceValue>
+          ) : (
             <InputContainer>
-              <div style={{ position: 'relative' }}>
+              <RelativeContainer>
                 <Input
-                  placeholder="00.00 UAH"
+                  placeholder="00.00"
                   value={newTopUp}
                   onChange={e => setNewTopUp(e.target.value)}
                   onKeyPress={e => {
@@ -77,7 +68,7 @@ const TotalBalance = () => {
                   }}
                   suffix="UAH"
                 />
-                {balanceUpdated && +balance === 0 && (
+                {+balance === 0 && (
                   <StyledMessage>
                     <p>
                       Hello! To get started, enter the current balance of your
@@ -86,12 +77,10 @@ const TotalBalance = () => {
                     <p>You can't spend money until you have it :)</p>
                   </StyledMessage>
                 )}
-              </div>
-              {balanceUpdated && +balance === 0 && (
-                <Button onClick={makeTopUp}>Confirm</Button>
-              )}
+              </RelativeContainer>
+              {+balance === 0 && <Button onClick={makeTopUp}>Confirm</Button>}
             </InputContainer>
-          ) : null}
+          )}
         </>
       ) : (
         <LoaderContainer>
