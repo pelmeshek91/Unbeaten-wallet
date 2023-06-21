@@ -16,13 +16,10 @@ export const Tr = styled.tr`
   height: 36px;
 `;
 export const Td = styled.td`
-  /* width: calc(100% / 10);
-   */
   width: 5%;
   border-bottom: 2px solid #474759;
   height: 36px;
 
-  /* margin: 0; */
   color: #c7ccdc;
   background: rgb(56, 56, 71);
   margin-left: 22px;
