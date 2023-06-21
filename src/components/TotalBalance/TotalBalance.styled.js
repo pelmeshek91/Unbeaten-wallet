@@ -112,11 +112,15 @@ export const LoaderContainer = styled.div`
 `;
 
 export const StyledMessage = styled.div`
+  position: fixed;
+  top: 328%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   margin-top: 10px;
   position: relative;
   width: 268px;
-  height: 145px;
+  height: 125px;
   background: linear-gradient(
       118.06deg,
       rgb(88, 187, 103) 3.05%,
@@ -155,4 +159,8 @@ export const StyledMessage = styled.div`
   @media (max-width: 1024px) {
     display: none;
   }
+`;
+
+export const RelativeContainer = styled.div`
+  height: 20px;
 `;
