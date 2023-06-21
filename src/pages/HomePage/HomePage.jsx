@@ -15,9 +15,10 @@ const HomePage = () => {
   return (
     <>
       <TotalBalance />
-      <NavLink to="report">
+
+      <Link to="report">
         Reports <IoMdStats />
-      </NavLink>
+      </Link>
       <div>
         <ButtonLink to="expenses">EXPENSES</ButtonLink>
         <ButtonLink to="incomes">INCOME</ButtonLink>
