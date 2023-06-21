@@ -25,7 +25,7 @@ export const App = () => {
 
   useEffect(() => {
     if (!refresh) return;
-    console.log('object');
+
     dispatch(refreshUserThunk({ sid, refresh }))
       .unwrap()
       .then(() => dispatch(getUserInfoThunk()));
@@ -34,10 +34,24 @@ export const App = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route path="/" element={<HomePage />}>
+      <Route
+        path="/"
+        element={
+          <PrivateRoute>
+            <Layout />
+          </PrivateRoute>
+        }
+      >
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <HomePage />
+            </PrivateRoute>
+          }
+        >
           <Route
-            index
+            path="expenses"
             element={
               <PrivateRoute>
                 <TransactionsExpenses />
@@ -62,25 +76,24 @@ export const App = () => {
             </PrivateRoute>
           }
         />
-
-        <Route
-          path="/register"
-          element={
-            <PublicRoute>
-              <RegPage />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <PublicRoute>
-              <LoginPage />
-            </PublicRoute>
-          }
-        />
       </Route>
-      <Route path="*" element={<Navigate to="/" />} />
+      <Route
+        path="/register"
+        element={
+          <PublicRoute>
+            <RegPage />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <PublicRoute>
+            <LoginPage />
+          </PublicRoute>
+        }
+      />
+      <Route path="*" element={<Navigate to="/expenses" />} />
     </Routes>
   );
 };

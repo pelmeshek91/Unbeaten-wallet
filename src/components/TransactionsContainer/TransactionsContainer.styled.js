@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Div = styled.div`
-  /* max-width: 1098px; */
+  max-width: 1098px;
   display: flex;
   /* justify-content: space-evenly; */
   flex-wrap: wrap;

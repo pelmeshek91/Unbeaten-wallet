@@ -49,8 +49,19 @@ const RegPage = () => {
     )
       .unwrap()
       .then(() => {
+        toast.success('Account succesfully created, you can login now', {
+          position: 'top-right',
+
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark',
+        });
         navigate('/login');
       })
+
       .catch(error => {
         toast.error('Email already exists'); // Display the error message using toast.error
       });

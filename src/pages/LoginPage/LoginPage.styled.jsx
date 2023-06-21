@@ -31,7 +31,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 105vh;
+  height: 93vh;
   justify-content: space-around;
   gap: 100px;
 `;

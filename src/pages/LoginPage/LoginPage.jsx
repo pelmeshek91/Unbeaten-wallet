@@ -48,7 +48,7 @@ const LoginPage = () => {
   const handleSubmit = values => {
     dispatch(loginUserThunk({ email: values.email, password: values.password }))
       .unwrap()
-      .then(() => navigate('/transactions-income'))
+      .then(() => navigate('/expenses'))
       .catch(error => {
         toast.error("Email doesn't exist or password is wrong"); // Display the error message using toast.error
       });
