@@ -15,6 +15,8 @@ import { selectSid, selectToken } from 'redux/auth/authSelectors';
 import { useEffect } from 'react';
 import { refreshUserThunk } from 'redux/auth/authOperations';
 import { getUserInfoThunk } from 'redux/transcactions/transcactionsOperations';
+import PrivateRoute from './Routs/PrivateRouts';
+import PublicRoute from './Routs/PublicRouts';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -37,17 +39,17 @@ export const App = () => {
           <Route
             index
             element={
-              // <PrivateRoute>
-              <TransactionsExpenses />
-              // </PrivateRoute>
+              <PrivateRoute>
+                <TransactionsExpenses />
+              </PrivateRoute>
             }
           />
           <Route
             path="incomes"
             element={
-              // <PrivateRoute>
-              <TransactionsIncome />
-              // </PrivateRoute>
+              <PrivateRoute>
+                <TransactionsIncome />
+              </PrivateRoute>
             }
           />
         </Route>
@@ -55,26 +57,26 @@ export const App = () => {
         <Route
           path="report"
           element={
-            // <PrivateRoute>
-            <ReportPage />
-            // </PrivateRoute>
+            <PrivateRoute>
+              <ReportPage />
+            </PrivateRoute>
           }
         />
 
         <Route
           path="/register"
           element={
-            // <PublicRoute>
-            <RegPage />
-            // </PublicRoute>
+            <PublicRoute>
+              <RegPage />
+            </PublicRoute>
           }
         />
         <Route
           path="/login"
           element={
-            // <PublicRoute>
-            <LoginPage />
-            // </PublicRoute>
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
           }
         />
       </Route>

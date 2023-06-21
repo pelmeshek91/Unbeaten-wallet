@@ -2,14 +2,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Div, TableEL, Td, Th, Thead, Tr } from './Table.styled';
 import { nanoid } from '@reduxjs/toolkit';
 import { BsTrash3 } from 'react-icons/bs';
-import { deleteTransactionThunk } from 'redux/transcactions/transcactionsOperations';
-import { useMemo } from 'react';
+import {
+  deleteTransactionThunk,
+  getTransactionsExpensesThunk,
+} from 'redux/transcactions/transcactionsOperations';
+import { useEffect, useMemo } from 'react';
 
 const tableDefaultArray = Array(9).fill(null);
 
 export function Table() {
   const dispatch = useDispatch();
   const { expenses } = useSelector(state => state.transactions);
+  const { balance } = useSelector(state => state.transactions);
+  useEffect(() => {
+    dispatch(getTransactionsExpensesThunk());
+  }, [balance, dispatch]);
 
   const arr = useMemo(() => {
     return expenses.length > tableDefaultArray.length
@@ -24,8 +31,6 @@ export function Table() {
           })
         );
   }, [expenses]);
-
-  console.log(arr);
   return (
     <Div>
       <TableEL>
