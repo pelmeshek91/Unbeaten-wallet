@@ -35,9 +35,16 @@ export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route path="/" element={<HomePage />}>
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <HomePage />
+            </PrivateRoute>
+          }
+        >
           <Route
-            index
+            path="expenses"
             element={
               <PrivateRoute>
                 <TransactionsExpenses />
