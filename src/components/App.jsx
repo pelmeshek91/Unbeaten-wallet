@@ -51,7 +51,6 @@ export const App = () => {
           }
         >
           <Route
-            index
             path="expenses"
             element={
               <PrivateRoute>
@@ -77,25 +76,24 @@ export const App = () => {
             </PrivateRoute>
           }
         />
-        <Route
-          path="/register"
-          element={
-            <PublicRoute>
-              <RegPage />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <PublicRoute>
-              <LoginPage />
-            </PublicRoute>
-          }
-        />
       </Route>
-
-      <Route path="*" element={<Navigate to="/transactions" />} />
+      <Route
+        path="/register"
+        element={
+          <PublicRoute>
+            <RegPage />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <PublicRoute>
+            <LoginPage />
+          </PublicRoute>
+        }
+      />
+      <Route path="*" element={<Navigate to="/expenses" />} />
     </Routes>
   );
 };
