@@ -72,7 +72,6 @@ export const getTransactionsReports = async date => {
       date,
     },
   });
-
   return data;
 };
 

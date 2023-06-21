@@ -63,8 +63,8 @@ const TransactionsIncome = () => {
         >
           PUSH
         </button>
-
         <h1>transactions</h1>
+      
       </div>
     </>
   );
