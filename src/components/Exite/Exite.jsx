@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import {
   ExiteContainer,
   UserIcon,
@@ -10,8 +11,16 @@ import {
 } from './Exite.styled';
 
 const Exite = ({ onExitClick }) => {
-  const userName = 'User Name';
-  const firstLetter = userName.charAt(0).toUpperCase();
+  // const email = 'userName@gmail.com';
+
+  const { email } = useSelector(state => state.auth);
+  console.log(email);
+  const userName = email.split('@')[0];
+
+  const capitalizedUsername =
+    userName.charAt(0).toUpperCase() + userName.slice(1);
+
+  const firstLetter = capitalizedUsername.charAt(0);
 
   const handleExitClick = () => {
     onExitClick();
@@ -21,7 +30,7 @@ const Exite = ({ onExitClick }) => {
       <UserIcon>
         <FirstLetter>{firstLetter}</FirstLetter>
       </UserIcon>
-      <UserName>{userName}</UserName>
+      <UserName>{capitalizedUsername}</UserName>
       <VerticalLine>|</VerticalLine>
 
       <ExitBtn onClick={handleExitClick} type="button">
