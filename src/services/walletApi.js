@@ -79,6 +79,7 @@ export const getTransactionsReports = async date => {
 
 export const getUserInfo = async () => {
   const { data } = await axios('/user');
+  // data.balance = 0;
   return data;
 };
 
