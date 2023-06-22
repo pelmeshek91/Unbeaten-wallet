@@ -1,15 +1,20 @@
 import Select from 'react-select';
-import { useRef, useState } from 'react';
+import { forwardRef, useRef, useState } from 'react';
+import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch } from 'react-redux';
 import { CiCalculator1 } from 'react-icons/ci';
+import DatePicker from 'react-datepicker';
+
 import {
   BtnContainer,
   ClearBtn,
   Container,
+  DivContainer,
   Form,
   IconContainer,
   Input,
   InputBtn,
+  InputDate,
   InputNum,
   MainContainer,
 } from './Form.styled';
@@ -20,16 +25,33 @@ import {
 } from 'redux/transcactions/transcactionsOperations';
 import { incomes, expenses } from '../../utilits/category';
 import { useParams } from 'react-router';
+import { enGB } from 'date-fns/locale';
+import { BsCalendar4Week } from 'react-icons/bs';
+// import { DivContainer, InputDate } from 'components/Date/Date.styled';
 // import { TransactionDate } from 'components/Date/Date';
+// import '../Date/date.css';
 
 export const TransactionForm = () => {
   const [selectedOption, setSelectedOption] = useState(null);
-  const [transactionType] = useState('expenses');
   const formRef = useRef(null);
-  const [startDate] = useState(new Date());
   const { expenses: key } = useParams();
   const dispatch = useDispatch();
-  const currentDate = startDate.toISOString().split('T')[0];
+  const [selectedDate, setSelectedDate] = useState(new Date()); ///записуємо  в початковий стан дату сьогоднішню
+
+  //  використовуємо forwardRef шоб передати ref з DatePicker комп до внутрішньої комп CustomInput
+  const CustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
+    <InputDate
+      value={value}
+      onClick={onClick}
+      onChange={onChange}
+      ref={ref}
+      onKeyDown={e => {
+        e.preventDefault();
+      }}
+    ></InputDate>
+  ));
+
+  const currrentDate = selectedDate.toISOString().split('T')[0];
 
   const handleFormSubmit = e => {
     e.preventDefault();
@@ -38,12 +60,11 @@ export const TransactionForm = () => {
     const category = e.target.elements.category.value;
 
     if (key === 'expenses') {
-      
       const payload = {
         description,
         amount: Number(amount),
         category,
-        date: currentDate,
+        date: currrentDate,
       };
       dispatch(addTransactionExpensesThunk(payload));
     } else {
@@ -51,18 +72,11 @@ export const TransactionForm = () => {
         description,
         amount: Number(amount),
         category,
-        date: currentDate,
+        date: currrentDate,
       };
-     
+
       dispatch(addTransactionIncomesThunk(payload));
     }
-   
-    // виконуєм запит в залежності від типу
-    // if (transactionType === 'expenses') {
-    //   dispatch(addTransactionExpensesThunk(payload));
-    // } else {
-    //   dispatch(addTransactionIncomesThunk(payload));
-    // }
 
     //   очистка форми
     formRef.current.reset();
@@ -70,46 +84,63 @@ export const TransactionForm = () => {
   };
 
   return (
-    <MainContainer>
-      {/* <TransactionDate /> */}
-      <div>
-        <Form ref={formRef} onSubmit={handleFormSubmit}>
-          <Input
-            type="text"
-            placeholder="Product description"
-            required
-            name="description"
-          />
-          <Select
-            className="select-container"
-            value={selectedOption}
-            name="category"
-            required
-            placeholder="Product category"
-            menuShouldBlockScroll={true}
-            menuShouldScrollIntoView={false}
-            classNamePrefix="select"
-            onChange={option => setSelectedOption(option)}
-            options={key === 'expenses' ? expenses : incomes}
-          />
-          <Container>
-            <InputNum
-              type="number"
-              name="amount"
-              placeholder="0.00"
+    <>
+      <DivContainer>
+        {/* icon calendaryk */}
+        <BsCalendar4Week style={{ width: '20px', height: '20px' }} />
+        <DatePicker
+          dateFormat="dd.MM.yyyy"
+          selected={selectedDate}
+          onChange={date => {
+            setSelectedDate(date);
+          }}
+          locale={enGB}
+          maxDate={new Date()}
+          calendarClassName="calendar"
+          className="datepicker"
+          customInput={<CustomInput />}
+        />
+      </DivContainer>
+      <MainContainer>
+        <div>
+          <Form ref={formRef} onSubmit={handleFormSubmit}>
+            <Input
+              type="text"
+              placeholder="Product description"
               required
-            ></InputNum>
-            <IconContainer>
-              <CiCalculator1 style={{ width: '20px', height: '20px' }} />
-            </IconContainer>
-          </Container>
+              name="description"
+            />
+            <Select
+              className="select-container"
+              value={selectedOption}
+              name="category"
+              required
+              placeholder="Product category"
+              menuShouldBlockScroll={true}
+              menuShouldScrollIntoView={false}
+              classNamePrefix="select"
+              onChange={option => setSelectedOption(option)}
+              options={key === 'expenses' ? expenses : incomes}
+            />
+            <Container>
+              <InputNum
+                type="number"
+                name="amount"
+                placeholder="0.00"
+                required
+              ></InputNum>
+              <IconContainer>
+                <CiCalculator1 style={{ width: '20px', height: '20px' }} />
+              </IconContainer>
+            </Container>
 
-          <BtnContainer>
-            <InputBtn type="submit">Input</InputBtn>
-            <ClearBtn type="reset">Clear</ClearBtn>
-          </BtnContainer>
-        </Form>
-      </div>
-    </MainContainer>
+            <BtnContainer>
+              <InputBtn type="submit">Input</InputBtn>
+              <ClearBtn type="reset">Clear</ClearBtn>
+            </BtnContainer>
+          </Form>
+        </div>
+      </MainContainer>
+    </>
   );
 };
