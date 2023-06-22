@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
 import {
   SummaryLine,
   SummaryTable,
@@ -9,10 +9,7 @@ import {
   SummaryWrapper,
   Thead,
 } from './Summary.styled';
-import {
-  getTransactionsExpensesThunk,
-  getTransactionsIncomeThunk,
-} from '../../redux/transcactions/transcactionsOperations';
+
 import { useParams } from 'react-router';
 // import { translateMonth } from '../../utilits/translateMonth';
 
@@ -52,7 +49,8 @@ export const TransactionsSummary = () => {
     }
   });
 
-  const newArr = valueArr.splice(0, currentMonth);
+  const newArr = valueArr.splice(0, currentMonth).reverse();
+
   return (
     <SummaryWrapper>
       <SummaryTable>
@@ -63,36 +61,13 @@ export const TransactionsSummary = () => {
         </Thead>
         <SummaryTableWrapper>
           {newArr.map((sum, index) => (
-            <SummaryLine key={monthesArray[index]}>
-              <SummaryTableCell>{monthesArray[index]}</SummaryTableCell>
+            <SummaryLine key={monthesArray[newArr.length - index - 1]}>
+              <SummaryTableCell>
+                {monthesArray[newArr.length - index - 1]}
+              </SummaryTableCell>
               <SummaryTableCell>{sum}</SummaryTableCell>
             </SummaryLine>
           ))}
-
-          {/* <SummaryLine style={{ height: 38 }}>
-            <SummaryTableCell></SummaryTableCell>
-            <SummaryTableCell></SummaryTableCell>
-          </SummaryLine>
-          <SummaryLine style={{ height: 38 }}>
-            <SummaryTableCell></SummaryTableCell>
-            <SummaryTableCell></SummaryTableCell>
-          </SummaryLine>
-          <SummaryLine style={{ height: 38 }}>
-            <SummaryTableCell></SummaryTableCell>
-            <SummaryTableCell></SummaryTableCell>
-          </SummaryLine>
-          <SummaryLine style={{ height: 38 }}>
-            <SummaryTableCell></SummaryTableCell>
-            <SummaryTableCell></SummaryTableCell>
-          </SummaryLine>
-          <SummaryLine style={{ height: 38 }}>
-            <SummaryTableCell></SummaryTableCell>
-            <SummaryTableCell></SummaryTableCell>
-          </SummaryLine>
-          <SummaryLine style={{ height: 38 }}>
-            <SummaryTableCell></SummaryTableCell>
-            <SummaryTableCell></SummaryTableCell>
-          </SummaryLine> */}
         </SummaryTableWrapper>
       </SummaryTable>
     </SummaryWrapper>
