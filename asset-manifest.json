@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/Unbeaten-wallet/static/css/main.ffb99657.css",
-    "main.js": "/Unbeaten-wallet/static/js/main.8fa1a3ee.js",
+    "main.css": "/Unbeaten-wallet/static/css/main.238e3e60.css",
+    "main.js": "/Unbeaten-wallet/static/js/main.fbf7f716.js",
+    "static/media/Rectangle-desctop@2x.png": "/Unbeaten-wallet/static/media/Rectangle-desctop@2x.0ab0d80433b219260cd1.png",
+    "static/media/wallet.png": "/Unbeaten-wallet/static/media/wallet.8b2b68d04e7c25a27561.png",
     "index.html": "/Unbeaten-wallet/index.html",
-    "main.ffb99657.css.map": "/Unbeaten-wallet/static/css/main.ffb99657.css.map",
-    "main.8fa1a3ee.js.map": "/Unbeaten-wallet/static/js/main.8fa1a3ee.js.map"
+    "main.238e3e60.css.map": "/Unbeaten-wallet/static/css/main.238e3e60.css.map",
+    "main.fbf7f716.js.map": "/Unbeaten-wallet/static/js/main.fbf7f716.js.map"
   },
   "entrypoints": [
-    "static/css/main.ffb99657.css",
-    "static/js/main.8fa1a3ee.js"
+    "static/css/main.238e3e60.css",
+    "static/js/main.fbf7f716.js"
   ]
 }
