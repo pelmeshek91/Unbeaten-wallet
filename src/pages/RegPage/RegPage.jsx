@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -34,9 +33,6 @@ const validationSchema = yup.object().shape({
 const RegPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const errorMessage = useSelector(state => state.auth.error);
-
   const location = useLocation();
   const { email, password } = location.state || {};
 

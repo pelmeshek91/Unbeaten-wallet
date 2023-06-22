@@ -19,7 +19,7 @@ import {
   addTransactionIncomesThunk,
 } from 'redux/transcactions/transcactionsOperations';
 import { incomes, expenses } from '../../utilits/category';
-import { TransactionDate } from 'components/Date/Date';
+// import { TransactionDate } from 'components/Date/Date';
 
 export const TransactionForm = () => {
   const [selectedOption, setSelectedOption] = useState(null);
