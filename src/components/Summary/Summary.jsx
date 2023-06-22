@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
 import {
   SummaryLine,
   SummaryTable,
@@ -9,10 +9,7 @@ import {
   SummaryWrapper,
   Thead,
 } from './Summary.styled';
-import {
-  getTransactionsExpensesThunk,
-  getTransactionsIncomeThunk,
-} from '../../redux/transcactions/transcactionsOperations';
+
 import { useParams } from 'react-router';
 // import { translateMonth } from '../../utilits/translateMonth';
 
@@ -68,31 +65,6 @@ export const TransactionsSummary = () => {
               <SummaryTableCell>{sum}</SummaryTableCell>
             </SummaryLine>
           ))}
-
-          {/* <SummaryLine style={{ height: 38 }}>
-            <SummaryTableCell></SummaryTableCell>
-            <SummaryTableCell></SummaryTableCell>
-          </SummaryLine>
-          <SummaryLine style={{ height: 38 }}>
-            <SummaryTableCell></SummaryTableCell>
-            <SummaryTableCell></SummaryTableCell>
-          </SummaryLine>
-          <SummaryLine style={{ height: 38 }}>
-            <SummaryTableCell></SummaryTableCell>
-            <SummaryTableCell></SummaryTableCell>
-          </SummaryLine>
-          <SummaryLine style={{ height: 38 }}>
-            <SummaryTableCell></SummaryTableCell>
-            <SummaryTableCell></SummaryTableCell>
-          </SummaryLine>
-          <SummaryLine style={{ height: 38 }}>
-            <SummaryTableCell></SummaryTableCell>
-            <SummaryTableCell></SummaryTableCell>
-          </SummaryLine>
-          <SummaryLine style={{ height: 38 }}>
-            <SummaryTableCell></SummaryTableCell>
-            <SummaryTableCell></SummaryTableCell>
-          </SummaryLine> */}
         </SummaryTableWrapper>
       </SummaryTable>
     </SummaryWrapper>

@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { loginUserThunk } from 'redux/auth/authOperations';
 // import { updateUserBalanceThunk } from '../../redux/transcactions/transcactionsOperations';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import wallet from '../../img/decor-img/wallet.png';
 
 import {
@@ -55,6 +55,7 @@ const LoginPage = () => {
 
   return (
     <div>
+      <ToastContainer />
       <GlobalStyle />
       <Container>
         <ImgWallet>
