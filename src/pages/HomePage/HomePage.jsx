@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import TotalBalance from 'components/TotalBalance/TotalBalance';
 // import TransactionsExpenses from 'components/TransactionsExpenses/TransactionsExpenses';
 import { Suspense, useEffect } from 'react';
@@ -11,7 +12,7 @@ const HomePage = () => {
 
   useEffect(() => {
     navigate('/expenses');
-  }, [navigate]);
+  }, []);
 
   return (
     <>
