@@ -1,14 +1,11 @@
-import { useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ReportsExpenses from 'components/ReportsExpenses/ReportsExpenses';
 
 const ReportPage = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const backLinkLocationRef = useRef(location?.state?.from ?? '/expenses');
 
   const onBtnClick = () => {
-    navigate(backLinkLocationRef.current);
+    navigate('/expenses');
   };
 
   return (
