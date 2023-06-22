@@ -14,6 +14,7 @@ import { BsTrash3 } from 'react-icons/bs';
 import { deleteTransactionThunk } from 'redux/transcactions/transcactionsOperations';
 import { useMemo } from 'react';
 import { useParams } from 'react-router';
+import { translateCategory } from '../../utilits/translateCategory';
 
 const tableDefaultArray = Array(9).fill(null);
 
