@@ -16,7 +16,7 @@ import { transactionsReducers } from './transcactions/transcactionsSlice';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['refreshToken', 'sid', 'email', 'isLogin'],
+  whitelist: ['refreshToken', 'sid', 'email'],
 };
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 export const store = configureStore({

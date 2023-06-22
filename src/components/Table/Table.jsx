@@ -14,24 +14,31 @@ import { BsTrash3 } from 'react-icons/bs';
 import {
   deleteTransactionThunk,
   getTransactionsExpensesThunk,
+  getTransactionsIncomeThunk,
 } from 'redux/transcactions/transcactionsOperations';
 import { useEffect, useMemo } from 'react';
+import { useParams } from 'react-router';
+import { getTransactionsIncomes } from 'services/walletApi';
 
 const tableDefaultArray = Array(9).fill(null);
 
 export function Table() {
+  // useEffect(() => {
+  //   dispatch(getTransactionsExpensesThunk());
+  // }, [ dispatch]);
   const dispatch = useDispatch();
-  const { expenses } = useSelector(state => state.transactions);
-  const { balance } = useSelector(state => state.transactions);
-  useEffect(() => {
-    dispatch(getTransactionsExpensesThunk());
-  }, [balance, dispatch]);
-
+  // const balance = useSelector(state => state.transactions.balance);
+  const { expenses: key } = useParams();
+  const transactions = useSelector(state => state.transactions[key]);
+  // console.log(key);
+  // useEffect(() => {
+  //   key === 'incomes' && getTransactionsIncomes();
+  // }, [balance, key]);
   const arr = useMemo(() => {
-    return expenses.length > tableDefaultArray.length
-      ? expenses
-      : expenses.concat(
-          Array(tableDefaultArray.length - expenses.length).fill({
+    return transactions.length > tableDefaultArray.length
+      ? transactions
+      : transactions.concat(
+          Array(tableDefaultArray.length - transactions.length).fill({
             description: '',
             amount: '',
             date: '',
@@ -39,7 +46,7 @@ export function Table() {
             _id: '',
           })
         );
-  }, [expenses]);
+  }, [transactions]);
   return (
     <Div>
       <TableEL>
@@ -59,7 +66,12 @@ export function Table() {
                 <Td>{row.date}</Td>
                 <Td>{row.description}</Td>
                 <Td>{row.category}</Td>
-                <Td>{row.amount}</Td>
+                {key === 'expenses' && row.amount ? (
+                  <Td style={{ color: 'red' }}>-{row.amount}</Td>
+                ) : (
+                  <Td style={{ color: 'green' }}>{row.amount}</Td>
+                )}
+
                 <Td>
                   {row._id && (
                     <TrashBtn

@@ -27,6 +27,7 @@ const handleRefresh = (state, { payload }) => {
   state.sid = payload.newSid;
   state.error = '';
   state.isLoading = false;
+  state.isLogin = true;
 };
 
 const handleLogoutFulfilled = state => {
@@ -40,10 +41,12 @@ const handleLogoutFulfilled = state => {
 };
 const handlePending = state => {
   state.isLoading = true;
+  state.isLogin = false;
 };
 export const handleRejected = (state, { error }) => {
   state.error = error.message;
   state.isLoading = false;
+  state.isLogin = false;
 };
 
 const authSlice = createSlice({

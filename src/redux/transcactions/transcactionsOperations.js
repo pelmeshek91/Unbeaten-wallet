@@ -45,7 +45,6 @@ export const addTransactionIncomesThunk = createAsyncThunk(
 export const deleteTransactionThunk = createAsyncThunk(
   'transactions/deleteTransaction',
   id => {
-    console.log(id);
     const response = deleteTransaction(id);
     return response;
   }
