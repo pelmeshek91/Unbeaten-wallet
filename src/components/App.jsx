@@ -17,6 +17,7 @@ import { refreshUserThunk } from 'redux/auth/authOperations';
 import { getUserInfoThunk } from 'redux/transcactions/transcactionsOperations';
 import PrivateRoute from './Routs/PrivateRouts';
 import PublicRoute from './Routs/PublicRouts';
+import { Container } from './App.styled';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -33,60 +34,61 @@ export const App = () => {
   }, []);
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <HomePage />
-            </PrivateRoute>
-          }
-        >
+    <Container>
+      <Routes>
+        <Route path="/" element={<Layout />}>
           <Route
-            path="expenses"
+            path="/"
             element={
               <PrivateRoute>
-                <TransactionsExpenses />
+                <HomePage />
               </PrivateRoute>
             }
-          />
+          >
+            <Route
+              path="expenses"
+              element={
+                <PrivateRoute>
+                  <TransactionsExpenses />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="incomes"
+              element={
+                <PrivateRoute>
+                  <TransactionsIncome />
+                </PrivateRoute>
+              }
+            />
+          </Route>
           <Route
-            path="incomes"
+            path="report"
             element={
               <PrivateRoute>
-                <TransactionsIncome />
+                <ReportPage />
               </PrivateRoute>
             }
           />
         </Route>
-
         <Route
-          path="report"
+          path="/register"
           element={
-            <PrivateRoute>
-              <ReportPage />
-            </PrivateRoute>
+            <PublicRoute>
+              <RegPage />
+            </PublicRoute>
           }
         />
-      </Route>
-      <Route
-        path="/register"
-        element={
-          <PublicRoute>
-            <RegPage />
-          </PublicRoute>
-        }
-      />
-      <Route
-        path="/login"
-        element={
-          <PublicRoute>
-            <LoginPage />
-          </PublicRoute>
-        }
-      />
-      <Route path="*" element={<Navigate to="/expenses" />} />
-    </Routes>
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
+        <Route path="*" element={<Navigate to="/expenses" />} />
+      </Routes>
+    </Container>
   );
 };
