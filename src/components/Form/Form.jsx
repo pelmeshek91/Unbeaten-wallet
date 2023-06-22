@@ -37,6 +37,7 @@ export const TransactionForm = () => {
   const { expenses: key } = useParams();
   const dispatch = useDispatch();
   const [selectedDate, setSelectedDate] = useState(new Date()); ///записуємо  в початковий стан дату сьогоднішню
+  const currrentDate = selectedDate.toISOString().split('T')[0];
 
   //  використовуємо forwardRef шоб передати ref з DatePicker комп до внутрішньої комп CustomInput
   const CustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
@@ -50,8 +51,6 @@ export const TransactionForm = () => {
       }}
     ></InputDate>
   ));
-
-  const currrentDate = selectedDate.toISOString().split('T')[0];
 
   const handleFormSubmit = e => {
     e.preventDefault();
