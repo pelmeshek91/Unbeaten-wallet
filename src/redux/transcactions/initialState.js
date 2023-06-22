@@ -3,8 +3,8 @@ export const initialState = {
   transactions: null,
   expenses: [],
   incomes: [],
-  monthStatsIncome: [],
-  monthStatsExpenses: [],
+  monthStatsIncome: {},
+  monthStatsExpenses: {},
   error: null,
   isLoading: false,
 };

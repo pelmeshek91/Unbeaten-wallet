@@ -13,24 +13,13 @@ import {
   StyledMessage,
   RelativeContainer,
 } from './TotalBalance.styled';
-import {
-  getUserInfoThunk,
-  updateUserBalanceThunk,
-} from '../../redux/transcactions/transcactionsOperations';
+import { updateUserBalanceThunk } from '../../redux/transcactions/transcactionsOperations';
 
 const TotalBalance = () => {
   const dispatch = useDispatch();
   const [newTopUp, setNewTopUp] = useState('');
-  const [pageLoading, setPageLoading] = useState(true);
-
   const isLogin = useSelector(state => state.auth.isLogin);
   const { isLoading, balance } = useSelector(state => state.transactions);
-
-  useEffect(() => {
-    dispatch(getUserInfoThunk()).then(() => {
-      setPageLoading(false);
-    });
-  }, [dispatch]);
 
   const makeTopUp = useCallback(async () => {
     if (!newTopUp || newTopUp === '') {
@@ -49,7 +38,7 @@ const TotalBalance = () => {
 
   return (
     <BalanceContainer>
-      {isLogin && !pageLoading ? (
+      {isLogin ? (
         <>
           <BalanceLabel>Balance:</BalanceLabel>
           {+balance !== 0 ? (
@@ -84,7 +73,7 @@ const TotalBalance = () => {
         </>
       ) : (
         <LoaderContainer>
-          {isLoading || pageLoading ? <PulseLoader color="#383847" /> : null}
+          {isLoading ? <PulseLoader color="#383847" /> : null}
         </LoaderContainer>
       )}
     </BalanceContainer>

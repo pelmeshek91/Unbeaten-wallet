@@ -13,86 +13,46 @@ import {
   getTransactionsExpensesThunk,
   getTransactionsIncomeThunk,
 } from '../../redux/transcactions/transcactionsOperations';
+import { useParams } from 'react-router';
 // import { translateMonth } from '../../utilits/translateMonth';
 
 export const TransactionsSummary = () => {
-  // const dispatch = useDispatch();
-
-  // const transIncomes = useSelector(state => state.transactions.incomes);
-  // const transExpenses = useSelector(state => state.transactions.expenses);
-
-  // const [incomes, setIncomes] = useState(transIncomes);
-  // const [expenses, setExpenses] = useState(transExpenses);
-
-  // // console.log(expenses);
-
-  const transactionType = 'expenses';
-
-  // useEffect(() => {
-  //   // dispatch(addTransactionExpensesThunk());
-  //   // dispatch(addTransactionIncomesThunk());
-  // }, []);
-
-  //  дані зі стору
+  const { expenses: key } = useParams();
   const monthExpenses = useSelector(
     state => state.transactions.monthStatsExpenses
   );
-
-  // console.log(monthExpenses);
   const monthIncome = useSelector(state => state.transactions.monthStatsIncome);
-  // console.log(monthIncome);
-  const transactionIncomes = useSelector(state => state.transactions.incomes);
-  const transactionExpenses = useSelector(state => state.transactions.expenses);
+  const select = key === 'expenses' ? monthExpenses : monthIncome;
 
-  // // вибираємо значення залежно від типу транзакції
-  const select = transactionType === 'expenses' ? monthExpenses : monthIncome;
-  // console.log(monthExpenses);
-
-  // // перетворюємо в об'єкт
   const sumValues = Object.values(select);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getTransactionsExpensesThunk());
-  }, [dispatch]);
-  // console.log(monthExpenses);
-
-  // // робимо запит в залежності від типу трансакції
-  useEffect(() => {
-    transactionType === 'expenses'
-      ? monthExpenses.length === 0 && dispatch(getTransactionsExpensesThunk())
-      : monthIncome.length === 0 && dispatch(getTransactionsIncomeThunk());
-  }, [
-    dispatch,
-    transactionType,
-    transactionIncomes,
-    transactionExpenses,
-    monthExpenses,
-    monthIncome,
-  ]);
-
-  // // містить індекс теперішнього місяця
 
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth() + 1;
-  // // console.log(currentMonth);
 
   const monthesArray = [
-    'December',
-    'November',
-    'October',
-    'September',
-    'August',
-    'July',
-    'June',
-    'May',
-    'April',
-    'March',
-    'February',
     'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ];
 
+  const valueArr = sumValues.map((sum, index) => {
+    if (sum === 'N/A') {
+      return (sum = 0);
+    } else {
+      return sum;
+    }
+  });
+
+  const newArr = valueArr.splice(0, currentMonth);
   return (
     <SummaryWrapper>
       <SummaryTable>
@@ -102,20 +62,13 @@ export const TransactionsSummary = () => {
           </tr>
         </Thead>
         <SummaryTableWrapper>
-          {sumValues.map((sum, index) => {
-            if (index >= currentMonth) {
-              if (sum === 'N/A') {
-                sum = 0;
-              }
-              return (
-                <SummaryLine key={monthesArray[index]}>
-                  <SummaryTableCell>{monthesArray[index]}</SummaryTableCell>
-                  <SummaryTableCell>{sum}</SummaryTableCell>
-                </SummaryLine>
-              );
-            }
-            return null;
-          })}
+          {newArr.map((sum, index) => (
+            <SummaryLine key={monthesArray[index]}>
+              <SummaryTableCell>{monthesArray[index]}</SummaryTableCell>
+              <SummaryTableCell>{sum}</SummaryTableCell>
+            </SummaryLine>
+          ))}
+
           {/* <SummaryLine style={{ height: 38 }}>
             <SummaryTableCell></SummaryTableCell>
             <SummaryTableCell></SummaryTableCell>
