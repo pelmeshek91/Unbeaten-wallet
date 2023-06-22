@@ -48,7 +48,13 @@ export const getTransactionsIncomes = async () => {
   const { data } = await axios('/transaction/income');
   return data;
 };
-export const addTransactionIncomes = async body => {
+export const addTransactionIncomes = async (
+  body = {
+    description: 'Income description',
+    amount: 100,
+    date: '2020-12-31',
+  }
+) => {
   const { data } = await axios.post('/transaction/income', body);
   return data;
 };

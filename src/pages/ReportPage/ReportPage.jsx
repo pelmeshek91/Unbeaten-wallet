@@ -5,21 +5,22 @@ import ReportsExpenses from 'components/ReportsExpenses/ReportsExpenses';
 const ReportPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const backLinkLocationRef = useRef(location?.state?.from ?? '/');
+  const backLinkLocationRef = useRef(location?.state?.from ?? '/expenses');
 
   const onBtnClick = () => {
     navigate(backLinkLocationRef.current);
   };
 
-  return <>
-     <div>
-      <button type="button" onClick={onBtnClick}>
-        Main page
-      </button>
-    </div>
-
-    <ReportsExpenses />;
-  </>;
+  return (
+    <>
+      <div>
+        <button type="button" onClick={onBtnClick}>
+          Main page
+        </button>
+      </div>
+      <ReportsExpenses />;
+    </>
+  );
 };
 
 export default ReportPage;
