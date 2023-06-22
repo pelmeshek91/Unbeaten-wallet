@@ -31,7 +31,6 @@ export const TransactionDate = () => {
         selected={selectedDate}
         onChange={date => {
           setSelectedDate(date);
-          // console.log(selectedDate);
         }}
         locale={enGB}
         maxDate={new Date()}
