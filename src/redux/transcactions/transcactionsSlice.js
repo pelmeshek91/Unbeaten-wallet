@@ -64,6 +64,7 @@ const getTransactionsReportsFulfilled = (state, { payload }) => {
   state.transactions = payload;
   state.error = null;
   state.isLoading = false;
+  console.log(payload);
 };
 const handleInfoRejected = (state, { error }) => {
   state.error = error.message;

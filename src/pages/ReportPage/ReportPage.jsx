@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import ReportsExpenses from 'components/ReportsExpenses/ReportsExpenses';
+import ReportAmount from 'components/ReportsIncome/ReportsAmount';
 
 const ReportPage = () => {
   const navigate = useNavigate();
@@ -15,7 +16,8 @@ const ReportPage = () => {
           Main page
         </button>
       </div>
-      <ReportsExpenses />;
+      <ReportAmount/>
+      <ReportsExpenses />
     </>
   );
 };
