@@ -54,7 +54,7 @@ export function Table() {
               <Tr key={nanoid()}>
                 <Td>{row.date}</Td>
                 <Td>{row.description}</Td>
-                <Td>{row.category}</Td>
+                <Td>{translateCategory(row.category)}</Td>
                 {key === 'expenses' && row.amount ? (
                   <Td style={{ color: 'red' }}>-{row.amount}</Td>
                 ) : (
