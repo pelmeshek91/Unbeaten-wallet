@@ -10,18 +10,17 @@ const ReportPage = () => {
     navigate('/expenses');
   };
   const handleClick = selectedPeriod => {
-    // Логика обработки выбранного периода
     console.log(selectedPeriod);
   };
   return (
     <>
-      {/* <ReportChanger onClick={handleClick} /> */}
+      <ReportChanger onClick={handleClick} />
       <div>
         <button type="button" onClick={onBtnClick}>
           Main page
         </button>
       </div>
-      <ReportAmount/>
+      <ReportAmount />
       <ReportsExpenses />
     </>
   );
