@@ -2,7 +2,8 @@ import React from 'react';
 import * as images from 'components/ReportsIncome/image';
 import { ImageItem, ListImages, ImageName, Colum } from '../ReportsExpenses/ReportExpenses.styled';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
-
+import ChartBarIncome from 'components/ChartBarIncome/CartBarIncome';
+import {ChartBarContainer} from 'components/ChartBar/ChartBar.styled'
 const ReportIncom = () => {
    const imageKeys = Object.keys(images);
 
@@ -26,7 +27,10 @@ const ReportIncom = () => {
           <ImageName>{key}</ImageName>
         </Colum>
       ))}
-    </ListImages>
+      </ListImages>
+      <ChartBarContainer>
+        <ChartBarIncome/>
+      </ChartBarContainer>
    </>
     
   );
