@@ -52,7 +52,8 @@ export const TransactionsSummary = () => {
     }
   });
 
-  const newArr = valueArr.splice(0, currentMonth);
+  const newArr = valueArr.splice(0, currentMonth).reverse();
+
   return (
     <SummaryWrapper>
       <SummaryTable>
@@ -63,8 +64,10 @@ export const TransactionsSummary = () => {
         </Thead>
         <SummaryTableWrapper>
           {newArr.map((sum, index) => (
-            <SummaryLine key={monthesArray[index]}>
-              <SummaryTableCell>{monthesArray[index]}</SummaryTableCell>
+            <SummaryLine key={monthesArray[newArr.length - index - 1]}>
+              <SummaryTableCell>
+                {monthesArray[newArr.length - index - 1]}
+              </SummaryTableCell>
               <SummaryTableCell>{sum}</SummaryTableCell>
             </SummaryLine>
           ))}
