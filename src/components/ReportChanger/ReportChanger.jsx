@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import date from 'date-and-time';
-import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { getTransactionsReportsThunk } from '../../redux/transcactions/transcactionsOperations';
 
 const ReportChanger = ({ onClick }) => {
   const data = new Date();
@@ -9,13 +10,18 @@ const ReportChanger = ({ onClick }) => {
   const [count, setCount] = useState(0);
   const [newData, setNewData] = useState(date.addMonths(data, count));
 
-  const fetchData = useCallback(async () => {
+  const dispatch = useDispatch();
+
+  const fetchData = useCallback(() => {
     const formattedDate = date.format(newData, 'YYYY-MM');
-    const response = await axios.get(
-      `/transaction/period-data?date=${formattedDate}`
-    );
-    onClick(response.data);
-  }, [newData, onClick]);
+    dispatch(getTransactionsReportsThunk(formattedDate))
+      .then(response => {
+        onClick(response.payload);
+      })
+      .catch(error => {
+        console.error('Error fetching transaction data:', error);
+      });
+  }, [newData, onClick, dispatch]);
 
   const handleData = value => {
     if (value > 0 && count === 0) return null;
