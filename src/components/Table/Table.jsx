@@ -11,30 +11,18 @@ import {
 } from './Table.styled';
 import { nanoid } from '@reduxjs/toolkit';
 import { BsTrash3 } from 'react-icons/bs';
-import {
-  deleteTransactionThunk,
-  getTransactionsExpensesThunk,
-  getTransactionsIncomeThunk,
-} from 'redux/transcactions/transcactionsOperations';
-import { useEffect, useMemo } from 'react';
+import { deleteTransactionThunk } from 'redux/transcactions/transcactionsOperations';
+import { useMemo } from 'react';
 import { useParams } from 'react-router';
-import { getTransactionsIncomes } from 'services/walletApi';
-import { translateCategory } from '../../utilits/translateCategory';
 
 const tableDefaultArray = Array(9).fill(null);
 
 export function Table() {
-  // useEffect(() => {
-  //   dispatch(getTransactionsExpensesThunk());
-  // }, [ dispatch]);
   const dispatch = useDispatch();
-  // const balance = useSelector(state => state.transactions.balance);
+
   const { expenses: key } = useParams();
   const transactions = useSelector(state => state.transactions[key]);
-  // console.log(key);
-  // useEffect(() => {
-  //   key === 'incomes' && getTransactionsIncomes();
-  // }, [balance, key]);
+
   const arr = useMemo(() => {
     return transactions.length > tableDefaultArray.length
       ? transactions

@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import {
   getTransactionsExpensesThunk,
   getTransactionsIncomeThunk,
-  getUserInfoThunk,
 } from 'redux/transcactions/transcactionsOperations';
 
 const TransactionsExpenses = () => {
