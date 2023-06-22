@@ -13,4 +13,5 @@ export const Div = styled.div`
 
 export const ContainerFormDate = styled.div`
   display: flex;
+  align-items: center;
 `;
