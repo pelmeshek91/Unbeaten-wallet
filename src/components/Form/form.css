@@ -14,7 +14,7 @@
   color: rgba(199, 204, 220, 0.5);
   border: 2px solid rgb(71, 71, 89);
 }
-.select__control:hover {
+.select-container .select__control:hover {
   outline: none;
   border: 2px solid #474759;
   box-shadow: 0px 6px 7px -2px #41a350;
@@ -30,10 +30,10 @@
   letter-spacing: 0.02em;
   line-height: 1.16;
 }
-/* .select__value-container {
+.select-container .select__value-container {
   padding-left: 13px;
 }
-.select__placeholder {
+.select-container .select__placeholder {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
@@ -42,7 +42,7 @@
   letter-spacing: 0.02em;
   color: rgba(199, 204, 220, 0.5);
 }
-.select__single-value {
+.select-container .select__single-value {
   appearance: none;
   font-family: 'Roboto';
   font-style: normal;
@@ -52,18 +52,35 @@
   letter-spacing: 0.02em;
   text-align: left;
   color: rgba(199, 204, 220, 0.3);
-} */
-/* .select__indicator{
-    svg{ fill:rgba(199, 204, 220, 0.3);}
-  
-  } */
-.select__indicator-separator {
+}
+
+.select-container .select__indicator-separator {
   display: none;
 }
-.select__menu {
+.select-container .select__menu {
   background-color: rgba(56, 56, 71, 1);
 }
-.select__option {
+.select__menu-list {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #60c470 #474759;
+  height: 242px;
+  border-collapse: collapse;
+  scrollbar-color: #60c470 #474759;
+}
+.select__menu-list::-webkit-scrollbar {
+  width: 8px;
+  background-color: #474759;
+}
+.select__menu-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.select__menu-list::-webkit-scrollbar-thumb {
+  background-color: #60c470;
+  border-radius: 15px;
+}
+
+.select-container .select__option {
   cursor: pointer;
   padding: 9px 18px;
   font-family: 'Roboto';
@@ -76,12 +93,13 @@
   background-color: rgba(56, 56, 71, 1);
   border: 0;
   text-align: left;
-  /* &--is-selected {
+  &--is-selected {
     background-color: #474759;
     color: rgba(246, 247, 251, 1);
-  } */
+  }
 }
-.select__option:hover {
+
+.select-container .select__option:hover {
   background-color: #474759;
   color: rgba(246, 247, 251, 1);
 }
