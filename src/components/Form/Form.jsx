@@ -19,6 +19,7 @@ import {
   addTransactionIncomesThunk,
 } from 'redux/transcactions/transcactionsOperations';
 import { incomes, expenses } from '../../utilits/category';
+import { useParams } from 'react-router';
 // import { TransactionDate } from 'components/Date/Date';
 
 export const TransactionForm = () => {
@@ -26,7 +27,7 @@ export const TransactionForm = () => {
   const [transactionType] = useState('expenses');
   const formRef = useRef(null);
   const [startDate] = useState(new Date());
-
+  const { expenses: key } = useParams();
   const dispatch = useDispatch();
   const currentDate = startDate.toISOString().split('T')[0];
 
@@ -36,21 +37,32 @@ export const TransactionForm = () => {
     const description = e.target.elements.description.value;
     const category = e.target.elements.category.value;
 
-    const payload = {
-      description,
-      amount: Number(amount),
-      category,
-      date: currentDate,
-    };
-
-    dispatch(addTransactionExpensesThunk(payload));
-
-    // виконуєм запит в залежності від типу
-    if (transactionType === 'expenses') {
+    if (key === 'expenses') {
+      
+      const payload = {
+        description,
+        amount: Number(amount),
+        category,
+        date: currentDate,
+      };
       dispatch(addTransactionExpensesThunk(payload));
     } else {
+      const payload = {
+        description,
+        amount: Number(amount),
+        category,
+        date: currentDate,
+      };
+     
       dispatch(addTransactionIncomesThunk(payload));
     }
+   
+    // виконуєм запит в залежності від типу
+    // if (transactionType === 'expenses') {
+    //   dispatch(addTransactionExpensesThunk(payload));
+    // } else {
+    //   dispatch(addTransactionIncomesThunk(payload));
+    // }
 
     //   очистка форми
     formRef.current.reset();
@@ -78,7 +90,7 @@ export const TransactionForm = () => {
             menuShouldScrollIntoView={false}
             classNamePrefix="select"
             onChange={option => setSelectedOption(option)}
-            options={transactionType === 'expenses' ? expenses : incomes}
+            options={key === 'expenses' ? expenses : incomes}
           />
           <Container>
             <InputNum

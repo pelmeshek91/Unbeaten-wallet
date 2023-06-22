@@ -44,21 +44,21 @@ export const App = () => {
           }
         >
           <Route
-            path="expenses"
+            path=":expenses"
             element={
               <PrivateRoute>
                 <TransactionsExpenses />
               </PrivateRoute>
             }
           />
-          <Route
-            path="incomes"
+          {/* <Route
+            path=":incomes"
             element={
               <PrivateRoute>
                 <TransactionsIncome />
               </PrivateRoute>
             }
-          />
+          /> */}
         </Route>
 
         <Route
