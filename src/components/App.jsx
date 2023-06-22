@@ -5,7 +5,7 @@ import ReportPage from 'pages/ReportPage/ReportPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegPage from 'pages/RegPage/RegPage';
 // import TransactionsExpenses from './TransactionsExpenses/TransactionsExpenses';
-import TransactionsIncome from './TransactionsIncome/TransactionsIncome';
+
 // import PublicRoute from './Routs/PublicRouts';
 // import PrivateRoute from './Routs/PrivateRouts';
 import TransactionsExpenses from './TransactionsExpenses/TransactionsExpenses';
@@ -51,14 +51,6 @@ export const App = () => {
               </PrivateRoute>
             }
           />
-          {/* <Route
-            path=":incomes"
-            element={
-              <PrivateRoute>
-                <TransactionsIncome />
-              </PrivateRoute>
-            }
-          /> */}
         </Route>
         <Route
           path="report"
