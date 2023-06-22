@@ -3,7 +3,10 @@ import * as expensesImages from 'components/ReportsExpenses/image';
 import * as incomeImages from 'components/ReportsIncome/image';
 import { ImageItem, ListImages, ImageName, Colum, SectionReport, BtnSection, BtnReport } from './ReportExpenses.styled';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
-// import ChartBarExpenses from 'components/ChartBarExpenses/ChartBarExpenses';
+import ChartBar from '../ChartBar/ChartBar';
+import { ChartBarContainer, ChartBarContainerIncomes } from 'components/ChartBar/ChartBar.styled';
+import ChartBarIncome from 'components/ChartBarIncome/CartBarIncome';
+
 
 const ReportsContainer = () => {
   const [reportType, setReportType] = useState('EXPENSES');
@@ -103,6 +106,12 @@ const ReportsContainer = () => {
           ))}
         </ListImages>
       </SectionReport>
+      <ChartBarContainer>
+         <ChartBar/>
+      </ChartBarContainer>
+      <ChartBarContainerIncomes>
+        <ChartBarIncome  />
+      </ChartBarContainerIncomes>
     </>
   );
 };
