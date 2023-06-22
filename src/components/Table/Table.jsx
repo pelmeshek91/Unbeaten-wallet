@@ -19,6 +19,7 @@ import {
 import { useEffect, useMemo } from 'react';
 import { useParams } from 'react-router';
 import { getTransactionsIncomes } from 'services/walletApi';
+import { translateCategory } from '../../utilits/translateCategory';
 
 const tableDefaultArray = Array(9).fill(null);
 
@@ -65,7 +66,7 @@ export function Table() {
               <Tr key={nanoid()}>
                 <Td>{row.date}</Td>
                 <Td>{row.description}</Td>
-                <Td>{row.category}</Td>
+                <Td>{translateCategory(row.category)}</Td>
                 {key === 'expenses' && row.amount ? (
                   <Td style={{ color: 'red' }}>-{row.amount}</Td>
                 ) : (
