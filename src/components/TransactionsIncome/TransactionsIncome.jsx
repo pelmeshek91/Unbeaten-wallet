@@ -1,23 +1,18 @@
-// import { TransactionForm } from 'components/Form/Form';
-// import { TransactionsSummary } from 'components/Summary/Summary';
 import { TransactionsContainer } from 'components/TransactionsContainer/TransactionsContainer';
-// import TotalBalance from 'components/TotalBalance/TotalBalance';
-// import { TransactionsContainer } from 'components/TransactionsContainer/TransactionsContainer';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { NavLink } from 'react-router-dom';
-
-// import { getTransactionsExpenses } from 'services/walletApi';
-
-// import { loginUser } from 'services/walletApi';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { getTransactionsIncomeThunk } from 'redux/transcactions/transcactionsOperations';
 
 const TransactionsIncome = () => {
-  // const dispatch = useDispatch();
-  // const sid = useSelector(state => state.auth.sid);
-  // const refresh = useSelector(state => state.auth.refreshToken);
-
-  // const balance = useSelector(state => state.transactions.balance);
-  // const reports = useSelector(state => state.transactions.transactions);
-  // console.log(reports);
+  const dispatch = useDispatch();
+  const isLogin = useSelector(state => state.auth.isLogin);
+  const { balance } = useSelector(state => state.transactions);
+  const { expenses: key } = useParams();
+  console.log(3333);
+  useEffect(() => {
+    key === 'incomes' && dispatch(getTransactionsIncomeThunk());
+  }, [balance, key, isLogin, dispatch]);
 
   return <TransactionsContainer />;
   // return (

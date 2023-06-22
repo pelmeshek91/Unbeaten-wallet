@@ -2,9 +2,9 @@ import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
 const PublicRoute = ({ children }) => {
-  const { isLogin } = useSelector(state => state.auth);
+  const { refreshToken } = useSelector(state => state.auth);
 
-  return !isLogin ? children : <Navigate to="/" />;
+  return !refreshToken ? children : <Navigate to="/" />;
 };
 
 export default PublicRoute;

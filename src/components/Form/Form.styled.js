@@ -35,6 +35,7 @@ export const Input = styled.input`
     outline: none;
     border: 2px solid #474759;
     box-shadow: 0px 6px 7px -2px #41a350;
+    background-color: rgb(56, 56, 71);
   }
 `;
 
@@ -128,5 +129,45 @@ export const ClearBtn = styled.button`
   &:focus {
     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.15);
     background-color: rgb(70, 70, 88);
+  }
+`;
+
+// DATEEEEEEEE
+
+export const DivContainer = styled.div`
+  width: 120px;
+  height: 40px;
+  display: flex;
+  gap: 10px;
+  -webkit-box-align: center;
+  align-items: center;
+  /* margin-top: 35px; */
+  flex-direction: row;
+  /* margin-left: 32px; */
+`;
+
+export const InputDate = styled.input`
+  width: 74px;
+  border: none;
+  color: #c7ccdc;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  height: 20px;
+  max-width: 74px;
+  height: 40px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: rgb(56, 56, 71);
+
+  &:focus {
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0px 0px 6px #41a350;
   }
 `;

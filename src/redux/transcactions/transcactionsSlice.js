@@ -10,30 +10,26 @@ import {
   getUserInfoThunk,
   updateUserBalanceThunk,
 } from './transcactionsOperations';
+import { loginUserThunk } from 'redux/auth/authOperations';
 
 const handleGetTransactionsExpenses = (state, { payload }) => {
   state.expenses = payload.expenses;
   state.error = null;
   state.isLoading = false;
   state.monthStatsExpenses = payload.monthsStats;
-
-  // console.log(payload.monthsStats);
 };
 const handleAddTransactionsExpenses = (state, { payload }) => {
   state.expenses.push(payload.transaction);
   state.balance = payload.newBalance;
   state.error = null;
   state.isLoading = false;
-  // state.monthStatsExpenses = payload.monthsStats;
-  console.log(payload);
 };
 
 const handleGetTransactionsIncomes = (state, { payload }) => {
-  state.incomes = payload.expenses;
+  state.incomes = payload.incomes;
   state.error = null;
   state.isLoading = false;
-  // state.monthStatsIncome = payload.monthsStats;
-  // console.log(payload.monthsStats);
+  state.monthStatsIncome = payload.monthsStats;
 };
 
 const handleAddTransactionsIncomes = (state, { payload }) => {
@@ -41,7 +37,6 @@ const handleAddTransactionsIncomes = (state, { payload }) => {
   state.balance = payload.newBalance;
   state.error = null;
   state.isLoading = false;
-  // state.monthStatsIncome = payload[1].monthsStats;
 };
 const handleDeleteTransaction = (state, { payload }) => {
   state.balance = payload.newBalance;
@@ -69,11 +64,14 @@ const getTransactionsReportsFulfilled = (state, { payload }) => {
   state.transactions = payload;
   state.error = null;
   state.isLoading = false;
+  console.log(payload);
 };
 const handleInfoRejected = (state, { error }) => {
   state.error = error.message;
 };
-
+const handleBalance = (state, { payload }) => {
+  state.balance = payload.userData.balance;
+};
 const transactionsSlice = createSlice({
   name: 'transactions',
   initialState,
@@ -83,6 +81,7 @@ const transactionsSlice = createSlice({
         getTransactionsExpensesThunk.fulfilled,
         handleGetTransactionsExpenses
       )
+      .addCase(loginUserThunk.fulfilled, handleBalance)
       .addCase(
         addTransactionExpensesThunk.fulfilled,
         handleAddTransactionsExpenses
