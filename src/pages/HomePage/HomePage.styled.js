@@ -1,13 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import background from '../../img/decor-img/background.jpg';
-import ellipse from '../../img/decor-img/Ellipse-bigger.png';
-
-export const BodyContainer = styled.div`
-  /* background-color: #383847;
-  background-image: url(${background});
-  z-index: -2; */
-`;
 
 export const ButtonLink = styled(NavLink)`
   display: inline-block;
@@ -33,20 +25,4 @@ export const ButtonLink = styled(NavLink)`
     background-color: #383847;
     color: #60c470;
   }
-`;
-
-export const EllipseImg = styled.img`
-  position: absolute;
-  /* top: -350px;
-  left: -406px;   */
-  transform: translate(-38%, -40%);
-  z-index: -1;
-`;
-
-export const RectangleImg = styled.img`
-  position: absolute;
-  /* top: 0px;
-  left: 0px; */
-  transform: translate(-4%, -46%);
-  z-index: -1;
 `;

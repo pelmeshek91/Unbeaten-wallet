@@ -9,7 +9,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   /* * */
-  background-image: url(./img/decor-img/background.jpg);
+  background-color: #31323e;
 }
 
 code {

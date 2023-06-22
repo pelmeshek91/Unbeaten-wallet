@@ -11,8 +11,8 @@ import {
   RectangleImg,
 } from './HomePage.styled';
 import { IoMdStats } from 'react-icons/io';
-import ellipse from '../../img/decor-img/Ellipse-bigger.png';
-import rectangle from '../../img/decor-img/Rectangle-desctop.png';
+// import ellipse from '../../img/decor-img/Ellipse-bigger.png';
+// import rectangle from '../../img/decor-img/Rectangle-desctop.png';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -22,8 +22,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <BodyContainer>
-      <EllipseImg src={ellipse} alt="ellipse" />
+    <div>
       <TotalBalance />
       <Link to="report">
         Reports <IoMdStats />
@@ -35,8 +34,7 @@ const HomePage = () => {
       <Suspense>
         <Outlet />
       </Suspense>
-      <RectangleImg src={rectangle} alt="rectangle" />
-    </BodyContainer>
+    </div>
   );
 };
 
