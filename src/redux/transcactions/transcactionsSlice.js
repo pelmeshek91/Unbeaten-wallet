@@ -10,7 +10,6 @@ import {
   getUserInfoThunk,
   updateUserBalanceThunk,
 } from './transcactionsOperations';
-import { registerUserThunk } from '../auth/authOperations';
 
 const handleGetTransactionsExpenses = (state, { payload }) => {
   state.expenses = payload.expenses;

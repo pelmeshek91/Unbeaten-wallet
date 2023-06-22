@@ -14,7 +14,6 @@ const Exite = ({ onExitClick }) => {
   // const email = 'userName@gmail.com';
 
   const { email } = useSelector(state => state.auth);
-  console.log(email);
   const userName = email.split('@')[0];
 
   const capitalizedUsername =

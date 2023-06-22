@@ -6,7 +6,7 @@ import {
   refreshUserThunk,
   registerUserThunk,
 } from './authOperations';
-import { toast, ToastContainer as MyToastContainer } from 'react-toastify';
+import { ToastContainer as MyToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const handleUserRegister = state => {
   state.isLoading = false;

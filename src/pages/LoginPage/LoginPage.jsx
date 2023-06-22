@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { loginUserThunk, registerUserThunk } from 'redux/auth/authOperations';
-import { updateUserBalanceThunk } from '../../redux/transcactions/transcactionsOperations';
+import { loginUserThunk } from 'redux/auth/authOperations';
+// import { updateUserBalanceThunk } from '../../redux/transcactions/transcactionsOperations';
 import { toast } from 'react-toastify';
 import wallet from '../../img/decor-img/wallet.png';
 
