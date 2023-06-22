@@ -14,7 +14,7 @@ const ReportChanger = ({ onClick }) => {
 
   const fetchData = useCallback(() => {
     const formattedDate = date.format(newData, 'YYYY-MM');
-    dispatch(getTransactionsReportsThunk(formattedDate))
+    dispatch(getTransactionsReportsThunk(formattedDate)).unwrap()
       .then(response => {
         onClick(response.payload);
       })
