@@ -70,6 +70,7 @@ export const Wrapper = styled.div`
   align-items: center;
   margin-top: 40px;
   margin-bottom: 8px;
+  padding-left: 200px;
   @media (max-width: 768px) {
     margin-bottom: 40px;
   }
