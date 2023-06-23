@@ -7,6 +7,26 @@ export const MainContainer = styled.div`
   /* margin-top: 32px; */
   -webkit-box-align: center;
   align-items: flex-start;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding-bottom: 124px;
+    position: relative;
+    /* width: 616px; */
+  }
+
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    width: auto;
+    padding-bottom: 0px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    /* margin-top: 32px; */
+    -webkit-box-align: center;
+    align-items: flex-start;
+  }
 `;
 
 export const Form = styled.form`
@@ -37,6 +57,43 @@ export const Input = styled.input`
     box-shadow: 0px 6px 7px -2px #41a350;
     background-color: rgb(56, 56, 71);
   }
+
+  @media screen and (min-width: 768px) {
+    width: 215px;
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: left;
+    color: rgba(199, 204, 220, 0.5);
+    border: 2px solid #474759;
+    border-radius: 0;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 0;
+    background-color: rgb(56, 56, 71);
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.16;
+    letter-spacing: 0.02em;
+    &:focus,
+    &:hover {
+      outline: none;
+      border: 2px solid #474759;
+      box-shadow: 0px 6px 7px -2px #41a350;
+      background-color: rgb(56, 56, 71);
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 288px;
+    &:focus,
+    &:hover {
+      outline: none;
+      border: 2px solid #474759;
+      box-shadow: 0px 6px 7px -2px #41a350;
+      background-color: rgb(56, 56, 71);
+    }
+  }
 `;
 
 export const InputNum = styled.input`
@@ -66,6 +123,59 @@ export const InputNum = styled.input`
     -webkit-appearance: none;
     margin: 0;
   }
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    /* border-top-left-radius: 20px; */
+    border-top-right-radius: 20px;
+    max-height: 290px;
+    text-align: start;
+
+    overflow: hidden;
+    /* margin-top: 40px; */
+    /* margin-left: 77px; */
+
+    &:hover,
+    &:focus {
+      outline: none;
+      box-shadow: 0px 6px 7px -2px #41a350;
+    }
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    background-color: rgb(56, 56, 71);
+
+    background-size: 20px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.16;
+    letter-spacing: 0.02em;
+    border: 2px solid #474759;
+    border-radius: 22px;
+    border-radius: 0 16px 16px 0;
+    width: 116px;
+    text-align: center;
+    padding: 16px 37px;
+    color: #c7ccdc;
+    &:hover,
+    &:focus {
+      outline: none;
+      box-shadow: 0px 6px 7px -2px #41a350;
+    }
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
 `;
 
 export const BtnContainer = styled.div`
@@ -77,6 +187,25 @@ export const BtnContainer = styled.div`
   position: static;
   transform: translateX(0);
   padding-left: 32px;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    gap: 16px;
+    left: 30%;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+
+  @media screen and (min-width: 1280px) {
+    /* margin-top: 55px; */
+    top: 50%;
+    left: 50%;
+    position: static;
+    transform: translateX(0);
+    padding-left: 32px;
+  }
 `;
 
 export const Container = styled.div`
@@ -84,9 +213,15 @@ export const Container = styled.div`
 `;
 
 export const IconContainer = styled.div`
-  position: absolute;
-  top: 26%;
-  right: 30%;
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    top: 26%;
+    right: 25%;
+  }
+
+  @media screen and (min-width: 1280px) {
+    right: 30%;
+  }
 `;
 
 export const InputBtn = styled.button`
