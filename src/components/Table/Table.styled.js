@@ -31,13 +31,19 @@ export const TableEL = styled.table`
   table-layout: fixed;
 `;
 export const Tr = styled.tr`
-  height: 38px;
+  @media screen and (min-width: 768px) {
+    height: 36px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    height: 38px;
+  }
 `;
 export const Td = styled.td`
   width: 5%;
   border-bottom: 2px solid #474759;
   height: 38px;
-box-sizing: border-box;
+  box-sizing: border-box;
   color: #c7ccdc;
   background: rgb(56, 56, 71);
   margin-left: 22px;
@@ -46,7 +52,7 @@ box-sizing: border-box;
   @media screen and (min-width: 768px) {
     width: 5%;
     border-bottom: 2px solid #474759;
-    height: 37px;
+    height: 36px;
 
     color: #c7ccdc;
     background: rgb(56, 56, 71);
@@ -57,7 +63,7 @@ box-sizing: border-box;
   @media screen and (min-width: 1280px) {
     width: 5%;
     border-bottom: 2px solid #474759;
-    height: 36px;
+    height: 38px;
     color: #c7ccdc;
     background: rgb(56, 56, 71);
     margin-left: 22px;

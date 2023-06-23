@@ -16,6 +16,7 @@ import { useMemo, useState } from 'react';
 import { useParams } from 'react-router';
 import { translateCategory } from '../../utilits/translateCategory';
 import ModalApproval from 'components/ModalsWindow/ModalApproval';
+import { format } from 'date-fns';
 
 const tableDefaultArray = Array(9).fill(null);
 
@@ -49,6 +50,11 @@ export function Table() {
       .then(() => setTransactionId(''));
   };
   console.log(transactionId);
+
+  const formatEventStart = date => {
+    return format(Date.parse(date), 'dd.MM.yyyy');
+  };
+
   return (
     <Div>
       <TableEL>
@@ -65,7 +71,7 @@ export function Table() {
           {arr.map(row => {
             return (
               <Tr key={nanoid()}>
-                <Td>{row.date}</Td>
+                <Td>{formatEventStart(row.date)}</Td>
                 <Td>{row.description}</Td>
                 <Td>{translateCategory(row.category)}</Td>
                 {key === 'expenses' && row.amount ? (
