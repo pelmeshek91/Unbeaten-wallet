@@ -6,6 +6,24 @@ export const Div = styled.div`
   border: 2px solid #474759;
   overflow: hidden;
   /* margin-left: 32px; */
+
+  @media screen and (min-width: 768px) {
+    width: 624px;
+    /* height: 400px; */
+    border-radius: 30px 30px 0px 0px;
+    border: 2px solid #474759;
+    overflow: hidden;
+    /* margin-left: 32px; */
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 746px;
+    /* height: 400px; */
+    border-radius: 30px 30px 0px 0px;
+    border: 2px solid #474759;
+    overflow: hidden;
+    /* margin-left: 32px; */
+  }
 `;
 export const TableEL = styled.table`
   border-spacing: 0px;
@@ -24,6 +42,27 @@ export const Td = styled.td`
   background: rgb(56, 56, 71);
   margin-left: 22px;
   padding-left: 40px;
+
+  @media screen and (min-width: 768px) {
+    width: 5%;
+    border-bottom: 2px solid #474759;
+    height: 37px;
+
+    color: #c7ccdc;
+    background: rgb(56, 56, 71);
+    margin-left: 22px;
+    padding-left: 32px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 5%;
+    border-bottom: 2px solid #474759;
+    height: 36px;
+    color: #c7ccdc;
+    background: rgb(56, 56, 71);
+    margin-left: 22px;
+    padding-left: 40px;
+  }
 `;
 export const Thead = styled.thead`
   background-color: rgba(86, 86, 107, 0.5);
@@ -64,7 +103,7 @@ export const Tbody = styled.tbody`
   /* display: table; */
   max-height: 100%;
   overflow-y: auto;
-  width: 746px;
+  width: 624px;
   scroll-behavior: smooth;
   height: 380px;
   border-collapse: collapse;
@@ -83,5 +122,46 @@ export const Tbody = styled.tbody`
 
   &::-webkit-scrollbar-track-piece {
     max-height: 242px;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: block;
+    /* display: table; */
+    max-height: 100%;
+    overflow-y: auto;
+    width: 624px;
+    scroll-behavior: smooth;
+    height: 360px;
+    border-collapse: collapse;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #60c470 #474759;
+    &::-webkit-scrollbar {
+      width: 6px;
+      background-color: #474759;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #60c470;
+      border-radius: 7px;
+    }
+
+    &::-webkit-scrollbar-track-piece {
+      max-height: 242px;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    display: block;
+    /* display: table; */
+    max-height: 100%;
+    overflow-y: auto;
+    width: 746px;
+    scroll-behavior: smooth;
+    height: 380px;
+    border-collapse: collapse;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #60c470 #474759;
   }
 `;
