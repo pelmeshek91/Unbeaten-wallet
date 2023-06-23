@@ -6,7 +6,7 @@ export const Div = styled.div`
   row-gap: 48px;
   flex-wrap: wrap;
   background-color: rgb(56, 56, 71);
-  border-radius: 0px 16px 16px;
+  border-radius: 0px 30px 30px;
   padding: 32px;
 `;
 

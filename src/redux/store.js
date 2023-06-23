@@ -16,13 +16,29 @@ import { transactionsReducers } from './transcactions/transcactionsSlice';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['refreshToken', 'sid', 'email', 'balance'],
+  whitelist: ['refreshToken', 'sid', 'email'],
 };
+const transactionsPersistConfig = {
+  key: 'transactions',
+  storage,
+  whitelist: [
+    'balance',
+    'expenses',
+    'incomes',
+    'monthStatsIncome',
+    'monthStatsExpenses',
+  ],
+};
+
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
+const persistedTransactionsReducer = persistReducer(
+  transactionsPersistConfig,
+  transactionsReducers
+);
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
-    transactions: transactionsReducers,
+    transactions: persistedTransactionsReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
