@@ -1,29 +1,37 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const GoMainBtn = styled.button`
+export const StyledLink = styled(NavLink)`
+  padding: 3px 10px;
+  margin-bottom: 42px;
+  margin-top: 42px;
   display: flex;
   align-items: center;
   font-style: inherit;
   justify-content: space-between;
   width: 114px;
   height: 44px;
-  color: #f5f5f5;
-  background-color: transparent;
-  border: none;
+  color: #c7ccdc;
   letter-spacing: 1px;
-  /* width: 110px; */
-  /* height: 24px; */
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  margin-bottom: 42px;
-  margin-top: 42px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  border-bottom: none;
+  border: transparent;
+
+  border-radius: 4px;
+  transition: color 0.2s ease-in-out;
+  margin-right: 91px;
+  margin-left: auto;
+
   border-radius: 16px;
 
   &:hover,
   &:focus {
-    color: #73ff88;
-    border-color: none;
-    box-shadow: 1px -1px 24px -2px #73ff88;
+    color: #42a652;
+
+    border-bottom: none;
+    box-shadow: 1px -1px 24px -2px #41a350;
   }
 `;
 
