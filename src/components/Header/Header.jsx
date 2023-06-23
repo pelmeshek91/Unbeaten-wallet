@@ -9,7 +9,7 @@ import { logoutThunk } from 'redux/auth/authOperations';
 
 const Header = () => {
   const dispatch = useDispatch();
-  const { isLogin } = useSelector(state => state.auth); //
+  const { email } = useSelector(state => state.auth); //
 
   const [modalActive, setModalActive] = useState(false);
 
@@ -29,7 +29,7 @@ const Header = () => {
     <HeaderContainer>
       <HeaderMain>
         <Image src={logo} alt="logo" />
-        {isLogin && <Exite onExitClick={handleExitClick} />}
+        {email && <Exite onExitClick={handleExitClick} />}
       </HeaderMain>
       {modalActive && (
         <ModalApproval
