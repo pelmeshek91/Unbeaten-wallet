@@ -52,7 +52,6 @@ export const App = () => {
             }
           />
         </Route>
-
         <Route
           path="report"
           element={

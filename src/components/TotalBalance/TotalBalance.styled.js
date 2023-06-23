@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const BalanceContainer = styled.div`
-  background-image: url('https://abrakadabra.fun/uploads/posts/2022-03/1647520011_1-abrakadabra-fun-p-foni-dlya-saita-1.jpg');
   display: flex;
   padding: 16px;
   margin-bottom: 16px;
@@ -156,9 +155,9 @@ export const StyledMessage = styled.div`
     border-bottom: 10px solid rgb(88, 187, 103);
   }
 
-  @media (max-width: 1024px) {
+  /* @media (max-width: 1024px) {
     display: none;
-  }
+  } */
 `;
 
 export const RelativeContainer = styled.div`

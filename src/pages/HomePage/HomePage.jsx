@@ -4,8 +4,15 @@ import TotalBalance from 'components/TotalBalance/TotalBalance';
 import { Suspense, useEffect } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 
-import { ButtonLink } from './HomePage.styled';
+import {
+  ButtonLink,
+  BodyContainer,
+  EllipseImg,
+  RectangleImg,
+} from './HomePage.styled';
 import { IoMdStats } from 'react-icons/io';
+// import ellipse from '../../img/decor-img/Ellipse-bigger.png';
+// import rectangle from '../../img/decor-img/Rectangle-desctop.png';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -15,9 +22,8 @@ const HomePage = () => {
   }, []);
 
   return (
-    <>
+    <div>
       <TotalBalance />
-
       <Link to="report">
         Reports <IoMdStats />
       </Link>
@@ -28,7 +34,7 @@ const HomePage = () => {
       <Suspense>
         <Outlet />
       </Suspense>
-    </>
+    </div>
   );
 };
 
