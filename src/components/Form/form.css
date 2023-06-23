@@ -64,7 +64,9 @@
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: #60c470 #474759;
-  height: 242px;
+  /* height: 242px; */
+  height: fit-content;
+
   border-collapse: collapse;
   scrollbar-color: #60c470 #474759;
 }
