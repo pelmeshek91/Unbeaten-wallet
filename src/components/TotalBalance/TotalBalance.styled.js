@@ -1,19 +1,21 @@
 import styled from 'styled-components';
 
 export const BalanceContainer = styled.div`
+  padding: 19px;
   display: flex;
-  padding: 16px;
-  margin-bottom: 16px;
+  -webkit-box-pack: center;
+  -webkit-box-align: baseline;
+  align-items: center;
   justify-content: center;
-  align-items: baseline;
 `;
 
 export const Button = styled.button`
+  //
   cursor: pointer;
-  position: absolute;
-  margin-left: 160px;
-  margin-bottom: 20px;
-  top: 93px;
+  position: fixed;
+  top: 88px;
+  left: 654px;
+
   display: flex;
   margin-right: 16px;
   border-radius: 16px;
@@ -52,6 +54,11 @@ export const Button = styled.button`
 `;
 
 export const Input = styled.input`
+  //balance
+  position: fixed;
+  top: 89px;
+  left: 497px;
+
   margin-right: 16px;
   width: 125px;
   height: 16px;
@@ -60,11 +67,11 @@ export const Input = styled.input`
   padding: 12px 2px 12px 10px;
   background-color: rgb(56, 56, 71);
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.16;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: #f6f7fb;
+  color: rgb(246, 247, 251);
   text-align: center;
 
   @media (max-width: 600px) {
@@ -77,26 +84,30 @@ export const Input = styled.input`
 `;
 
 export const BalanceValue = styled.p`
+  position: fixed;
+  top: 76px;
+  left: 497px;
   width: 125px;
+  height: 16px;
   border-radius: 16px;
   border: 2px solid rgb(71, 71, 89);
-  padding: 16px;
+  padding: 12px 2px 12px 10px;
   background-color: rgb(56, 56, 71);
   font-weight: 700;
+  font-size: 12px;
   line-height: 1.16;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: #f6f7fb;
+  color: rgb(246, 247, 251);
   text-align: center;
-  font-family: 'Roboto';
-  font-size: 14px;
-  margin-right: 16px;
 `;
 
 export const BalanceLabel = styled.p`
+  position: fixed;
+  top: 70px;
+  left: 387px;
   font-size: 24px;
   font-weight: bold;
-  margin-right: 20px;
   color: #c7ccdc;
 `;
 
@@ -112,8 +123,9 @@ export const LoaderContainer = styled.div`
 
 export const StyledMessage = styled.div`
   position: fixed;
-  top: 328%;
-  left: 50%;
+  top: 556%;
+  left: 46%;
+
   transform: translate(-50%, -50%);
   display: flex;
   margin-top: 10px;
@@ -146,7 +158,7 @@ export const StyledMessage = styled.div`
     content: '';
     position: absolute;
     top: -9px;
-    left: 23%;
+    left: 30%;
     transform: translateX(-50%);
     width: 0px;
     height: 0px;
@@ -162,4 +174,5 @@ export const StyledMessage = styled.div`
 
 export const RelativeContainer = styled.div`
   height: 20px;
+  width: 157px;
 `;

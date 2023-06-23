@@ -53,12 +53,15 @@ const TotalBalance = () => {
                 }}
                 suffix="UAH"
               />
+
               <StyledMessage>
-                <p>
-                  Hello! To get started, enter the current balance of your
-                  account!
-                </p>
-                <p>You can't spend money until you have it :)</p>
+                <div>
+                  <p>
+                    Hello! To get started, enter the current balance of your
+                    account!
+                  </p>
+                  <p>You can't spend money until you have it :)</p>
+                </div>
               </StyledMessage>
             </RelativeContainer>
             <Button onClick={makeTopUp}>Confirm</Button>
