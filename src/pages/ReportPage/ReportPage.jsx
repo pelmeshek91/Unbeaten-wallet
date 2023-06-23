@@ -9,12 +9,10 @@ const ReportPage = () => {
   const onBtnClick = () => {
     navigate('/expenses');
   };
-  const handleClick = selectedPeriod => {
-    console.log(selectedPeriod);
-  };
+
   return (
     <>
-      <ReportChanger onClick={handleClick} />
+      <ReportChanger />
       <div>
         <button type="button" onClick={onBtnClick}>
           Main page

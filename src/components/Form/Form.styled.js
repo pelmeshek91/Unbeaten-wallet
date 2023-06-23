@@ -109,6 +109,11 @@ export const InputBtn = styled.button`
     box-shadow: 1px 3px 5px rgba(96, 196, 112, 0.35);
     background: #3d944c;
   }
+
+  &[disabled] {
+    opacity: 0.5;
+    cursor: inherit;
+  }
 `;
 
 export const ClearBtn = styled.button`

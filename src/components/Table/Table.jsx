@@ -48,7 +48,7 @@ export function Table() {
       .unwrap()
       .then(() => setTransactionId(''));
   };
-  console.log(transactionId);
+
   return (
     <Div>
       <TableEL>

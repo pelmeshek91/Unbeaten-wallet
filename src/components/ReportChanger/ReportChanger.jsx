@@ -1,65 +1,53 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import date from 'date-and-time';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getTransactionsReportsThunk } from '../../redux/transcactions/transcactionsOperations';
 
-const ReportChanger = ({ onClick }) => {
+const ReportChanger = () => {
   const data = new Date();
-
+  const { isLogin } = useSelector(state => state.auth);
   const [count, setCount] = useState(0);
   const [newData, setNewData] = useState(date.addMonths(data, count));
-
   const dispatch = useDispatch();
 
-  const fetchData = useCallback(() => {
+  useEffect(() => {
     const formattedDate = date.format(newData, 'YYYY-MM');
-    dispatch(getTransactionsReportsThunk(formattedDate)).unwrap()
-      .then(response => {
-        onClick(response.payload);
-      })
+    if (!isLogin) return;
+
+    dispatch(getTransactionsReportsThunk(formattedDate))
+      .unwrap()
+      .then(() => {})
       .catch(error => {
         console.error('Error fetching transaction data:', error);
       });
-  }, [newData, onClick, dispatch]);
+  }, [dispatch, isLogin, newData]);
 
   const handleData = value => {
     if (value > 0 && count === 0) return null;
     setCount(prev => prev + value);
   };
 
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
-  useEffect(() => {
-    onClick(date.format(newData, 'YYYY-MM'));
-  }, [newData, onClick]);
-
   return (
     <div>
       <p>Current period:</p>
       <div>
-        <button>
-          <MdKeyboardArrowLeft
-            size="20"
-            color="green"
-            onClick={() => {
-              handleData(-1);
-              setNewData(date.addMonths(newData, -1));
-            }}
-          />
+        <button
+          onClick={() => {
+            handleData(-1);
+            setNewData(date.addMonths(newData, -1));
+          }}
+        >
+          <MdKeyboardArrowLeft size="20" color="green" />
         </button>
         <span>{date.format(newData, 'MMMM YYYY')}</span>
-        <button>
-          <MdKeyboardArrowRight
-            size="20"
-            color="green"
-            onClick={() => {
-              handleData(1);
-              setNewData(date.addMonths(newData, 1));
-            }}
-          />
+        <button
+          onClick={() => {
+            handleData(1);
+            setNewData(date.addMonths(newData, 1));
+          }}
+        >
+          <MdKeyboardArrowRight size="20" color="green" />
         </button>
       </div>
     </div>
