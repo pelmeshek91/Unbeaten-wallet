@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { registerUserThunk } from 'redux/auth/authOperations';
 import {
+  Header,
   ImgWallet,
   Container,
   Form,
@@ -69,6 +70,7 @@ const RegPage = () => {
 
   return (
     <div>
+      <Header />
       <GlobalStyle />
       <Container>
         <ImgWallet>

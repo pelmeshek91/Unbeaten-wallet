@@ -22,7 +22,7 @@ const Layout = () => {
 
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   return (
-    <div>
+    <>
       <Header />
       <GlobalStyle />
       <Container>
@@ -33,7 +33,7 @@ const Layout = () => {
         </Suspense>
         {/* <ToastContainer /> */}
       </Container>
-    </div>
+    </>
   );
 };
 

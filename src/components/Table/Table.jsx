@@ -12,14 +12,16 @@ import {
 import { nanoid } from '@reduxjs/toolkit';
 import { BsTrash3 } from 'react-icons/bs';
 import { deleteTransactionThunk } from 'redux/transcactions/transcactionsOperations';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useParams } from 'react-router';
 import { translateCategory } from '../../utilits/translateCategory';
+import ModalApproval from 'components/ModalsWindow/ModalApproval';
 
 const tableDefaultArray = Array(9).fill(null);
 
 export function Table() {
   const dispatch = useDispatch();
+  const [transactionId, setTransactionId] = useState('');
 
   const { expenses: key } = useParams();
   const transactions = useSelector(state => state.transactions[key]);
@@ -37,6 +39,16 @@ export function Table() {
           })
         );
   }, [transactions]);
+
+  const closeModal = () => {
+    setTransactionId('');
+  };
+  const deleteTransaction = () => {
+    dispatch(deleteTransactionThunk(transactionId))
+      .unwrap()
+      .then(() => setTransactionId(''));
+  };
+
   return (
     <Div>
       <TableEL>
@@ -64,9 +76,7 @@ export function Table() {
 
                 <Td>
                   {row._id && (
-                    <TrashBtn
-                      onClick={() => dispatch(deleteTransactionThunk(row._id))}
-                    >
+                    <TrashBtn onClick={() => setTransactionId(row._id)}>
                       <BsTrash3
                         style={{
                           fill: 'white',
@@ -80,6 +90,13 @@ export function Table() {
           })}
         </Tbody>
       </TableEL>
+      {transactionId && (
+        <ModalApproval
+          closeModal={closeModal}
+          confirmAction={deleteTransaction}
+          title={'Are you sure?'}
+        />
+      )}
     </Div>
   );
 }

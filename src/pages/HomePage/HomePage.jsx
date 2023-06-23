@@ -4,8 +4,9 @@ import TotalBalance from 'components/TotalBalance/TotalBalance';
 import { Suspense, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 // import { Link  } from 'react-router-dom';
-import { ButtonLink, StyledLink, Wrapper } from './HomePage.styled';
+import { StyledLink, Wrapper } from './HomePage.styled';
 
+import { ButtonLink } from './HomePage.styled';
 import { IoMdStats } from 'react-icons/io';
 // import ellipse from '../../img/decor-img/Ellipse-bigger.png';
 // import rectangle from '../../img/decor-img/Rectangle-desctop.png';

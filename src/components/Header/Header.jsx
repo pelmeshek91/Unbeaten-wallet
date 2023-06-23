@@ -4,16 +4,27 @@ import { HeaderContainer, HeaderMain, Image } from './Header.styled';
 import Exite from 'components/Exite/Exite';
 
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutThunk } from 'redux/auth/authOperations';
 
 const Header = () => {
-  const { isLogin } = useSelector(state => state.auth); //
+  const dispatch = useDispatch();
+  const { email } = useSelector(state => state.auth); //
 
   const [modalActive, setModalActive] = useState(false);
 
   const handleExitClick = () => {
     setModalActive(true);
+  };
+  const closeModal = () => {
+    setModalActive(false);
+  };
+  const logOut = () => {
+    dispatch(logoutThunk())
+      .unwrap()
+      .then(() => setModalActive(false));
   };
 
   const navigate = useNavigate();
@@ -26,11 +37,12 @@ const Header = () => {
     <HeaderContainer>
       <HeaderMain>
         <Image src={logo} alt="logo" onClick={onBtnClick} />
-        {isLogin && <Exite onExitClick={handleExitClick} />}
+        {email && <Exite onExitClick={handleExitClick} />}
       </HeaderMain>
       {modalActive && (
         <ModalApproval
-          setActive={setModalActive}
+          closeModal={closeModal}
+          confirmAction={logOut}
           title="Do you really want to leave?"
         />
       )}
