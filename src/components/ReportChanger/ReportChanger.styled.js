@@ -26,7 +26,7 @@ export const Description = styled.span`
   font-weight: 700;
   line-height: 200%;
   text-transform: uppercase;
-  padding: 0px 7px;
+  padding: 0px 9px;
 `;
 
 export const Btn = styled.button`

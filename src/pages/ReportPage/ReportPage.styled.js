@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 export const StyledLink = styled(NavLink)`
   padding: 3px 10px;
-  margin-bottom: 42px;
-  margin-top: 42px;
+  /* margin-bottom: 42px; */
+  /* margin-top: 42px; */
   display: flex;
   align-items: center;
   font-style: inherit;
@@ -21,8 +21,9 @@ export const StyledLink = styled(NavLink)`
 
   border-radius: 4px;
   transition: color 0.2s ease-in-out;
-  margin-right: 91px;
-  margin-left: auto;
+  /* margin-right: 91px; */
+  /* margin-left: auto; */
+  margin: 42px 9px 42px;
 
   border-radius: 16px;
 
