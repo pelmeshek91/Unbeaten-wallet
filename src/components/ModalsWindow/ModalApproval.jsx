@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   Question,
   ModalContainer,
@@ -7,29 +8,38 @@ import {
   StyledExitIcon,
   Overlay,
 } from './ModalApproval.styled';
-import { logoutThunk } from 'redux/auth/authOperations';
-import { useDispatch } from 'react-redux';
+// import { logoutThunk } from 'redux/auth/authOperations';
+// import { useDispatch } from 'react-redux';
 
-const ModalApproval = ({ active, setActive, title }) => {
-  const dispatch = useDispatch();
+const ModalApproval = ({ closeModal, confirmAction, title }) => {
+  useEffect(() => {
+    document.addEventListener('keydown', handleCloseByEsc);
 
-  const handleCloseClick = () => {
-    setActive(false);
+    return () => {
+      document.removeEventListener('keydown', handleCloseByEsc);
+    };
+  });
+
+  const handleBackdropClick = e => {
+    if (e.target !== e.currentTarget) return;
+    closeModal();
+  };
+
+  const handleCloseByEsc = e => {
+    if (e.code !== 'Escape') return;
+    closeModal();
   };
   return (
-    <Overlay>
+    <Overlay onClick={handleBackdropClick}>
       <ModalContainer>
-        <StyledExitIcon onClick={handleCloseClick} />
+        <StyledExitIcon onClick={closeModal} />
         <Question>{title}</Question>
         <BtnContainer>
-          <YesBtn
-            type="button"
-            onClick={() => dispatch(logoutThunk(), setActive(false))}
-          >
+          <YesBtn type="button" onClick={confirmAction}>
             Yes
           </YesBtn>
 
-          <NoBtn type="button" onClick={handleCloseClick}>
+          <NoBtn type="button" onClick={closeModal}>
             No
           </NoBtn>
         </BtnContainer>
