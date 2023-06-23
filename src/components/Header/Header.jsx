@@ -4,15 +4,25 @@ import { HeaderContainer, HeaderMain, Image } from './Header.styled';
 import Exite from 'components/Exite/Exite';
 
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutThunk } from 'redux/auth/authOperations';
 
 const Header = () => {
+  const dispatch = useDispatch();
   const { isLogin } = useSelector(state => state.auth); //
 
   const [modalActive, setModalActive] = useState(false);
 
   const handleExitClick = () => {
     setModalActive(true);
+  };
+  const closeModal = () => {
+    setModalActive(false);
+  };
+  const logOut = () => {
+    dispatch(logoutThunk())
+      .unwrap()
+      .then(() => setModalActive(false));
   };
 
   return (
@@ -23,7 +33,8 @@ const Header = () => {
       </HeaderMain>
       {modalActive && (
         <ModalApproval
-          setActive={setModalActive}
+          closeModal={closeModal}
+          confirmAction={logOut}
           title="Do you really want to leave?"
         />
       )}
