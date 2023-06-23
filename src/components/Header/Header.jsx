@@ -5,6 +5,7 @@ import Exite from 'components/Exite/Exite';
 
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const { isLogin } = useSelector(state => state.auth); //
@@ -15,10 +16,16 @@ const Header = () => {
     setModalActive(true);
   };
 
+  const navigate = useNavigate();
+
+  const onBtnClick = () => {
+    navigate('/expenses');
+  };
+
   return (
     <HeaderContainer>
       <HeaderMain>
-        <Image src={logo} alt="logo" />
+        <Image src={logo} alt="logo" onClick={onBtnClick} />
         {isLogin && <Exite onExitClick={handleExitClick} />}
       </HeaderMain>
       {modalActive && (

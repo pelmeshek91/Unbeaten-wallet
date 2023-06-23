@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import ReportsExpenses from 'components/ReportsExpenses/ReportsExpenses';
 import ReportAmount from 'components/ReportsIncome/ReportsAmount';
-
+import { GoMainBtn } from './ReportPage.styled';
+import { ImArrowLeft2 } from 'react-icons/im';
 const ReportPage = () => {
   const navigate = useNavigate();
 
@@ -12,11 +13,12 @@ const ReportPage = () => {
   return (
     <>
       <div>
-        <button type="button" onClick={onBtnClick}>
+        <GoMainBtn type="button" onClick={onBtnClick}>
+          <ImArrowLeft2 />
           Main page
-        </button>
+        </GoMainBtn>
       </div>
-      <ReportAmount/>
+      <ReportAmount />
       <ReportsExpenses />
     </>
   );
