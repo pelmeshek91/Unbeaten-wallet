@@ -11,12 +11,10 @@ const ReportPage = () => {
   const onBtnClick = () => {
     navigate('/expenses');
   };
-  const handleClick = selectedPeriod => {
-    console.log(selectedPeriod);
-  };
+
   return (
     <>
-      <ReportChanger onClick={handleClick} />
+      <ReportChanger />
       <BackContainer>
         <BackBtn type="button" onClick={onBtnClick}>
           <BsArrowLeft style={{ width: '24px', height: '24px' }} />

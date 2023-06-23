@@ -1,35 +1,44 @@
-
 import React from 'react';
 import ReactEcharts from 'echarts-for-react';
 
-function ChartBarIncome() {
+function ChartBarIncome({ list }) {
+  const row = [];
+  const column = [];
+
+  for (const key in list) {
+    if (key !== 'total') {
+      row.push(key);
+      column.push(list[key]);
+    }
+  }
+
   const option = {
     color: ['#3398DB'],
     tooltip: {
       trigger: 'axis',
       axisPointer: {
-        type: 'shadow'
-      }
+        type: 'shadow',
+      },
     },
     grid: {
       left: 25,
       right: 25,
       bottom: 0,
-      containLabel: true
+      containLabel: true,
     },
     xAxis: [
       {
         type: 'category',
-        data: ['My', 'Wife'],
+        data: row,
         axisTick: {
-          alignWithLabel: true
+          alignWithLabel: true,
         },
         axisLabel: {
           color: '#C7CCDC',
           interval: 0,
-          rotate: 35
-        }
-      }
+          rotate: 35,
+        },
+      },
     ],
     yAxis: {
       show: false,
@@ -37,19 +46,19 @@ function ChartBarIncome() {
         show: true,
         lineStyle: {
           color: '#C7CCDC',
-          type: 'dashed'
-        }
-      }
+          type: 'dashed',
+        },
+      },
     },
     series: [
       {
         name: 'none',
         type: 'bar',
         barWidth: 38,
-        data: [25000, 15000],
+        data: column,
         itemStyle: {
           borderRadius: [8, 8, 0, 0],
-          color: function(params) {
+          color: function (params) {
             if ((params.dataIndex + 1) % 2 === 1) {
               return {
                 type: 'linear',
@@ -60,13 +69,13 @@ function ChartBarIncome() {
                 colorStops: [
                   {
                     offset: 0,
-                    color: '#60C470'
+                    color: '#60C470',
                   },
                   {
                     offset: 1,
-                    color: '#383C46'
-                  }
-                ]
+                    color: '#383C46',
+                  },
+                ],
               };
             } else {
               return {
@@ -78,19 +87,19 @@ function ChartBarIncome() {
                 colorStops: [
                   {
                     offset: 0,
-                    color: '#5B5B6D'
+                    color: '#5B5B6D',
                   },
                   {
                     offset: 1,
-                    color: '#373745'
-                  }
-                ]
+                    color: '#373745',
+                  },
+                ],
               };
             }
-          }
-        }
-      }
-    ]
+          },
+        },
+      },
+    ],
   };
 
   return <ReactEcharts option={option} />;
