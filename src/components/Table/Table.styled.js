@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 export const Div = styled.div`
   width: 746px;
-  height: 400px;
+  /* height: 400px; */
   border-radius: 30px 30px 0px 0px;
   border: 2px solid #474759;
   overflow: hidden;
