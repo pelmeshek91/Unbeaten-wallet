@@ -8,7 +8,23 @@ export const SummaryWrapper = styled.div`
   border-top-right-radius: 20px;
   max-height: 290px;
   overflow: hidden;
-  margin-left: 77px;
+  /* margin-left: 77px; */
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    width: 213px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    max-height: 290px;
+    overflow: hidden;
+    margin-top: 40px;
+    /* margin-left: 77px; */
+  }
+  @media screen and (min-width: 1280px) {
+    margin-left: 77px;
+    margin-top: 0px;
+  }
 `;
 
 export const Thead = styled.thead`
