@@ -33,7 +33,6 @@ function ChartBarIncome({ list }) {
         },
       },
     ],
-
     yAxis: [
       {
         type: 'value',
@@ -56,8 +55,8 @@ function ChartBarIncome({ list }) {
       {
         name: 'Name',
         type: 'bar',
-        barCategoryGap: '25',
-        barWidth: '38',
+        barCategoryGap: '25%',
+        barWidth: '38', 
         data: column,
         itemStyle: {
           borderRadius: [8, 8, 0, 0],
@@ -110,8 +109,11 @@ function ChartBarIncome({ list }) {
       },
     ],
   };
+
   const chartStyle = {
     height: '600px',
+    display: 'flex',
+    justifyContent: column.length === 2 ? 'center' : 'flex-start', 
   };
 
   return <ReactEcharts option={option} style={chartStyle} />;
