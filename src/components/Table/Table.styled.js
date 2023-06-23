@@ -31,13 +31,13 @@ export const TableEL = styled.table`
   table-layout: fixed;
 `;
 export const Tr = styled.tr`
-  height: 36px;
+  height: 38px;
 `;
 export const Td = styled.td`
   width: 5%;
   border-bottom: 2px solid #474759;
-  height: 36px;
-
+  height: 38px;
+box-sizing: border-box;
   color: #c7ccdc;
   background: rgb(56, 56, 71);
   margin-left: 22px;
