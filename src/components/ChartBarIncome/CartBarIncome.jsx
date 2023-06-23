@@ -15,51 +15,54 @@ function ChartBarIncome({ list }) {
   const option = {
     color: ['#3398DB'],
     tooltip: {
-      trigger: 'axis',
-      axisPointer: {
-        type: 'shadow',
-      },
+      show: false,
     },
-    grid: {
-      left: 25,
-      right: 25,
-      bottom: 0,
-      containLabel: true,
-    },
+    grid: { left: 180, right: 180, bottom: 0, containLabel: true },
     xAxis: [
       {
         type: 'category',
         data: row,
         axisTick: {
           alignWithLabel: true,
+          align: 'center',
         },
         axisLabel: {
           color: '#C7CCDC',
           interval: 0,
-          rotate: 35,
+          align: 'center',
         },
       },
     ],
-    yAxis: {
-      show: false,
-      splitLine: {
-        show: true,
-        lineStyle: {
-          color: '#C7CCDC',
-          type: 'dashed',
+
+    yAxis: [
+      {
+        type: 'value',
+        minInterval: 100,
+        maxInterval: 1000,
+        axisLabel: {
+          show: false,
+          color: 'rgba(199, 204, 220, 1)',
+        },
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: 'rgba(71, 71, 89, 1)',
+            type: 'solid',
+          },
         },
       },
-    },
+    ],
     series: [
       {
-        name: 'none',
+        name: 'Name',
         type: 'bar',
-        barWidth: 38,
+        barCategoryGap: '25',
+        barWidth: '38',
         data: column,
         itemStyle: {
           borderRadius: [8, 8, 0, 0],
           color: function (params) {
-            if ((params.dataIndex + 1) % 2 === 1) {
+            if ((params.dataIndex + 1) % 3 === 1) {
               return {
                 type: 'linear',
                 x: 0,
@@ -98,11 +101,20 @@ function ChartBarIncome({ list }) {
             }
           },
         },
+        label: {
+          show: true,
+          position: 'top',
+          color: 'rgba(199, 204, 220, 1)',
+          formatter: '{c} UAH',
+        },
       },
     ],
   };
+  const chartStyle = {
+    height: '600px',
+  };
 
-  return <ReactEcharts option={option} />;
+  return <ReactEcharts option={option} style={chartStyle} />;
 }
 
 export default ChartBarIncome;
