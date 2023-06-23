@@ -57,7 +57,6 @@ export const ReportContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin: 0 auto 32px;
-  max-width: 1034px;
+  /* max-width: 1034px; */
   /* padding-top: 40px; */
 `;

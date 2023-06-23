@@ -7,7 +7,8 @@ export const BalanceContainer = styled.div`
   -webkit-box-align: baseline;
   align-items: center;
   justify-content: center;
-  margin-left: auto;
+  margin: 0px auto;
+  /* padding-left: 200px; */
 `;
 
 export const Button = styled.button`
