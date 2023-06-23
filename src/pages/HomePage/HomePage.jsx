@@ -2,7 +2,9 @@
 import TotalBalance from 'components/TotalBalance/TotalBalance';
 // import TransactionsExpenses from 'components/TransactionsExpenses/TransactionsExpenses';
 import { Suspense, useEffect } from 'react';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
+// import { Link  } from 'react-router-dom';
+import { StyledLink, Wrapper } from './HomePage.styled';
 
 import { ButtonLink } from './HomePage.styled';
 import { IoMdStats } from 'react-icons/io';
@@ -18,10 +20,13 @@ const HomePage = () => {
 
   return (
     <div>
-      <TotalBalance />
-      <Link to="report">
-        Reports <IoMdStats />
-      </Link>
+      <Wrapper>
+        <TotalBalance />
+
+        <StyledLink to="report">
+          Reports <IoMdStats />
+        </StyledLink>
+      </Wrapper>
       <div>
         <ButtonLink to="expenses">EXPENSES</ButtonLink>
         <ButtonLink to="incomes">INCOME</ButtonLink>

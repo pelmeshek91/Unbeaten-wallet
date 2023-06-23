@@ -4,6 +4,8 @@ import { HeaderContainer, HeaderMain, Image } from './Header.styled';
 import Exite from 'components/Exite/Exite';
 
 import { useState } from 'react';
+
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutThunk } from 'redux/auth/authOperations';
 
@@ -25,10 +27,16 @@ const Header = () => {
       .then(() => setModalActive(false));
   };
 
+  const navigate = useNavigate();
+
+  const onBtnClick = () => {
+    navigate('/expenses');
+  };
+
   return (
     <HeaderContainer>
       <HeaderMain>
-        <Image src={logo} alt="logo" />
+        <Image src={logo} alt="logo" onClick={onBtnClick} />
         {email && <Exite onExitClick={handleExitClick} />}
       </HeaderMain>
       {modalActive && (
