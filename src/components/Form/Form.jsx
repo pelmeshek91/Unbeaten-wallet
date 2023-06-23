@@ -95,7 +95,9 @@ export const TransactionForm = () => {
       <DivContainer>
         <ToastContainer />
         {/* icon calendaryk */}
-        <BsCalendar4Week style={{ width: '20px', height: '20px' }} />
+        <BsCalendar4Week
+          style={{ width: '20px', height: '20px', fill: '#C7CCDC' }}
+        />
         <DatePicker
           dateFormat="dd.MM.yyyy"
           selected={selectedDate}
@@ -138,7 +140,9 @@ export const TransactionForm = () => {
                 required
               ></InputNum>
               <IconContainer>
-                <CiCalculator1 style={{ width: '20px', height: '20px' }} />
+                <CiCalculator1
+                  style={{ width: '20px', height: '20px', fill: '#C7CCDC' }}
+                />
               </IconContainer>
             </Container>
 

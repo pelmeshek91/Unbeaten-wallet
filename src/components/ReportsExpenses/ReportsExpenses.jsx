@@ -23,7 +23,9 @@ import { useSelector } from 'react-redux';
 const ReportsContainer = () => {
   const [reportType, setReportType] = useState('EXPENSES');
   const [list, setList] = useState(null);
-  const { transactions } = useSelector(state => state.transactions);
+  const { transactions, incomes, expenses } = useSelector(
+    state => state.transactions
+  );
 
   const handleToggleReport = () => {
     setReportType(prevType =>
@@ -149,15 +151,17 @@ const ReportsContainer = () => {
           ))}
         </ListImages>
       </SectionReport>
-      {reportType === 'EXPENSES' ? (
-        <ChartBarContainer>
-          <ChartBar list={list} />
-        </ChartBarContainer>
-      ) : (
-        <ChartBarContainerIncomes>
-          <ChartBarIncome list={list} />
-        </ChartBarContainerIncomes>
-      )}
+      {reportType === 'EXPENSES'
+        ? expenses.length > 0 && (
+            <ChartBarContainer>
+              <ChartBar list={list} />
+            </ChartBarContainer>
+          )
+        : incomes.length > 0 && (
+            <ChartBarContainerIncomes>
+              <ChartBarIncome list={list} />
+            </ChartBarContainerIncomes>
+          )}
     </>
   );
 };

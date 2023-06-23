@@ -11,8 +11,6 @@ import {
 } from './Exite.styled';
 
 const Exite = ({ onExitClick }) => {
-  // const email = 'userName@gmail.com';
-
   const { email } = useSelector(state => state.auth);
   const userName = email.split('@')[0];
 
