@@ -50,7 +50,7 @@ export const StyledLink = styled(NavLink)`
   border: transparent;
 
   border-radius: 4px;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
   margin-right: 91px;
   margin-left: auto;
 
