@@ -2,15 +2,22 @@ import React from 'react';
 import ReactEcharts from 'echarts-for-react';
 
 function ChartBar({ list }) {
-  const row = [];
-  const column = [];
+  const newList =
+    list &&
+    Object.entries(list)
+      .filter(([key, value]) => key !== 'total')
+      .sort((a, b) => b[1] - a[1])
+      .reduce(
+        (acc, currentValue) => ({
+          row: [...acc.row, currentValue[0]],
+          column: [...acc.column, currentValue[1]],
+        }),
 
-  for (const key in list) {
-    if (key !== 'total') {
-      row.push(key);
-      column.push(list[key]);
-    }
-  }
+        {
+          row: [],
+          column: [],
+        }
+      );
 
   const option = {
     color: ['#3398DB'],
@@ -21,7 +28,7 @@ function ChartBar({ list }) {
     xAxis: [
       {
         type: 'category',
-        data: row,
+        data: newList?.row,
         axisTick: {
           alignWithLabel: true,
           align: 'center',
@@ -58,7 +65,7 @@ function ChartBar({ list }) {
         type: 'bar',
         barCategoryGap: '25',
         barWidth: '38',
-        data: column,
+        data: newList?.column,
         itemStyle: {
           borderRadius: [8, 8, 0, 0],
           color: function (params) {

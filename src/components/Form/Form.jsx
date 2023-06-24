@@ -1,20 +1,19 @@
 import Select from 'react-select';
-import { forwardRef, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { CiCalculator1 } from 'react-icons/ci';
-import DatePicker from 'react-datepicker';
 
+// import { Formik } from 'formik';
+// import * as yup from 'yup';
 import {
   BtnContainer,
   ClearBtn,
   Container,
-  DivContainer,
   Form,
   IconContainer,
   Input,
   InputBtn,
-  InputDate,
   InputNum,
   MainContainer,
 } from './Form.styled';
@@ -25,34 +24,38 @@ import {
 } from 'redux/transcactions/transcactionsOperations';
 import { incomes, expenses } from '../../utilits/category';
 import { useParams } from 'react-router';
-import { enGB } from 'date-fns/locale';
-import { BsCalendar4Week } from 'react-icons/bs';
-import { ToastContainer, toast } from 'react-toastify';
-// import { DivContainer, InputDate } from 'components/Date/Date.styled';
-// import { TransactionDate } from 'components/Date/Date';
-// import '../Date/date.css';
 
-export const TransactionForm = () => {
+import { toast } from 'react-toastify';
+
+// const validationSchema = yup.object().shape({
+//   description: yup
+//     .string()
+//     .min(2, 'Too Short!')
+//     .max(50, 'Too Long!')
+//     .required('Required'),
+//   amount: yup
+//     .number()
+//     .min(2, 'Too Short!')
+//     .max(10, 'Too Long!')
+//     .required('Required'),
+// });
+
+const initialState = { description: '', amount: '' };
+
+export const TransactionForm = ({ currrentDate }) => {
   const [selectedOption, setSelectedOption] = useState(null);
+  const [form, setForm] = useState(initialState);
   const formRef = useRef(null);
   const { expenses: key } = useParams();
   const dispatch = useDispatch();
-  const [selectedDate, setSelectedDate] = useState(new Date()); ///записуємо  в початковий стан дату сьогоднішню
-  const currrentDate = selectedDate.toISOString().split('T')[0];
+
   const { balance, expenses: trans } = useSelector(state => state.transactions);
 
-  //  використовуємо forwardRef шоб передати ref з DatePicker комп до внутрішньої комп CustomInput
-  const CustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
-    <InputDate
-      value={value}
-      onClick={onClick}
-      onChange={onChange}
-      ref={ref}
-      onKeyDown={e => {
-        e.preventDefault();
-      }}
-    ></InputDate>
-  ));
+  const handleChange = ({ target: { name, value } }) => {
+    setForm(prevForm => {
+      return { ...prevForm, [name]: value };
+    });
+  };
 
   const handleFormSubmit = e => {
     e.preventDefault();
@@ -86,40 +89,35 @@ export const TransactionForm = () => {
     }
 
     //   очистка форми
-    formRef.current.reset();
+    setForm(initialState);
     setSelectedOption(null);
   };
 
   return (
     <>
-      <DivContainer>
-        <ToastContainer />
-        {/* icon calendaryk */}
-        <BsCalendar4Week
-          style={{ width: '20px', height: '20px', fill: '#C7CCDC' }}
-        />
-        <DatePicker
-          dateFormat="dd.MM.yyyy"
-          selected={selectedDate}
-          onChange={date => {
-            setSelectedDate(date);
-          }}
-          locale={enGB}
-          maxDate={new Date()}
-          calendarClassName="calendar"
-          className="datepicker"
-          customInput={<CustomInput />}
-        />
-      </DivContainer>
       <MainContainer>
         <div>
+          {/* <Formik
+            ref={formRef}
+            initialValues={{ description: '', amount: '' }}
+            validationSchema={validationSchema}
+            onSubmit={handleFormSubmit}
+          >
+            {({ values, errors, touched, handleChange, handleBlur }) => ( */}
           <Form ref={formRef} onSubmit={handleFormSubmit}>
-            <Input
-              type="text"
-              placeholder="Product description"
-              required
-              name="description"
-            />
+            <label htmlFor="description">
+              <Input
+                type="text"
+                placeholder="Product description"
+                required
+                name="description"
+                value={form.description}
+                onChange={handleChange}
+              />
+              {/* {errors.description && touched.description && (
+                    <div>{errors.description}</div>
+                  )} */}
+            </label>
             <Select
               className="select-container"
               value={selectedOption}
@@ -138,10 +136,14 @@ export const TransactionForm = () => {
                 name="amount"
                 placeholder="0.00"
                 required
-              ></InputNum>
+                value={form.amount}
+                onChange={handleChange}
+                decimalScale={2}
+              />
+
               <IconContainer>
                 <CiCalculator1
-                  style={{ width: '20px', height: '20px', fill: '#C7CCDC' }}
+                  style={{ width: '22px', height: '22px', fill: '#C7CCDC' }}
                 />
               </IconContainer>
             </Container>
@@ -150,9 +152,11 @@ export const TransactionForm = () => {
               <InputBtn type="submit" disabled={!balance && !trans.length}>
                 Input
               </InputBtn>
-              <ClearBtn type="reset">Clear</ClearBtn>
+              <ClearBtn onClick={() => setForm(initialState)}>Clear</ClearBtn>
             </BtnContainer>
           </Form>
+          {/* //   )}
+          // </Formik> */}
         </div>
       </MainContainer>
     </>
