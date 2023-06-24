@@ -25,7 +25,13 @@ export function Table() {
 
   const { expenses: key } = useParams();
   const transactions = useSelector(state => state.transactions[key]);
-
+  const dateTransactionsFilter = useSelector(state => state.transactions.date);
+  console.log(dateTransactionsFilter);
+  const filteredTransactions = transactions.filter(
+    ({ date }) => date === dateTransactionsFilter
+  );
+  // console.log(filteredTransactions);
+  // console.log(filteredTransactions);
   const arr = useMemo(() => {
     return transactions.length > tableDefaultArray.length
       ? transactions
