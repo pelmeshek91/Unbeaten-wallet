@@ -19,24 +19,22 @@ import ModalApproval from 'components/ModalsWindow/ModalApproval';
 
 const tableDefaultArray = Array(9).fill(null);
 
-export function Table() {
+export function Table({ currrentDate }) {
   const dispatch = useDispatch();
   const [transactionId, setTransactionId] = useState('');
 
   const { expenses: key } = useParams();
   const transactions = useSelector(state => state.transactions[key]);
-  const dateTransactionsFilter = useSelector(state => state.transactions.date);
-  console.log(dateTransactionsFilter);
+
   const filteredTransactions = transactions.filter(
-    ({ date }) => date === dateTransactionsFilter
+    ({ date }) => date === currrentDate
   );
-  // console.log(filteredTransactions);
-  // console.log(filteredTransactions);
+
   const arr = useMemo(() => {
-    return transactions.length > tableDefaultArray.length
-      ? transactions
-      : transactions.concat(
-          Array(tableDefaultArray.length - transactions.length).fill({
+    return filteredTransactions.length > tableDefaultArray.length
+      ? filteredTransactions
+      : filteredTransactions.concat(
+          Array(tableDefaultArray.length - filteredTransactions.length).fill({
             description: '',
             amount: '',
             date: '',
@@ -44,7 +42,7 @@ export function Table() {
             _id: '',
           })
         );
-  }, [transactions]);
+  }, [filteredTransactions]);
 
   const closeModal = () => {
     setTransactionId('');

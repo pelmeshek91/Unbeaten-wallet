@@ -12,20 +12,14 @@ import {
 } from './ReportExpenses.styled';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import ChartBar from '../ChartBar/ChartBar';
-import {
-  ChartBarContainer,
-  ChartBarContainerIncomes,
-} from 'components/ChartBar/ChartBar.styled';
-import ChartBarIncome from 'components/ChartBarIncome/CartBarIncome';
+import { ChartBarContainer } from 'components/ChartBar/ChartBar.styled';
 
 import { useSelector } from 'react-redux';
 
 const ReportsContainer = () => {
   const [reportType, setReportType] = useState('EXPENSES');
   const [list, setList] = useState(null);
-  const { transactions, incomes, expenses } = useSelector(
-    state => state.transactions
-  );
+  const { transactions } = useSelector(state => state.transactions);
 
   const handleToggleReport = () => {
     setReportType(prevType =>
@@ -112,14 +106,16 @@ const ReportsContainer = () => {
           categoryAmount: categoryAmount,
         };
       })
-      .sort((a, b) => b.categoryAmount - a.categoryAmount);
+      .sort((a, b) => b.categoryAmount - a.categoryAmount)
+      .filter(({ categoryAmount }) => categoryAmount !== 0);
   }
   useEffect(() => {
     if (!transactions) return;
     setList(categoriesList[0]?.categoryDataList);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reportType, transactions]);
-
+  console.log('list', list);
+  console.log('transactions', transactions);
   return (
     <>
       <SectionReport>
@@ -151,7 +147,7 @@ const ReportsContainer = () => {
           ))}
         </ListImages>
       </SectionReport>
-      {transactions && (
+      {list && (
         <ChartBarContainer>
           <ChartBar list={list} />
         </ChartBarContainer>
