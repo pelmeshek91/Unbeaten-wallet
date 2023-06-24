@@ -1,25 +1,21 @@
 import styled from 'styled-components';
 
 export const BalanceContainer = styled.div`
-  /* padding: 19px; */
   display: flex;
   -webkit-box-pack: center;
   -webkit-box-align: baseline;
   align-items: center;
   justify-content: center;
   margin: 0px auto;
-  /* padding-left: 200px; */
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const Button = styled.button`
-  //
   cursor: pointer;
-  /* position: fixed;
-  top: 88px;
-  left: 654px; */
-
   display: flex;
-  /* margin-right: 16px; */
   border-radius: 16px;
   border: 2px solid rgb(71, 71, 89);
   padding: 16px 48px;
@@ -44,24 +40,17 @@ export const Button = styled.button`
     background: rgb(61, 148, 76);
   }
 
-  @media (max-width: 600px) {
-    /* margin-left: 0;
-    margin-bottom: 10px; */
+  @media (max-width: 768px) {
     top: auto;
-    right: 16px;
-    padding: 12px 32px;
+    width: 140px;
+    height: 44px;
+    padding: 10px;
     font-size: 14px;
-    height: 40px;
+    border-radius: 0 16px 16px 0;
   }
 `;
 
 export const Input = styled.input`
-  //balance
-  /* position: fixed;
-  top: 89px;
-  left: 497px; */
-
-  /* margin-right: 16px; */
   width: 125px;
   height: 16px;
   border-radius: 16px;
@@ -76,19 +65,15 @@ export const Input = styled.input`
   color: rgb(246, 247, 251);
   text-align: center;
 
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     margin-right: 0;
-    width: 100%;
-    height: 40px;
-    padding: 10px;
+    width: 140px;
     font-size: 14px;
+    border-radius: 16px 0 0 16px;
   }
 `;
 
 export const BalanceValue = styled.p`
-  /* position: fixed;
-  top: 76px;
-  left: 497px; */
   width: 125px;
   height: 16px;
   border-radius: 16px;
@@ -104,21 +89,24 @@ export const BalanceValue = styled.p`
   text-align: center;
   margin: 0;
   margin-right: 141px;
+
+  @media (max-width: 768px) {
+  }
 `;
 
 export const BalanceLabel = styled.p`
-  /* position: fixed;
-  top: 70px;
-  left: 387px; */
   font-size: 24px;
   font-weight: bold;
   color: #c7ccdc;
   margin: 0;
   margin-right: 20px;
+  @media (max-width: 768px) {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
 `;
 
 export const InputContainer = styled.div`
-  /* margin-top: 16px; */
   display: flex;
 `;
 
@@ -173,9 +161,11 @@ export const StyledMessage = styled.div`
     border-bottom: 10px solid rgb(88, 187, 103);
   }
 
-  /* @media (max-width: 1024px) {
-    display: none;
-  } */
+  @media (max-width: 1024px) {
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
 `;
 
 export const RelativeContainer = styled.div`
