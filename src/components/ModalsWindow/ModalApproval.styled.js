@@ -31,6 +31,9 @@ export const ModalContainer = styled.div`
   transform: translate(-50%, -50%);
   z-index: 9999;
   padding: 40px 57px;
+
+  border: none;
+  box-shadow: 1px -1px 24px -2px #41a350;
 `;
 
 export const StyledExitIcon = styled(MdOutlineClose)`
@@ -40,6 +43,10 @@ export const StyledExitIcon = styled(MdOutlineClose)`
   right: 20px;
   width: 24px;
   height: 24px;
+  &:hover,
+  &:focus {
+    color: #42a652;
+  }
 `;
 
 export const Question = styled.p`
@@ -60,7 +67,10 @@ export const YesBtn = styled.button`
   height: 44px;
   color: #c7ccdc;
   background: transparent;
-
+  border: none;
+  border: 2px solid #474759;
+  border-color: #474759;
+  box-shadow: 1px 3px 5px #272732;
   border-radius: 16px;
   &:hover,
   &:focus {
@@ -73,7 +83,10 @@ export const NoBtn = styled.button`
   height: 44px;
   color: #c7ccdc;
   background: transparent;
-
+  border: none;
+  border: 2px solid #474759;
+  border-color: #474759;
+  box-shadow: 1px 3px 5px #272732;
   border-radius: 16px;
   &:hover,
   &:focus {

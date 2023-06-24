@@ -3,6 +3,13 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import date from 'date-and-time';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTransactionsReportsThunk } from '../../redux/transcactions/transcactionsOperations';
+import {
+  Btn,
+  BtnContainer,
+  Descr,
+  Description,
+  ReportContainer,
+} from './ReportChanger.styled';
 
 const ReportChanger = () => {
   const data = new Date();
@@ -29,28 +36,28 @@ const ReportChanger = () => {
   };
 
   return (
-    <div>
-      <p>Current period:</p>
-      <div>
-        <button
+    <ReportContainer>
+      <Descr>Current period:</Descr>
+      <BtnContainer>
+        <Btn
           onClick={() => {
             handleData(-1);
             setNewData(date.addMonths(newData, -1));
           }}
         >
           <MdKeyboardArrowLeft size="20" color="green" />
-        </button>
-        <span>{date.format(newData, 'MMMM YYYY')}</span>
-        <button
+        </Btn>
+        <Description>{date.format(newData, 'MMMM YYYY')}</Description>
+        <Btn
           onClick={() => {
             handleData(1);
             setNewData(date.addMonths(newData, 1));
           }}
         >
           <MdKeyboardArrowRight size="20" color="green" />
-        </button>
-      </div>
-    </div>
+        </Btn>
+      </BtnContainer>
+    </ReportContainer>
   );
 };
 
