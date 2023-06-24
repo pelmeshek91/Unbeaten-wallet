@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Unbeaten-wallet/static/css/main.a6a9a5b0.css",
-    "main.js": "/Unbeaten-wallet/static/js/main.a22a7e2b.js",
+    "main.css": "/Unbeaten-wallet/static/css/main.e7d89df5.css",
+    "main.js": "/Unbeaten-wallet/static/js/main.0fe1aa3f.js",
     "static/media/Rectangle-desctop@2x.png": "/Unbeaten-wallet/static/media/Rectangle-desctop@2x.0ab0d80433b219260cd1.png",
     "static/media/Rectangle-tablet@2x.png": "/Unbeaten-wallet/static/media/Rectangle-tablet@2x.13cea6c930aaa43156e1.png",
     "static/media/Ellipse-bigger.png": "/Unbeaten-wallet/static/media/Ellipse-bigger.3c02f0fbe94560b75c3b.png",
     "static/media/wallet.png": "/Unbeaten-wallet/static/media/wallet.8b2b68d04e7c25a27561.png",
     "static/media/Ellipse.png": "/Unbeaten-wallet/static/media/Ellipse.85281cc6a2edbe475444.png",
     "index.html": "/Unbeaten-wallet/index.html",
-    "main.a6a9a5b0.css.map": "/Unbeaten-wallet/static/css/main.a6a9a5b0.css.map",
-    "main.a22a7e2b.js.map": "/Unbeaten-wallet/static/js/main.a22a7e2b.js.map"
+    "main.e7d89df5.css.map": "/Unbeaten-wallet/static/css/main.e7d89df5.css.map",
+    "main.0fe1aa3f.js.map": "/Unbeaten-wallet/static/js/main.0fe1aa3f.js.map"
   },
   "entrypoints": [
-    "static/css/main.a6a9a5b0.css",
-    "static/js/main.a22a7e2b.js"
+    "static/css/main.e7d89df5.css",
+    "static/js/main.0fe1aa3f.js"
   ]
 }
