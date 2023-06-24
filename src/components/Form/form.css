@@ -1,5 +1,4 @@
 .select-container {
-  width: 280px;
   height: auto;
   background-color: rgb(56, 56, 71);
 }
@@ -10,7 +9,7 @@
   background-color: rgb(56, 56, 71);
   border: 2px solid rgb(71, 71, 89);
   border-radius: 0;
-  width: 280px;
+  width: 170px;
   border-bottom-right-radius: 0;
   color: rgba(199, 204, 220, 0.5);
   border: 2px solid rgb(71, 71, 89);
