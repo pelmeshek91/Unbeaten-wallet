@@ -151,17 +151,11 @@ const ReportsContainer = () => {
           ))}
         </ListImages>
       </SectionReport>
-      {reportType === 'EXPENSES'
-        ? expenses.length > 0 && (
-            <ChartBarContainer>
-              <ChartBar list={list} />
-            </ChartBarContainer>
-          )
-        : incomes.length > 0 && (
-            <ChartBarContainerIncomes>
-              <ChartBarIncome list={list} />
-            </ChartBarContainerIncomes>
-          )}
+      {transactions && (
+        <ChartBarContainer>
+          <ChartBar list={list} />
+        </ChartBarContainer>
+      )}
     </>
   );
 };

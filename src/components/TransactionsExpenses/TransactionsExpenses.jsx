@@ -14,9 +14,6 @@ const TransactionsExpenses = () => {
   const { balance } = useSelector(state => state.transactions);
   useEffect(() => {
     key === 'expenses' && isLogin && dispatch(getTransactionsExpensesThunk());
-  }, [balance, key, dispatch, isLogin]);
-
-  useEffect(() => {
     key === 'incomes' && isLogin && dispatch(getTransactionsIncomeThunk());
   }, [balance, key, dispatch, isLogin]);
 
