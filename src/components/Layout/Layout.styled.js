@@ -3,7 +3,8 @@ import { createGlobalStyle } from 'styled-components';
 import desktopRectangle from '../../img/decor-img/Rectangle-desctop@2x.png';
 import tabletRectangle from '../../img/decor-img/Rectangle-tablet@2x.png';
 export const Container = styled.main`
-  width: 1280px;
+  /* width: 1280px; */
+  max-width: 1280px;
   margin: 0 auto;
 `;
 

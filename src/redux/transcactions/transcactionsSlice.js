@@ -10,13 +10,14 @@ import {
   getUserInfoThunk,
   updateUserBalanceThunk,
 } from './transcactionsOperations';
-import { loginUserThunk } from 'redux/auth/authOperations';
+import { loginUserThunk, logoutThunk } from 'redux/auth/authOperations';
 
 const handleGetTransactionsExpenses = (state, { payload }) => {
   state.expenses = payload.expenses;
   state.error = null;
   state.isLoading = false;
   state.monthStatsExpenses = payload.monthsStats;
+  // console.log(payload);
 };
 const handleAddTransactionsExpenses = (state, { payload }) => {
   state.expenses.push(payload.transaction);
@@ -64,13 +65,23 @@ const getTransactionsReportsFulfilled = (state, { payload }) => {
   state.transactions = payload;
   state.error = null;
   state.isLoading = false;
-  console.log(payload);
+  // console.log(payload);
 };
 const handleInfoRejected = (state, { error }) => {
   state.error = error.message;
 };
 const handleBalance = (state, { payload }) => {
   state.balance = payload.userData.balance;
+};
+const handleLogoutFulfilled = state => {
+  state.balance = 0;
+  state.transactions = null;
+  state.expenses = [];
+  state.incomes = [];
+  state.monthStatsIncome = {};
+  state.monthStatsExpenses = {};
+  state.error = null;
+  state.isLoading = false;
 };
 const transactionsSlice = createSlice({
   name: 'transactions',
@@ -81,6 +92,7 @@ const transactionsSlice = createSlice({
         getTransactionsExpensesThunk.fulfilled,
         handleGetTransactionsExpenses
       )
+      .addCase(logoutThunk.fulfilled, handleLogoutFulfilled)
       .addCase(loginUserThunk.fulfilled, handleBalance)
       .addCase(
         addTransactionExpensesThunk.fulfilled,

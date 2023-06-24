@@ -1,56 +1,67 @@
-
 import React from 'react';
 import ReactEcharts from 'echarts-for-react';
 
-function ChartBarIncome() {
+function ChartBarIncome({ list }) {
+  const row = [];
+  const column = [];
+
+  for (const key in list) {
+    if (key !== 'total') {
+      row.push(key);
+      column.push(list[key]);
+    }
+  }
+
   const option = {
     color: ['#3398DB'],
     tooltip: {
-      trigger: 'axis',
-      axisPointer: {
-        type: 'shadow'
-      }
+      show: false,
     },
-    grid: {
-      left: 25,
-      right: 25,
-      bottom: 0,
-      containLabel: true
-    },
+    grid: { left: 180, right: 180, bottom: 0, containLabel: true },
     xAxis: [
       {
         type: 'category',
-        data: ['My', 'Wife'],
+        data: row,
         axisTick: {
-          alignWithLabel: true
+          alignWithLabel: true,
+          align: 'center',
         },
         axisLabel: {
           color: '#C7CCDC',
           interval: 0,
-          rotate: 35
-        }
-      }
+          align: 'center',
+        },
+      },
     ],
-    yAxis: {
-      show: false,
-      splitLine: {
-        show: true,
-        lineStyle: {
-          color: '#C7CCDC',
-          type: 'dashed'
-        }
-      }
-    },
+    yAxis: [
+      {
+        type: 'value',
+        minInterval: 100,
+        maxInterval: 1000,
+        axisLabel: {
+          show: false,
+          color: 'rgba(199, 204, 220, 1)',
+        },
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: 'rgba(71, 71, 89, 1)',
+            type: 'solid',
+          },
+        },
+      },
+    ],
     series: [
       {
-        name: 'none',
+        name: 'Name',
         type: 'bar',
-        barWidth: 38,
-        data: [25000, 15000],
+        barCategoryGap: '25%',
+        barWidth: '38', 
+        data: column,
         itemStyle: {
           borderRadius: [8, 8, 0, 0],
-          color: function(params) {
-            if ((params.dataIndex + 1) % 2 === 1) {
+          color: function (params) {
+            if ((params.dataIndex + 1) % 3 === 1) {
               return {
                 type: 'linear',
                 x: 0,
@@ -60,13 +71,13 @@ function ChartBarIncome() {
                 colorStops: [
                   {
                     offset: 0,
-                    color: '#60C470'
+                    color: '#60C470',
                   },
                   {
                     offset: 1,
-                    color: '#383C46'
-                  }
-                ]
+                    color: '#383C46',
+                  },
+                ],
               };
             } else {
               return {
@@ -78,22 +89,34 @@ function ChartBarIncome() {
                 colorStops: [
                   {
                     offset: 0,
-                    color: '#5B5B6D'
+                    color: '#5B5B6D',
                   },
                   {
                     offset: 1,
-                    color: '#373745'
-                  }
-                ]
+                    color: '#373745',
+                  },
+                ],
               };
             }
-          }
-        }
-      }
-    ]
+          },
+        },
+        label: {
+          show: true,
+          position: 'top',
+          color: 'rgba(199, 204, 220, 1)',
+          formatter: '{c} UAH',
+        },
+      },
+    ],
   };
 
-  return <ReactEcharts option={option} />;
+  const chartStyle = {
+    height: '600px',
+    display: 'flex',
+    justifyContent: column.length === 2 ? 'center' : 'flex-start', 
+  };
+
+  return <ReactEcharts option={option} style={chartStyle} />;
 }
 
 export default ChartBarIncome;

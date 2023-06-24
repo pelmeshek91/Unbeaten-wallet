@@ -18,7 +18,7 @@ const TotalBalance = () => {
   const dispatch = useDispatch();
   const [newTopUp, setNewTopUp] = useState('');
   const { balance, expenses } = useSelector(state => state.transactions);
-  console.log(expenses.length);
+
   const makeTopUp = useCallback(async () => {
     if (newTopUp === '') {
       toast.error('Please input an amount');

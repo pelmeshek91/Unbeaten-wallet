@@ -27,6 +27,7 @@ const transactionsPersistConfig = {
     'incomes',
     'monthStatsIncome',
     'monthStatsExpenses',
+    'transactions',
   ],
 };
 

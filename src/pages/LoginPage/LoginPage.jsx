@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import wallet from '../../img/decor-img/wallet.png';
 
 import {
+  Header,
   Container,
   Form,
   Label,
@@ -56,6 +57,7 @@ const LoginPage = () => {
   return (
     <div>
       <ToastContainer />
+      <Header />
       <GlobalStyle />
       <Container>
         <ImgWallet>

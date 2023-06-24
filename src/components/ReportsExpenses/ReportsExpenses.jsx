@@ -1,107 +1,124 @@
 import React, { useState, useEffect } from 'react';
 import * as expensesImages from 'components/ReportsExpenses/image';
 import * as incomeImages from 'components/ReportsExpenses/imageIncome';
-import { ImageItem, ListImages, ImageName, Colum, SectionReport, BtnSection, BtnReport } from './ReportExpenses.styled';
+import {
+  ImageItem,
+  ListImages,
+  ImageName,
+  Colum,
+  SectionReport,
+  BtnSection,
+  BtnReport,
+} from './ReportExpenses.styled';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import ChartBar from '../ChartBar/ChartBar';
-import { ChartBarContainer, ChartBarContainerIncomes } from 'components/ChartBar/ChartBar.styled';
+import {
+  ChartBarContainer,
+  ChartBarContainerIncomes,
+} from 'components/ChartBar/ChartBar.styled';
 import ChartBarIncome from 'components/ChartBarIncome/CartBarIncome';
-import { getTransactionsReports } from 'services/walletApi';
+
+import { useSelector } from 'react-redux';
 
 const ReportsContainer = () => {
   const [reportType, setReportType] = useState('EXPENSES');
-  const [data, setData] = useState(null);
-
-  const formattedDate = `2023-06`;
-  // console.log(formattedDate);
-  useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const result = await getTransactionsReports(formattedDate);
-      setData(result);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-  fetchData();
-}, [formattedDate]);
+  const [list, setList] = useState(null);
+  const { transactions, incomes, expenses } = useSelector(
+    state => state.transactions
+  );
 
   const handleToggleReport = () => {
-    setReportType(prevType => (prevType === 'EXPENSES' ? 'INCOME' : 'EXPENSES'));
+    setReportType(prevType =>
+      prevType === 'EXPENSES' ? 'INCOME' : 'EXPENSES'
+    );
   };
 
   const expensesImagesMap = {
-    "Продукты": {
-      label: "Products",
+    Продукты: {
+      label: 'Products',
       icon: expensesImages.products,
     },
-    "Алкоголь": {
-      label: "Alcohol",
+    Алкоголь: {
+      label: 'Alcohol',
       icon: expensesImages.alcogol,
     },
-    "Развлечения": {
-      label: "Entertainment",
+    Развлечения: {
+      label: 'Entertainment',
       icon: expensesImages.entertainment,
     },
-    "Здоровье": {
-      label: "Health",
+    Здоровье: {
+      label: 'Health',
       icon: expensesImages.health,
     },
-    "Транспорт": {
-      label: "Transport",
+    Транспорт: {
+      label: 'Transport',
       icon: expensesImages.transport,
     },
-    "Всё для дома": {
-      label: "Housing",
+    'Всё для дома': {
+      label: 'Housing',
       icon: expensesImages.housing,
     },
-    "Техника": {
-      label: "Technique",
+    Техника: {
+      label: 'Technique',
       icon: expensesImages.technique,
     },
-    "Коммуналка и связь": {
-      label: "Communal, communication",
+    'Коммуналка и связь': {
+      label: 'Communal, communication',
       icon: expensesImages.communal,
     },
-    "Спорт и хобби": {
-      label: "Sports, hobbies",
+    'Спорт и хобби': {
+      label: 'Sports, hobbies',
       icon: expensesImages.sports_hobbies,
     },
-    "Образование": {
-      label: "Education",
+    Образование: {
+      label: 'Education',
       icon: expensesImages.education,
     },
-    "Прочее": {
-      label: "Other",
+    Прочее: {
+      label: 'Other',
       icon: expensesImages.other,
     },
   };
 
   const incomeImagesMap = {
-    "Зарплата": {
-      label: "Salary",
+    'З/П': {
+      label: 'Salary',
       icon: incomeImages.salary,
     },
-    "Дополнительный доход": {
-      label: "Add. income",
+    'Доп. доход': {
+      label: 'Add. income',
       icon: incomeImages.add_income,
     },
   };
-  const categoriesMap = reportType === 'EXPENSES' ? expensesImagesMap : incomeImagesMap;
+  const categoriesMap =
+    reportType === 'EXPENSES' ? expensesImagesMap : incomeImagesMap;
 
   let categoriesList = [];
-  if (data) {
-    categoriesList = Object.entries(categoriesMap).map(([key, value]) => {
-      const categoryData = reportType === 'EXPENSES' ? data.expenses.expensesData[key] : data.incomes.incomesData[key];
-      const categoryAmount = categoryData ? categoryData.total : 0;
 
-      return {
-        categoryName: value.label,
-        categoryIcon: value.icon,
-        categoryAmount: categoryAmount,
-      };
-    });
+  if (transactions) {
+    categoriesList = Object.entries(categoriesMap)
+      .map(([key, value]) => {
+        const categoryData =
+          reportType === 'EXPENSES'
+            ? transactions.expenses.expensesData[key]
+            : transactions.incomes.incomesData[key];
+
+        const categoryAmount = categoryData ? categoryData.total : 0;
+
+        return {
+          categoryDataList: categoryData,
+          categoryName: value.label,
+          categoryIcon: value.icon,
+          categoryAmount: categoryAmount,
+        };
+      })
+      .sort((a, b) => b.categoryAmount - a.categoryAmount);
   }
+  useEffect(() => {
+    if (!transactions) return;
+    setList(categoriesList[0]?.categoryDataList);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reportType, transactions]);
 
   return (
     <>
@@ -117,26 +134,34 @@ const ReportsContainer = () => {
         </BtnSection>
 
         <ListImages>
-  {categoriesList.map((category, index) => (
-    <Colum key={index}>
-      <ImageName>{category.categoryAmount.toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      })}</ImageName>
-      <ImageItem>
-        <img src={category.categoryIcon} alt={category.categoryName} />
-      </ImageItem>
-      <ImageName>{category.categoryName}</ImageName>
-    </Colum>
-  ))}
-</ListImages>
+          {categoriesList.map((category, index) => (
+            <Colum key={index}>
+              <ImageName>
+                {category.categoryAmount.toLocaleString('en-US', {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </ImageName>
+
+              <ImageItem onClick={() => setList(category.categoryDataList)}>
+                <img src={category.categoryIcon} alt={category.categoryName} />
+              </ImageItem>
+              <ImageName>{category.categoryName}</ImageName>
+            </Colum>
+          ))}
+        </ListImages>
       </SectionReport>
-      <ChartBarContainer>
-        <ChartBar />
-      </ChartBarContainer>
-      <ChartBarContainerIncomes>
-        <ChartBarIncome />
-      </ChartBarContainerIncomes>
+      {reportType === 'EXPENSES'
+        ? expenses.length > 0 && (
+            <ChartBarContainer>
+              <ChartBar list={list} />
+            </ChartBarContainer>
+          )
+        : incomes.length > 0 && (
+            <ChartBarContainerIncomes>
+              <ChartBarIncome list={list} />
+            </ChartBarContainerIncomes>
+          )}
     </>
   );
 };

@@ -1,25 +1,22 @@
-import { useNavigate } from 'react-router-dom';
 import ReportsExpenses from 'components/ReportsExpenses/ReportsExpenses';
 import ReportChanger from 'components/ReportChanger/ReportChanger';
 import ReportAmount from 'components/ReportsIncome/ReportsAmount';
+import { ReportContainer } from './ReportPage.styled';
+import { StyledLink } from './ReportPage.styled';
+import { ImArrowLeft2 } from 'react-icons/im';
+import TotalBalance from 'components/TotalBalance/TotalBalance';
 
 const ReportPage = () => {
-  const navigate = useNavigate();
-
-  const onBtnClick = () => {
-    navigate('/expenses');
-  };
-  const handleClick = selectedPeriod => {
-    console.log(selectedPeriod);
-  };
   return (
     <>
-      <ReportChanger onClick={handleClick} />
-      <div>
-        <button type="button" onClick={onBtnClick}>
+      <ReportContainer>
+        <StyledLink to="expenses">
+          <ImArrowLeft2 />
           Main page
-        </button>
-      </div>
+        </StyledLink>
+        <TotalBalance />
+        <ReportChanger />
+      </ReportContainer>
       <ReportAmount />
       <ReportsExpenses />
     </>

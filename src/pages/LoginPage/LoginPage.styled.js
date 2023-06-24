@@ -1,11 +1,22 @@
 import styled from 'styled-components';
 import rectangle from '../../img/decor-img/Rectangle-desctop@2x.png';
 import { createGlobalStyle } from 'styled-components';
-
+import logo from '../../img/logo.png';
 export const MainContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+export const Header = styled.div`
+  background-image: url(${logo});
+  background-repeat: no-repeat;
+  background-position: 40px center;
+  background-size: 170px 40px;
+  min-width: 1280px;
+  padding-top: 56px;
+  background-color: #1f1f27;
+  color: white;
+  text-justify: center;
 `;
 
 export const ImgWallet = styled.div`
@@ -17,7 +28,12 @@ export const ImgWallet = styled.div`
 `;
 
 export const GlobalStyle = createGlobalStyle`
-  body {
+  body,html {
+
+  margin: 0;
+  padding: 0;
+  height: 100%;
+
     background-color: #636373; 
     background-image: url(${rectangle});
       background-repeat: no-repeat;
@@ -31,7 +47,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 93vh;
+  height: calc(100vh - 56px);
   justify-content: space-around;
   gap: 100px;
 `;
