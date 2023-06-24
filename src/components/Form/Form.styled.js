@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NumericFormat } from 'react-number-format';
 
 export const MainContainer = styled.div`
   display: flex;
@@ -96,7 +97,7 @@ export const Input = styled.input`
   }
 `;
 
-export const InputNum = styled.input`
+export const InputNum = styled(NumericFormat)`
   background-color: rgb(56, 56, 71);
 
   background-size: 20px;
@@ -111,7 +112,7 @@ export const InputNum = styled.input`
   border-radius: 0 16px 16px 0;
   width: 116px;
   text-align: center;
-  padding: 16px 37px;
+  /* padding: 16px 37px; */
   color: #c7ccdc;
   &:hover,
   &:focus {
@@ -161,7 +162,7 @@ export const InputNum = styled.input`
     border: 2px solid #474759;
     border-radius: 22px;
     border-radius: 0 16px 16px 0;
-    width: 116px;
+    /* width: 116px; */
     text-align: center;
     padding: 16px 37px;
     color: #c7ccdc;
@@ -220,7 +221,7 @@ export const IconContainer = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
-    right: 30%;
+    right: 10%;
   }
 `;
 
@@ -275,8 +276,8 @@ export const ClearBtn = styled.button`
 // DATEEEEEEEE
 
 export const DivContainer = styled.div`
-  width: 120px;
   height: 40px;
+  margin-right: 10px;
   display: flex;
   gap: 10px;
   -webkit-box-align: center;
@@ -287,7 +288,8 @@ export const DivContainer = styled.div`
 `;
 
 export const InputDate = styled.input`
-  width: 74px;
+  /* width: 74px; */
+  margin-right: 28px;
   border: none;
   color: #c7ccdc;
   font-family: 'Roboto';
