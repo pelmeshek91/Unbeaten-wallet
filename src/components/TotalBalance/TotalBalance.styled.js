@@ -1,3 +1,4 @@
+import { style } from '@mui/system';
 import styled from 'styled-components';
 
 export const BalanceContainer = styled.div`
@@ -63,6 +64,41 @@ export const Button = styled.button`
   }
 `;
 
+export const ButtonDisabled = styled.button`
+  display: flex;
+  border-radius: 0 16px 16px 0;
+
+  border: 2px solid rgb(71, 71, 89);
+  padding: 10px;
+
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.16;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  text-align: center;
+  top: auto;
+  width: 140px;
+  height: 43px;
+
+  place-content: space-around center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-left: 30px;
+
+  @media screen and (min-width: 767px) {
+    padding: 16px 48px;
+    font-size: 12px;
+    border-radius: 16px;
+    margin-left: 32px;
+    width: 125px;
+    height: 44px;
+  }
+`;
+
 export const Input = styled.input`
   height: 16px;
   border-radius: 16px 0 0 16px;
@@ -105,7 +141,6 @@ export const BalanceValue = styled.p`
   margin-right: 0px;
 
   @media screen and (min-width: 767px) {
-    margin-right: 141px;
     padding: 12px 2px 12px 10px;
   }
 `;

@@ -25,7 +25,7 @@ export const SummaryWrapper = styled.div`
   }
 
   @media ${device.desktop} {
-    margin-left: 77px;
+    margin-left: 71px;
     margin-top: 0px;
   }
 `;
