@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import rectangle from '../../img/decor-img/Rectangle-desctop@2x.png';
 import { createGlobalStyle } from 'styled-components';
 import logo from '../../img/logo.png';
+import wallet from '../../img/decor-img/wallet.png';
+import money from '../../img/decor-img/money.png';
 export const MainContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -17,47 +19,128 @@ export const Header = styled.div`
   background-color: #1f1f27;
   color: white;
   text-justify: center;
+  @media screen and (min-width: 768px) {
+    min-width: 768px;
+  }
+  @media screen and (min-width: 320px) {
+    min-width: 320px;
+  }
 `;
 
 export const ImgWallet = styled.div`
-  background-image: url('./src/img/decor-img/wallet.png');
-
+  background-repeat: no-repeat;
+  background-size: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 0;
+  min-height: 0;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 8%;
+    left: -30%;
+    right: 60%;
+    bottom: 70%;
+    box-shadow: inset 10px 0 200px 10px rgba(176, 232, 185, 0.3);
+    filter: blur(30px);
+    border-radius: 50%;
+  }
+
+  @media screen and (min-width: 768px) {
+    position: fixed;
+    top: 0;
+    min-width: 675px;
+    min-height: 544px;
+    background-image: url(${money});
+  }
+
+  @media screen and (min-width: 1200px) {
+    position: relative;
+    bottom: 20px;
+    left: 0;
+    min-width: 675px;
+    min-height: 544px;
+    background-image: url(${wallet});
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 50px;
+      right: 50px;
+      bottom: 40px;
+      box-shadow: inset 10px 0 200px 10px rgba(176, 232, 185, 0.3);
+      filter: blur(30px);
+      border-radius: 50%;
+      z-index: 1;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    &::after {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 50px;
+      right: 50px;
+      bottom: 40px;
+      box-shadow: inset 10px 0 200px 10px rgba(176, 232, 185, 0.3);
+      filter: blur(30px);
+      border-radius: 50%;
+    }
+  }
 `;
 
 export const GlobalStyle = createGlobalStyle`
-  body,html {
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #383847;
+    background-repeat: no-repeat;
+    /* background-size: 130%; */
+  }
 
-  margin: 0;
-  padding: 0;
-  height: 100%;
-
-    background-color: #636373; 
-    background-image: url(${rectangle});
-      background-repeat: no-repeat;
-  background-size: 115%;
+  @media screen and (min-width: 768px) {
+    body, html {
+      background-image: url(${rectangle});
+      background-size: 180% ;
+    background-position: right 50% top ;
+    }
+  }
+   @media screen and (min-width: 1200px) {
+    body, html {
+      background-image: url(${rectangle});
+      background-size: 115% ;
+    
+    }
   }
 `;
 
 export const Container = styled.div`
-  background-image: url('./src/img/decor-img/money.png');
-
   display: flex;
   flex-direction: row;
   align-items: center;
   height: calc(100vh - 56px);
   justify-content: space-around;
   gap: 100px;
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+    justify-content: center;
+  }
+  @media screen and (min-width: 768px) {
+    /* justify-content: center;
+    align-items: center; */
+  }
 `;
 
 export const Form = styled.form`
   box-shadow: rgba(132, 132, 132, 0.2) 0px 2px 14px inset;
   border-radius: 30px;
-  padding: 40px 50px;
-  max-width: 392px;
-  max-height: 554px;
+  padding: 40px 30px;
+  max-width: 280px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   -webkit-box-align: center;
@@ -65,6 +148,11 @@ export const Form = styled.form`
   justify-content: center;
   background-color: rgb(56, 56, 71);
   filter: drop-shadow(rgba(0, 0, 0, 0.25) 0px 4px 40px);
+  @media screen and (min-width: 768px) {
+    padding: 40px 50px;
+    max-width: 392px;
+    height: 300px;
+  }
 `;
 
 export const Label = styled.label`
@@ -73,9 +161,14 @@ export const Label = styled.label`
   flex-direction: column;
   margin-bottom: 10px;
 `;
+export const Text = styled.label`
+  margin-bottom: 10px;
+  font-size: 12px;
+`;
 
 export const Input = styled.input`
   padding-left: 15px;
+
   width: 288px;
   height: 48px;
   background: rgb(246, 247, 251);
@@ -168,4 +261,9 @@ export const ButtonWhite = styled.button`
   text-transform: uppercase;
   color: rgb(0, 0, 0);
   margin: 10px;
+`;
+export const ErrorMessageContainer = styled.div`
+  overflow: hidden;
+  height: 20px;
+  transition: height 0.3s ease;
 `;
