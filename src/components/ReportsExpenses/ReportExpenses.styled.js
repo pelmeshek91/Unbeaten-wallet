@@ -51,6 +51,7 @@ export const SectionReport = styled.div`
   border-radius: 30px;
   max-width: 1034px;
   padding: 20px 219px;
+  margin-bottom: 40px;
 `;
 
 export const BtnSection = styled.div`

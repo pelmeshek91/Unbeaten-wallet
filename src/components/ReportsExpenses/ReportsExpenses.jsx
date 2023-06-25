@@ -16,6 +16,8 @@ import { ChartBarContainer } from 'components/ChartBar/ChartBar.styled';
 
 import { useSelector } from 'react-redux';
 import ChartBarMobile from '../Mobile/MobileChartBar/MobileChartBar';
+import {MobileChBarContainer} from '../Mobile/MobileChartBar/MobileChartBar.styled'
+
 
 const ReportsContainer = () => {
   const [reportType, setReportType] = useState('EXPENSES');
@@ -153,9 +155,9 @@ const ReportsContainer = () => {
         </ChartBarContainer>
       )}
       {list && (
-        <div>
+        <MobileChBarContainer >
           <ChartBarMobile list={list} />
-        </div>
+        </MobileChBarContainer>
       )}
     </>
   );
