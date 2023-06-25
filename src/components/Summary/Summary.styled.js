@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../utilits/mediaQuery';
 
 export const SummaryWrapper = styled.div`
   display: flex;
@@ -10,7 +11,7 @@ export const SummaryWrapper = styled.div`
   overflow: hidden;
   /* margin-left: 77px; */
 
-  @media screen and (min-width: 768px) {
+  @media ${device.laptop} @media screen and (min-width: 768px) {
     display: flex;
     justify-content: center;
     width: 213px;
