@@ -13,15 +13,6 @@ export const BalanceContainer = styled.div`
   margin: 0px auto;
 
   @media screen and (min-width: 767px) {
-    /* align-items: center;
-    justify-content: center;
-    -webkit-box-pack: center;
-    -webkit-box-align: baseline;
-    align-items: center;
-    justify-content: center;
-    margin: 0px auto;
-    flex-direction: row; */
-
     display: flex;
     align-items: stretch;
     flex-direction: row;
@@ -69,7 +60,7 @@ export const Button = styled.button`
     padding: 16px 48px;
     font-size: 12px;
     border-radius: 16px;
-    margin-left: 16px;
+    margin-left: 35px;
     width: 125px;
     height: 44px;
   }
