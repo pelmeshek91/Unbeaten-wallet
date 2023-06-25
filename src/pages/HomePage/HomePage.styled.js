@@ -56,7 +56,7 @@ export const StyledLink = styled(NavLink)`
 
   border-radius: 16px;
 
-  @media (max-width: 766px) {
+  @media screen and (min-width: 320px) and (max-width: 766px) {
     margin: 0;
   }
 
@@ -75,11 +75,11 @@ export const Wrapper = styled.div`
   margin-top: 40px;
   margin-bottom: 8px;
   padding-left: 200px;
-  @media (max-width: 1024px) {
+  @media screen and (min-width: 767px) and (max-width: 1024px) {
     margin-bottom: 40px;
     padding-left: 0px;
 
-    @media (max-width: 766px) {
+    @media screen and (min-width: 320px) and (max-width: 766px) {
       flex-direction: column-reverse;
     }
   }
