@@ -15,6 +15,8 @@ export function TransactionsContainer() {
   // const isMobile = useMediaQuery({
   //   query: `(${device.mobileM}) and (${device.mobileL})`,
   // });
+  const currentYear = new Date().getFullYear();
+
   const isTable = useMediaQuery({
     query: `(${device.tablet})`,
   });
@@ -54,6 +56,7 @@ export function TransactionsContainer() {
             }}
             locale={enGB}
             maxDate={new Date()}
+            minDate={new Date(currentYear, 0, 1)}
             calendarClassName="calendar"
             className="datepicker"
             customInput={<CustomInput />}
