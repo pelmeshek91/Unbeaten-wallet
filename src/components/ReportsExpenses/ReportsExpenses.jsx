@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import * as expensesImages from 'components/ReportsExpenses/image';
 import * as incomeImages from 'components/ReportsExpenses/imageIncome';
 import {
@@ -125,8 +125,10 @@ const ReportsContainer = () => {
   useEffect(() => {
     if (!transactions) return;
     setList(categoriesList[0]?.categoryDataList);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reportType, transactions]);
+
+
 
   return (
     <>
