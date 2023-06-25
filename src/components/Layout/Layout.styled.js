@@ -33,7 +33,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     
-    @media screen and (min-width: 768px) and (max-width: 1023px) {
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
       background-image: url(${tabletRectangle});
       background-size: 135%;
     }
