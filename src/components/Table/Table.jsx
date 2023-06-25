@@ -17,7 +17,7 @@ import { useParams } from 'react-router';
 import { translateCategory } from '../../utilits/translateCategory';
 import ModalApproval from 'components/ModalsWindow/ModalApproval';
 
-const tableDefaultArray = Array(9).fill(null);
+const tableDefaultArray = Array(8).fill(null);
 
 export function Table({ currrentDate }) {
   const dispatch = useDispatch();

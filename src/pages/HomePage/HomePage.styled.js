@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 import styled from 'styled-components';
+import { device } from 'utilits/mediaQuery';
 
 export const ButtonLink = styled(NavLink)`
   display: inline-block;
@@ -34,7 +35,7 @@ export const ButtonLink = styled(NavLink)`
 
 export const StyledLink = styled(NavLink)`
   padding: 12px 25px;
-  margin: 0;
+
   display: flex;
   align-items: center;
   font-style: inherit;
@@ -45,16 +46,30 @@ export const StyledLink = styled(NavLink)`
   letter-spacing: 1px;
   text-decoration: none;
   display: inline-flex;
-  align-items: center;
+
   border-bottom: none;
   border: transparent;
 
   border-radius: 4px;
   transition: color 0.3s ease-in-out;
-  margin-right: 91px;
-  margin-left: auto;
+  /* margin-right: 91px; */
 
   border-radius: 16px;
+
+  @media screen and (min-width: 768px) {
+  }
+
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: row;
+  }
+  @media screen and (min-width: 1100px) {
+  }
+  @media ${device.desktop} {
+    margin-left: auto;
+  }
 
   &:hover,
   &:focus {
@@ -65,14 +80,25 @@ export const StyledLink = styled(NavLink)`
 `;
 
 export const Wrapper = styled.div`
+  flex-direction: column-reverse;
+  padding: 0;
   display: flex;
 
-  align-items: center;
   margin-top: 40px;
   margin-bottom: 8px;
-  padding-left: 200px;
-  @media (max-width: 1024px) {
+
+  @media screen and (min-width: 767px) {
+    display: flex;
     margin-bottom: 40px;
     padding-left: 0px;
+    flex-direction: row;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding-left: 150px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: row;
   }
 `;

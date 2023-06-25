@@ -123,6 +123,7 @@ export const TransactionForm = ({ currrentDate }) => {
                 name="description"
                 value={form.description}
                 onChange={handleChange}
+                autoComplete="off"
               />
               {/* {errors.description && touched.description && (
                     <div>{errors.description}</div>
@@ -149,6 +150,7 @@ export const TransactionForm = ({ currrentDate }) => {
                 value={form.amount}
                 onChange={handleChange}
                 decimalScale={2}
+                autoComplete="off"
               />
 
               <IconContainer>

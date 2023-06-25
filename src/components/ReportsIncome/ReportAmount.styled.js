@@ -13,7 +13,6 @@ export const FormAmount = styled.div`
   border-radius: 30px;
   padding: 15px;
   margin-bottom: 32px;
- 
 `;
 
 export const TextAmound = styled.span`
