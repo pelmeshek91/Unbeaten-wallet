@@ -274,7 +274,7 @@ export const DivContainer = styled.div`
 
 export const InputDate = styled.input`
   /* width: 74px; */
-  margin-right: 28px;
+  margin-right: 14px;
   border: none;
   color: #c7ccdc;
   font-family: 'Roboto';

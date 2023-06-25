@@ -11,6 +11,7 @@ import {
   InputContainer,
   StyledMessage,
   RelativeContainer,
+  ButtonDisabled,
 } from './TotalBalance.styled';
 import { updateUserBalanceThunk } from '../../redux/transcactions/transcactionsOperations';
 
@@ -38,7 +39,10 @@ const TotalBalance = () => {
       <>
         <BalanceLabel>Balance:</BalanceLabel>
         {balance || expenses.length > 0 ? (
-          <BalanceValue>{balance}</BalanceValue>
+          <>
+            <BalanceValue>{balance}</BalanceValue>
+            <ButtonDisabled disabled>Confirm</ButtonDisabled>
+          </>
         ) : (
           <InputContainer>
             <RelativeContainer>
