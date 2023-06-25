@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 import desktopRectangle from '../../img/decor-img/Rectangle-desctop@2x.png';
+import Ellipse from '../../img/decor-img/Ellipse.png';
 import tabletRectangle from '../../img/decor-img/Rectangle-tablet@2x.png';
 export const Container = styled.main`
   margin: 0 auto;
@@ -21,7 +22,6 @@ export const Container = styled.main`
     width: 1098px;
   }
 `;
-
 export const GlobalStyle = createGlobalStyle`
   body {
      
@@ -38,9 +38,10 @@ export const GlobalStyle = createGlobalStyle`
     }
 
      
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 1200px) {
       background-image: url(${desktopRectangle});
-      background-size: 100%;
+      background-size: 135%;
+      background-position: left 20% top -5%  ;
     }
       
       background-repeat: no-repeat; 
@@ -52,7 +53,7 @@ export const GlobalStyle = createGlobalStyle`
 
 export const EllipseImg = styled.img`
   position: absolute;
-
+  height: 600px;
   transform: translate(-38%, -40%);
   z-index: -1;
 `;

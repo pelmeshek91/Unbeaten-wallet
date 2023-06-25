@@ -24,10 +24,11 @@ const Layout = () => {
   return (
     <>
       <Header />
+
       <GlobalStyle />
       <Container>
         {isDesktopOrLaptop && <EllipseImg src={ellipse} alt="ellipse" />}
-        {isMobile && <EllipseImg src={ellipseMob} alt="ellipse" />}
+        {isMobile && <EllipseImg src={ellipse} alt="ellipse" />}
         <Suspense>
           <Outlet />
         </Suspense>
