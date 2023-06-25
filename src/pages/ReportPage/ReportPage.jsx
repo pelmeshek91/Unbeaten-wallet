@@ -6,6 +6,7 @@ import { StyledLink } from './ReportPage.styled';
 import { ImArrowLeft2 } from 'react-icons/im';
 import TotalBalance from 'components/TotalBalance/TotalBalance';
 
+
 const ReportPage = () => {
   return (
     <>
@@ -19,7 +20,7 @@ const ReportPage = () => {
       </ReportContainer>
       <ReportAmount />
       <ReportsExpenses />
-    </>
+      </>
   );
 };
 
