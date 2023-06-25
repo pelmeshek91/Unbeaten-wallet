@@ -99,3 +99,9 @@ export const Wrapper = styled.div`
     justify-content: space-evenly;
   }
 `;
+export const ButtonTrans = styled.button`
+  background-color: transparent;
+  border: 0;
+  color: #f6f7fb;
+  font-weight: 700;
+`;
