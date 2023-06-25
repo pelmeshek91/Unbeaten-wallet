@@ -33,8 +33,9 @@ export const ButtonLink = styled(NavLink)`
 `;
 
 export const StyledLink = styled(NavLink)`
+  margin: 0 auto;
   padding: 12px 25px;
-  margin: 0;
+
   display: flex;
   align-items: center;
   font-style: inherit;
@@ -45,23 +46,34 @@ export const StyledLink = styled(NavLink)`
   letter-spacing: 1px;
   text-decoration: none;
   display: inline-flex;
-  align-items: center;
+
   border-bottom: none;
   border: transparent;
 
   border-radius: 4px;
   transition: color 0.3s ease-in-out;
-  margin-right: 91px;
-  margin-left: auto;
+  /* margin-right: 91px; */
 
   border-radius: 16px;
-  @media screen and (min-width: 768px) and (max-width: 1024px) {
-    margin-right: 338px;
-    margin-left: 203px;
+
+  @media screen and (min-width: 768px) {
+    margin: 0px 198px;
   }
 
-  @media screen and (min-width: 320px) and (max-width: 767px) {
-    margin: 0 338px;
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: row;
+    margin-right: 375px;
+  }
+  @media screen and (min-width: 1100px) {
+    margin-right: 275px;
+    margin-left: 112px;
+  }
+  @media screen and (min-width: 1300px) {
+    margin-right: 375px;
+    margin-left: 475px;
   }
 
   &:hover,
@@ -73,19 +85,29 @@ export const StyledLink = styled(NavLink)`
 `;
 
 export const Wrapper = styled.div`
+  flex-direction: column-reverse;
+  padding: 0;
   display: flex;
 
-  align-items: center;
   margin-top: 40px;
   margin-bottom: 8px;
-  padding-left: 200px;
-  @media screen and (min-width: 767px) and (max-width: 1024px) {
+
+  @media screen and (min-width: 767px) {
+    display: flex;
     margin-bottom: 40px;
     padding-left: 0px;
+    flex-direction: row;
   }
 
-  @media screen and (min-width: 320px) and (max-width: 766px) {
-    flex-direction: column-reverse;
-    padding: 0;
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: row;
+    padding-left: 200px;
+  }
+
+  @media screen and (min-width: 1100px) {
+    padding-left: 265px;
   }
 `;

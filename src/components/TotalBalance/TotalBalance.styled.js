@@ -2,75 +2,87 @@ import styled from 'styled-components';
 
 export const BalanceContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   -webkit-box-pack: center;
   -webkit-box-align: baseline;
   align-items: center;
   justify-content: center;
   margin: 0px auto;
-  @media screen and (min-width: 320px) and (max-width: 767px) {
-    display: flex;
-    flex-direction: column;
+
+  @media screen and (min-width: 767px) {
+    align-items: center;
+    justify-content: center;
+    -webkit-box-pack: center;
+    -webkit-box-align: baseline;
+    align-items: center;
+    justify-content: center;
+    margin: 0px auto;
+    flex-direction: row;
   }
 `;
 
 export const Button = styled.button`
   cursor: pointer;
   display: flex;
-  border-radius: 16px;
+  border-radius: 0 16px 16px 0;
+
   border: 2px solid rgb(71, 71, 89);
-  padding: 16px 48px;
+  padding: 10px;
+
   background-color: transparent;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.16;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: rgb(246, 247, 251);
   text-align: center;
-  width: 125px;
-  height: 44px;
+  top: auto;
+  width: 140px;
+  height: 43px;
+
   place-content: space-around center;
   -webkit-box-pack: center;
   -webkit-box-align: center;
   align-items: center;
-  margin-left: 32px;
+  margin-left: 30px;
   &:hover {
     background-color: rgb(66, 166, 82);
     box-shadow: rgba(96, 196, 112, 0.35) 1px 3px 5px;
     background: rgb(61, 148, 76);
   }
 
-  @media screen and (min-width: 320px) and (max-width: 767px) {
-    top: auto;
-    width: 140px;
-    height: 43px;
-    padding: 10px;
-    font-size: 14px;
-    border-radius: 0 16px 16px 0;
-    margin-left: 30px;
+  @media screen and (min-width: 767px) {
+    padding: 16px 48px;
+    font-size: 12px;
+    border-radius: 16px;
+    margin-left: 32px;
+    width: 125px;
+    height: 44px;
   }
 `;
 
 export const Input = styled.input`
-  width: 125px;
   height: 16px;
-  border-radius: 16px;
+  border-radius: 16px 0 0 16px;
+  margin-right: 0;
   border: 2px solid rgb(71, 71, 89);
   padding: 12px 2px 12px 10px;
   background-color: transparent;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 14px;
+  width: 140px;
   line-height: 1.16;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: rgb(246, 247, 251);
   text-align: center;
 
-  @media screen and (min-width: 320px) and (max-width: 767px) {
-    margin-right: 0;
-    width: 140px;
-    font-size: 14px;
-    border-radius: 16px 0 0 16px;
+  @media screen and (min-width: 767px) {
+    width: 125px;
+    font-size: 13px;
+    border-radius: 16px;
   }
 `;
 
@@ -79,7 +91,8 @@ export const BalanceValue = styled.p`
   height: 16px;
   border-radius: 16px;
   border: 2px solid rgb(71, 71, 89);
-  padding: 12px 2px 12px 10px;
+  padding: 12px 8px 11px 4px;
+
   background-color: transparent;
   font-weight: 700;
   font-size: 13px;
@@ -89,27 +102,29 @@ export const BalanceValue = styled.p`
   color: rgb(246, 247, 251);
   text-align: center;
   margin: 0;
-  margin-right: 141px;
+  margin-right: 0px;
 
-  @media screen and (min-width: 320px) and (max-width: 767px) {
-    margin-right: 0px;
-    padding: 12px 8px 11px 4px;
+  @media screen and (min-width: 767px) {
+    margin-right: 141px;
+    padding: 12px 2px 12px 10px;
   }
 `;
 
 export const BalanceLabel = styled.p`
-  font-size: 24px;
+  font-size: 13px;
   font-weight: bold;
   color: #c7ccdc;
-  margin: 0;
+
+  margin-bottom: 10px;
   margin-right: 20px;
-  @media screen and (min-width: 768px) and (max-width: 1024px) {
-    margin-bottom: 0px;
+
+  @media screen and (min-width: 767px) {
     font-size: 13px;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
-    margin-bottom: 10px;
-    font-size: 13px;
+
+  @media screen and (min-width: 1024px) {
+    margin: 23px;
+    font-size: 24px;
   }
 `;
 
