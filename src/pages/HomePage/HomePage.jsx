@@ -4,7 +4,12 @@ import TotalBalance from 'components/TotalBalance/TotalBalance';
 import { Suspense, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { enGB } from 'date-fns/locale';
-import { ButtonTrans, StyledLink, Wrapper, SectionBtn } from './HomePage.styled';
+import {
+  ButtonTrans,
+  StyledLink,
+  Wrapper,
+  SectionBtn,
+} from './HomePage.styled';
 // import { MobileFormTransactions } from '../../components/Mobile/MobileTransactions/MobileFormTransactions.styled';
 import { ButtonLink } from './HomePage.styled';
 import { IoMdStats } from 'react-icons/io';
@@ -51,7 +56,7 @@ const HomePage = () => {
   // const isDesktop = useMediaQuery({
   //   query: `(${device.desktop})`,
   // });
-  console.log(isOpen);
+
   return (
     <div>
       {!isMobile && (
