@@ -15,7 +15,11 @@ export const Div = styled.div`
 
     display: flex;
     flex-wrap: wrap;
-    background-color: rgb(56, 56, 71);
+    background: linear-gradient(
+      60deg,
+      rgb(56, 56, 71) 20%,
+      rgba(56, 56, 71, 0.29) 50%
+    );
     border-radius: 0px 30px 30px;
     padding: 40px;
   }
