@@ -12,27 +12,14 @@ export const Div = styled.div`
 
   @media ${device.tablet} {
     display: flex;
-    justify-content: center;
-    width: 40px;
-    /* border-top-left-radius: 20px; */
-    border-top-right-radius: 20px;
-    max-height: 290px;
-    text-align: start;
-
-    overflow: hidden;
-    /* margin-top: 40px; */
-    /* margin-left: 77px; */
-
-    &:hover,
-    &:focus {
-      outline: none;
-      box-shadow: 0px 6px 7px -2px #41a350;
-    }
-    &::-webkit-inner-spin-button,
-    &::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
+    flex-wrap: wrap;
+    background: linear-gradient(
+      60deg,
+      rgb(56, 56, 71) 20%,
+      rgba(56, 56, 71, 0.29) 50%
+    );
+    border-radius: 0px 30px 30px;
+    padding: 40px;
   }
 
   @media ${device.desktop} {

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 import desktopRectangle from '../../img/decor-img/Rectangle-desctop@2x.png';
 import tabletRectangle from '../../img/decor-img/Rectangle-tablet@2x.png';
-export const Container = styled.main`
+export const Container = styled.div`
   margin: 0 auto;
 
   padding-left: 20px;
