@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import { BsCalendar4Week } from 'react-icons/bs';
 import { useMediaQuery } from 'react-responsive';
 import { device } from 'utilits/mediaQuery';
+import { MobileTable } from 'components/Mobile/MobileTable/MobileTable';
 
 export function TransactionsContainer() {
   // const isMobile = useMediaQuery({
@@ -17,6 +18,9 @@ export function TransactionsContainer() {
   // });
   const currentYear = new Date().getFullYear();
 
+  const isMobile = useMediaQuery({
+    query: `(${device.mobileS}) `,
+  });
   const isTable = useMediaQuery({
     query: `(${device.tablet})`,
   });
@@ -69,7 +73,11 @@ export function TransactionsContainer() {
         )}
       </ContainerFormDate>
 
-      <Table currrentDate={currrentDate} />
+      {isTable || isDesktop ? (
+        <Table currrentDate={currrentDate} />
+      ) : (
+        isMobile && <MobileTable currrentDate={currrentDate} />
+      )}
       <TransactionsSummary />
     </Div>
   );
