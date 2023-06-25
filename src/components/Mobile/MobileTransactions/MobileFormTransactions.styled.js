@@ -12,7 +12,19 @@ export const Overlay = styled.div`
   /* opacity: 0.7; */
   z-index: 9998;
 `;
+export const ButtonTx = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-transform: uppercase;
+  padding: 10px;
+  background-color: transparent;
+  border-color: transparent;
+  margin: 16px 0 0 20px;
+  color: #f6f7fb;
+`;
 export const MainContainer = styled.div`
+  background-color: #383847;
   display: flex;
   -webkit-box-pack: center;
   justify-content: center;
@@ -22,10 +34,17 @@ export const MainContainer = styled.div`
 `;
 
 export const Form = styled.form`
-  /* display: flex; */
+  padding: 32px 0 32px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Input = styled.input`
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
   width: 280px;
   padding: 10px 0px 10px 20px;
   outline: none;
@@ -43,6 +62,7 @@ export const Input = styled.input`
 `;
 
 export const InputNum = styled(NumericFormat)`
+  margin: 0 auto;
   background-color: rgb(56, 56, 71);
   padding: 12px 18px 12px 2px;
   background-size: 20px;
@@ -53,9 +73,11 @@ export const InputNum = styled(NumericFormat)`
   border: 2px solid #474759;
 
   border-radius: 22px;
+
   width: 116px;
   text-align: center;
-  /* padding: 16px 37px; */
+  padding: 12px 20px;
+  text-align: start;
   color: #c7ccdc;
   &:hover,
   &:focus {
@@ -71,6 +93,7 @@ export const InputNum = styled(NumericFormat)`
 
 export const BtnContainer = styled.div`
   display: flex;
+
   /* margin-top: 55px; */
   top: 50%;
   left: 50%;
@@ -87,13 +110,16 @@ export const Container = styled.div`
 
 export const IconContainer = styled.div`
   position: absolute;
-  bottom: 8%;
-  left: 30%;
+  bottom: 5%;
+  left: 70%;
+  color: white;
+  font-size: 30px;
 `;
 
 export const InputBtn = styled.button`
   border: 2px solid transparent;
   padding: 16px 48px;
+  margin-top: 80px;
   border-radius: 16px;
   background: #42a652;
   font-style: normal;
@@ -122,6 +148,7 @@ export const ClearBtn = styled.button`
   border-radius: 16px;
   border: 2px solid #474759;
   padding: 16px 48px;
+  margin-top: 80px;
   background-color: rgba(56, 56, 71, 1);
   font-style: normal;
   font-weight: 700;
@@ -155,6 +182,7 @@ export const DivContainer = styled.div`
 
 export const InputDate = styled.input`
   /* width: 74px; */
+
   margin-right: 28px;
   border: none;
   color: #c7ccdc;
@@ -170,6 +198,7 @@ export const InputDate = styled.input`
   height: 40px;
   overflow: hidden;
   cursor: pointer;
+
   background-color: rgb(56, 56, 71);
 
   &:focus {
