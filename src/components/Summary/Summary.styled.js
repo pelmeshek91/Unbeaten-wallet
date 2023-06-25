@@ -115,7 +115,7 @@ export const SummaryTableWrapper = styled.tbody`
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: #60c470 #474759;
-  height: 242px;
+  height: 244px;
   border-collapse: collapse;
   scrollbar-color: #60c470 #474759;
 
@@ -130,7 +130,7 @@ export const SummaryTableWrapper = styled.tbody`
   }
 
   &::-webkit-scrollbar-track-piece {
-    max-height: 242px;
+    max-height: 244px;
   }
 `;
 

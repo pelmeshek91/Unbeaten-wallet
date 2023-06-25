@@ -73,9 +73,9 @@ export function Table({ currrentDate }) {
                 <Td>{row.description}</Td>
                 <Td>{translateCategory(row.category)}</Td>
                 {key === 'expenses' && row.amount ? (
-                  <Td style={{ color: 'red' }}>-{row.amount}</Td>
+                  <Td style={{ color: 'red' }}>-{row.amount} </Td>
                 ) : (
-                  <Td style={{ color: 'green' }}>{row.amount}</Td>
+                  <Td style={{ color: 'green' }}>{row.amount} </Td>
                 )}
 
                 <Td>

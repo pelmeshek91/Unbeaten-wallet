@@ -6,18 +6,14 @@ export const Div = styled.div`
   display: flex;
   /* row-gap: 40px; */
   flex-wrap: wrap;
-  background-color: rgb(56, 56, 71);
+
   border-radius: 0px 30px 30px;
   padding: 32px;
 
   @media ${device.tablet} {
     display: flex;
     flex-wrap: wrap;
-    background: linear-gradient(
-      60deg,
-      rgb(56, 56, 71) 20%,
-      rgba(56, 56, 71, 0.29) 50%
-    );
+    background-color: #383847;
     border-radius: 0px 30px 30px;
     padding: 40px;
   }
@@ -26,7 +22,7 @@ export const Div = styled.div`
     max-width: 1098px;
     flex-wrap: wrap;
     row-gap: 48px;
-
+    background-color: rgb(56, 56, 71);
     border-radius: 0px 30px 30px;
     padding: 32px;
   }

@@ -17,7 +17,7 @@ body {
 /* input:-webkit-autofill {
   background-color: transparent !important;
 } */
-input:-webkit-autofill,
+/* input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
@@ -25,4 +25,4 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: rgba(199, 204, 220, 0.5);
   ;
 
-}
+} */

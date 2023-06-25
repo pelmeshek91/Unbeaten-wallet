@@ -1,5 +1,6 @@
 import { style } from '@mui/system';
 import styled from 'styled-components';
+import { device } from 'utilits/mediaQuery';
 
 export const BalanceContainer = styled.div`
   display: flex;
@@ -9,7 +10,6 @@ export const BalanceContainer = styled.div`
   -webkit-box-align: baseline;
   align-items: center;
   justify-content: center;
-  margin: 0px auto;
 
   @media screen and (min-width: 767px) {
     align-items: center;
@@ -18,8 +18,12 @@ export const BalanceContainer = styled.div`
     -webkit-box-align: baseline;
     align-items: center;
     justify-content: center;
-    margin: 0px auto;
+    margin-left: 30px;
+
     flex-direction: row;
+  }
+  @media ${device.desktop} {
+    margin: 0px auto;
   }
 `;
 
