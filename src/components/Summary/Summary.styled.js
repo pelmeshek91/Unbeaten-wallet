@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const SummaryWrapper = styled.div`
-  display: flex;
+  display: none;
   justify-content: center;
   width: 213px;
   border-top-left-radius: 20px;
