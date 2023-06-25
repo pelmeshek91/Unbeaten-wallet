@@ -15,6 +15,7 @@ import ChartBar from '../ChartBar/ChartBar';
 import { ChartBarContainer } from 'components/ChartBar/ChartBar.styled';
 
 import { useSelector } from 'react-redux';
+import ChartBarMobile from '../Mobile/MobileChartBar/MobileChartBar';
 
 const ReportsContainer = () => {
   const [reportType, setReportType] = useState('EXPENSES');
@@ -114,8 +115,7 @@ const ReportsContainer = () => {
     setList(categoriesList[0]?.categoryDataList);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reportType, transactions]);
-  console.log('list', list);
-  console.log('transactions', transactions);
+
   return (
     <>
       <SectionReport>
@@ -151,6 +151,11 @@ const ReportsContainer = () => {
         <ChartBarContainer>
           <ChartBar list={list} />
         </ChartBarContainer>
+      )}
+      {list && (
+        <div>
+          <ChartBarMobile list={list} />
+        </div>
       )}
     </>
   );
