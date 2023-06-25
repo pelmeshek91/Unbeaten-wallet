@@ -24,6 +24,7 @@ const Layout = () => {
   return (
     <>
       <Header />
+
       <GlobalStyle />
       <main>
         <Container>
