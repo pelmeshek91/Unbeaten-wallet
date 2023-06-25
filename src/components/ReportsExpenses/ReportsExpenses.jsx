@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import * as expensesImages from 'components/ReportsExpenses/image';
 import * as incomeImages from 'components/ReportsExpenses/imageIncome';
 import {
@@ -16,8 +16,7 @@ import { ChartBarContainer } from 'components/ChartBar/ChartBar.styled';
 
 import { useSelector } from 'react-redux';
 import ChartBarMobile from '../Mobile/MobileChartBar/MobileChartBar';
-import {MobileChBarContainer} from '../Mobile/MobileChartBar/MobileChartBar.styled'
-
+import { MobileChBarContainer } from '../Mobile/MobileChartBar/MobileChartBar.styled';
 
 const ReportsContainer = () => {
   const [reportType, setReportType] = useState('EXPENSES');
@@ -118,6 +117,8 @@ const ReportsContainer = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reportType, transactions]);
 
+
+
   return (
     <>
       <SectionReport>
@@ -152,15 +153,17 @@ const ReportsContainer = () => {
         </ListImages>
       </SectionReport>
       {list && (
-        <ChartBarContainer>
-          <ChartBar list={list} />
-        </ChartBarContainer>
+        <Suspense>
+          <ChartBarContainer>
+            <ChartBar list={list} />
+          </ChartBarContainer>
+        </Suspense>
       )}
-      {/* {list && (
+      {list && (
         <MobileChBarContainer >
           <ChartBarMobile list={list} />
         </MobileChBarContainer>
-      )} */}
+      )}
     </>
   );
 };
