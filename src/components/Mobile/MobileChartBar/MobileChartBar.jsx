@@ -44,7 +44,7 @@ function ChartBarMobile({ list }) {
     },
     yAxis: {
       type: 'category',
-      data: newList.row, 
+      data: newList.row,
       axisLine: {
         show: false,
       },
@@ -63,7 +63,7 @@ function ChartBarMobile({ list }) {
         type: 'bar',
         barCategoryGap: '25',
         barWidth: '15',
-        data: newList.column, 
+        data: newList.column,
         itemStyle: {
           borderRadius: [0, 10, 10, 0],
           color: function (params) {
@@ -111,10 +111,10 @@ function ChartBarMobile({ list }) {
           position: 'top',
           color: 'rgba(199, 204, 220, 1)',
           formatter: function (params) {
-            const data = newList.column[params.dataIndex]; 
-            const category = newList.row[params.dataIndex]; 
-            const value = data.value;
-            return `${category}            ${value} UAH`;
+            const data = newList.column[params.dataIndex];
+            const category = newList.row[params.dataIndex];
+
+            return `${category}            ${data} UAH`;
           },
         },
       },
