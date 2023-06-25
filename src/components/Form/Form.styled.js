@@ -45,23 +45,13 @@ export const Input = styled.input`
   border-top-left-radius: 16px;
   border-top-right-radius: 0;
   background-color: rgb(56, 56, 71);
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
   font-size: 12px;
   line-height: 1.16;
   letter-spacing: 0.02em;
-  &:focus,
-  &:hover {
-    outline: none;
-    border: 2px solid #474759;
-    box-shadow: 0px 6px 7px -2px #41a350;
-    background-color: rgb(56, 56, 71);
-  }
 
   @media ${device.tablet} {
     width: 215px;
-    padding: 15px;
+    padding: 16px;
     box-sizing: border-box;
     text-align: left;
     color: rgba(199, 204, 220, 0.5);
@@ -70,9 +60,6 @@ export const Input = styled.input`
     border-top-left-radius: 16px;
     border-top-right-radius: 0;
     background-color: rgb(56, 56, 71);
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
     font-size: 12px;
     line-height: 1.16;
     letter-spacing: 0.02em;
@@ -101,9 +88,6 @@ export const InputNum = styled.input`
   background-color: rgb(56, 56, 71);
 
   background-size: 20px;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
   font-size: 12px;
   line-height: 1.16;
   letter-spacing: 0.02em;
