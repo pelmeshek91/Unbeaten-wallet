@@ -138,7 +138,7 @@ export const Tbody = styled.tbody`
     overflow-y: auto;
     width: 624px;
     scroll-behavior: smooth;
-    height: 360px;
+    height: 324px;
     border-collapse: collapse;
     scroll-behavior: smooth;
     scrollbar-width: thin;
