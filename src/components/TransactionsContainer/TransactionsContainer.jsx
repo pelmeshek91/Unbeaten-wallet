@@ -8,8 +8,20 @@ import ReactDatePicker from 'react-datepicker';
 import { enGB } from 'date-fns/locale';
 import { ToastContainer } from 'react-toastify';
 import { BsCalendar4Week } from 'react-icons/bs';
+import { useMediaQuery } from 'react-responsive';
+import { device } from 'utilits/mediaQuery';
 
 export function TransactionsContainer() {
+  // const isMobile = useMediaQuery({
+  //   query: `(${device.mobileM}) and (${device.mobileL})`,
+  // });
+  const isTable = useMediaQuery({
+    query: `(${device.tablet})`,
+  });
+  const isDesktop = useMediaQuery({
+    query: `(${device.desktop})`,
+  });
+
   const [selectedDate, setSelectedDate] = useState(new Date()); ///записуємо  в початковий стан дату сьогоднішню
   const currrentDate = selectedDate.toISOString().split('T')[0];
   const CustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
@@ -23,30 +35,35 @@ export function TransactionsContainer() {
       }}
     ></InputDate>
   ));
+
   return (
     <Div>
-      <ContainerFormDate>
-        <DivContainer>
-          <ToastContainer />
-          {/* icon calendaryk */}
-          <BsCalendar4Week
-            style={{ width: '20px', height: '20px', fill: '#C7CCDC' }}
+      {(isTable || isDesktop) && (
+        <>
+          <DivContainer>
+            <ToastContainer />
+            <BsCalendar4Week
+              style={{ width: '20px', height: '20px', fill: '#C7CCDC' }}
+            />
+          </DivContainer>
+          <ReactDatePicker
+            dateFormat="dd.MM.yyyy"
+            selected={selectedDate}
+            onChange={date => {
+              setSelectedDate(date);
+            }}
+            locale={enGB}
+            maxDate={new Date()}
+            calendarClassName="calendar"
+            className="datepicker"
+            customInput={<CustomInput />}
           />
-        </DivContainer>
-        <ReactDatePicker
-          dateFormat="dd.MM.yyyy"
-          selected={selectedDate}
-          onChange={date => {
-            setSelectedDate(date);
-          }}
-          locale={enGB}
-          maxDate={new Date()}
-          calendarClassName="calendar"
-          className="datepicker"
-          customInput={<CustomInput />}
-        />
-
-        <TransactionForm currrentDate={currrentDate} />
+        </>
+      )}
+      <ContainerFormDate>
+        {(isTable || isDesktop) && (
+          <TransactionForm currrentDate={currrentDate} />
+        )}
       </ContainerFormDate>
 
       <Table currrentDate={currrentDate} />
