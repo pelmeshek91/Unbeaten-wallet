@@ -26,22 +26,27 @@ export const GlobalStyle = createGlobalStyle`
   body {
      
     
-   
+  }
     @media screen and (max-width: 767px) {
       background-image: none;
     }
 
     
-    @media screen and (min-width: 768px) and (max-width: 1024px) {
+    @media screen and (min-width: 768px) {
+      body {
       background-image: url(${tabletRectangle});
-      background-size: 135%;
+      background-size: 140%;
+      background-repeat: no-repeat;
+      background-position: left 40% top 90%;
+    }
     }
 
      
     @media screen and (min-width: 1200px) {
-      background-image: url(${desktopRectangle});
-      background-size: 135%;
-      background-position: left 20% top -5%  ;
+      body{      background-image: url(${desktopRectangle});
+      background-size: 115%;
+      background-position: left 30% top 10%  ;}
+
     }
       
       background-repeat: no-repeat; 
@@ -53,7 +58,7 @@ export const GlobalStyle = createGlobalStyle`
 
 export const EllipseImg = styled.img`
   position: absolute;
-  height: 600px;
+  height: 650px;
   transform: translate(-38%, -40%);
   z-index: -1;
 `;
