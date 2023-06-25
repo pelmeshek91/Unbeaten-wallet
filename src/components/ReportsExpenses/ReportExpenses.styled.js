@@ -73,11 +73,11 @@ export const SectionReport = styled.div`
   padding: 20px 219px;
 
   @media screen and (min-width: 767px) {
-    border-radius: 0;
+    border-radius: 30px;
+    margin-bottom: 40px;
   }
   @media screen and (min-width: 1024px) {
     border-radius: 30px;
-    margin-bottom: 40px;
   }
 `;
 

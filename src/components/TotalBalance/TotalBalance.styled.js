@@ -14,7 +14,7 @@ export const BalanceContainer = styled.div`
 
   @media screen and (min-width: 767px) {
     display: flex;
-    align-items: stretch;
+    align-items: center;
     flex-direction: row;
   }
   @media ${device.desktop} {
@@ -25,7 +25,10 @@ export const BalanceContainer = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
-  margin-bottom: 40px;
+
+  /* margin-bottom: 40px; */
+  @media screen and (min-width: 767px) {
+  }
 `;
 
 export const Button = styled.button`
@@ -165,6 +168,7 @@ export const BalanceLabel = styled.p`
 
   @media screen and (min-width: 767px) {
     margin-right: 21px;
+    margin-bottom: 0;
   }
 
   @media screen and (min-width: 1024px) {
