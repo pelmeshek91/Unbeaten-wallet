@@ -4,6 +4,8 @@ export const FormAmount = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  background-color: transparent;
+
   background: linear-gradient(
     115.74deg,
     #383847 23.54%,
@@ -13,11 +15,23 @@ export const FormAmount = styled.div`
   border-radius: 30px;
   padding: 15px;
   margin-bottom: 32px;
+  background-color: transparent;
+
   @media screen and (min-width: 767px) {
-    border-radius: 0px;
+    border-radius: 30px;
+    background: linear-gradient(
+      115.74deg,
+      #383847 23.54%,
+      rgba(56, 56, 71, 0.29) 107.94%
+    );
   }
   @media screen and (min-width: 1024px) {
     border-radius: 30px;
+    background: linear-gradient(
+      115.74deg,
+      #383847 23.54%,
+      rgba(56, 56, 71, 0.29) 107.94%
+    );
   }
 `;
 

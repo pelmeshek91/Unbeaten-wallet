@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import * as expensesImages from 'components/ReportsExpenses/image';
 import * as incomeImages from 'components/ReportsExpenses/imageIncome';
 import {
@@ -24,16 +24,11 @@ const ReportsContainer = () => {
   const [reportType, setReportType] = useState('EXPENSES');
   const [list, setList] = useState(null);
   const { transactions } = useSelector(state => state.transactions);
-  const isMobile = useMediaQuery({
-    query: `(${device.mobileS}) `,
-  });
 
   const isTable = useMediaQuery({
     query: `(${device.tablet})`,
   });
-  const isDesktop = useMediaQuery({
-    query: `(${device.desktop})`,
-  });
+
   const handleToggleReport = () => {
     setReportType(prevType =>
       prevType === 'EXPENSES' ? 'INCOME' : 'EXPENSES'
@@ -163,13 +158,17 @@ const ReportsContainer = () => {
       </SectionReport>
       {list &&
         (isTable ? (
-          <ChartBarContainer>
-            <ChartBar list={list} />
-          </ChartBarContainer>
+          <Suspense>
+            <ChartBarContainer>
+              <ChartBar list={list} />
+            </ChartBarContainer>
+          </Suspense>
         ) : (
-          <MobileChBarContainer>
-            <ChartBarMobile list={list} />
-          </MobileChBarContainer>
+          <Suspense>
+            <MobileChBarContainer>
+              <ChartBarMobile list={list} />
+            </MobileChBarContainer>
+          </Suspense>
         ))}
     </>
   );

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from 'utilits/mediaQuery';
 
 export const ImageItem = styled.button`
   background: rgba(86, 86, 107, 0.2);
@@ -21,16 +22,19 @@ export const ListImages = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  background-color: transparent;
+  gap: 25px;
+  padding: 10px;
 
   & > * {
-    flex-basis: calc(33.33% - 14px);
+    flex-basis: calc(9% - 5px);
   }
 
   & > *:nth-child(n + 4) {
   }
   @media screen and (min-width: 768px) {
     & > * {
-      flex-basis: calc(17.2857% - 15px);
+      flex-basis: calc(9.2857% - 15px);
     }
 
     & > *:nth-child(n + 6) {
@@ -59,20 +63,23 @@ export const Colum = styled.div`
 
 export const SectionReport = styled.div`
   padding: 0;
-  background: none;
-  background: linear-gradient(
-    115.74deg,
-    #383847 23.54%,
-    rgba(56, 56, 71, 0.29) 107.94%
-  );
-  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
-  border-radius: 30px;
+  border-radius: 0px;
+  padding: 20px 219px;
 
-  @media screen and (min-width: 767px) {
+  @media ${device.tablet} {
     border-radius: 30px;
+    margin-bottom: 40px; 
+    background: linear-gradient(
+      115.74deg,
+      #383847 23.54%,
+      rgba(56, 56, 71, 0.29) 107.94%
+    );
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
   }
-  @media screen and (min-width: 1024px) {
+  @media ${device.desktop} {
     border-radius: 30px;
+    margin-bottom: 40px;
+   
   }
 `;
 

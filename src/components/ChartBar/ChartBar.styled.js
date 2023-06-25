@@ -8,13 +8,11 @@ export const ChartBarContainer = styled.div`
   );
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
   border-radius: 30px;
-  padding-top: 22px;
   padding-bottom: 22px;
   margin-bottom: 80px;
 
  
   @media ${device.desktop} {
-    padding-top: 23px;
     padding-bottom: 23px;
   }
 `;
