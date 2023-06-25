@@ -104,7 +104,7 @@ export const ButtonDisabled = styled.button`
 
 export const Input = styled.input`
   width: 125px;
-  height: 16px;
+  height: 17px;
   padding: 12px 8px 11px 4px;
   background-color: transparent;
   font-weight: 700;
@@ -128,7 +128,7 @@ export const Input = styled.input`
 
 export const BalanceValue = styled.p`
   width: 125px;
-  height: 16px;
+  height: 17px;
   border-radius: 16px;
   border: 2px solid rgb(71, 71, 89);
   padding: 12px 8px 11px 4px;
