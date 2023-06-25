@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { device } from '../../utilits/mediaQuery';
 
 export const Div = styled.div`
-  width: 746px;
   /* height: 400px; */
   border-radius: 30px 30px 0px 0px;
   border: 2px solid #474759;
@@ -113,7 +112,7 @@ export const Tbody = styled.tbody`
   overflow-y: auto;
   width: 624px;
   scroll-behavior: smooth;
-  height: 380px;
+  height: 342px;
   border-collapse: collapse;
   scroll-behavior: smooth;
   scrollbar-width: thin;
@@ -166,7 +165,7 @@ export const Tbody = styled.tbody`
     overflow-y: auto;
     width: 746px;
     scroll-behavior: smooth;
-    height: 380px;
+    height: 342px;
     border-collapse: collapse;
     scroll-behavior: smooth;
     scrollbar-width: thin;

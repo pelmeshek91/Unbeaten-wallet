@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 import styled from 'styled-components';
+import { device } from 'utilits/mediaQuery';
 
 export const ButtonLink = styled(NavLink)`
   display: inline-block;
@@ -33,7 +34,6 @@ export const ButtonLink = styled(NavLink)`
 `;
 
 export const StyledLink = styled(NavLink)`
-  margin: 0 auto;
   padding: 12px 25px;
 
   display: flex;
@@ -57,7 +57,6 @@ export const StyledLink = styled(NavLink)`
   border-radius: 16px;
 
   @media screen and (min-width: 768px) {
-    margin: 0px 198px;
   }
 
   @media screen and (min-width: 1024px) {
@@ -65,15 +64,11 @@ export const StyledLink = styled(NavLink)`
     -webkit-box-align: center;
     align-items: center;
     flex-direction: row;
-    margin-right: 375px;
   }
   @media screen and (min-width: 1100px) {
-    margin-right: 275px;
-    margin-left: 112px;
   }
-  @media screen and (min-width: 1300px) {
-    margin-right: 375px;
-    margin-left: 475px;
+  @media ${device.desktop} {
+    margin-left: auto;
   }
 
   &:hover,
@@ -99,15 +94,11 @@ export const Wrapper = styled.div`
     flex-direction: row;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
+    padding-left: 150px;
     display: flex;
     -webkit-box-align: center;
     align-items: center;
     flex-direction: row;
-    padding-left: 200px;
-  }
-
-  @media screen and (min-width: 1100px) {
-    padding-left: 265px;
   }
 `;
