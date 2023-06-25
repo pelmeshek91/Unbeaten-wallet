@@ -23,6 +23,11 @@ export const BalanceContainer = styled.div`
   }
 `;
 
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const Button = styled.button`
   cursor: pointer;
   display: flex;
@@ -146,20 +151,19 @@ export const BalanceValue = styled.p`
 `;
 
 export const BalanceLabel = styled.p`
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
   color: #c7ccdc;
 
   margin-bottom: 10px;
-  margin-right: 20px;
 
   @media screen and (min-width: 767px) {
-    font-size: 13px;
+    margin-right: 21px;
   }
 
   @media screen and (min-width: 1024px) {
     margin: 23px;
-    font-size: 24px;
+    margin-right: 21px;
   }
 `;
 
