@@ -61,6 +61,7 @@ export const TransactionForm = ({ currrentDate }) => {
     e.preventDefault();
 
     const amount = e.target.elements.amount.value;
+
     const description = e.target.elements.description.value;
     const category = e.target.elements.category.value;
     if (!description) {

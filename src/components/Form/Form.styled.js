@@ -50,8 +50,8 @@ export const Input = styled.input`
   letter-spacing: 0.02em;
 
   @media ${device.tablet} {
-    width: 215px;
-    padding: 16px;
+    width: 194px;
+    padding: 13px;
     box-sizing: border-box;
     text-align: left;
     color: rgba(199, 204, 220, 0.5);
@@ -74,6 +74,7 @@ export const Input = styled.input`
 
   @media ${device.desktop} {
     width: 288px;
+    padding: 16px;
     &:focus,
     &:hover {
       outline: none;
@@ -115,9 +116,9 @@ export const InputNum = styled.input`
     width: 40px;
     /* border-top-left-radius: 20px; */
     border-top-right-radius: 20px;
-    max-height: 290px;
+    /* max-height: 290px; */
     text-align: start;
-
+    padding: 13px 40px;
     overflow: hidden;
     /* margin-top: 40px; */
     /* margin-left: 77px; */
@@ -138,9 +139,9 @@ export const InputNum = styled.input`
     background-color: rgb(56, 56, 71);
 
     background-size: 20px;
-    font-family: 'Roboto';
+    /* font-family: 'Roboto';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 400; */
     font-size: 12px;
     line-height: 1.16;
     letter-spacing: 0.02em;
@@ -201,8 +202,8 @@ export const Container = styled.div`
 export const IconContainer = styled.div`
   @media ${device.tablet} {
     position: absolute;
-    top: 26%;
-    right: 25%;
+    top: 24%;
+    right: 12%;
   }
 
   @media ${device.desktop} {
@@ -289,7 +290,7 @@ export const InputDate = styled.input`
   height: 40px;
   overflow: hidden;
   cursor: pointer;
-  background-color: rgb(56, 56, 71);
+  background-color: transparent;
 
   &:focus {
     outline: none;
