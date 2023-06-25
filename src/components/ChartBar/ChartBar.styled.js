@@ -8,8 +8,11 @@ export const ChartBarContainer = styled.div`
   );
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
   border-radius: 30px;
-
-  padding: 20px 219px;
+  padding: 40px, 32px, 80px,32px;
+  @media screen and (min-width: 1280px) {
+    border-radius: 0px;
+    padding: 0, 20px;
+  }
 `;
 export const ChartBarContainerIncomes = styled.div`
   background: linear-gradient(
