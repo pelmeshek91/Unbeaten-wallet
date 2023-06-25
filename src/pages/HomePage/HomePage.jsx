@@ -31,7 +31,7 @@ const HomePage = () => {
 
   const { isOpen, open, close } = useToggle();
 
-  const [selectedDate, setSelectedDate] = useState(new Date()); ///записуємо  в початковий стан дату сьогоднішню
+  const [selectedDate, setSelectedDate] = useState(new Date()); 
   const currrentDate = selectedDate.toISOString().split('T')[0];
   useEffect(() => {
     navigate('/expenses');
