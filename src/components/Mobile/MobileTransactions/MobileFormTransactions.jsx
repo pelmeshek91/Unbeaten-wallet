@@ -36,7 +36,7 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
   const dispatch = useDispatch();
 
   const { balance, expenses: trans } = useSelector(state => state.transactions);
-
+  console.log(111);
   const handleChange = ({ target: { name, value } }) => {
     setForm(prevForm => {
       return { ...prevForm, [name]: value };
@@ -80,6 +80,7 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
     //   очистка форми
     setForm(initialState);
     setSelectedOption(null);
+    onClose();
   };
 
   return (
@@ -131,7 +132,7 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
               <InputBtn
                 type="submit"
                 disabled={!balance && !trans.length}
-                onClick={onClose}
+                // onClick={onClose}
               >
                 Input
               </InputBtn>
