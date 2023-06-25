@@ -97,7 +97,7 @@ export const Input = styled.input`
   }
 `;
 
-export const InputNum = styled(NumericFormat)`
+export const InputNum = styled.input`
   background-color: rgb(56, 56, 71);
 
   background-size: 20px;
