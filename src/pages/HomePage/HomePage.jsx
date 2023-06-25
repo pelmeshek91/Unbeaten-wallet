@@ -5,7 +5,7 @@ import { Suspense, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { enGB } from 'date-fns/locale';
 import { StyledLink, Wrapper } from './HomePage.styled';
-import MobileFormTransactions from 'components/Mobile/MobileTransactions/MobileFormTransactions';
+import { MobileFormTransactions } from '../../components/Mobile/MobileTransactions/MobileFormTransactions.styled';
 import { ButtonLink } from './HomePage.styled';
 import { IoMdStats } from 'react-icons/io';
 import { useMediaQuery } from 'react-responsive';

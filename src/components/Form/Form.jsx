@@ -59,10 +59,20 @@ export const TransactionForm = ({ currrentDate }) => {
 
   const handleFormSubmit = e => {
     e.preventDefault();
+
     const amount = e.target.elements.amount.value;
     const description = e.target.elements.description.value;
     const category = e.target.elements.category.value;
-
+    if (!description) {
+      toast.error('введите описание');
+      return;
+    } else if (!category) {
+      toast.error('введите категорию ');
+      return;
+    } else if (!amount) {
+      toast.error('введите сумму ');
+      return;
+    }
     if (key === 'expenses') {
       const payload = {
         description,
@@ -104,7 +114,7 @@ export const TransactionForm = ({ currrentDate }) => {
             onSubmit={handleFormSubmit}
           >
             {({ values, errors, touched, handleChange, handleBlur }) => ( */}
-          <Form ref={formRef} onSubmit={handleFormSubmit}>
+          <Form noValidate ref={formRef} onSubmit={handleFormSubmit}>
             <label htmlFor="description">
               <Input
                 type="text"

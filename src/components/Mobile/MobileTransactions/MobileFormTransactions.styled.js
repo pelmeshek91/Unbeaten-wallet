@@ -179,3 +179,5 @@ export const InputDate = styled.input`
     box-shadow: 0px 0px 6px #41a350;
   }
 `;
+
+export const MobileFormTransactions = styled.form``;
