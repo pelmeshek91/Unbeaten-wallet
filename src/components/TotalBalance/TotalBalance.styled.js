@@ -63,6 +63,7 @@ export const Button = styled.button`
     margin-left: 35px;
     width: 125px;
     height: 44px;
+    background: rgba(128, 132, 143, 1);
   }
 `;
 
@@ -75,7 +76,7 @@ export const ButtonDisabled = styled.button`
 
   background-color: transparent;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 11px;
   line-height: 1.16;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -91,6 +92,7 @@ export const ButtonDisabled = styled.button`
   align-items: center;
   margin-left: 30px;
   margin: 0;
+  color: rgb(246, 247, 251);
 
   @media screen and (min-width: 767px) {
     padding: 16px 48px;
@@ -99,6 +101,7 @@ export const ButtonDisabled = styled.button`
     margin-left: 16px;
     width: 125px;
     height: 44px;
+    border: 2px solid rgba(128, 132, 143, 1);
   }
 `;
 
@@ -123,6 +126,7 @@ export const Input = styled.input`
     width: 125px;
     font-size: 13px;
     border-radius: 16px;
+    /* border: 2px solid rgba(128, 132, 143, 1); */
   }
 `;
 
@@ -150,6 +154,7 @@ export const BalanceValue = styled.p`
   @media screen and (min-width: 767px) {
     padding: 12px 2px 12px 10px;
     border-radius: 16px;
+    border: 2px solid rgba(128, 132, 143, 1);
   }
 `;
 
