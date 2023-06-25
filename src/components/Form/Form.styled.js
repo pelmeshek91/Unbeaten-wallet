@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NumericFormat } from 'react-number-format';
+// import { NumericFormat } from 'react-number-format';
 import { device } from '../../utilits/mediaQuery';
 
 export const MainContainer = styled.div`
