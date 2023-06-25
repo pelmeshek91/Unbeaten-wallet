@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { device } from 'utilits/mediaQuery';
 
 export const BalanceContainer = styled.div`
+  //3elms
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,19 +13,19 @@ export const BalanceContainer = styled.div`
   justify-content: center;
 
   @media screen and (min-width: 767px) {
-    align-items: center;
-    justify-content: center;
-    -webkit-box-pack: center;
-    -webkit-box-align: baseline;
-    align-items: center;
-    justify-content: center;
-    margin-left: 30px;
-
+    display: flex;
+    align-items: stretch;
     flex-direction: row;
   }
   @media ${device.desktop} {
     margin: 0px auto;
   }
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40px;
 `;
 
 export const Button = styled.button`
@@ -62,7 +63,7 @@ export const Button = styled.button`
     padding: 16px 48px;
     font-size: 12px;
     border-radius: 16px;
-    margin-left: 32px;
+    margin-left: 35px;
     width: 125px;
     height: 44px;
   }
@@ -92,32 +93,34 @@ export const ButtonDisabled = styled.button`
   -webkit-box-align: center;
   align-items: center;
   margin-left: 30px;
+  margin: 0;
 
   @media screen and (min-width: 767px) {
     padding: 16px 48px;
     font-size: 12px;
     border-radius: 16px;
-    margin-left: 32px;
+    margin-left: 16px;
     width: 125px;
     height: 44px;
   }
 `;
 
 export const Input = styled.input`
+  width: 125px;
   height: 16px;
-  border-radius: 16px 0 0 16px;
-  margin-right: 0;
-  border: 2px solid rgb(71, 71, 89);
-  padding: 12px 2px 12px 10px;
+  padding: 12px 8px 11px 4px;
   background-color: transparent;
   font-weight: 700;
-  font-size: 14px;
-  width: 140px;
+  font-size: 13px;
   line-height: 1.16;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: rgb(246, 247, 251);
   text-align: center;
+  margin: 0px;
+  border-radius: 16px 0 0 16px;
+  margin-right: 0;
+  border: 2px solid rgb(71, 71, 89);
 
   @media screen and (min-width: 767px) {
     width: 125px;
@@ -143,22 +146,25 @@ export const BalanceValue = styled.p`
   text-align: center;
   margin: 0;
   margin-right: 0px;
+  border-radius: 16px 0 0 16px;
+  margin-right: 0;
+  border: 2px solid rgb(71, 71, 89);
 
   @media screen and (min-width: 767px) {
     padding: 12px 2px 12px 10px;
+    border-radius: 16px;
   }
 `;
 
 export const BalanceLabel = styled.p`
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
   color: #c7ccdc;
 
   margin-bottom: 10px;
-  margin-right: 20px;
 
   @media screen and (min-width: 767px) {
-    font-size: 13px;
+    margin-right: 21px;
   }
 
   @media screen and (min-width: 1024px) {
