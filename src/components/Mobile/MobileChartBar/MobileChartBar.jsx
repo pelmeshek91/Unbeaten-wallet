@@ -114,14 +114,18 @@ function ChartBarMobile({ list }) {
             const data = newList.column[params.dataIndex];
             const category = newList.row[params.dataIndex];
 
-            return `${category}            ${data} UAH`;
+            return `${category}          ${data} UAH`;
           },
         },
       },
     ],
   };
+   const chartStyle = {
+    minHeight: '280px',
+    minWidth:'320px',
+  };
 
-  return <ReactEcharts option={option} />;
+  return <ReactEcharts option={option} style={chartStyle} />;
 }
 
 export default ChartBarMobile;

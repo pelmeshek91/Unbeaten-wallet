@@ -89,13 +89,13 @@ export const Wrapper = styled.div`
 
   @media screen and (min-width: 767px) {
     display: flex;
-    margin-bottom: 40px;
+
     padding-left: 0px;
     flex-direction: row;
   }
 
   @media screen and (min-width: 1280px) {
-    padding-left: 150px;
+    padding-left: 225px;
     display: flex;
     -webkit-box-align: center;
     align-items: center;

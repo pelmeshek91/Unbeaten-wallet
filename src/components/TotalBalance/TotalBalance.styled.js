@@ -158,8 +158,7 @@ export const BalanceLabel = styled.p`
   }
 
   @media screen and (min-width: 1024px) {
-    margin: 23px;
-    font-size: 24px;
+    font-size: 12px;
   }
 `;
 
