@@ -8,6 +8,7 @@ import TotalBalance from 'components/TotalBalance/TotalBalance';
 import { useMediaQuery } from 'react-responsive';
 import { device } from 'utilits/mediaQuery';
 
+
 const ReportPage = () => {
   const isMobile = useMediaQuery({
     query: `(${device.mobileM}) and (${device.mobileL})`,
@@ -32,7 +33,7 @@ const ReportPage = () => {
       </ReportContainer>
       <ReportAmount />
       <ReportsExpenses />
-    </>
+      </>
   );
 };
 
