@@ -4,8 +4,8 @@ import TotalBalance from 'components/TotalBalance/TotalBalance';
 import { Suspense, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { enGB } from 'date-fns/locale';
-import { StyledLink, Wrapper } from './HomePage.styled';
-import { MobileFormTransactions } from '../../components/Mobile/MobileTransactions/MobileFormTransactions.styled';
+import { ButtonTrans, StyledLink, Wrapper } from './HomePage.styled';
+// import { MobileFormTransactions } from '../../components/Mobile/MobileTransactions/MobileFormTransactions.styled';
 import { ButtonLink } from './HomePage.styled';
 import { IoMdStats } from 'react-icons/io';
 import { useMediaQuery } from 'react-responsive';
@@ -14,9 +14,12 @@ import { useState } from 'react';
 import { DivContainer, InputDate } from 'components/Form/Form.styled';
 import { ToastContainer } from 'react-toastify';
 import { BsCalendar4Week } from 'react-icons/bs';
+import { IoIosAddCircle } from 'react-icons/io';
 import ReactDatePicker from 'react-datepicker';
 import { forwardRef } from 'react';
 import { useToggle } from 'components/hooks/useToggle';
+import MobileFormTransactions from 'components/Mobile/MobileTransactions/MobileFormTransactions';
+// import { MobileFormTransactions } from 'components/Mobile/MobileTransactions/MobileFormTransactions.styled';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -48,16 +51,16 @@ const HomePage = () => {
   // const isDesktop = useMediaQuery({
   //   query: `(${device.desktop})`,
   // });
-
+  console.log(isOpen);
   return (
     <div>
-      {!isMobile && <button onClick={open}>ADD TRANSACTIONS</button>}
+      {!isMobile && (
+        <ButtonTrans onClick={open}>
+          <IoIosAddCircle style={{ fill: '#42A652' }} /> ADD TRANSACTIONS
+        </ButtonTrans>
+      )}
       {isOpen && (
-        <MobileFormTransactions
-          isOpen={isOpen}
-          onClose={close}
-          currrentDate={currrentDate}
-        />
+        <MobileFormTransactions onClose={close} currrentDate={currrentDate} />
       )}
       <Wrapper>
         <TotalBalance />

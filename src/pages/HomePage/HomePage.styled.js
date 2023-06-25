@@ -35,7 +35,7 @@ export const ButtonLink = styled(NavLink)`
 
 export const StyledLink = styled(NavLink)`
   padding: 12px 25px;
-
+  /* margin: 0 auto; */
   display: flex;
   align-items: center;
   font-style: inherit;
@@ -57,25 +57,21 @@ export const StyledLink = styled(NavLink)`
   border-radius: 16px;
 
   @media screen and (min-width: 768px) {
+    margin-left: auto;
+    &:hover,
+    &:focus {
+      color: #42a652;
+      border-bottom: none;
+      box-shadow: 1px -1px 24px -2px #41a350;
+    }
   }
 
-  @media screen and (min-width: 1024px) {
+  @media ${device.desktop} {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
     flex-direction: row;
-  }
-  @media screen and (min-width: 1100px) {
-  }
-  @media ${device.desktop} {
     margin-left: auto;
-  }
-
-  &:hover,
-  &:focus {
-    color: #42a652;
-    border-bottom: none;
-    box-shadow: 1px -1px 24px -2px #41a350;
   }
 `;
 
@@ -89,16 +85,23 @@ export const Wrapper = styled.div`
 
   @media screen and (min-width: 767px) {
     display: flex;
-
+    margin-bottom: 60px;
     padding-left: 0px;
     flex-direction: row;
   }
 
   @media screen and (min-width: 1280px) {
     padding-left: 225px;
+    margin-bottom: 8px;
     display: flex;
     -webkit-box-align: center;
-    align-items: center;
-    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-evenly;
   }
+`;
+export const ButtonTrans = styled.button`
+  background-color: transparent;
+  border: 0;
+  color: #f6f7fb;
+  font-weight: 700;
 `;

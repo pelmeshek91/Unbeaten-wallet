@@ -17,12 +17,23 @@ import { ChartBarContainer } from 'components/ChartBar/ChartBar.styled';
 import { useSelector } from 'react-redux';
 import ChartBarMobile from '../Mobile/MobileChartBar/MobileChartBar';
 import { MobileChBarContainer } from '../Mobile/MobileChartBar/MobileChartBar.styled';
+import { useMediaQuery } from 'react-responsive';
+import { device } from 'utilits/mediaQuery';
 
 const ReportsContainer = () => {
   const [reportType, setReportType] = useState('EXPENSES');
   const [list, setList] = useState(null);
   const { transactions } = useSelector(state => state.transactions);
+  const isMobile = useMediaQuery({
+    query: `(${device.mobileS}) `,
+  });
 
+  const isTable = useMediaQuery({
+    query: `(${device.tablet})`,
+  });
+  const isDesktop = useMediaQuery({
+    query: `(${device.desktop})`,
+  });
   const handleToggleReport = () => {
     setReportType(prevType =>
       prevType === 'EXPENSES' ? 'INCOME' : 'EXPENSES'
@@ -114,7 +125,7 @@ const ReportsContainer = () => {
   useEffect(() => {
     if (!transactions) return;
     setList(categoriesList[0]?.categoryDataList);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [reportType, transactions]);
 
 
@@ -152,18 +163,16 @@ const ReportsContainer = () => {
           ))}
         </ListImages>
       </SectionReport>
-      {list && (
-        <Suspense>
+      {list &&
+        (isTable ? (
           <ChartBarContainer>
             <ChartBar list={list} />
           </ChartBarContainer>
-        </Suspense>
-      )}
-      {list && (
-        <MobileChBarContainer >
-          <ChartBarMobile list={list} />
-        </MobileChBarContainer>
-      )}
+        ) : (
+          <MobileChBarContainer>
+            <ChartBarMobile list={list} />
+          </MobileChBarContainer>
+        ))}
     </>
   );
 };

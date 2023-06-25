@@ -13,11 +13,35 @@ body {
   background-color: #31323e;
 }
 
+p,
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+}
 
 /* input:-webkit-autofill {
   background-color: transparent !important;
 } */
-input:-webkit-autofill,
+/* input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
@@ -25,4 +49,4 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: rgba(199, 204, 220, 0.5);
   ;
 
-}
+} */

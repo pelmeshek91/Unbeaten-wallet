@@ -12,6 +12,7 @@ import {
   StyledMessage,
   RelativeContainer,
   ButtonDisabled,
+  Wrapper,
 } from './TotalBalance.styled';
 import { updateUserBalanceThunk } from '../../redux/transcactions/transcactionsOperations';
 
@@ -34,14 +35,23 @@ const TotalBalance = () => {
       .catch(error => toast.error(error.message));
   }, [dispatch, newTopUp]);
 
+  const formatBalance = value => {
+    if (typeof value === 'number') {
+      return value.toFixed(2);
+    }
+    return value;
+  };
+
   return (
     <BalanceContainer>
       <>
         <BalanceLabel>Balance:</BalanceLabel>
         {balance || expenses.length > 0 ? (
           <>
-            <BalanceValue>{balance}</BalanceValue>
-            <ButtonDisabled disabled>Confirm</ButtonDisabled>
+            <Wrapper>
+              <BalanceValue>{formatBalance(balance)}</BalanceValue>
+              <ButtonDisabled disabled>Confirm</ButtonDisabled>
+            </Wrapper>
           </>
         ) : (
           <InputContainer>

@@ -56,11 +56,25 @@ export const TransactionForm = ({ currrentDate }) => {
       return { ...prevForm, [name]: value };
     });
   };
+  const handleChange1 = ({ target: { name, value } }) => {
+    const regex = /^\d*.?\d{0,2}$/;
+    if (regex.test(value)) {
+      setForm(prevForm => {
+        return { ...prevForm, [name]: value };
+      });
+    }
+  };
+  // const inputValue = e.target.value;
+  // const regex = /^\d*.?\d{0,2}$/; // Regex pattern to allow up to 2 decimal places
 
+  // if (regex.test(inputValue)) {
+  //   setValue(inputValue);
+  // }
   const handleFormSubmit = e => {
     e.preventDefault();
 
     const amount = e.target.elements.amount.value;
+
     const description = e.target.elements.description.value;
     const category = e.target.elements.category.value;
     if (!description) {
@@ -76,7 +90,7 @@ export const TransactionForm = ({ currrentDate }) => {
     if (key === 'expenses') {
       const payload = {
         description,
-        amount: Number(amount),
+        amount: Number(amount).toFixed(2),
         category,
         date: currrentDate,
       };
@@ -87,7 +101,7 @@ export const TransactionForm = ({ currrentDate }) => {
     } else {
       const payload = {
         description,
-        amount: Number(amount),
+        amount: Number(amount).toFixed(2),
         category,
         date: currrentDate,
       };
@@ -98,7 +112,6 @@ export const TransactionForm = ({ currrentDate }) => {
         .catch(error => toast.error(error.message));
     }
 
-    //   очистка форми
     setForm(initialState);
     setSelectedOption(null);
   };
@@ -148,8 +161,8 @@ export const TransactionForm = ({ currrentDate }) => {
                 placeholder="0.00"
                 required
                 value={form.amount}
-                onChange={handleChange}
-                decimalScale={2}
+                onChange={handleChange1}
+                decimalScale={3}
                 autoComplete="off"
               />
 

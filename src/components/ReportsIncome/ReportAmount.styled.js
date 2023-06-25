@@ -13,6 +13,12 @@ export const FormAmount = styled.div`
   border-radius: 30px;
   padding: 15px;
   margin-bottom: 32px;
+  @media screen and (min-width: 767px) {
+    border-radius: 0px;
+  }
+  @media screen and (min-width: 1024px) {
+    border-radius: 30px;
+  }
 `;
 
 export const TextAmound = styled.span`
@@ -20,6 +26,10 @@ export const TextAmound = styled.span`
   margin-right: 15px;
   font-weight: 700;
   line-height: 1.14;
+  display: flex;
+  @media screen and (min-width: 767px) {
+    display: flex;
+  }
 `;
 
 export const TotalAmoundPlus = styled.span`
@@ -27,6 +37,9 @@ export const TotalAmoundPlus = styled.span`
   margin-right: 15px;
   font-weight: 700;
   line-height: 1.14;
+  @media screen and (min-width: 767px) {
+    display: flex;
+  }
 `;
 
 export const TotalAmoundMin = styled.span`

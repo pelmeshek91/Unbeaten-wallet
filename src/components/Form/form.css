@@ -13,7 +13,13 @@
   border-bottom-right-radius: 0;
   color: rgba(199, 204, 220, 0.5);
   border: 2px solid rgb(71, 71, 89);
+
+  @media screen and (min-width: 767px) and (max-width: 1279px) {
+    height: 43px;
+  }
 }
+
+
 
 .select-container .select__control:hover {
   outline: none;

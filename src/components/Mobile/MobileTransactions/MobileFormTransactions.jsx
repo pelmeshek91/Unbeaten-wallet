@@ -41,6 +41,7 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
       return { ...prevForm, [name]: value };
     });
   };
+
   const handleBackdropClick = e => {
     if (e.target !== e.currentTarget) return;
     onClose();
@@ -50,7 +51,16 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
     const amount = e.target.elements.amount.value;
     const description = e.target.elements.description.value;
     const category = e.target.elements.category.value;
-
+    if (!description) {
+      toast.error('Please enter the description');
+      return;
+    } else if (!category) {
+      toast.error('Please choose the category');
+      return;
+    } else if (!amount) {
+      toast.error('Please enter the sum');
+      return;
+    }
     if (key === 'expenses') {
       const payload = {
         description,
@@ -86,7 +96,7 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
     <Overlay onClick={handleBackdropClick}>
       <MainContainer>
         <div>
-          <Form ref={formRef} onSubmit={handleFormSubmit}>
+          <Form noValidate ref={formRef} onSubmit={handleFormSubmit}>
             <Input
               type="text"
               placeholder="Product description"
@@ -94,6 +104,7 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
               name="description"
               value={form.description}
               onChange={handleChange}
+              autoComplete="off"
             />
 
             <Select
@@ -118,6 +129,7 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
                 value={form.amount}
                 onChange={handleChange}
                 decimalScale={2}
+                autoComplete="off"
               />
 
               <IconContainer>
@@ -128,11 +140,7 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
             </Container>
 
             <BtnContainer>
-              <InputBtn
-                type="submit"
-                disabled={!balance && !trans.length}
-                // onClick={onClose}
-              >
+              <InputBtn type="submit" disabled={!balance && !trans.length}>
                 Input
               </InputBtn>
               <ClearBtn onClick={() => setForm(initialState)}>Clear</ClearBtn>
