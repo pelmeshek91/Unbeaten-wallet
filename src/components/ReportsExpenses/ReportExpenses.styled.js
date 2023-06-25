@@ -47,11 +47,17 @@ export const SectionReport = styled.div`
     #383847 23.54%,
     rgba(56, 56, 71, 0.29) 107.94%
   );
-  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
-  border-radius: 30px;
-  max-width: 1034px;
-  padding: 20px 219px;
-  margin-bottom: 40px;
+  @media screen and (min-width: 768px) {
+    border-radius: 30px;
+   
+     padding: 20px 219px; 
+  margin-bottom: 40px; 
+   border-radius: 30px;
+   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+
+  }
+
+ 
 `;
 
 export const BtnSection = styled.div`

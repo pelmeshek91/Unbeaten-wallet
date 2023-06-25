@@ -118,10 +118,12 @@ function ChartBar({ list }) {
     ],
   };
   const chartStyle = {
-    height: '600px',
-    width:'750px',
+    height: '400px',
+    width: '704px',
+    left: '19px',
+   
   };
-
+ 
   return <ReactEcharts option={option} style={chartStyle} />;
 }
 

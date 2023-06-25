@@ -154,11 +154,11 @@ const ReportsContainer = () => {
           <ChartBar list={list} />
         </ChartBarContainer>
       )}
-      {list && (
+      {/* {list && (
         <MobileChBarContainer >
           <ChartBarMobile list={list} />
         </MobileChBarContainer>
-      )}
+      )} */}
     </>
   );
 };
