@@ -13,6 +13,11 @@ import { device } from 'utilits/mediaQuery';
 import { MobileTable } from 'components/Mobile/MobileTable/MobileTable';
 
 export function TransactionsContainer() {
+  // const isMobile = useMediaQuery({
+  //   query: `(${device.mobileM}) and (${device.mobileL})`,
+  // });
+  const currentYear = new Date().getFullYear();
+
   const isMobile = useMediaQuery({
     query: `(${device.mobileS}) `,
   });
@@ -55,14 +60,17 @@ export function TransactionsContainer() {
             }}
             locale={enGB}
             maxDate={new Date()}
+            minDate={new Date(currentYear, 0, 1)}
             calendarClassName="calendar"
             className="datepicker"
             customInput={<CustomInput />}
           />
         </>
       )}
-    <ContainerFormDate>
-        {(isTable || isDesktop) && <TransactionForm currrentDate={currrentDate} />}
+      <ContainerFormDate>
+        {(isTable || isDesktop) && (
+          <TransactionForm currrentDate={currrentDate} />
+        )}
       </ContainerFormDate>
 
       {isTable || isDesktop ? (
