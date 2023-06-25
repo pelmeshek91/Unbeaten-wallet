@@ -35,6 +35,13 @@ const TotalBalance = () => {
       .catch(error => toast.error(error.message));
   }, [dispatch, newTopUp]);
 
+  const formatBalance = value => {
+    if (typeof value === 'number') {
+      return value.toFixed(2);
+    }
+    return value;
+  };
+
   return (
     <BalanceContainer>
       <>
@@ -42,7 +49,7 @@ const TotalBalance = () => {
         {balance || expenses.length > 0 ? (
           <>
             <Wrapper>
-              <BalanceValue>{balance}</BalanceValue>
+              <BalanceValue>{formatBalance(balance)}</BalanceValue>
               <ButtonDisabled disabled>Confirm</ButtonDisabled>
             </Wrapper>
           </>
