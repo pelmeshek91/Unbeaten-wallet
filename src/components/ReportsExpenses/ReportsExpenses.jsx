@@ -16,14 +16,24 @@ import { ChartBarContainer } from 'components/ChartBar/ChartBar.styled';
 
 import { useSelector } from 'react-redux';
 import ChartBarMobile from '../Mobile/MobileChartBar/MobileChartBar';
-import {MobileChBarContainer} from '../Mobile/MobileChartBar/MobileChartBar.styled'
-
+import { MobileChBarContainer } from '../Mobile/MobileChartBar/MobileChartBar.styled';
+import { useMediaQuery } from 'react-responsive';
+import { device } from 'utilits/mediaQuery';
 
 const ReportsContainer = () => {
   const [reportType, setReportType] = useState('EXPENSES');
   const [list, setList] = useState(null);
   const { transactions } = useSelector(state => state.transactions);
+  const isMobile = useMediaQuery({
+    query: `(${device.mobileS}) `,
+  });
 
+  const isTable = useMediaQuery({
+    query: `(${device.tablet})`,
+  });
+  const isDesktop = useMediaQuery({
+    query: `(${device.desktop})`,
+  });
   const handleToggleReport = () => {
     setReportType(prevType =>
       prevType === 'EXPENSES' ? 'INCOME' : 'EXPENSES'
@@ -151,16 +161,16 @@ const ReportsContainer = () => {
           ))}
         </ListImages>
       </SectionReport>
-      {list && (
-        <ChartBarContainer>
-          <ChartBar list={list} />
-        </ChartBarContainer>
-      )}
-      {/* {list && (
-        <MobileChBarContainer >
-          <ChartBarMobile list={list} />
-        </MobileChBarContainer>
-      )} */}
+      {list &&
+        (isTable ? (
+          <ChartBarContainer>
+            <ChartBar list={list} />
+          </ChartBarContainer>
+        ) : (
+          <MobileChBarContainer>
+            <ChartBarMobile list={list} />
+          </MobileChBarContainer>
+        ))}
     </>
   );
 };
