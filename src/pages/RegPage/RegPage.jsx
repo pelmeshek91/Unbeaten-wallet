@@ -5,6 +5,8 @@ import * as yup from 'yup';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { registerUserThunk } from 'redux/auth/authOperations';
 import {
+  Text,
+  ErrorMessageContainer,
   Header,
   ImgWallet,
   Container,
@@ -73,9 +75,7 @@ const RegPage = () => {
       <Header />
       <GlobalStyle />
       <Container>
-        <ImgWallet>
-          <img src={wallet} alt="wallet" />
-        </ImgWallet>
+        <ImgWallet></ImgWallet>
         <Formik
           initialValues={{ email: email || '', password: password || '' }}
           validationSchema={validationSchema}
@@ -91,7 +91,7 @@ const RegPage = () => {
           }) => (
             <Form onSubmit={handleSubmit}>
               <Label htmlFor="email">
-                Email:
+                <Text>Email:</Text>
                 <Input
                   placeholder="youremail@mail.com"
                   type="email"
@@ -101,13 +101,15 @@ const RegPage = () => {
                   onBlur={handleBlur}
                   value={values.email}
                 />
-                {touched.email && errors.email && (
-                  <ErrorMessage>{errors.email}</ErrorMessage>
-                )}
+                <ErrorMessageContainer hasError={touched.email && errors.email}>
+                  {touched.email && errors.email && (
+                    <ErrorMessage>{errors.email}</ErrorMessage>
+                  )}
+                </ErrorMessageContainer>
               </Label>
 
               <Label htmlFor="password">
-                Password:
+                <Text>Password:</Text>
                 <Input
                   placeholder="* * * * * * * *"
                   type="password"
@@ -117,9 +119,13 @@ const RegPage = () => {
                   onBlur={handleBlur}
                   value={values.password}
                 />
-                {touched.password && errors.password && (
-                  <ErrorMessage>{errors.password}</ErrorMessage>
-                )}
+                <ErrorMessageContainer
+                  hasError={touched.password && errors.password}
+                >
+                  {touched.password && errors.password && (
+                    <ErrorMessage>{errors.password}</ErrorMessage>
+                  )}
+                </ErrorMessageContainer>
               </Label>
               <ButtonContainer>
                 <ButtonWhite type="button" onClick={handleLogin}>

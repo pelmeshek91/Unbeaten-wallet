@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 import desktopRectangle from '../../img/decor-img/Rectangle-desctop@2x.png';
+import Ellipse from '../../img/decor-img/Ellipse.png';
 import tabletRectangle from '../../img/decor-img/Rectangle-tablet@2x.png';
-export const Container = styled.main`
+export const Container = styled.div`
   margin: 0 auto;
 
   padding-left: 20px;
@@ -21,26 +22,31 @@ export const Container = styled.main`
     width: 1098px;
   }
 `;
-
 export const GlobalStyle = createGlobalStyle`
   body {
      
     
-   
+  }
     @media screen and (max-width: 767px) {
       background-image: none;
     }
 
     
-    @media screen and (min-width: 768px) and (max-width: 1024px) {
+    @media screen and (min-width: 768px) {
+      body {
       background-image: url(${tabletRectangle});
-      background-size: 135%;
+      background-size: 140%;
+      background-repeat: no-repeat;
+      background-position: left 40% top 90%;
+    }
     }
 
      
-    @media screen and (min-width: 1024px) {
-      background-image: url(${desktopRectangle});
-      background-size: 100%;
+    @media screen and (min-width: 1200px) {
+      body{      background-image: url(${desktopRectangle});
+      background-size: 115%;
+      background-position: left 30% top 10%  ;}
+
     }
       
       background-repeat: no-repeat; 
@@ -52,7 +58,7 @@ export const GlobalStyle = createGlobalStyle`
 
 export const EllipseImg = styled.img`
   position: absolute;
-
+  height: 650px;
   transform: translate(-38%, -40%);
   z-index: -1;
 `;
