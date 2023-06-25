@@ -78,9 +78,10 @@ export const Wrapper = styled.div`
   @media screen and (min-width: 767px) and (max-width: 1024px) {
     margin-bottom: 40px;
     padding-left: 0px;
+  }
 
-    @media screen and (min-width: 320px) and (max-width: 766px) {
-      flex-direction: column-reverse;
-    }
+  @media screen and (min-width: 320px) and (max-width: 766px) {
+    flex-direction: column-reverse;
+    padding: 0;
   }
 `;

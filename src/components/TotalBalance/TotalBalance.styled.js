@@ -19,7 +19,7 @@ export const Button = styled.button`
   border-radius: 16px;
   border: 2px solid rgb(71, 71, 89);
   padding: 16px 48px;
-  background-color: rgb(56, 56, 71);
+  background-color: transparent;
   font-weight: 700;
   font-size: 12px;
   line-height: 1.16;
@@ -43,10 +43,11 @@ export const Button = styled.button`
   @media screen and (min-width: 320px) and (max-width: 766px) {
     top: auto;
     width: 140px;
-    height: 44px;
+    height: 43px;
     padding: 10px;
     font-size: 14px;
     border-radius: 0 16px 16px 0;
+    margin-left: 30px;
   }
 `;
 
@@ -56,7 +57,7 @@ export const Input = styled.input`
   border-radius: 16px;
   border: 2px solid rgb(71, 71, 89);
   padding: 12px 2px 12px 10px;
-  background-color: rgb(56, 56, 71);
+  background-color: transparent;
   font-weight: 700;
   font-size: 13px;
   line-height: 1.16;
@@ -64,7 +65,8 @@ export const Input = styled.input`
   text-transform: uppercase;
   color: rgb(246, 247, 251);
   text-align: center;
-  @media screen and (min-width: 320px) and (max-width: 766px) {
+
+  @media screen and (min-width: 320px) and (max-width: 768px) {
     margin-right: 0;
     width: 140px;
     font-size: 14px;
@@ -78,7 +80,7 @@ export const BalanceValue = styled.p`
   border-radius: 16px;
   border: 2px solid rgb(71, 71, 89);
   padding: 12px 2px 12px 10px;
-  background-color: rgb(56, 56, 71);
+  background-color: transparent;
   font-weight: 700;
   font-size: 13px;
   line-height: 1.16;
@@ -101,9 +103,13 @@ export const BalanceLabel = styled.p`
   color: #c7ccdc;
   margin: 0;
   margin-right: 20px;
-  @media (max-width: 768px) {
-    font-size: 15px;
+  @media screen and (min-width: 768px) and (max-width: 1100px) {
+    margin-bottom: 0px;
+    font-size: 13px;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
     margin-bottom: 10px;
+    font-size: 13px;
   }
 `;
 
