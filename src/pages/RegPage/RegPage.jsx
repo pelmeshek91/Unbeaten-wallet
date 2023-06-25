@@ -20,7 +20,6 @@ import {
   GlobalStyle,
 } from '../LoginPage/LoginPage.styled';
 import { toast } from 'react-toastify';
-import wallet from '../../img/decor-img/wallet.png';
 
 const validationSchema = yup.object().shape({
   email: yup

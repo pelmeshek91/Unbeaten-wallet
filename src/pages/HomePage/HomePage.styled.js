@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import { device } from 'utilits/mediaQuery';
 
 export const ButtonLink = styled(NavLink)`
+@media (max-width: 767px) {
+    width:100%;
+  }
   display: inline-block;
   background-color: #2d2d38;
   width: 138px;
@@ -104,4 +107,18 @@ export const ButtonTrans = styled.button`
   border: 0;
   color: #f6f7fb;
   font-weight: 700;
+`;
+
+export const SectionBtn = styled.div`
+ @media (max-width: 767px) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    background-color: transparent;
+  }
 `;
