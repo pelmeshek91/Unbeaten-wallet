@@ -21,16 +21,19 @@ export const ListImages = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  background-color: transparent;
+  gap: 25px;
+  padding: 10px;
 
   & > * {
-    flex-basis: calc(33.33% - 14px);
+    flex-basis: calc(9% - 5px);
   }
 
   & > *:nth-child(n + 4) {
   }
   @media screen and (min-width: 768px) {
     & > * {
-      flex-basis: calc(17.2857% - 15px);
+      flex-basis: calc(9.2857% - 15px);
     }
 
     & > *:nth-child(n + 6) {

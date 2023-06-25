@@ -26,8 +26,9 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
 
-  /* margin-bottom: 40px; */
+  margin-bottom: 40px;
   @media screen and (min-width: 767px) {
+    margin-bottom: 0;
   }
 `;
 
@@ -99,6 +100,7 @@ export const ButtonDisabled = styled.button`
   margin-left: 30px;
   margin: 0;
   color: rgb(246, 247, 251);
+  border: 2px solid rgba(128, 132, 143, 1);
 
   @media screen and (min-width: 767px) {
     padding: 16px 48px;
@@ -155,7 +157,7 @@ export const BalanceValue = styled.p`
   margin-right: 0px;
   border-radius: 16px 0 0 16px;
   margin-right: 0;
-  border: 2px solid rgb(71, 71, 89);
+  border: 2px solid rgba(128, 132, 143, 1);
 
   @media screen and (min-width: 767px) {
     padding: 12px 2px 12px 10px;
@@ -222,6 +224,7 @@ export const StyledMessage = styled.div`
   flex-direction: column;
   justify-content: space-between;
   z-index: 10;
+  border: 2px solid rgba(128, 132, 143, 1);
 
   &::before {
     content: '';
