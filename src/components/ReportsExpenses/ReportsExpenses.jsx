@@ -24,16 +24,11 @@ const ReportsContainer = () => {
   const [reportType, setReportType] = useState('EXPENSES');
   const [list, setList] = useState(null);
   const { transactions } = useSelector(state => state.transactions);
-  const isMobile = useMediaQuery({
-    query: `(${device.mobileS}) `,
-  });
 
   const isTable = useMediaQuery({
     query: `(${device.tablet})`,
   });
-  const isDesktop = useMediaQuery({
-    query: `(${device.desktop})`,
-  });
+
   const handleToggleReport = () => {
     setReportType(prevType =>
       prevType === 'EXPENSES' ? 'INCOME' : 'EXPENSES'
@@ -125,10 +120,8 @@ const ReportsContainer = () => {
   useEffect(() => {
     if (!transactions) return;
     setList(categoriesList[0]?.categoryDataList);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reportType, transactions]);
-
-
 
   return (
     <>
@@ -165,13 +158,17 @@ const ReportsContainer = () => {
       </SectionReport>
       {list &&
         (isTable ? (
-          <ChartBarContainer>
-            <ChartBar list={list} />
-          </ChartBarContainer>
+          <Suspense>
+            <ChartBarContainer>
+              <ChartBar list={list} />
+            </ChartBarContainer>
+          </Suspense>
         ) : (
-          <MobileChBarContainer>
-            <ChartBarMobile list={list} />
-          </MobileChBarContainer>
+          <Suspense>
+            <MobileChBarContainer>
+              <ChartBarMobile list={list} />
+            </MobileChBarContainer>
+          </Suspense>
         ))}
     </>
   );
