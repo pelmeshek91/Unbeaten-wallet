@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NumericFormat } from 'react-number-format';
+import { device } from '../../utilits/mediaQuery';
 
 export const MainContainer = styled.div`
   display: flex;
@@ -9,7 +10,7 @@ export const MainContainer = styled.div`
   -webkit-box-align: center;
   align-items: flex-start;
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     display: flex;
     align-items: center;
     gap: 32px;
@@ -17,8 +18,7 @@ export const MainContainer = styled.div`
     position: relative;
     /* width: 616px; */
   }
-
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     display: flex;
     width: auto;
     padding-bottom: 0px;
@@ -59,7 +59,7 @@ export const Input = styled.input`
     background-color: rgb(56, 56, 71);
   }
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     width: 215px;
     padding: 15px;
     box-sizing: border-box;
@@ -85,7 +85,7 @@ export const Input = styled.input`
     }
   }
 
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     width: 288px;
     &:focus,
     &:hover {
@@ -124,7 +124,8 @@ export const InputNum = styled(NumericFormat)`
     -webkit-appearance: none;
     margin: 0;
   }
-  @media screen and (min-width: 768px) {
+
+  @media ${device.tablet} {
     display: flex;
     justify-content: center;
     width: 40px;
@@ -149,7 +150,7 @@ export const InputNum = styled(NumericFormat)`
     }
   }
 
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     background-color: rgb(56, 56, 71);
 
     background-size: 20px;
@@ -189,7 +190,7 @@ export const BtnContainer = styled.div`
   transform: translateX(0);
   padding-left: 32px;
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     display: flex;
     gap: 16px;
     left: 30%;
@@ -199,7 +200,7 @@ export const BtnContainer = styled.div`
     transform: translateX(-50%);
   }
 
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     /* margin-top: 55px; */
     top: 50%;
     left: 50%;
@@ -214,13 +215,13 @@ export const Container = styled.div`
 `;
 
 export const IconContainer = styled.div`
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     position: absolute;
     top: 26%;
     right: 25%;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     right: 10%;
   }
 `;
