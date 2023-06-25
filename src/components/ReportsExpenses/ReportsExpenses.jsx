@@ -16,6 +16,8 @@ import { ChartBarContainer } from 'components/ChartBar/ChartBar.styled';
 
 import { useSelector } from 'react-redux';
 import ChartBarMobile from '../Mobile/MobileChartBar/MobileChartBar';
+import {MobileChBarContainer} from '../Mobile/MobileChartBar/MobileChartBar.styled'
+
 
 const ReportsContainer = () => {
   const [reportType, setReportType] = useState('EXPENSES');
@@ -123,7 +125,9 @@ const ReportsContainer = () => {
           <BtnReport onClick={handleToggleReport}>
             <MdKeyboardArrowLeft size="26" color="green" />
           </BtnReport>
-          <h2>{reportType}</h2>
+          <p style={{ color: '#F6F7FB', fontSize: 14, margin: 0 }}>
+            {reportType}
+          </p>
           <BtnReport onClick={handleToggleReport}>
             <MdKeyboardArrowRight size="26" color="green" />
           </BtnReport>
@@ -152,11 +156,11 @@ const ReportsContainer = () => {
           <ChartBar list={list} />
         </ChartBarContainer>
       )}
-      {list && (
-        <div>
+      {/* {list && (
+        <MobileChBarContainer >
           <ChartBarMobile list={list} />
-        </div>
-      )}
+        </MobileChBarContainer>
+      )} */}
     </>
   );
 };

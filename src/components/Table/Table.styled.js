@@ -1,13 +1,14 @@
 import styled from 'styled-components';
+import { device } from '../../utilits/mediaQuery';
+
 export const Div = styled.div`
-  width: 746px;
   /* height: 400px; */
   border-radius: 30px 30px 0px 0px;
   border: 2px solid #474759;
   overflow: hidden;
   /* margin-left: 32px; */
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     width: 624px;
     /* height: 400px; */
     border-radius: 30px 30px 0px 0px;
@@ -16,7 +17,7 @@ export const Div = styled.div`
     /* margin-left: 32px; */
   }
 
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     width: 746px;
     /* height: 400px; */
     border-radius: 30px 30px 0px 0px;
@@ -31,11 +32,11 @@ export const TableEL = styled.table`
   table-layout: fixed;
 `;
 export const Tr = styled.tr`
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     height: 36px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     height: 38px;
   }
 `;
@@ -49,7 +50,7 @@ export const Td = styled.td`
   margin-left: 22px;
   padding-left: 40px;
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     width: 5%;
     border-bottom: 2px solid #474759;
     height: 36px;
@@ -60,7 +61,7 @@ export const Td = styled.td`
     padding-left: 32px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     width: 5%;
     border-bottom: 2px solid #474759;
     height: 38px;
@@ -111,7 +112,7 @@ export const Tbody = styled.tbody`
   overflow-y: auto;
   width: 624px;
   scroll-behavior: smooth;
-  height: 380px;
+  height: 342px;
   border-collapse: collapse;
   scroll-behavior: smooth;
   scrollbar-width: thin;
@@ -130,7 +131,7 @@ export const Tbody = styled.tbody`
     max-height: 242px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     display: block;
     /* display: table; */
     max-height: 100%;
@@ -157,14 +158,14 @@ export const Tbody = styled.tbody`
     }
   }
 
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     display: block;
     /* display: table; */
     max-height: 100%;
     overflow-y: auto;
     width: 746px;
     scroll-behavior: smooth;
-    height: 380px;
+    height: 342px;
     border-collapse: collapse;
     scroll-behavior: smooth;
     scrollbar-width: thin;

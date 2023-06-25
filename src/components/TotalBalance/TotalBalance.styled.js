@@ -1,75 +1,124 @@
+import { style } from '@mui/system';
 import styled from 'styled-components';
 
 export const BalanceContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   -webkit-box-pack: center;
   -webkit-box-align: baseline;
   align-items: center;
   justify-content: center;
   margin: 0px auto;
-  @media (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
+
+  @media screen and (min-width: 767px) {
+    align-items: center;
+    justify-content: center;
+    -webkit-box-pack: center;
+    -webkit-box-align: baseline;
+    align-items: center;
+    justify-content: center;
+    margin: 0px auto;
+    flex-direction: row;
   }
 `;
 
 export const Button = styled.button`
   cursor: pointer;
   display: flex;
-  border-radius: 16px;
+  border-radius: 0 16px 16px 0;
+
   border: 2px solid rgb(71, 71, 89);
-  padding: 16px 48px;
-  background-color: rgb(56, 56, 71);
+  padding: 10px;
+
+  background-color: transparent;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.16;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: rgb(246, 247, 251);
   text-align: center;
-  width: 125px;
-  height: 44px;
+  top: auto;
+  width: 140px;
+  height: 43px;
+
   place-content: space-around center;
   -webkit-box-pack: center;
   -webkit-box-align: center;
   align-items: center;
-  margin-left: 32px;
+  margin-left: 30px;
   &:hover {
     background-color: rgb(66, 166, 82);
     box-shadow: rgba(96, 196, 112, 0.35) 1px 3px 5px;
     background: rgb(61, 148, 76);
   }
 
-  @media (max-width: 768px) {
-    top: auto;
-    width: 140px;
+  @media screen and (min-width: 767px) {
+    padding: 16px 48px;
+    font-size: 12px;
+    border-radius: 16px;
+    margin-left: 32px;
+    width: 125px;
     height: 44px;
-    padding: 10px;
-    font-size: 14px;
-    border-radius: 0 16px 16px 0;
+  }
+`;
+
+export const ButtonDisabled = styled.button`
+  display: flex;
+  border-radius: 0 16px 16px 0;
+
+  border: 2px solid rgb(71, 71, 89);
+  padding: 10px;
+
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.16;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  text-align: center;
+  top: auto;
+  width: 140px;
+  height: 43px;
+
+  place-content: space-around center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-left: 30px;
+
+  @media screen and (min-width: 767px) {
+    padding: 16px 48px;
+    font-size: 12px;
+    border-radius: 16px;
+    margin-left: 32px;
+    width: 125px;
+    height: 44px;
   }
 `;
 
 export const Input = styled.input`
-  width: 125px;
   height: 16px;
-  border-radius: 16px;
+  border-radius: 16px 0 0 16px;
+  margin-right: 0;
   border: 2px solid rgb(71, 71, 89);
   padding: 12px 2px 12px 10px;
-  background-color: rgb(56, 56, 71);
+  background-color: transparent;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 14px;
+  width: 140px;
   line-height: 1.16;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: rgb(246, 247, 251);
   text-align: center;
 
-  @media (max-width: 768px) {
-    margin-right: 0;
-    width: 140px;
-    font-size: 14px;
-    border-radius: 16px 0 0 16px;
+  @media screen and (min-width: 767px) {
+    width: 125px;
+    font-size: 13px;
+    border-radius: 16px;
   }
 `;
 
@@ -78,8 +127,9 @@ export const BalanceValue = styled.p`
   height: 16px;
   border-radius: 16px;
   border: 2px solid rgb(71, 71, 89);
-  padding: 12px 2px 12px 10px;
-  background-color: rgb(56, 56, 71);
+  padding: 12px 8px 11px 4px;
+
+  background-color: transparent;
   font-weight: 700;
   font-size: 13px;
   line-height: 1.16;
@@ -88,21 +138,27 @@ export const BalanceValue = styled.p`
   color: rgb(246, 247, 251);
   text-align: center;
   margin: 0;
-  margin-right: 141px;
+  margin-right: 0px;
 
-  @media (max-width: 768px) {
+  @media screen and (min-width: 767px) {
+    padding: 12px 2px 12px 10px;
   }
 `;
 
 export const BalanceLabel = styled.p`
-  font-size: 24px;
+  font-size: 13px;
   font-weight: bold;
   color: #c7ccdc;
-  margin: 0;
+
+  margin-bottom: 10px;
   margin-right: 20px;
-  @media (max-width: 768px) {
-    font-size: 15px;
-    margin-bottom: 10px;
+
+  @media screen and (min-width: 767px) {
+    font-size: 13px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 12px;
   }
 `;
 
@@ -159,12 +215,6 @@ export const StyledMessage = styled.div`
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-bottom: 10px solid rgb(88, 187, 103);
-  }
-
-  @media (max-width: 1024px) {
-    @media (max-width: 768px) {
-      display: block;
-    }
   }
 `;
 

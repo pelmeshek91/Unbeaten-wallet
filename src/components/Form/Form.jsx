@@ -59,10 +59,20 @@ export const TransactionForm = ({ currrentDate }) => {
 
   const handleFormSubmit = e => {
     e.preventDefault();
+
     const amount = e.target.elements.amount.value;
     const description = e.target.elements.description.value;
     const category = e.target.elements.category.value;
-
+    if (!description) {
+      toast.error('Please enter the description');
+      return;
+    } else if (!category) {
+      toast.error('Please choose the category');
+      return;
+    } else if (!amount) {
+      toast.error('Please enter the sum');
+      return;
+    }
     if (key === 'expenses') {
       const payload = {
         description,
@@ -104,7 +114,7 @@ export const TransactionForm = ({ currrentDate }) => {
             onSubmit={handleFormSubmit}
           >
             {({ values, errors, touched, handleChange, handleBlur }) => ( */}
-          <Form ref={formRef} onSubmit={handleFormSubmit}>
+          <Form noValidate ref={formRef} onSubmit={handleFormSubmit}>
             <label htmlFor="description">
               <Input
                 type="text"
@@ -113,6 +123,7 @@ export const TransactionForm = ({ currrentDate }) => {
                 name="description"
                 value={form.description}
                 onChange={handleChange}
+                autoComplete="off"
               />
               {/* {errors.description && touched.description && (
                     <div>{errors.description}</div>
@@ -139,6 +150,7 @@ export const TransactionForm = ({ currrentDate }) => {
                 value={form.amount}
                 onChange={handleChange}
                 decimalScale={2}
+                autoComplete="off"
               />
 
               <IconContainer>
