@@ -7,7 +7,7 @@ export const BalanceContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0px auto;
-  @media screen and (min-width: 320px) and (max-width: 766px) {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
     display: flex;
     flex-direction: column;
   }
@@ -40,7 +40,7 @@ export const Button = styled.button`
     background: rgb(61, 148, 76);
   }
 
-  @media screen and (min-width: 320px) and (max-width: 766px) {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
     top: auto;
     width: 140px;
     height: 43px;
@@ -66,7 +66,7 @@ export const Input = styled.input`
   color: rgb(246, 247, 251);
   text-align: center;
 
-  @media screen and (min-width: 320px) and (max-width: 768px) {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
     margin-right: 0;
     width: 140px;
     font-size: 14px;
@@ -91,7 +91,7 @@ export const BalanceValue = styled.p`
   margin: 0;
   margin-right: 141px;
 
-  @media screen and (min-width: 320px) and (max-width: 766px) {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
     margin-right: 0px;
     padding: 12px 8px 11px 4px;
   }
@@ -103,7 +103,7 @@ export const BalanceLabel = styled.p`
   color: #c7ccdc;
   margin: 0;
   margin-right: 20px;
-  @media screen and (min-width: 768px) and (max-width: 1100px) {
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
     margin-bottom: 0px;
     font-size: 13px;
   }

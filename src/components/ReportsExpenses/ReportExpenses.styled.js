@@ -26,7 +26,7 @@ export const ListImages = styled.div`
     flex-basis: calc(33.33% - 14px);
   } */
 
-  @media screen and (min-width: 320px) and (max-width: 766px) {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
     gap: 2px;
     & > * {
       flex-basis: calc(33% - 14px);
@@ -66,7 +66,7 @@ export const SectionReport = styled.div`
   border-radius: 30px;
   max-width: 1034px;
   padding: 20px 219px;
-  @media screen and (min-width: 320px) and (max-width: 766px) {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
     padding: 0;
     background: none;
   }

@@ -14,7 +14,7 @@ export const FormAmount = styled.div`
   padding: 15px;
   margin-bottom: 32px;
 
-  @media (max-width: 766px) {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
     max-width: 230px;
 
     margin: 0 auto;
@@ -40,7 +40,7 @@ export const TextAmound = styled.span`
   margin-right: 15px;
   font-weight: 700;
   line-height: 1.14;
-  @media (max-width: 766px) {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
     padding-left: 8px;
   }
 `;

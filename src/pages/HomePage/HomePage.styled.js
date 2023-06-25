@@ -55,9 +55,13 @@ export const StyledLink = styled(NavLink)`
   margin-left: auto;
 
   border-radius: 16px;
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    margin-right: 338px;
+    margin-left: 203px;
+  }
 
-  @media screen and (min-width: 320px) and (max-width: 766px) {
-    margin: 0;
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    margin: 0 338px;
   }
 
   &:hover,
