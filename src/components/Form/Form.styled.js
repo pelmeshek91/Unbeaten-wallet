@@ -112,7 +112,7 @@ export const InputNum = styled.input`
   border-radius: 0 16px 16px 0;
   width: 116px;
   text-align: center;
-  /* padding: 16px 37px; */
+  padding: 16px 37px;
   color: #c7ccdc;
   &:hover,
   &:focus {
