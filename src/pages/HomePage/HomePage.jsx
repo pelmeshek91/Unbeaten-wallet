@@ -4,7 +4,7 @@ import TotalBalance from 'components/TotalBalance/TotalBalance';
 import { Suspense, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { enGB } from 'date-fns/locale';
-import { ButtonTrans, StyledLink, Wrapper } from './HomePage.styled';
+import { ButtonTrans, StyledLink, Wrapper, SectionBtn } from './HomePage.styled';
 // import { MobileFormTransactions } from '../../components/Mobile/MobileTransactions/MobileFormTransactions.styled';
 import { ButtonLink } from './HomePage.styled';
 import { IoMdStats } from 'react-icons/io';
@@ -92,10 +92,10 @@ const HomePage = () => {
         </StyledLink>
       </Wrapper>
 
-      <div>
+      <SectionBtn>
         <ButtonLink to="expenses">EXPENSES</ButtonLink>
         <ButtonLink to="incomes">INCOME</ButtonLink>
-      </div>
+      </SectionBtn>
       <Suspense>
         <Outlet />
       </Suspense>
