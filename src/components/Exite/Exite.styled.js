@@ -12,6 +12,7 @@ export const StyledExitIcon = styled(RxExit)`
 export const ExiteContainer = styled.div`
   display: flex;
   align-items: center;
+  margin-right: 40px;
 `;
 
 export const UserIcon = styled.div`
