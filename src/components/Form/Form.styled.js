@@ -289,7 +289,7 @@ export const InputDate = styled.input`
   height: 40px;
   overflow: hidden;
   cursor: pointer;
-  background-color: rgb(56, 56, 71);
+  background-color: transparent;
 
   &:focus {
     outline: none;

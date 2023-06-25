@@ -16,7 +16,7 @@ export const Div = styled.div`
     background: linear-gradient(
       60deg,
       rgb(56, 56, 71) 20%,
-      rgba(56, 56, 71, 0.29) 50%
+      rgb(93 93 109 / 29%) 50%
     );
     border-radius: 0px 30px 30px;
     padding: 40px;
