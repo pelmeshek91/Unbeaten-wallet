@@ -1,0 +1,188 @@
+.select-container-mobile {
+    width: 280px;
+    height: auto;
+    background-color: rgb(56, 56, 71);
+}
+
+.select-container-mobile .select__control {
+    height: 100%;
+    cursor: pointer;
+    background-color: rgb(56, 56, 71);
+    border: 2px solid rgb(71, 71, 89);
+    border-radius: 0;
+    width: 280px;
+    border-bottom-right-radius: 16px;
+    color: rgba(199, 204, 220, 0.5);
+    border: 2px solid rgb(71, 71, 89);
+}
+
+
+.select-container-mobile .select__placeholder,
+.select-container-mobile .select__single-value {
+    color: rgba(199, 204, 220, 0.3);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    line-height: 1.16;
+}
+
+.select-container-mobile .select__value-container {
+    padding-left: 20px;
+}
+
+.select-container-mobile .select__placeholder {
+    font-size: 12px;
+    line-height: 1.16;
+    letter-spacing: 0.02em;
+    color: rgba(199, 204, 220, 0.5);
+}
+
+.select-container-mobile .select__single-value {
+    appearance: none;
+    font-size: 12px;
+    line-height: 1.16;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: rgba(199, 204, 220, 0.3);
+}
+
+.select-container-mobile .select__indicator-separator {
+    display: none;
+}
+
+.select-container-mobile .select__menu {
+    background-color: rgba(56, 56, 71, 1);
+}
+
+.select__menu-list {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #60c470 #474759;
+    /* height: 242px; */
+    height: fit-content;
+
+    border-collapse: collapse;
+    scrollbar-color: #60c470 #474759;
+}
+
+.select__menu-list::-webkit-scrollbar {
+    width: 8px;
+    background-color: #474759;
+}
+
+.select__menu-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.select__menu-list::-webkit-scrollbar-thumb {
+    background-color: #60c470;
+    border-radius: 15px;
+}
+
+.select-container-mobile .select__option {
+    cursor: pointer;
+    padding: 9px 18px;
+    font-size: 12px;
+    line-height: 1.16;
+    letter-spacing: 0.02em;
+    color: rgba(199, 204, 220, 0.3);
+    background-color: rgba(56, 56, 71, 1);
+    border: 0;
+    text-align: left;
+
+    &--is-selected {
+        background-color: #474759;
+        color: rgba(246, 247, 251, 1);
+    }
+}
+
+.select-container-mobile .select__option:hover {
+    background-color: #474759;
+    color: rgba(246, 247, 251, 1);
+}
+
+/* DATEEEEEEEEEE */
+
+.datepicker {
+    display: block;
+    width: 104px;
+    border: none;
+    color: #c7ccdc;
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 1.16;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding-left: 30px;
+    height: 46px;
+    max-width: 104px;
+    height: 40px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.react-datepicker__header {
+    background-color: rgba(71, 71, 89, 1);
+    border-bottom: none;
+    box-shadow: 0px 6px 7px -2px #41a350;
+}
+
+.react-datepicker__current-month {
+    font-size: 14px;
+    line-height: 1.16;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: rgba(199, 204, 220, 1);
+}
+
+.react-datepicker__navigation-icon::before {
+    border-color: rgba(199, 204, 220, 1);
+    width: 10px;
+}
+
+.react-datepicker__day-name {
+    padding-top: 8px;
+    font-size: 12px;
+    line-height: 1.16;
+    letter-spacing: 0.02em;
+    color: rgba(199, 204, 220, 1);
+}
+
+.react-datepicker__month {
+    background-color: rgba(86, 86, 107, 0.5);
+    margin: 0;
+}
+
+.react-datepicker__day {
+    color: #7b7f88;
+}
+
+.react-datepicker__day--today {
+    font-size: 14px;
+}
+
+.react-datepicker__day--selected {
+    background-color: rgba(66, 166, 82, 1);
+    color: rgba(199, 204, 220, 1);
+}
+
+.react-datepicker__day:hover {
+    background-color: transparent;
+    box-shadow: 0px 0px 6px #41a350;
+}
+
+.react-datepicker__day--disabled {
+    color: rgba(109, 109, 114, 0.5);
+    pointer-events: none;
+}
+
+.react-datepicker__triangle::before,
+.react-datepicker__triangle::after {
+    display: none;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.react-datepicker-popper {
+    padding: 0;
+    padding-top: 8px !important;
+}
