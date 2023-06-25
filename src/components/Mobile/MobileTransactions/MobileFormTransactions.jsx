@@ -36,7 +36,7 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
   const dispatch = useDispatch();
 
   const { balance, expenses: trans } = useSelector(state => state.transactions);
-
+  console.log(111);
   const handleChange = ({ target: { name, value } }) => {
     setForm(prevForm => {
       return { ...prevForm, [name]: value };
