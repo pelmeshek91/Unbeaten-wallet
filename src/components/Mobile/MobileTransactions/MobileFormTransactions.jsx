@@ -80,6 +80,7 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
     //   очистка форми
     setForm(initialState);
     setSelectedOption(null);
+    onClose();
   };
 
   return (
@@ -131,7 +132,7 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
               <InputBtn
                 type="submit"
                 disabled={!balance && !trans.length}
-                onClick={onClose}
+                // onClick={onClose}
               >
                 Input
               </InputBtn>
