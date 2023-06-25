@@ -35,7 +35,7 @@ export const ButtonLink = styled(NavLink)`
 
 export const StyledLink = styled(NavLink)`
   padding: 12px 25px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   display: flex;
   align-items: center;
   font-style: inherit;
@@ -98,4 +98,10 @@ export const Wrapper = styled.div`
     align-items: stretch;
     justify-content: space-evenly;
   }
+`;
+export const ButtonTrans = styled.button`
+  background-color: transparent;
+  border: 0;
+  color: #f6f7fb;
+  font-weight: 700;
 `;

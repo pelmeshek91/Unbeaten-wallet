@@ -73,7 +73,6 @@ export const SectionReport = styled.div`
   }
   @media screen and (min-width: 1024px) {
     border-radius: 30px;
-    margin-bottom: 40px;
   }
 `;
 

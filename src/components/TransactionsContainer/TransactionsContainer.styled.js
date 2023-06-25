@@ -8,7 +8,6 @@ export const Div = styled.div`
   flex-wrap: wrap;
 
   border-radius: 0px 30px 30px;
-  padding: 32px;
 
   @media ${device.tablet} {
     display: flex;
