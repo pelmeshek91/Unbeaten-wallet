@@ -10,7 +10,7 @@ export const Div = styled.div`
   padding: 32px;
 
   @media screen and (min-width: 768px) {
-    max-width: 624px;
+    max-width: 650px;
     /* row-gap: 40px; */
 
     display: flex;

@@ -4,9 +4,10 @@ export const ReportContainer = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  gap: 3px;
 `;
 
-export const Descr = styled.p`
+export const Descr = styled.span`
   margin-left: auto;
   margin-right: auto;
   font-size: 14px;
