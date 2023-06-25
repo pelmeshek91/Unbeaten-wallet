@@ -62,3 +62,9 @@ export const TotalAmoundMin = styled.span`
   font-weight: 700;
   line-height: 1.14;
 `;
+
+export const Container = styled.div`
+  @media screen and (min-width: 767px) {
+    display: flex;
+  }
+`;

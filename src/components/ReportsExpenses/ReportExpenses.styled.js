@@ -23,23 +23,23 @@ export const ListImages = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   background-color: transparent;
-  gap: 25px;
+  gap: 40px;
   padding: 10px;
 
-  & > * {
-    flex-basis: calc(9% - 5px);
+  /* & > * {
+    flex-basis: calc(16.5% - 2px);
   }
 
   & > *:nth-child(n + 4) {
   }
   @media screen and (min-width: 768px) {
     & > * {
-      flex-basis: calc(9.2857% - 15px);
+      flex-basis: calc(1.2857% - 15px);
     }
 
     & > *:nth-child(n + 6) {
     }
-  }
+  } */
 `;
 
 export const ImageName = styled.p`
@@ -64,11 +64,10 @@ export const Colum = styled.div`
 export const SectionReport = styled.div`
   padding: 0;
   border-radius: 0px;
-  padding: 20px 219px;
 
   @media ${device.tablet} {
     border-radius: 30px;
-    margin-bottom: 40px; 
+    margin-bottom: 40px;
     background: linear-gradient(
       115.74deg,
       #383847 23.54%,
@@ -79,7 +78,7 @@ export const SectionReport = styled.div`
   @media ${device.desktop} {
     border-radius: 30px;
     margin-bottom: 40px;
-   
+    /* padding: 20px 219px; */
   }
 `;
 
