@@ -21,6 +21,21 @@ export const ListImages = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 42px;
+
+  /* & > * {
+    flex-basis: calc(33.33% - 14px);
+  } */
+
+  @media (max-width: 766px) {
+    gap: 2px;
+    & > * {
+      flex-basis: calc(33% - 14px);
+    }
+
+    & > *:nth-child(n + 4) {
+      margin-top: 42px;
+    }
+  }
 `;
 
 export const ImageName = styled.p`
@@ -51,6 +66,10 @@ export const SectionReport = styled.div`
   border-radius: 30px;
   max-width: 1034px;
   padding: 20px 219px;
+  @media (max-width: 766px) {
+    padding: 0;
+    background: none;
+  }
 `;
 
 export const BtnSection = styled.div`

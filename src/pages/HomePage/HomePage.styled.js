@@ -56,6 +56,10 @@ export const StyledLink = styled(NavLink)`
 
   border-radius: 16px;
 
+  @media (max-width: 766px) {
+    margin: 0;
+  }
+
   &:hover,
   &:focus {
     color: #42a652;
@@ -74,5 +78,9 @@ export const Wrapper = styled.div`
   @media (max-width: 1024px) {
     margin-bottom: 40px;
     padding-left: 0px;
+
+    @media (max-width: 766px) {
+      flex-direction: column-reverse;
+    }
   }
 `;

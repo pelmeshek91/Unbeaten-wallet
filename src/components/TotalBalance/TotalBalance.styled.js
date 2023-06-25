@@ -7,7 +7,7 @@ export const BalanceContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0px auto;
-  @media (max-width: 768px) {
+  @media (max-width: 766px) {
     display: flex;
     flex-direction: column;
   }
@@ -40,7 +40,7 @@ export const Button = styled.button`
     background: rgb(61, 148, 76);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 766px) {
     top: auto;
     width: 140px;
     height: 44px;
@@ -65,7 +65,7 @@ export const Input = styled.input`
   color: rgb(246, 247, 251);
   text-align: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 766px) {
     margin-right: 0;
     width: 140px;
     font-size: 14px;
@@ -90,7 +90,9 @@ export const BalanceValue = styled.p`
   margin: 0;
   margin-right: 141px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 766px) {
+    margin-right: 0px;
+    padding: 12px 8px 11px 4px;
   }
 `;
 
@@ -162,7 +164,7 @@ export const StyledMessage = styled.div`
   }
 
   @media (max-width: 1024px) {
-    @media (max-width: 768px) {
+    @media (max-width: 766px) {
       display: block;
     }
   }
