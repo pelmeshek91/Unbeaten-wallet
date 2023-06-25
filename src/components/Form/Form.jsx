@@ -64,13 +64,13 @@ export const TransactionForm = ({ currrentDate }) => {
     const description = e.target.elements.description.value;
     const category = e.target.elements.category.value;
     if (!description) {
-      toast.error('введите описание');
+      toast.error('Please enter the description');
       return;
     } else if (!category) {
-      toast.error('введите категорию ');
+      toast.error('Please choose the category');
       return;
     } else if (!amount) {
-      toast.error('введите сумму ');
+      toast.error('Please enter the sum');
       return;
     }
     if (key === 'expenses') {
