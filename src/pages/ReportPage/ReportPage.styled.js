@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { device } from '../../utilits/mediaQuery';
 
 export const StyledLink = styled(NavLink)`
   padding: 3px 10px;
@@ -35,6 +36,29 @@ export const StyledLink = styled(NavLink)`
 
     border-bottom: none;
     box-shadow: 1px -1px 24px -2px #41a350;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 785px) {
+    padding: 3px 10px;
+    font-style: inherit;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    /* width: 114px; */
+    height: 44px;
+    color: rgb(199, 204, 220);
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    border: transparent;
+    transition: color 0.2s ease-in-out 0s;
+    margin: 42px 9px;
+    border-radius: 16px;
+    gap: 7px;
+    flex-wrap: wrap;
+    width: 170px;
+    margin-right: auto;
   }
 `;
 
