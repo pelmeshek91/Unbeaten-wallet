@@ -82,6 +82,7 @@ export const Wrapper = styled.div`
   flex-direction: column-reverse;
   padding: 0;
   display: flex;
+  align-items: center;
 
   margin-top: 40px;
   margin-bottom: 8px;
@@ -121,4 +122,10 @@ export const SectionBtn = styled.div`
     z-index: 999;
     background-color: transparent;
   }
+`;
+
+export const SectionData = styled.div`
+  @media (max-width: 767px) {
+    display: flex;
+    }
 `;
