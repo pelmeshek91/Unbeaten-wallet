@@ -1,12 +1,33 @@
 import styled from 'styled-components';
 import { device } from 'utilits/mediaQuery';
+export const ListImages = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  background-color: transparent;
+
+  column-gap: 20px;
+  row-gap: 20px;
+  padding: 10px;
+  overflow: hidden;
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  @media screen and (min-width: 1200px) {
+    column-gap: 5px;
+    grid-template-columns: repeat(5, 1fr);
+  }
+`;
 
 export const ImageItem = styled.button`
   background: rgba(86, 86, 107, 0.2);
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.15);
-  border-radius: 32px;
+  padding: 5px;
+  border-radius: 50%; /* Обновлено свойство border-radius */
   margin: auto;
   display: flex;
+  width: 64px;
 
   cursor: pointer;
   border: 2px solid transparent;
@@ -18,29 +39,29 @@ export const ImageItem = styled.button`
   }
 `;
 
-export const ListImages = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  background-color: transparent;
-  gap: 40px;
-  padding: 10px;
+// export const ListImages = styled.div`
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: space-evenly;
+//   background-color: transparent;
+//   gap: 25px;
+//   padding: 10px;
 
-  /* & > * {
-    flex-basis: calc(16.5% - 2px);
-  }
+//   & > * {
+//     flex-basis: calc(9% - 5px);
+//   }
 
-  & > *:nth-child(n + 4) {
-  }
-  @media screen and (min-width: 768px) {
-    & > * {
-      flex-basis: calc(1.2857% - 15px);
-    }
+//   & > *:nth-child(n + 4) {
+//   }
+//   @media screen and (min-width: 768px) {
+//     & > * {
+//       flex-basis: calc(9.2857% - 15px);
+//     }
 
-    & > *:nth-child(n + 6) {
-    }
-  } */
-`;
+//     & > *:nth-child(n + 6) {
+//     }
+//   }
+// `;
 
 export const ImageName = styled.p`
   text-transform: uppercase;
@@ -62,8 +83,13 @@ export const Colum = styled.div`
 `;
 
 export const SectionReport = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 0;
   border-radius: 0px;
+  /* padding: 20px 219px; */
 
   @media ${device.tablet} {
     border-radius: 30px;
@@ -78,7 +104,6 @@ export const SectionReport = styled.div`
   @media ${device.desktop} {
     border-radius: 30px;
     margin-bottom: 40px;
-    /* padding: 20px 219px; */
   }
 `;
 

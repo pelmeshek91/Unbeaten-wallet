@@ -67,14 +67,10 @@ export const BackBtn = styled.button`
 export const ReportContainer = styled.div`
   align-items: center;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  column-gap: 32px;
+  flex-wrap: wrap;
   margin-bottom: 32px;
-  @media screen and (min-width: 768px) {
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 0;
-    column-gap: 0px;
-  }
+
+  /* max-width: 1034px; */
+  /* padding-top: 40px; */
 `;
