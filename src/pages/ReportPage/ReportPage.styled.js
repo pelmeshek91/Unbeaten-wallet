@@ -27,6 +27,8 @@ export const StyledLink = styled(NavLink)`
 
   border-radius: 16px;
 
+  /* gg */
+
   &:hover,
   &:focus {
     color: #42a652;

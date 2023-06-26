@@ -90,7 +90,7 @@ export const TransactionForm = ({ currrentDate }) => {
     if (key === 'expenses') {
       const payload = {
         description,
-        amount: Number(amount).toFixed(2),
+        amount: Number(amount),
         category,
         date: currrentDate,
       };
@@ -101,7 +101,7 @@ export const TransactionForm = ({ currrentDate }) => {
     } else {
       const payload = {
         description,
-        amount: Number(amount).toFixed(2),
+        amount: Number(amount),
         category,
         date: currrentDate,
       };

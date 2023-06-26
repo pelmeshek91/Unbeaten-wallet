@@ -45,7 +45,7 @@ function ChartBar({ list }) {
       {
         type: 'value',
         minInterval: 0,
-        maxInterval: 100,
+        maxInterval: 1000,
         axisLabel: {
           show: false,
           color: 'rgba(199, 204, 220, 1)',
@@ -117,8 +117,7 @@ function ChartBar({ list }) {
       },
     ],
   };
-  
- 
+
   return <ReactEcharts option={option} />;
 }
 
