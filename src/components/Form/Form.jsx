@@ -177,7 +177,9 @@ export const TransactionForm = ({ currrentDate }) => {
               <InputBtn type="submit" disabled={!balance && !trans.length}>
                 Input
               </InputBtn>
-              <ClearBtn onClick={() => setForm(initialState)}>Clear</ClearBtn>
+              <ClearBtn type="reset" onClick={() => setForm(initialState)}>
+                Clear
+              </ClearBtn>
             </BtnContainer>
           </Form>
           {/* //   )}

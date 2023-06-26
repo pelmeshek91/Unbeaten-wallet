@@ -29,7 +29,9 @@ const TotalBalance = () => {
     dispatch(updateUserBalanceThunk({ newBalance: newTopUp }))
       .unwrap()
       .then(data => {
-        toast.success('Your balance has been updated');
+        toast.success('Your balance has been updated', {
+          theme: 'dark',
+        });
         setNewTopUp('');
       })
       .catch(error => toast.error(error.message));

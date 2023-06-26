@@ -39,29 +39,29 @@ export const ImageItem = styled.button`
   }
 `;
 
-export const ListImages = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  background-color: transparent;
-  gap: 25px;
-  padding: 10px;
+// export const ListImages = styled.div`
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: space-evenly;
+//   background-color: transparent;
+//   gap: 25px;
+//   padding: 10px;
 
-  & > * {
-    flex-basis: calc(9% - 5px);
-  }
+//   & > * {
+//     flex-basis: calc(9% - 5px);
+//   }
 
-  & > *:nth-child(n + 4) {
-  }
-  @media screen and (min-width: 768px) {
-    & > * {
-      flex-basis: calc(9.2857% - 15px);
-    }
+//   & > *:nth-child(n + 4) {
+//   }
+//   @media screen and (min-width: 768px) {
+//     & > * {
+//       flex-basis: calc(9.2857% - 15px);
+//     }
 
-    & > *:nth-child(n + 6) {
-    }
-  }
-`;
+//     & > *:nth-child(n + 6) {
+//     }
+//   }
+// `;
 
 export const ImageName = styled.p`
   text-transform: uppercase;
@@ -89,7 +89,7 @@ export const SectionReport = styled.div`
   align-items: center;
   padding: 0;
   border-radius: 0px;
-  padding: 20px 219px;
+  /* padding: 20px 219px; */
 
   @media ${device.tablet} {
     border-radius: 30px;

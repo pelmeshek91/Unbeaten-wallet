@@ -38,6 +38,10 @@ img {
   margin: 0;
 }
 
+input {
+  outline: none;
+}
+
 /* input:-webkit-autofill {
   background-color: transparent !important;
 } */
