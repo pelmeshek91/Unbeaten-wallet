@@ -78,3 +78,4 @@ const TotalBalance = () => {
     </BalanceContainer>
   );
 };
+export default TotalBalance;
