@@ -82,7 +82,7 @@ export const Wrapper = styled.div`
   flex-direction: column-reverse;
   padding: 0;
   display: flex;
-
+  align-items: center;
   margin-top: 40px;
   margin-bottom: 8px;
 
