@@ -2,9 +2,10 @@ import Select from 'react-select';
 import { useRef, useState } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { CiCalculator1 } from 'react-icons/ci';
-
+import { CiCalculator1, CiCircleChevLeft } from 'react-icons/ci';
+import Header from '../../Header/Header';
 import {
+  ButtonTx,
   BtnContainer,
   ClearBtn,
   Container,
@@ -94,6 +95,18 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
 
   return (
     <Overlay onClick={handleBackdropClick}>
+      <Header />
+
+      <ButtonTx onClick={onClose}>
+        <CiCircleChevLeft
+          style={{
+            width: '30px',
+            height: '30px',
+            fill: '#C7CCDC',
+          }}
+        />
+        To transaction
+      </ButtonTx>
       <MainContainer>
         <div>
           <Form noValidate ref={formRef} onSubmit={handleFormSubmit}>
@@ -123,6 +136,7 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
             <Container>
               <InputNum
                 type="number"
+                maxLength={7}
                 name="amount"
                 placeholder="00.00 UAH"
                 required
@@ -133,6 +147,7 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
               />
 
               <IconContainer>
+                |
                 <CiCalculator1
                   style={{ width: '22px', height: '22px', fill: '#C7CCDC' }}
                 />
