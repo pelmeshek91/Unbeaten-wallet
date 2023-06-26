@@ -69,7 +69,6 @@ export const Button = styled.button`
     margin-left: 35px;
     width: 125px;
     height: 44px;
-    background: rgba(128, 132, 143, 1);
   }
 `;
 
