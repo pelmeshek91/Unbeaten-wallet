@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { device } from '../../utilits/mediaQuery';
 
 export const StyledLink = styled(NavLink)`
   padding: 3px 10px;

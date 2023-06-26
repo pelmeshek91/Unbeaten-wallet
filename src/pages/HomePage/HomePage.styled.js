@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { device } from 'utilits/mediaQuery';
 
 export const ButtonLink = styled(NavLink)`
-@media (max-width: 767px) {
-    width:100%;
+  @media (max-width: 767px) {
+    width: 100%;
   }
   display: inline-block;
   background-color: #2d2d38;
@@ -103,14 +103,16 @@ export const Wrapper = styled.div`
   }
 `;
 export const ButtonTrans = styled.button`
-  background-color: transparent;
-  border: 0;
-  color: #f6f7fb;
-  font-weight: 700;
+  @media screen and (min-width: 320px) and (max-width: 785px) {
+    background-color: transparent;
+    border: 0;
+    color: #f6f7fb;
+    font-weight: 700;
+  }
 `;
 
 export const SectionBtn = styled.div`
- @media (max-width: 767px) {
+  @media (max-width: 767px) {
     position: fixed;
     bottom: 0;
     left: 0;
