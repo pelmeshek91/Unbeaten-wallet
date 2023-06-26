@@ -27,6 +27,8 @@ export const StyledLink = styled(NavLink)`
 
   border-radius: 16px;
 
+  /* gg */
+
   &:hover,
   &:focus {
     color: #42a652;
@@ -65,7 +67,14 @@ export const BackBtn = styled.button`
 export const ReportContainer = styled.div`
   align-items: center;
   display: flex;
-  justify-content: space-between;
-  /* max-width: 1034px; */
-  /* padding-top: 40px; */
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 32px;
+  margin-bottom: 32px;
+  @media screen and (min-width: 768px) {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 0;
+    column-gap: 0px;
+  }
 `;
