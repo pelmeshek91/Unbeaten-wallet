@@ -50,12 +50,6 @@ const HomePage = () => {
   const isMobile = useMediaQuery({
     query: `(${device.mobileM}) and (${device.mobileL})`,
   });
-  // const isTable = useMediaQuery({
-  //   query: `(${device.tablet})`,
-  // });
-  // const isDesktop = useMediaQuery({
-  //   query: `(${device.desktop})`,
-  // });
 
   return (
     <div>
