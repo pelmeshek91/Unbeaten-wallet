@@ -67,7 +67,8 @@ const TotalBalance = () => {
                 <div>
                   <p>
                     Hello! To get started, enter the current balance of your
-                    account!
+                    account! <br />
+                    <br />
                   </p>
                   <p>You can't spend money until you have it :)</p>
                 </div>
