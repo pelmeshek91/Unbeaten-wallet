@@ -83,14 +83,16 @@ export const Wrapper = styled.div`
   padding: 0;
   display: flex;
   align-items: center;
-  margin-top: 40px;
+  gap: 32px;
   margin-bottom: 8px;
 
   @media screen and (min-width: 767px) {
     display: flex;
+    margin-top: 40px;
     margin-bottom: 60px;
     padding-left: 0px;
     flex-direction: row;
+    gap: 0;
   }
 
   @media screen and (min-width: 1280px) {
@@ -103,12 +105,15 @@ export const Wrapper = styled.div`
   }
 `;
 export const ButtonTrans = styled.button`
-  @media screen and (min-width: 320px) and (max-width: 785px) {
-    background-color: transparent;
-    border: 0;
-    color: #f6f7fb;
-    font-weight: 700;
-  }
+  margin: 20px auto 24px;
+  display: flex;
+  gap: 5px;
+  align-items: stretch;
+  background-color: transparent;
+  border: 0;
+  color: #f6f7fb;
+  font-weight: 700;
+  align-items: center;
 `;
 
 export const SectionBtn = styled.div`

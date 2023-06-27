@@ -14,9 +14,13 @@ import {
 import { ButtonLink } from './HomePage.styled';
 import { IoMdStats } from 'react-icons/io';
 import { useMediaQuery } from 'react-responsive';
-import { device } from 'utilits/mediaQuery';
+
 import { useState } from 'react';
-import { DivContainer, InputDate } from 'components/Form/Form.styled';
+import {
+  DateWrapper,
+  DivContainer,
+  InputDate,
+} from 'components/Form/Form.styled';
 import { ToastContainer } from 'react-toastify';
 import { BsCalendar4Week } from 'react-icons/bs';
 import { IoIosAddCircle } from 'react-icons/io';
@@ -48,14 +52,15 @@ const HomePage = () => {
     ></InputDate>
   ));
   const isMobile = useMediaQuery({
-    query: `(${device.mobileM}) and (${device.mobileL})`,
+    query: '(max-width: 767px)',
   });
 
   return (
     <div>
-      {!isMobile && (
+      {isMobile && (
         <ButtonTrans onClick={open}>
-          <IoIosAddCircle style={{ fill: '#42A652' }} /> ADD TRANSACTIONS
+          <IoIosAddCircle style={{ fill: '#42A652', width: 15 }} /> ADD
+          TRANSACTIONS
         </ButtonTrans>
       )}
       {isOpen && (
@@ -63,34 +68,33 @@ const HomePage = () => {
       )}
       <Wrapper>
         <TotalBalance />
-        {!isMobile && (
-          <>
-            <DivContainer>
-              <ToastContainer />
-              <BsCalendar4Week
-                style={{ width: '20px', height: '20px', fill: '#C7CCDC' }}
-              />
-            </DivContainer>
-            <ReactDatePicker
-              dateFormat="dd.MM.yyyy"
-              selected={selectedDate}
-              onChange={date => {
-                setSelectedDate(date);
-              }}
-              locale={enGB}
-              maxDate={new Date()}
-              calendarClassName="calendar"
-              className="datepicker"
-              customInput={<CustomInput />}
-            />
-          </>
-        )}
 
         <StyledLink to="report">
           Reports <IoMdStats />
         </StyledLink>
       </Wrapper>
-
+      {isMobile && (
+        <DateWrapper>
+          <DivContainer>
+            <ToastContainer />
+            <BsCalendar4Week
+              style={{ width: '20px', height: '20px', fill: '#C7CCDC' }}
+            />
+          </DivContainer>
+          <ReactDatePicker
+            dateFormat="dd.MM.yyyy"
+            selected={selectedDate}
+            onChange={date => {
+              setSelectedDate(date);
+            }}
+            locale={enGB}
+            maxDate={new Date()}
+            calendarClassName="calendar"
+            className="datepicker"
+            customInput={<CustomInput />}
+          />
+        </DateWrapper>
+      )}
       <SectionBtn>
         <ButtonLink to="expenses">EXPENSES</ButtonLink>
         <ButtonLink to="incomes">INCOME</ButtonLink>
