@@ -272,7 +272,10 @@ export const DivContainer = styled.div`
   flex-direction: row;
   /* margin-left: 32px; */
 `;
-
+export const DateWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 export const InputDate = styled.input`
   /* width: 74px; */
   margin-right: 14px;
