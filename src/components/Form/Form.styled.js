@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { NumericFormat } from 'react-number-format';
+// import { NumericFormat } from 'react-number-format';
+import { device } from '../../utilits/mediaQuery';
 
 export const MainContainer = styled.div`
   display: flex;
@@ -9,7 +10,7 @@ export const MainContainer = styled.div`
   -webkit-box-align: center;
   align-items: flex-start;
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     display: flex;
     align-items: center;
     gap: 32px;
@@ -17,8 +18,7 @@ export const MainContainer = styled.div`
     position: relative;
     /* width: 616px; */
   }
-
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     display: flex;
     width: auto;
     padding-bottom: 0px;
@@ -45,23 +45,13 @@ export const Input = styled.input`
   border-top-left-radius: 16px;
   border-top-right-radius: 0;
   background-color: rgb(56, 56, 71);
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
   font-size: 12px;
   line-height: 1.16;
   letter-spacing: 0.02em;
-  &:focus,
-  &:hover {
-    outline: none;
-    border: 2px solid #474759;
-    box-shadow: 0px 6px 7px -2px #41a350;
-    background-color: rgb(56, 56, 71);
-  }
 
-  @media screen and (min-width: 768px) {
-    width: 215px;
-    padding: 15px;
+  @media ${device.tablet} {
+    width: 194px;
+    padding: 13px;
     box-sizing: border-box;
     text-align: left;
     color: rgba(199, 204, 220, 0.5);
@@ -70,9 +60,6 @@ export const Input = styled.input`
     border-top-left-radius: 16px;
     border-top-right-radius: 0;
     background-color: rgb(56, 56, 71);
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
     font-size: 12px;
     line-height: 1.16;
     letter-spacing: 0.02em;
@@ -85,8 +72,9 @@ export const Input = styled.input`
     }
   }
 
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     width: 288px;
+    padding: 16px;
     &:focus,
     &:hover {
       outline: none;
@@ -97,13 +85,10 @@ export const Input = styled.input`
   }
 `;
 
-export const InputNum = styled(NumericFormat)`
+export const InputNum = styled.input`
   background-color: rgb(56, 56, 71);
 
   background-size: 20px;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
   font-size: 12px;
   line-height: 1.16;
   letter-spacing: 0.02em;
@@ -112,7 +97,7 @@ export const InputNum = styled(NumericFormat)`
   border-radius: 0 16px 16px 0;
   width: 116px;
   text-align: center;
-  /* padding: 16px 37px; */
+  padding: 16px 37px;
   color: #c7ccdc;
   &:hover,
   &:focus {
@@ -124,15 +109,16 @@ export const InputNum = styled(NumericFormat)`
     -webkit-appearance: none;
     margin: 0;
   }
-  @media screen and (min-width: 768px) {
+
+  @media ${device.tablet} {
     display: flex;
     justify-content: center;
     width: 40px;
     /* border-top-left-radius: 20px; */
     border-top-right-radius: 20px;
-    max-height: 290px;
+    /* max-height: 290px; */
     text-align: start;
-
+    padding: 13px 40px;
     overflow: hidden;
     /* margin-top: 40px; */
     /* margin-left: 77px; */
@@ -149,13 +135,13 @@ export const InputNum = styled(NumericFormat)`
     }
   }
 
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     background-color: rgb(56, 56, 71);
 
     background-size: 20px;
-    font-family: 'Roboto';
+    /* font-family: 'Roboto';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 400; */
     font-size: 12px;
     line-height: 1.16;
     letter-spacing: 0.02em;
@@ -189,7 +175,7 @@ export const BtnContainer = styled.div`
   transform: translateX(0);
   padding-left: 32px;
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     display: flex;
     gap: 16px;
     left: 30%;
@@ -199,7 +185,7 @@ export const BtnContainer = styled.div`
     transform: translateX(-50%);
   }
 
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     /* margin-top: 55px; */
     top: 50%;
     left: 50%;
@@ -214,13 +200,13 @@ export const Container = styled.div`
 `;
 
 export const IconContainer = styled.div`
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     position: absolute;
-    top: 26%;
-    right: 25%;
+    top: 24%;
+    right: 12%;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media ${device.desktop} {
     right: 10%;
   }
 `;
@@ -286,10 +272,13 @@ export const DivContainer = styled.div`
   flex-direction: row;
   /* margin-left: 32px; */
 `;
-
+export const DateWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 export const InputDate = styled.input`
   /* width: 74px; */
-  margin-right: 28px;
+  margin-right: 14px;
   border: none;
   color: #c7ccdc;
   font-family: 'Roboto';
@@ -304,7 +293,7 @@ export const InputDate = styled.input`
   height: 40px;
   overflow: hidden;
   cursor: pointer;
-  background-color: rgb(56, 56, 71);
+  background-color: transparent;
 
   &:focus {
     outline: none;

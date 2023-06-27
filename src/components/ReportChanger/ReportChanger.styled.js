@@ -4,9 +4,15 @@ export const ReportContainer = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  gap: 3px;
+  width: 20%;
+  align-items: center;
+  @media screen and (min-width: 320px) and (max-width: 785px) {
+    width: 56%;
+  }
 `;
 
-export const Descr = styled.p`
+export const Descr = styled.span`
   margin-left: auto;
   margin-right: auto;
   font-size: 14px;

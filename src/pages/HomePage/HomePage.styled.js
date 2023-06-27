@@ -1,8 +1,12 @@
 import { NavLink } from 'react-router-dom';
 
 import styled from 'styled-components';
+import { device } from 'utilits/mediaQuery';
 
 export const ButtonLink = styled(NavLink)`
+  @media (max-width: 767px) {
+    width: 100%;
+  }
   display: inline-block;
   background-color: #2d2d38;
   width: 138px;
@@ -34,7 +38,7 @@ export const ButtonLink = styled(NavLink)`
 
 export const StyledLink = styled(NavLink)`
   padding: 12px 25px;
-  margin: 0;
+  /* margin: 0 auto; */
   display: flex;
   align-items: center;
   font-style: inherit;
@@ -45,34 +49,83 @@ export const StyledLink = styled(NavLink)`
   letter-spacing: 1px;
   text-decoration: none;
   display: inline-flex;
-  align-items: center;
+
   border-bottom: none;
   border: transparent;
 
   border-radius: 4px;
   transition: color 0.3s ease-in-out;
-  margin-right: 91px;
-  margin-left: auto;
+  /* margin-right: 91px; */
 
   border-radius: 16px;
 
-  &:hover,
-  &:focus {
-    color: #42a652;
-    border-bottom: none;
-    box-shadow: 1px -1px 24px -2px #41a350;
+  @media screen and (min-width: 768px) {
+    margin-left: auto;
+    &:hover,
+    &:focus {
+      color: #42a652;
+      border-bottom: none;
+      box-shadow: 1px -1px 24px -2px #41a350;
+    }
+  }
+
+  @media ${device.desktop} {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: row;
+    margin-left: auto;
   }
 `;
 
 export const Wrapper = styled.div`
+  flex-direction: column-reverse;
+  padding: 0;
   display: flex;
-
   align-items: center;
-  margin-top: 40px;
+  gap: 32px;
   margin-bottom: 8px;
-  padding-left: 200px;
-  @media (max-width: 1024px) {
-    margin-bottom: 40px;
+
+  @media screen and (min-width: 767px) {
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 60px;
     padding-left: 0px;
+    flex-direction: row;
+    gap: 0;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding-left: 225px;
+    margin-bottom: 8px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: stretch;
+    justify-content: space-evenly;
+  }
+`;
+export const ButtonTrans = styled.button`
+  margin: 20px auto 24px;
+  display: flex;
+  gap: 5px;
+  align-items: stretch;
+  background-color: transparent;
+  border: 0;
+  color: #f6f7fb;
+  font-weight: 700;
+  align-items: center;
+`;
+
+export const SectionBtn = styled.div`
+  @media (max-width: 767px) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    background-color: transparent;
   }
 `;

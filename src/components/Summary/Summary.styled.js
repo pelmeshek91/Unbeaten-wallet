@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
+import { device } from '../../utilits/mediaQuery';
+
 export const SummaryWrapper = styled.div`
-  display: flex;
+  display: none;
   justify-content: center;
   width: 213px;
   border-top-left-radius: 20px;
@@ -10,7 +12,7 @@ export const SummaryWrapper = styled.div`
   overflow: hidden;
   /* margin-left: 77px; */
 
-  @media screen and (min-width: 768px) {
+  @media ${device.tablet} {
     display: flex;
     justify-content: center;
     width: 213px;
@@ -21,8 +23,9 @@ export const SummaryWrapper = styled.div`
     margin-top: 40px;
     /* margin-left: 77px; */
   }
-  @media screen and (min-width: 1280px) {
-    margin-left: 77px;
+
+  @media ${device.desktop} {
+    margin-left: 71px;
     margin-top: 0px;
   }
 `;
@@ -36,7 +39,8 @@ export const Thead = styled.thead`
 
 export const SummaryTable = styled.table`
   display: none;
-  @media screen and (min-width: 768px) {
+
+  @media ${device.tablet} {
     display: table;
     width: 100%;
     border-collapse: collapse;
@@ -111,7 +115,7 @@ export const SummaryTableWrapper = styled.tbody`
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: #60c470 #474759;
-  height: 242px;
+  height: 244px;
   border-collapse: collapse;
   scrollbar-color: #60c470 #474759;
 
@@ -126,7 +130,7 @@ export const SummaryTableWrapper = styled.tbody`
   }
 
   &::-webkit-scrollbar-track-piece {
-    max-height: 242px;
+    max-height: 244px;
   }
 `;
 

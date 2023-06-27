@@ -114,12 +114,13 @@ function ChartBarMobile({ list }) {
             const data = newList.column[params.dataIndex];
             const category = newList.row[params.dataIndex];
 
-            return `${category}            ${data} UAH`;
+            return `  ${category}          ${data} UAH`;
           },
         },
       },
     ],
   };
+  
 
   return <ReactEcharts option={option} />;
 }

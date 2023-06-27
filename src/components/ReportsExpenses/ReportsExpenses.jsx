@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import * as expensesImages from 'components/ReportsExpenses/image';
 import * as incomeImages from 'components/ReportsExpenses/imageIncome';
 import {
@@ -16,11 +16,18 @@ import { ChartBarContainer } from 'components/ChartBar/ChartBar.styled';
 
 import { useSelector } from 'react-redux';
 import ChartBarMobile from '../Mobile/MobileChartBar/MobileChartBar';
+import { MobileChBarContainer } from '../Mobile/MobileChartBar/MobileChartBar.styled';
+import { useMediaQuery } from 'react-responsive';
+import { device } from 'utilits/mediaQuery';
 
 const ReportsContainer = () => {
   const [reportType, setReportType] = useState('EXPENSES');
   const [list, setList] = useState(null);
   const { transactions } = useSelector(state => state.transactions);
+
+  const isTable = useMediaQuery({
+    query: `(${device.tablet})`,
+  });
 
   const handleToggleReport = () => {
     setReportType(prevType =>
@@ -123,7 +130,9 @@ const ReportsContainer = () => {
           <BtnReport onClick={handleToggleReport}>
             <MdKeyboardArrowLeft size="26" color="green" />
           </BtnReport>
-          <h2>{reportType}</h2>
+          <p style={{ color: '#F6F7FB', fontSize: 14, margin: 0 }}>
+            {reportType}
+          </p>
           <BtnReport onClick={handleToggleReport}>
             <MdKeyboardArrowRight size="26" color="green" />
           </BtnReport>
@@ -147,16 +156,20 @@ const ReportsContainer = () => {
           ))}
         </ListImages>
       </SectionReport>
-      {list && (
-        <ChartBarContainer>
-          <ChartBar list={list} />
-        </ChartBarContainer>
-      )}
-      {list && (
-        <div>
-          <ChartBarMobile list={list} />
-        </div>
-      )}
+      {list &&
+        (isTable ? (
+          <Suspense>
+            <ChartBarContainer>
+              <ChartBar list={list} />
+            </ChartBarContainer>
+          </Suspense>
+        ) : (
+          <Suspense>
+            <MobileChBarContainer>
+              <ChartBarMobile list={list} />
+            </MobileChBarContainer>
+          </Suspense>
+        ))}
     </>
   );
 };

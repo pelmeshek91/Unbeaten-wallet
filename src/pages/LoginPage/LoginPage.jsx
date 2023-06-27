@@ -5,9 +5,11 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { loginUserThunk } from 'redux/auth/authOperations';
 // import { updateUserBalanceThunk } from '../../redux/transcactions/transcactionsOperations';
 import { ToastContainer, toast } from 'react-toastify';
-import wallet from '../../img/decor-img/wallet.png';
+// import wallet from '../../img/decor-img/wallet.png';
 
 import {
+  Text,
+  ErrorMessageContainer,
   Header,
   Container,
   Form,
@@ -60,9 +62,7 @@ const LoginPage = () => {
       <Header />
       <GlobalStyle />
       <Container>
-        <ImgWallet>
-          <img src={wallet} alt="wallet" />
-        </ImgWallet>
+        <ImgWallet></ImgWallet>
 
         <Formik
           initialValues={{ email: email || '', password: password || '' }}
@@ -79,7 +79,7 @@ const LoginPage = () => {
           }) => (
             <Form onSubmit={handleSubmit}>
               <Label htmlFor="email">
-                Email:
+                <Text>Email:</Text>
                 <Input
                   type="email"
                   name="email"
@@ -89,13 +89,15 @@ const LoginPage = () => {
                   onBlur={handleBlur}
                   value={values.email}
                 />
-                {touched.email && errors.email && (
-                  <ErrorMessage>{errors.email}</ErrorMessage>
-                )}
+                <ErrorMessageContainer hasError={touched.email && errors.email}>
+                  {touched.email && errors.email && (
+                    <ErrorMessage>{errors.email}</ErrorMessage>
+                  )}
+                </ErrorMessageContainer>
               </Label>
 
               <Label htmlFor="password">
-                Password:
+                <Text>Password:</Text>
                 <Input
                   type="password"
                   name="password"
@@ -105,9 +107,13 @@ const LoginPage = () => {
                   onBlur={handleBlur}
                   value={values.password}
                 />
-                {touched.password && errors.password && (
-                  <ErrorMessage>{errors.password}</ErrorMessage>
-                )}
+                <ErrorMessageContainer
+                  hasError={touched.password && errors.password}
+                >
+                  {touched.password && errors.password && (
+                    <ErrorMessage>{errors.password}</ErrorMessage>
+                  )}
+                </ErrorMessageContainer>
               </Label>
               <ButtonContainer>
                 <Button type="submit">Login</Button>

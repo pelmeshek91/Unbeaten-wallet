@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-
+import { device } from 'utilits/mediaQuery';
 export const ChartBarContainer = styled.div`
   background: linear-gradient(
     115.74deg,
@@ -8,17 +8,11 @@ export const ChartBarContainer = styled.div`
   );
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
   border-radius: 30px;
+  padding-bottom: 22px;
+  margin-bottom: 80px;
 
-  padding: 20px 219px;
-`;
-export const ChartBarContainerIncomes = styled.div`
-  background: linear-gradient(
-    115.74deg,
-    #383847 23.54%,
-    rgba(56, 56, 71, 0.29) 107.94%
-  );
-  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
-  border-radius: 30px;
-  margin: 0 auto;
-  padding: 20px;
+ 
+  @media ${device.desktop} {
+    padding-bottom: 23px;
+  }
 `;

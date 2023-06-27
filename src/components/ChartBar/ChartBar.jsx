@@ -44,7 +44,7 @@ function ChartBar({ list }) {
     yAxis: [
       {
         type: 'value',
-        minInterval: 100,
+        minInterval: 0,
         maxInterval: 1000,
         axisLabel: {
           show: false,
@@ -117,11 +117,8 @@ function ChartBar({ list }) {
       },
     ],
   };
-  const chartStyle = {
-    height: '600px',
-  };
 
-  return <ReactEcharts option={option} style={chartStyle} />;
+  return <ReactEcharts option={option} />;
 }
 
 export default ChartBar;

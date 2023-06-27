@@ -2,9 +2,10 @@ import Select from 'react-select';
 import { useRef, useState } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { CiCalculator1 } from 'react-icons/ci';
-
+import { CiCalculator1, CiCircleChevLeft } from 'react-icons/ci';
+import Header from '../../Header/Header';
 import {
+  ButtonTx,
   BtnContainer,
   ClearBtn,
   Container,
@@ -36,12 +37,12 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
   const dispatch = useDispatch();
 
   const { balance, expenses: trans } = useSelector(state => state.transactions);
-
   const handleChange = ({ target: { name, value } }) => {
     setForm(prevForm => {
       return { ...prevForm, [name]: value };
     });
   };
+
   const handleBackdropClick = e => {
     if (e.target !== e.currentTarget) return;
     onClose();
@@ -51,7 +52,16 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
     const amount = e.target.elements.amount.value;
     const description = e.target.elements.description.value;
     const category = e.target.elements.category.value;
-
+    if (!description) {
+      toast.error('Please enter the description');
+      return;
+    } else if (!category) {
+      toast.error('Please choose the category');
+      return;
+    } else if (!amount) {
+      toast.error('Please enter the sum');
+      return;
+    }
     if (key === 'expenses') {
       const payload = {
         description,
@@ -80,13 +90,26 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
     //   очистка форми
     setForm(initialState);
     setSelectedOption(null);
+    onClose();
   };
 
   return (
     <Overlay onClick={handleBackdropClick}>
+      <Header />
+
+      <ButtonTx onClick={onClose}>
+        <CiCircleChevLeft
+          style={{
+            width: '30px',
+            height: '30px',
+            fill: '#C7CCDC',
+          }}
+        />
+        To transaction
+      </ButtonTx>
       <MainContainer>
         <div>
-          <Form ref={formRef} onSubmit={handleFormSubmit}>
+          <Form noValidate ref={formRef} onSubmit={handleFormSubmit}>
             <Input
               type="text"
               placeholder="Product description"
@@ -94,6 +117,7 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
               name="description"
               value={form.description}
               onChange={handleChange}
+              autoComplete="off"
             />
 
             <Select
@@ -112,15 +136,18 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
             <Container>
               <InputNum
                 type="number"
+                maxLength={7}
                 name="amount"
                 placeholder="00.00 UAH"
                 required
                 value={form.amount}
                 onChange={handleChange}
                 decimalScale={2}
+                autoComplete="off"
               />
 
               <IconContainer>
+                |
                 <CiCalculator1
                   style={{ width: '22px', height: '22px', fill: '#C7CCDC' }}
                 />
@@ -128,11 +155,7 @@ export const MobileFormTransactions = ({ currrentDate, onClose }) => {
             </Container>
 
             <BtnContainer>
-              <InputBtn
-                type="submit"
-                disabled={!balance && !trans.length}
-                onClick={onClose}
-              >
+              <InputBtn type="submit" disabled={!balance && !trans.length}>
                 Input
               </InputBtn>
               <ClearBtn onClick={() => setForm(initialState)}>Clear</ClearBtn>

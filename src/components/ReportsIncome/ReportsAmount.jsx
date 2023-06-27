@@ -4,6 +4,7 @@ import {
   TextAmound,
   TotalAmoundPlus,
   TotalAmoundMin,
+  Container,
 } from './ReportAmount.styled';
 import { useSelector } from 'react-redux';
 
@@ -12,19 +13,19 @@ const ReportAmount = () => {
 
   return (
     <FormAmount>
-      <div>
+      <Container>
         <TextAmound>Expenses:</TextAmound>
         <TotalAmoundMin>
           - {transactions?.expenses.expenseTotal} UAH.
         </TotalAmoundMin>
-      </div>
+      </Container>
 
-      <div>
+      <Container>
         <TextAmound>Income:</TextAmound>
         <TotalAmoundPlus>
           + {transactions?.incomes.incomeTotal} UAH.
         </TotalAmoundPlus>
-      </div>
+      </Container>
     </FormAmount>
   );
 };

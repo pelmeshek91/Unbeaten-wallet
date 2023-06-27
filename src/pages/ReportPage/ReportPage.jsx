@@ -6,17 +6,15 @@ import { StyledLink } from './ReportPage.styled';
 import { ImArrowLeft2 } from 'react-icons/im';
 import TotalBalance from 'components/TotalBalance/TotalBalance';
 import { useMediaQuery } from 'react-responsive';
-import { device } from 'utilits/mediaQuery';
-
 
 const ReportPage = () => {
   const isMobile = useMediaQuery({
-    query: `(${device.mobileM}) and (${device.mobileL})`,
+    query: '(max-width: 767px)',
   });
   return (
     <>
       <ReportContainer>
-        {!isMobile ? (
+        {isMobile ? (
           <StyledLink to="expenses">
             <ImArrowLeft2 />
             TO TRANSACTION
@@ -33,7 +31,7 @@ const ReportPage = () => {
       </ReportContainer>
       <ReportAmount />
       <ReportsExpenses />
-      </>
+    </>
   );
 };
 

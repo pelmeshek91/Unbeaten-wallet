@@ -56,13 +56,37 @@ export const TransactionForm = ({ currrentDate }) => {
       return { ...prevForm, [name]: value };
     });
   };
+  const handleChange1 = ({ target: { name, value } }) => {
+    const regex = /^\d*.?\d{0,2}$/;
+    if (regex.test(value)) {
+      setForm(prevForm => {
+        return { ...prevForm, [name]: value };
+      });
+    }
+  };
+  // const inputValue = e.target.value;
+  // const regex = /^\d*.?\d{0,2}$/; // Regex pattern to allow up to 2 decimal places
 
+  // if (regex.test(inputValue)) {
+  //   setValue(inputValue);
+  // }
   const handleFormSubmit = e => {
     e.preventDefault();
+
     const amount = e.target.elements.amount.value;
+
     const description = e.target.elements.description.value;
     const category = e.target.elements.category.value;
-
+    if (!description) {
+      toast.error('Please enter the description');
+      return;
+    } else if (!category) {
+      toast.error('Please choose the category');
+      return;
+    } else if (!amount) {
+      toast.error('Please enter the sum');
+      return;
+    }
     if (key === 'expenses') {
       const payload = {
         description,
@@ -88,7 +112,6 @@ export const TransactionForm = ({ currrentDate }) => {
         .catch(error => toast.error(error.message));
     }
 
-    //   очистка форми
     setForm(initialState);
     setSelectedOption(null);
   };
@@ -104,7 +127,7 @@ export const TransactionForm = ({ currrentDate }) => {
             onSubmit={handleFormSubmit}
           >
             {({ values, errors, touched, handleChange, handleBlur }) => ( */}
-          <Form ref={formRef} onSubmit={handleFormSubmit}>
+          <Form noValidate ref={formRef} onSubmit={handleFormSubmit}>
             <label htmlFor="description">
               <Input
                 type="text"
@@ -113,6 +136,7 @@ export const TransactionForm = ({ currrentDate }) => {
                 name="description"
                 value={form.description}
                 onChange={handleChange}
+                autoComplete="off"
               />
               {/* {errors.description && touched.description && (
                     <div>{errors.description}</div>
@@ -137,8 +161,9 @@ export const TransactionForm = ({ currrentDate }) => {
                 placeholder="0.00"
                 required
                 value={form.amount}
-                onChange={handleChange}
-                decimalScale={2}
+                onChange={handleChange1}
+                decimalScale={3}
+                autoComplete="off"
               />
 
               <IconContainer>
@@ -152,7 +177,9 @@ export const TransactionForm = ({ currrentDate }) => {
               <InputBtn type="submit" disabled={!balance && !trans.length}>
                 Input
               </InputBtn>
-              <ClearBtn onClick={() => setForm(initialState)}>Clear</ClearBtn>
+              <ClearBtn type="reset" onClick={() => setForm(initialState)}>
+                Clear
+              </ClearBtn>
             </BtnContainer>
           </Form>
           {/* //   )}

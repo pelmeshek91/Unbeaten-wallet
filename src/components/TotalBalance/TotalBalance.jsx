@@ -11,6 +11,8 @@ import {
   InputContainer,
   StyledMessage,
   RelativeContainer,
+  ButtonDisabled,
+  Wrapper,
 } from './TotalBalance.styled';
 import { updateUserBalanceThunk } from '../../redux/transcactions/transcactionsOperations';
 
@@ -27,7 +29,9 @@ const TotalBalance = () => {
     dispatch(updateUserBalanceThunk({ newBalance: newTopUp }))
       .unwrap()
       .then(data => {
-        toast.success('Your balance has been updated');
+        toast.success('Your balance has been updated', {
+          theme: 'dark',
+        });
         setNewTopUp('');
       })
       .catch(error => toast.error(error.message));
@@ -38,7 +42,12 @@ const TotalBalance = () => {
       <>
         <BalanceLabel>Balance:</BalanceLabel>
         {balance || expenses.length > 0 ? (
-          <BalanceValue>{balance}</BalanceValue>
+          <>
+            <Wrapper>
+              <BalanceValue>{balance}</BalanceValue>
+              <ButtonDisabled disabled>Confirm</ButtonDisabled>
+            </Wrapper>
+          </>
         ) : (
           <InputContainer>
             <RelativeContainer>
@@ -58,7 +67,8 @@ const TotalBalance = () => {
                 <div>
                   <p>
                     Hello! To get started, enter the current balance of your
-                    account!
+                    account! <br />
+                    <br />
                   </p>
                   <p>You can't spend money until you have it :)</p>
                 </div>
@@ -71,5 +81,4 @@ const TotalBalance = () => {
     </BalanceContainer>
   );
 };
-
 export default TotalBalance;
