@@ -1,28 +1,4 @@
 import styled from 'styled-components';
-import { NumericFormat } from 'react-number-format';
-
-export const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: inset 0px 2px 14px rgba(132, 132, 132, 0.2);
-  backdrop-filter: blur(70px);
-  /* opacity: 0.7; */
-  z-index: 9998;
-`;
-export const ButtonTx = styled.button`
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  text-transform: uppercase;
-  padding: 10px;
-  background-color: transparent;
-  border-color: transparent;
-  margin: 16px 0 0 20px;
-  color: #f6f7fb;
-`;
 
 export const DivContainer = styled.div`
   height: 40px;
@@ -38,8 +14,7 @@ export const DivContainer = styled.div`
 
 export const InputDate = styled.input`
   /* width: 74px; */
-
-  margin-right: 28px;
+  margin-right: 14px;
   border: none;
   color: #c7ccdc;
   font-family: 'Roboto';
@@ -54,8 +29,7 @@ export const InputDate = styled.input`
   height: 40px;
   overflow: hidden;
   cursor: pointer;
-
-  background-color: rgb(56, 56, 71);
+  background-color: transparent;
 
   &:focus {
     outline: none;
@@ -64,5 +38,7 @@ export const InputDate = styled.input`
     box-shadow: 0px 0px 6px #41a350;
   }
 `;
-
-export const MobileFormTransactions = styled.form``;
+export const DateWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;

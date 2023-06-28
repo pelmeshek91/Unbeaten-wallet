@@ -1,6 +1,6 @@
 export const initialState = {
   balance: 0,
-  date: null,
+  date: new Date(),
   transactions: null,
   expenses: [],
   incomes: [],
