@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { NumericFormat } from 'react-number-format';
 
 export const Overlay = styled.div`
   position: fixed;
