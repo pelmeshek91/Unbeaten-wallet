@@ -94,6 +94,7 @@ export const TransactionForm = ({ currentDate, onClose }) => {
 
     setForm(initialState);
     setSelectedOption(null);
+    onClose();
   };
 
   return (
@@ -144,11 +145,7 @@ export const TransactionForm = ({ currentDate, onClose }) => {
             </Container>
 
             <BtnContainer>
-              <InputBtn
-                type="submit"
-                onClick={onClose}
-                disabled={!balance && !trans.length}
-              >
+              <InputBtn type="submit" disabled={!balance && !trans.length}>
                 Input
               </InputBtn>
               <ClearBtn type="reset" onClick={() => setForm(initialState)}>
