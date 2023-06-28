@@ -55,7 +55,7 @@ export const Button = styled.button`
   -webkit-box-pack: center;
   -webkit-box-align: center;
   align-items: center;
-  margin-left: 30px;
+  /* margin-left: 30px; */
   &:hover {
     background-color: rgb(66, 166, 82);
     box-shadow: rgba(96, 196, 112, 0.35) 1px 3px 5px;
@@ -73,6 +73,7 @@ export const Button = styled.button`
 `;
 
 export const ButtonDisabled = styled.button`
+  box-sizing: border-box;
   display: flex;
   border-radius: 0 16px 16px 0;
 
@@ -95,7 +96,7 @@ export const ButtonDisabled = styled.button`
   -webkit-box-pack: center;
   -webkit-box-align: center;
   align-items: center;
-  margin-left: 30px;
+  /* margin-left: 30px; */
   margin: 0;
   color: rgb(246, 247, 251);
   border: 2px solid rgba(128, 132, 143, 1);
@@ -112,8 +113,9 @@ export const ButtonDisabled = styled.button`
 `;
 
 export const Input = styled.input`
+  box-sizing: border-box;
   width: 125px;
-  height: 17px;
+  height: 43px;
   padding: 12px 8px 11px 4px;
   background-color: transparent;
   font-weight: 700;
