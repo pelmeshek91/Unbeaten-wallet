@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import { device } from '../../utilits/mediaQuery';
 
 export const MainContainer = styled.div`
+  background-color: #383847;
   display: flex;
   -webkit-box-pack: center;
   justify-content: center;
-  /* margin-top: 32px; */
+  margin-top: 32px;
   -webkit-box-align: center;
   align-items: flex-start;
 
@@ -14,6 +15,7 @@ export const MainContainer = styled.div`
     display: flex;
     align-items: center;
     gap: 32px;
+    margin-top: 0;
     padding-bottom: 124px;
     position: relative;
     /* width: 616px; */
@@ -32,18 +34,29 @@ export const MainContainer = styled.div`
 
 export const Form = styled.form`
   display: flex;
+  @media screen and (max-width: 767px) {
+    padding: 32px 0 32px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const Input = styled.input`
-  width: 288px;
-  padding: 15px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 280px;
+  padding: 10px 0px 10px 20px;
+  outline: none;
   box-sizing: border-box;
   text-align: left;
   color: rgba(199, 204, 220, 0.5);
   border: 2px solid #474759;
   border-radius: 0;
   border-top-left-radius: 16px;
-  border-top-right-radius: 0;
+  border-top-right-radius: 16px;
   background-color: rgb(56, 56, 71);
   font-size: 12px;
   line-height: 1.16;
@@ -86,34 +99,37 @@ export const Input = styled.input`
 `;
 
 export const InputNum = styled.input`
+  margin: 0 auto;
   background-color: rgb(56, 56, 71);
-
+  padding: 12px 18px 12px 2px;
   background-size: 20px;
+  margin-top: 32px;
   font-size: 12px;
   line-height: 1.16;
   letter-spacing: 0.02em;
   border: 2px solid #474759;
   border-radius: 22px;
-  border-radius: 0 16px 16px 0;
+
   width: 116px;
   text-align: center;
-  padding: 16px 37px;
+  padding: 12px 20px;
+  text-align: start;
   color: #c7ccdc;
-  &:hover,
-  &:focus {
-    outline: none;
-    box-shadow: 0px 6px 7px -2px #41a350;
-  }
+
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
 
+  background-color: rgb(56, 56, 71);
+
   @media ${device.tablet} {
+    margin-top: 0;
     display: flex;
     justify-content: center;
     width: 40px;
+    border-radius: 0;
     /* border-top-left-radius: 20px; */
     border-top-right-radius: 20px;
     /* max-height: 290px; */
@@ -137,31 +153,17 @@ export const InputNum = styled.input`
 
   @media ${device.desktop} {
     background-color: rgb(56, 56, 71);
-
     background-size: 20px;
-    /* font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400; */
     font-size: 12px;
     line-height: 1.16;
     letter-spacing: 0.02em;
     border: 2px solid #474759;
-    border-radius: 22px;
+
     border-radius: 0 16px 16px 0;
-    /* width: 116px; */
+
     text-align: center;
     padding: 16px 37px;
     color: #c7ccdc;
-    &:hover,
-    &:focus {
-      outline: none;
-      box-shadow: 0px 6px 7px -2px #41a350;
-    }
-    &::-webkit-inner-spin-button,
-    &::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
   }
 `;
 
@@ -173,9 +175,11 @@ export const BtnContainer = styled.div`
   gap: 16px;
   position: static;
   transform: translateX(0);
-  padding-left: 32px;
+
+  margin-top: 80px;
 
   @media ${device.tablet} {
+    margin-top: 0;
     display: flex;
     gap: 16px;
     left: 30%;
@@ -197,11 +201,21 @@ export const BtnContainer = styled.div`
 
 export const Container = styled.div`
   position: relative;
+  @media screen and (max-width: 767px) {
+    margin: 0 auto;
+  }
 `;
 
 export const IconContainer = styled.div`
+  position: absolute;
+
+  color: white;
+  font-size: 30px;
+  @media screen and (max-width: 767px) {
+    bottom: 5%;
+    left: 70%;
+  }
   @media ${device.tablet} {
-    position: absolute;
     top: 24%;
     right: 12%;
   }
@@ -236,6 +250,9 @@ export const InputBtn = styled.button`
     opacity: 0.5;
     cursor: inherit;
   }
+  /* @media screen and (max-width: 767px) {
+    margin-top: 80px;
+  } */
 `;
 
 export const ClearBtn = styled.button`
@@ -256,49 +273,5 @@ export const ClearBtn = styled.button`
   &:focus {
     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.15);
     background-color: rgb(70, 70, 88);
-  }
-`;
-
-// DATEEEEEEEE
-
-export const DivContainer = styled.div`
-  height: 40px;
-  margin-right: 10px;
-  display: flex;
-  gap: 10px;
-  -webkit-box-align: center;
-  align-items: center;
-  /* margin-top: 35px; */
-  flex-direction: row;
-  /* margin-left: 32px; */
-`;
-export const DateWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-export const InputDate = styled.input`
-  /* width: 74px; */
-  margin-right: 14px;
-  border: none;
-  color: #c7ccdc;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 900;
-  font-size: 12px;
-  line-height: 1.16;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  height: 20px;
-  max-width: 74px;
-  height: 40px;
-  overflow: hidden;
-  cursor: pointer;
-  background-color: transparent;
-
-  &:focus {
-    outline: none;
-    border: none;
-    border-radius: 4px;
-    box-shadow: 0px 0px 6px #41a350;
   }
 `;

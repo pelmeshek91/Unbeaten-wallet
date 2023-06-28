@@ -1,6 +1,12 @@
 .select-container {
+  @media screen and (max-width:767px) {
+    width: 280px;
+  }
+
+  width: 170px;
   height: auto;
   background-color: rgb(56, 56, 71);
+
 }
 
 .select-container .select__control {
@@ -9,13 +15,26 @@
   background-color: rgb(56, 56, 71);
   border: 2px solid rgb(71, 71, 89);
   border-radius: 0;
-  width: 170px;
-  border-bottom-right-radius: 0;
+  width: 280px;
+  border-bottom-right-radius: 16px;
   color: rgba(199, 204, 220, 0.5);
   border: 2px solid rgb(71, 71, 89);
 
-  @media screen and (min-width: 767px) and (max-width: 1279px) {
+
+
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    width: 170px;
     height: 43px;
+    border-bottom-right-radius: 0;
+  }
+
+  @media screen and (min-width: 1280px) {
+    border-radius: 0;
+    width: 170px;
+    border-bottom-right-radius: 0;
+
+
   }
 }
 
@@ -39,6 +58,10 @@
 }
 
 .select-container .select__value-container {
+  @media screen and (max-width:767px) {
+    padding-left: 20px;
+  }
+
   padding-left: 13px;
 }
 

@@ -86,6 +86,12 @@ const handleLogoutFulfilled = state => {
 const transactionsSlice = createSlice({
   name: 'transactions',
   initialState,
+  reducers: {
+    changeFilter: (state, { payload }) => {
+      console.log(payload);
+      state.date = payload;
+    },
+  },
   extraReducers: builder =>
     builder
       .addCase(
@@ -139,5 +145,5 @@ const transactionsSlice = createSlice({
         handleRejected
       ),
 });
-
+export const { actions } = transactionsSlice;
 export const transactionsReducers = transactionsSlice.reducer;

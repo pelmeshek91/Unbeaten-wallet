@@ -4,8 +4,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { CiCalculator1 } from 'react-icons/ci';
 
-// import { Formik } from 'formik';
-// import * as yup from 'yup';
 import {
   BtnContainer,
   ClearBtn,
@@ -27,22 +25,9 @@ import { useParams } from 'react-router';
 
 import { toast } from 'react-toastify';
 
-// const validationSchema = yup.object().shape({
-//   description: yup
-//     .string()
-//     .min(2, 'Too Short!')
-//     .max(50, 'Too Long!')
-//     .required('Required'),
-//   amount: yup
-//     .number()
-//     .min(2, 'Too Short!')
-//     .max(10, 'Too Long!')
-//     .required('Required'),
-// });
-
 const initialState = { description: '', amount: '' };
 
-export const TransactionForm = ({ currrentDate }) => {
+export const TransactionForm = ({ currentDate, onClose }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [form, setForm] = useState(initialState);
   const formRef = useRef(null);
@@ -64,12 +49,7 @@ export const TransactionForm = ({ currrentDate }) => {
       });
     }
   };
-  // const inputValue = e.target.value;
-  // const regex = /^\d*.?\d{0,2}$/; // Regex pattern to allow up to 2 decimal places
 
-  // if (regex.test(inputValue)) {
-  //   setValue(inputValue);
-  // }
   const handleFormSubmit = e => {
     e.preventDefault();
 
@@ -92,7 +72,7 @@ export const TransactionForm = ({ currrentDate }) => {
         description,
         amount: Number(amount),
         category,
-        date: currrentDate,
+        date: currentDate,
       };
       dispatch(addTransactionExpensesThunk(payload))
         .unwrap()
@@ -103,7 +83,7 @@ export const TransactionForm = ({ currrentDate }) => {
         description,
         amount: Number(amount),
         category,
-        date: currrentDate,
+        date: currentDate,
       };
 
       dispatch(addTransactionIncomesThunk(payload))
@@ -120,13 +100,6 @@ export const TransactionForm = ({ currrentDate }) => {
     <>
       <MainContainer>
         <div>
-          {/* <Formik
-            ref={formRef}
-            initialValues={{ description: '', amount: '' }}
-            validationSchema={validationSchema}
-            onSubmit={handleFormSubmit}
-          >
-            {({ values, errors, touched, handleChange, handleBlur }) => ( */}
           <Form noValidate ref={formRef} onSubmit={handleFormSubmit}>
             <label htmlFor="description">
               <Input
@@ -138,9 +111,6 @@ export const TransactionForm = ({ currrentDate }) => {
                 onChange={handleChange}
                 autoComplete="off"
               />
-              {/* {errors.description && touched.description && (
-                    <div>{errors.description}</div>
-                  )} */}
             </label>
             <Select
               className="select-container"
@@ -174,7 +144,11 @@ export const TransactionForm = ({ currrentDate }) => {
             </Container>
 
             <BtnContainer>
-              <InputBtn type="submit" disabled={!balance && !trans.length}>
+              <InputBtn
+                type="submit"
+                onClick={onClose}
+                disabled={!balance && !trans.length}
+              >
                 Input
               </InputBtn>
               <ClearBtn type="reset" onClick={() => setForm(initialState)}>
@@ -182,8 +156,6 @@ export const TransactionForm = ({ currrentDate }) => {
               </ClearBtn>
             </BtnContainer>
           </Form>
-          {/* //   )}
-          // </Formik> */}
         </div>
       </MainContainer>
     </>
