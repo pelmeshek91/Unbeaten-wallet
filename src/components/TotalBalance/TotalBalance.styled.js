@@ -105,7 +105,7 @@ export const ButtonDisabled = styled.button`
     padding: 16px 48px;
     font-size: 12px;
     border-radius: 16px;
-    margin-left: 16px;
+    margin-left: 35px;
     width: 125px;
     height: 44px;
     border: 2px solid rgba(128, 132, 143, 1);
