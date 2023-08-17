@@ -27,7 +27,7 @@ export const MobileFormTransactions = ({ currentDate, onClose }) => {
         />
         To transaction
       </ButtonTx>
-      <TransactionForm currentDate={currentDate} onClose={onClose} />
+      <TransactionForm currentDate={currentDate} />
     </Overlay>
   );
 };
